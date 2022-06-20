@@ -131,14 +131,6 @@ window._WEBGL = (function() {
   const clock = new THREE.Clock()
   let autoRotateDirection = 1
 
-  const views = [
-    // [TODO] camera
-    {left: 0, bottom: 0, width: 0.5, height: 1},
-    {left: 0.5, bottom: 0, width: 0.5, height: 1}
-  ]
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-
   function render( time ){
     requestAnimationFrame( render )
 
@@ -151,24 +143,25 @@ window._WEBGL = (function() {
     //   }
     // }
 
-    if( !STATE.WEBGL.disableAutoRotate && !STATE.IS_FOCUSED){
-      if (STATE.WEBGL.cameraControls.azimuthAngle > 0.5) autoRotateDirection = -1
-      if (STATE.WEBGL.cameraControls.azimuthAngle < 0.1) autoRotateDirection = 1   
-      STATE.WEBGL.cameraControls.azimuthAngle += autoRotateDirection * clock.getDelta() * THREE.MathUtils.DEG2RAD 
-    }
-
-    STATE.WEBGL.cameraControls.normalizeRotations()
-    STATE.WEBGL.cameraControls.update( clock.getDelta() )
-
     TWEEN.update( time )
     // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
     // STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-    for (let index = 0; index < views.length; index++) {
-      const view = views[index];
-      const left = Math.floor( windowWidth * view.left );
-      const bottom = Math.floor( windowHeight * view.bottom );
-      const width = Math.floor( windowWidth * view.width );
-      const height = Math.floor( windowHeight * view.height );
+    for (let index = 0; index < STATE.WEBGL.views.length; index++) {
+      const view = STATE.WEBGL.views[index];
+
+      if( !STATE.WEBGL.disableAutoRotate && !STATE.IS_FOCUSED){
+        if (STATE.WEBGL.cameraControls.azimuthAngle > 0.5) autoRotateDirection = -1
+        if (STATE.WEBGL.cameraControls.azimuthAngle < 0.1) autoRotateDirection = 1   
+        STATE.WEBGL.cameraControls.azimuthAngle += autoRotateDirection * clock.getDelta() * THREE.MathUtils.DEG2RAD 
+      }
+  
+      STATE.WEBGL.cameraControls.normalizeRotations()
+      STATE.WEBGL.cameraControls.update( clock.getDelta() )
+      
+      const left = Math.floor( STATE.WEBGL.canvasWidth * view.left );
+      const bottom = Math.floor( STATE.WEBGL.canvasHeight * view.bottom );
+      const width = Math.floor( STATE.WEBGL.canvasWidth * view.width );
+      const height = Math.floor( STATE.WEBGL.canvasHeight * view.height );
 
       STATE.WEBGL.renderer.setViewport( left, bottom, width, height );
       STATE.WEBGL.renderer.setScissor( left, bottom, width, height );
@@ -180,8 +173,8 @@ window._WEBGL = (function() {
 
       // renderer.render( scene, camera );
 
-      STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-      STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+      STATE.WEBGL.renderer.render( STATE.WEBGL.scene, view.camera )
+      STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, view.camera )
     }
   }
 
