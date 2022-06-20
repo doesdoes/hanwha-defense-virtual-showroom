@@ -1,0 +1,90 @@
+// ------------------------------------------------------------------------
+// Mixin
+// ------------------------------------------------------------------------
+
+@mixin clearfix {
+  zoom: 1;
+
+  &:before {
+    content: '';
+    display: block;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin full-pos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin center-pos-xy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin center-pos-y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin center-pos-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin break-word {
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+// @mixin horizon-scroll {
+//   display: flex;
+//   justify-content: center;
+//   overflow-x: scroll;
+//   overflow-y: hidden;
+
+//   &.is-overflow {
+//       justify-content: flex-start;
+//       padding-left: rem(20);
+//       // right end margin
+//       &::after {
+//           content: '';
+//           flex: 0 0 rem(20);
+//       }
+//   }
+
+//   // Hide scrollbar
+//   &::-webkit-scrollbar {
+//       display: none;
+//   }
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+// }
+
+@mixin scroll-custom-style {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    
+  }
+  
+  &::-webkit-scrollbar-thumb {
+      background-color: rgba(#fff, 0.3);
+      border-radius: 4px;
+      height: 12px;
+  }
+}

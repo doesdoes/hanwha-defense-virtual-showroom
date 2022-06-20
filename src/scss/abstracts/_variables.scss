@@ -1,0 +1,57 @@
+// ------------------------------------------------------------------------
+// 스타일 변수
+// ------------------------------------------------------------------------
+
+// colors
+// ------------------------------------------------------------------------
+
+// primary
+$white: #fff;
+$black: #000;
+
+// point
+$point1: #f37321;
+$point2: #f89b6c;
+$point3: #fbb584;
+
+// background
+$bg-dark: #111;
+$bg-gradient: linear-gradient(to bottom, #111, rgba(17, 17, 17, 0));
+$bg-gradient--sub : linear-gradient(to top, #111, rgba(17, 17, 17, 0));
+
+// grayscale
+$gray1: #333;
+$gray2: #666;
+$gray3: #999;
+$gray4: #ccc;
+$gray5: #eee;
+$gray-border : #ddd;
+$gray-bg : #f6f6f6;
+
+// blur
+@mixin color-blur {
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+}
+
+@mixin color-blur-op {
+  -webkit-backdrop-filter: blur(30px) opacity(85%);
+  backdrop-filter: blur(30px) opacity(85%);
+}
+
+// font
+// ------------------------------------------------------------------------
+$font-gothic: 'HanwhaGothic', sans-serif;
+$font-hanwha: 'Hanwha', sans-serif;
+
+// layout
+$container-gutter: 6.25vw;
+
+// gap
+$grid-gap: 28px;
+$h-padding-gap: calc(2.35vw + 15px);
+$h-gap: calc(1.3vw + 15px);
+$h-inner: calc(40px + (#{$h-gap} * 2) + 1px);
+
+//bezier
+$bezier: cubic-bezier(0.23, 1, 0.32, 1);

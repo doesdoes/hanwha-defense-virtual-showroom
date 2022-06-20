@@ -1,0 +1,71 @@
+// ------------------------------------------------------------------------
+// 디버깅 스타일
+// ------------------------------------------------------------------------
+
+.debugger {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  visibility: collapse;
+  pointer-events: none;
+  z-index: 3999;
+
+  &.is-active {
+    visibility: visible;
+  }
+
+  .content {
+    background-color: pink;
+    opacity: 0.5;
+    height: 100vh;
+  }
+}
+
+.font-guide {
+  position: fixed;
+  width: 90%;
+  max-width: 500px;
+  height: 90%;
+  max-height: 500px;
+  top: 15%;
+  left: 5%;
+  visibility: collapse;
+  pointer-events: none;
+  z-index: 3999;
+
+  &.is-active {
+    visibility: visible;
+    pointer-events: initial;
+  }
+
+  .__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border: 1px solid #c0c0c0;
+    background-color: white;
+    padding: 24px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.4em;
+    border-radius: 8px;
+    div{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      width: 33.3%;
+      margin-bottom: 28px;
+    }
+
+    span{
+      width: 100%;
+      font-size: 20px;
+      margin-bottom: 6px;
+      display: block;
+      font-weight: bold;
+    }
+  }
+}

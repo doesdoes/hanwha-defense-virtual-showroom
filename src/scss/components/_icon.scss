@@ -1,0 +1,15 @@
+.icon {
+  display: inline-block;
+  position: relative;
+
+  &--plus {
+    &::before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background: url(/assets/content/common/icon-plus.svg);
+    }
+  }
+}

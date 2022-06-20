@@ -1,1 +1,3 @@
-console.log('바보')
+window.addEventListener('DOMContentLoaded', async (event) => {
+  
+});

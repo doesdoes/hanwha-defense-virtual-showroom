@@ -1,0 +1,106 @@
+// ------------------------------------------------------------------------
+// 버튼
+// ------------------------------------------------------------------------
+
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 0.888em 0.888em 0.888em 1.333em;
+  min-width: 12.4em;
+  text-align: left;
+  color: $white;
+  background-color: transparent;
+  border: 1px solid $white;
+  font-family: $font-gothic;
+  text-transform: uppercase;
+  // overflow: hidden;
+  transition: all 0.34s ease-in-out;
+  cursor: pointer;
+  
+  @include btn1-en;
+
+  &[lang=ko] {
+    @include btn1-kr;
+  }
+
+  &::before {
+    content: attr(data-txt);
+    white-space: nowrap;
+    position: absolute;
+    left: 1.333em;
+    top: 0.888em;
+    transition: all 0.34s ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    background: url(/assets/content/common/d-ico-arrow.svg) no-repeat 100%;
+    right: 0.888em;
+    transform: translate(0, -50%);
+    transition: all 0.34s ease-in-out;
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus {
+      // border-color: $point1;
+      // border-color: transparent;
+      
+      .txt {
+        opacity: 0;
+      }
+      &::before {
+        left: 50%;
+        transform: translateX(-50%);
+        color: $point1;
+      }
+
+      &::after {
+        transform: translate(150%, -50%);
+        opacity: 0;
+      }
+    }
+  }
+
+  .txt {
+    opacity: 0;
+    visibility: collapse;
+  }
+
+  &--invert {
+    color: $black;
+    border: 1px solid $black;
+    &::after {
+      background: url(/assets/content/common/d-ico-arrow-black.svg) no-repeat 100%;
+    }
+  }
+
+  &--outlink {
+    &::after {
+      background: url(/assets/content/common/d-ico-outlink.svg) no-repeat 100%;
+    }
+
+    &.btn--invert {
+      &::after {
+        background: url(/assets/content/common/d-ico-outlink--black.svg) no-repeat 100%;
+      }
+    }
+  }
+
+  &--download {
+    &::after {
+      background: url(/assets/content/common/d-ico-download.svg) no-repeat 100%;
+    }
+    &.btn--invert {
+      &::after {
+        background: url(/assets/content/common/d-ico-download--black.svg) no-repeat 100%;
+      }
+    }
+  }
+}

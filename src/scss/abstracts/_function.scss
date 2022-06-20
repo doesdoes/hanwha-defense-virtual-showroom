@@ -1,0 +1,37 @@
+@use "sass:math";
+
+@mixin __to_em2($target, $size) {
+
+  #{$target} : calc(#{$size} / var(--fz) * 1em)
+
+}
+
+@function __em($size) {
+  @return calc(#{$size} / var(--fz) * 1em);
+}
+
+// $content-width : 1920;
+// @mixin __to_em3($target, $size) {
+//   $calced: calc(var(--app-height) * $size / $content-width);
+
+//   $value : $calced / var(--fz);
+
+//   $rule : var(--fz) * 1em;
+
+//   #{$target}: calc($calced / var(--fz) * 1em)
+// }
+
+
+// #header .__m1 a span{
+
+//   --root : 10;
+
+//   @include __to_em2(padding-top, 20);
+
+
+
+// }
+
+@mixin to_em($px, $base) {
+  padding-bottom: calc($px / $base) * 1em;
+}

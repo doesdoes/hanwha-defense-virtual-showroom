@@ -1,0 +1,189 @@
+// ------------------------------------------------------------------------
+// 타이포그라피 가이드
+// ------------------------------------------------------------------------
+
+
+html {
+  // font-size base
+  font-size: 0.8333333333vw;
+
+  @media all and (max-width: 1023px) {
+    font-size: 2.666667vw;
+  }
+}
+
+body {
+  font-family: 'HanwhaGothic', sans-serif;
+  font-weight: normal;
+}
+
+.h1 {
+  font-size: 8.75rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.2em;
+}
+
+.h2 {
+  font-size: 7.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.h3 {
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.h4 {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.h5 {
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.h6 {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.h7 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.h8 {
+  font-size: 5.75rem;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.t1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.t2-en {
+  font-size: max(18px, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.t2-kr {
+  font-size: max(18px, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.t3 {
+  font-size: max(18px, 1.25rem);
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.t4 {
+  font-size: max(24px, 1.75rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.b1 {
+  font-size: max(14px, 1.125rem);
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.b2 {
+  font-size: max(14px, 1.125rem);
+  font-weight: 100;
+  line-height: 1.67;
+  letter-spacing: -0.02em;
+}
+
+.c1 {
+  font-size: max(12px, 0.875rem);
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.lt {
+  font-size: 25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: $white;
+}
+
+@mixin btn1-en {
+  font-size: clamp(14px, 1.125rem, 20px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+@mixin btn1-kr {
+  font-size: clamp(14px, 1.125rem, 20px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+@mixin btn2-en {
+  font-size: clamp(13px, 1rem, 18px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+@mixin btn2-kr {
+  font-size: clamp(13px, 1rem, 18px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.btn1-en {
+  @include btn1-en;
+}
+
+.btn1-kr {
+  @include btn1-kr;
+}
+
+.btn2-en {
+  @include btn2-en;
+}
+
+.btn2-kr {
+  @include btn2-kr;
+}
+
+.hw_re {
+  font-family: 'Hanwha';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.hw_li {
+  font-family: 'Hanwha';
+  font-style: normal;
+  font-weight: 100;
+}
+
+// [TODO] mobile

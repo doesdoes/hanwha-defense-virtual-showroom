@@ -1,0 +1,236 @@
+.cursor-container {
+  position: absolute;
+  z-index: 3001;
+
+  .ball {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background-color: $point1;
+    z-index: 3000;
+    pointer-events: none;
+    transform: translate3d(-50%, -50%, 0);
+    transition: all 0.2s;
+  }
+
+  .ring {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 2px solid $point1;
+    border-radius: 9999px;
+    opacity: 0;
+    transform: scale(0);
+    z-index: 3001;
+    pointer-events: none;
+
+    transform: translate3d(-50%, -50%, 0);
+    transition: all 0.2s;
+  }
+
+  &.slide {
+    .ball {
+      opacity: 0;
+    }
+
+    .ring {
+      transform: translate3d(-50%, -50%, 0) scale(1);
+      opacity: 1;
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  &.click {
+    .ball {
+      opacity: 0;
+    }
+    .ring {
+      transform: translate3d(-50%, -50%, 0) scale(1);
+      opacity: 1;
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &.clicked {
+    
+    .ring {
+      transform: translate3d(-50%, -50%, 0) scale(0.7);
+
+    }
+  }
+
+  &.drag {
+    .ball {
+      opacity: 0;
+    }
+
+    .ring {
+      transform: translate3d(-50%, -50%, 0) scale(1);
+      opacity: 1;
+      width: 88px;
+      height: 88px;
+    }
+
+    &.clicked {
+      .ring {
+        transform: translate3d(-50%, -50%, 0) scale(0.727272);
+      }
+
+      .cursor-follower {
+        &::before {
+          transform: translate(-145%, -50%) rotateZ(270deg);
+        }
+        &::after {
+          transform: translate(145%, -50%) rotateZ(90deg);
+        }
+      }
+    }
+  }
+
+  &.video {
+    .ball {
+      width: 96px;
+      height: 96px;
+      background-color: $white;
+    }
+  }
+}
+
+.cursor-follower {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 3000;
+  pointer-events: none;
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+
+  .arrow,
+  .play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  &.drag {
+    // [TODO] mix-blend-mode
+    mix-blend-mode: initial !important;
+    
+    & {
+      opacity: 1;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 6px solid transparent;
+        border-top: 0;
+        border-bottom: 10px solid $black;
+
+        opacity: 0.5;
+        transform: translate(-50%, -50%) rotateZ(270deg);
+        left: -44px;
+        top: 50%;
+        transition: all 0.2s;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 6px solid transparent;
+        border-top: 0;
+        border-bottom: 10px solid $black;
+
+        opacity: 0.5;
+        transform: translate(50%, -50%) rotateZ(90deg);
+        left: 55px;
+        top: 50%;
+        transition: all 0.2s;
+      }
+    }
+
+    &.clicked {
+      &::before {
+        transform: translate(-145%, -50%) rotateZ(270deg);
+      }
+      &::after {
+        transform: translate(145%, -50%) rotateZ(90deg);
+      }
+    }
+  }
+
+  &.slide-prev {
+    .arrow {
+      opacity: 1;
+    }
+    & {
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    &.clicked {
+      .cursor-follower {
+        transform: translate3d(-80%, -50%, 0);
+      }
+    }
+  }
+  &.slide-next {
+    .arrow {
+      opacity: 1;
+    }
+    & {
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0);
+      .arrow {
+         transform: rotateZ(180deg)
+      }
+    }
+    &.clicked {
+      .cursor-follower {
+        transform: translate3d(-20%, -50%, 0);
+        .arrow {
+           transform: rotateZ(180deg)
+        }
+      }
+    }
+  }
+
+  &.slide-prev,
+  &.slide-next,
+  &.drag {
+    mix-blend-mode: difference;
+  }
+
+  &.video {
+    opacity: 1;
+    mix-blend-mode: initial;
+    width: 20px;
+    height: 30px;
+
+    .play {
+      opacity: 1;
+    }
+  }
+}
+
+[data-cursor="click"] * {
+  pointer-events: none;
+}
+
+[data-cursor="drag"] {
+  cursor: grab;
+}
+
+[data-cursor="video"] {
+  cursor: pointer;
+}

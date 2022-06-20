@@ -6,6 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/assets/css/app.css">
   <title>Document</title>
+
+  <style media="screen">
+    html, body{width: 100%;height: 100%;}
+    body{margin: 0px;background: #fff; }
+    .webgl-section{position: absolute;top: 50%;left:50%;width: 100%;height: 100%;transform: translate(-50%, -50%);}
+    .navigation-container #map-button{position: absolute;top: 40px;right: 40px;}
+    .navigation-container #map-button:hover{cursor: pointer;}
+    .navigation-container #map-button svg{width: 50px;}
+    #webgl-ui{display: none;}
+    .poi-container{user-select: all;pointer-events: all;}
+    .poi-container:hover{cursor: pointer;}
+    .poi-container svg{width: 50px;}
+  </style>
+
+  <link rel="stylesheet" href="app.css">
+
 </head>
 <body>
   <!-- 할수있다! -->
@@ -23,7 +39,13 @@
     </div>
   </header>
 
-  <section class="section section--webgl">
+  <section class="section section--webgl webgl-section webgl-container active">
+    <div class="navigation-container">
+      <div id="map-button">
+        <svg viewBox="0 0 44 44"><g data-name="Group 12895" transform="translate(-1838 -998)"><circle data-name="Ellipse 164" cx="22" cy="22" r="22" transform="translate(1838 998)" fill="#fff"/><g data-name="Group 12896" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path data-name="Path 55959" d="M1869.999 1021v-9l-6.941 2.644-6.145-2.644-6.914 2.909V1028l6.913-2.909 6.146 2.909 6.913-2.909"/><path data-name="Line 32" d="M1856.913 1012v13.091"/><path data-name="Line 33" d="M1863.058 1014.909V1028"/></g></g></svg>
+      </div>
+    </div>
+
     <div id="webgl"></div>
 
 
@@ -33,8 +55,8 @@
 
     <div class="entry">
       <div class="entry__left">
-        <h2>k9a1</h2>
-        <p>국내 독자 기술로 개발한 세계 최고의 자주포</p>
+        <h2 class="h4 tit">k9a1</h2>
+        <p class="b1">국내 독자 기술로 개발한 세계 최고의 자주포</p>
         <div class="func">
           <a href="#" class="btn">view more</a>
           <button type="button">고화질</button>
@@ -42,8 +64,8 @@
         </div>
       </div>
       <div class="entry__right">
-        <h2>redback</h2>
-        <p>공격 능력과 방어 능력을 모두 갖춘 미래형 장갑차</p>
+        <h2 class="h4 tit">redback</h2>
+        <p class="b1">공격 능력과 방어 능력을 모두 갖춘 미래형 장갑차</p>
         <div class="func">
           <a href="#" class="btn">view more</a>
           <button type="button">고화질</button>
@@ -54,6 +76,9 @@
 
   </section>
 
+  <script src="mobile-detect.min.js" charset="utf-8"></script>
+  <script src="_webgl.js" charset="utf-8"></script>
+  <script src="index.js" charset="utf-8"></script>
   <script src="/app.js"></script>
 </body>
 </html>

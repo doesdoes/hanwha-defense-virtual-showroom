@@ -1,0 +1,15 @@
+// ------------------------------------------------------------------------
+// split text mask motion
+// ------------------------------------------------------------------------
+
+.splitted {
+  &-mask {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &-text {
+    display: inline-block;
+    position: relative;
+  }
+}

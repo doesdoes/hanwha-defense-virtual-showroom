@@ -131,6 +131,14 @@ window._WEBGL = (function() {
   const clock = new THREE.Clock()
   let autoRotateDirection = 1
 
+  const views = [
+    // [TODO] camera
+    {left: 0, bottom: 0, width: 0.5, height: 1},
+    {left: 0.5, bottom: 0, width: 0.5, height: 1}
+  ]
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
   function render( time ){
     requestAnimationFrame( render )
 
@@ -153,8 +161,28 @@ window._WEBGL = (function() {
     STATE.WEBGL.cameraControls.update( clock.getDelta() )
 
     TWEEN.update( time )
-    STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-    STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    // STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    for (let index = 0; index < views.length; index++) {
+      const view = views[index];
+      const left = Math.floor( windowWidth * view.left );
+      const bottom = Math.floor( windowHeight * view.bottom );
+      const width = Math.floor( windowWidth * view.width );
+      const height = Math.floor( windowHeight * view.height );
+
+      STATE.WEBGL.renderer.setViewport( left, bottom, width, height );
+      STATE.WEBGL.renderer.setScissor( left, bottom, width, height );
+      STATE.WEBGL.renderer.setScissorTest( true );
+      STATE.WEBGL.renderer.setClearColor( view.background );
+
+      // camera.aspect = width / height;
+      // camera.updateProjectionMatrix();
+
+      // renderer.render( scene, camera );
+
+      STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+      STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    }
   }
 
   return {

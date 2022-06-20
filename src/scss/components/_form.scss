@@ -1,0 +1,63 @@
+.search-wrap{
+  position: relative;
+  width: 21rem;
+  height: 48px;
+  border-bottom: solid 1px #d9d9d9;
+
+  &:after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    content: '';
+    width: 0;
+    border-bottom: solid 1px #000;
+    -webkit-transition: width 0.4s;
+    transition: width 0.4s;
+  }
+
+  &:hover{
+
+    &:before{
+      background-color: rgba(0,0,0,0.06);
+    }
+
+    &:after{
+      width: 100%;
+    }
+  }
+
+  input[type="text"]{
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+    font-size: 18px;
+    // font-weight: 300;
+    color: #000;
+    line-height: 48px;
+    // padding: 0 48px 0 8px;
+
+    &:focus{
+      outline: none;
+    }
+
+    &::placeholder{
+      color: #ccc;
+    }
+  }
+
+  label{
+    font-size: 0;
+  }
+
+  button[type=submit] {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border: 0;
+    background: url(/assets/content/common/ico-search--black.svg) no-repeat 100%;;
+  }
+}

@@ -1,0 +1,48 @@
+// ------------------------------------------------------------------------
+// 웹폰트 로드
+// ------------------------------------------------------------------------
+
+// [NOTE] 22.6.8 B가 굵게 보여 R로 교체
+// [NOTE] 22.5.25 R이 굵게 보여 L로 교체하고 L은 한단계 더 낮춤
+
+@font-face {
+  font-family: 'HanwhaGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/HanwhaGothicL.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HanwhaGothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/HanwhaGothicR.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HanwhaGothic';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/assets/fonts/HanwhaGothicB.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HanwhaGothic';
+  font-style: normal;
+  font-weight: 100;
+  src: url('/assets/fonts/HanwhaGothicEL.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Hanwha';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/HanwhaR.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Hanwha';
+  font-style: normal;
+  font-weight: 100;
+  src: url('/assets/fonts/HanwhaL.woff2') format('woff2');
+}

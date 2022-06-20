@@ -1,0 +1,16 @@
+.webgl-section {
+  .entry {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+
+    .tit {
+      text-transform: uppercase;
+    }
+  }
+
+  .marker {
+    position: absolute;
+    top: 0;
+  }
+}
