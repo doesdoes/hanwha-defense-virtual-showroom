@@ -146,9 +146,17 @@ window._WEBGL = (function() {
     TWEEN.update( time )
     // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
     // STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-    for (let index = 0; index < STATE.WEBGL.views.length; index++) {
-      const view = STATE.WEBGL.views[index];
+    
+    if(STATE.WEBGL.sceneFlag === 'left') {
+      renderScene(STATE.WEBGL.views[1])
+      renderScene(STATE.WEBGL.views[0])
+    } else {
+      renderScene(STATE.WEBGL.views[0])
+      renderScene(STATE.WEBGL.views[1])
+    }
+    
 
+    function renderScene(view) {
       if( !STATE.WEBGL.disableAutoRotate && !STATE.IS_FOCUSED){
         if (STATE.WEBGL.cameraControls.azimuthAngle > 0.5) autoRotateDirection = -1
         if (STATE.WEBGL.cameraControls.azimuthAngle < 0.1) autoRotateDirection = 1   
@@ -162,17 +170,17 @@ window._WEBGL = (function() {
       const bottom = Math.floor( STATE.WEBGL.canvasHeight * view.bottom );
       const width = Math.floor( STATE.WEBGL.canvasWidth * view.width );
       const height = Math.floor( STATE.WEBGL.canvasHeight * view.height );
-
+  
       STATE.WEBGL.renderer.setViewport( left, bottom, width, height );
       STATE.WEBGL.renderer.setScissor( left, bottom, width, height );
       STATE.WEBGL.renderer.setScissorTest( true );
       STATE.WEBGL.renderer.setClearColor( view.background );
-
+  
       // camera.aspect = width / height;
       // camera.updateProjectionMatrix();
-
+  
       // renderer.render( scene, camera );
-
+  
       STATE.WEBGL.renderer.render( STATE.WEBGL.scene, view.camera )
       STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, view.camera )
     }
@@ -184,5 +192,9 @@ window._WEBGL = (function() {
     initScene: initScene,
     toggleScene: toggleScene,
     toggleRendering: toggleRendering,
+
+    setLeftScene: () => STATE.WEBGL.setLeftScene(),
+    setRightScene: () => STATE.WEBGL.setRightScene(),
+    resetScene: () => STATE.WEBGL.resetScene(),
   }
 })()

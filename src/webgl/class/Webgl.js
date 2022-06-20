@@ -114,24 +114,60 @@ export class Webgl{
 
     this.cameraControls.camera = this.views[1].camera;
 
-    setTimeout(() => {
-      // const tween = new Tween(this.views[0]) // Create a new tween that modifies 'coords'.
-      // .to({left: -1}, 1500) // Move to (300, 200) in 1 second.
-      // // .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
-      // .onUpdate(() => {
-      //   // Called after tween.js updates 'coords'.
-      //   // Move 'box' to the position described by 'coords' with a CSS translation.
-      //   // box.style.setProperty('transform', `translate(${coords.x}px, ${coords.y}px)`)
-      // })
-      // .start() // Start the tween immediately.
+    // setTimeout(() => {
+    //   // const tween = new Tween(this.views[0]) // Create a new tween that modifies 'coords'.
+    //   // .to({left: -1}, 1500) // Move to (300, 200) in 1 second.
+    //   // // .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+    //   // .onUpdate(() => {
+    //   //   // Called after tween.js updates 'coords'.
+    //   //   // Move 'box' to the position described by 'coords' with a CSS translation.
+    //   //   // box.style.setProperty('transform', `translate(${coords.x}px, ${coords.y}px)`)
+    //   // })
+    //   // .start() // Start the tween immediately.
 
-      new Tween(this.views[1])
+    //   new Tween(this.views[1])
+    //   .to({left: 0}, 1000)
+    //   .onComplete(() => {
+    //     // this.cameraControls.camera = this.views[0].camera;
+    //   })
+    //   .start()
+    // }, 2000)
+  }
+
+  setLeftScene() {
+    this.sceneFlag = 'left';
+    new Tween(this.views[0])
       .to({left: 0}, 1000)
+      .onComplete(() => {
+        this.cameraControls.camera = this.views[0].camera;
+      })
+      .start()
+  }
+
+  setRightScene() {
+    this.sceneFlag = 'right';
+    new Tween(this.views[1])
+      .to({left: 0}, 1000)
+      .onComplete(() => {
+        this.cameraControls.camera = this.views[1].camera;
+      })
+      .start()
+  }
+
+  resetScene() {
+    new Tween(this.views[0])
+      .to({left: -0.5}, 1000)
       .onComplete(() => {
         // this.cameraControls.camera = this.views[0].camera;
       })
       .start()
-    }, 2000)
+
+    new Tween(this.views[1])
+      .to({left: 0.5}, 1000)
+      .onComplete(() => {
+        // this.cameraControls.camera = this.views[0].camera;
+      })
+      .start()
   }
 
   resizeCameraView(_width){

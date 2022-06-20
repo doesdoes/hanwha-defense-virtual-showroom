@@ -1,8 +1,18 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 3000;
+}
+
 .webgl-section {
   .entry {
+    display: flex;
+    justify-content: space-around;
+
     position: absolute;
     width: 100%;
     bottom: 0;
+
 
     .tit {
       text-transform: uppercase;
