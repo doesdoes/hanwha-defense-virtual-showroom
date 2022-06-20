@@ -51,7 +51,7 @@ export const ASSETS = {
       {
         name: 'scene',
         loaded: false,
-        path : 'glb/scene-tank-2.glb',
+        path : 'glb/TEST01_K9A1.glb',
         asset: null
       }
     ],
