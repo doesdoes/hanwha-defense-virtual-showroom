@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .webgl-section {
   .content-wrapper {
     height: 100vh;
@@ -115,4 +117,73 @@
       color: $white;
     }
   }
+}
+
+.indicator-panel {
+  position: fixed;
+  top: 50%;
+  right: $h-padding-gap;
+  width: max(164px, 10.10vw);
+  transform: translate(0, -50%);
+  z-index: 1;
+
+  .part {
+    display: flex;
+    justify-content: space-between;
+    gap: 3%;
+    $partPadding: math.div(0.94vw, 2);
+    position: relative;
+    padding: calc(0.43em + #{$partPadding}) 0;
+    color: $white;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: #{$partPadding};
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(#fff, 0.3);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: #{$partPadding};
+      right: 0;
+      width: 10%;
+      height: 1px;
+      background-color: rgba(#fff, 1);
+      transition: all 0.3s;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &s {
+      margin-top: 1.35vw;
+    }
+  }
+
+  opacity: 0;
+  // pointer-events: none;
+}
+
+.bot {
+  position: fixed;
+  bottom: $h-gap;
+  right: $h-padding-gap;
+  z-index: 1;
+
+  opacity: 0;
+  // pointer-events: none;
 }

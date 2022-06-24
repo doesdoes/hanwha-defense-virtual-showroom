@@ -10,9 +10,9 @@
   text-align: left;
   color: $white;
   background-color: transparent;
-  border: 1px solid rgba($white, 0.3);
+  border: 1px solid rgba($white, 1);
   font-family: $font-gothic;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   // overflow: hidden;
   transition: all 0.34s ease-in-out;
   cursor: pointer;
@@ -46,30 +46,10 @@
     transition: all 0.34s ease-in-out;
   }
 
-  &--dynamic {
-    @media (hover: hover) {
-      &:hover,
-      &:focus {
-        
-        .txt {
-          opacity: 0;
-        }
-        &::before {
-          left: 50%;
-          transform: translateX(-50%);
-          color: $point1;
-        }
-  
-        &::after {
-          transform: translate(150%, -50%);
-          opacity: 0;
-        }
-      }
-    }
-
-    .txt {
-      opacity: 0;
-      visibility: collapse;
+  &--basic {
+    text-align: center;
+    &::after {
+      content: none;
     }
   }
 
@@ -79,6 +59,12 @@
     &::after {
       background: url(/assets/content/svg/d-ico-arrow--black.svg) no-repeat 100%;
     }
+  }
+
+  &--em {
+    background-color: $white;
+    color: $black;
+    border: 0;
   }
 
   &:not(.btn--dynamic) {
