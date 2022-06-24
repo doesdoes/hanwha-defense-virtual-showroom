@@ -9,26 +9,26 @@ export const STATE = {
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
   UV_ANIMATED_OBJECTS: {
-    desertFloor: {
-      mesh: null,
-      animate: function() { 
-        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.006 
-      }
-    },
-    rails: {
-      mesh: null,
-      animate: function() { 
-        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
-      }
-    }
+    // desertFloor: {
+    //   mesh: null,
+    //   animate: function() { 
+    //     if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.006 
+    //   }
+    // },
+    // rails: {
+    //   mesh: null,
+    //   animate: function() { 
+    //     if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
+    //   }
+    // }
   },
   ANIMATED_OBJECTS: {
-    desertMountain: {
-      mesh: null,
-      animate: function() { 
-        this.mesh.rotation.z += 0.0001 
-      }
-    }
+    // desertMountain: {
+    //   mesh: null,
+    //   animate: function() { 
+    //     this.mesh.rotation.z += 0.0001 
+    //   }
+    // }
   },
   IS_FOCUSED: false,
   ZONE_FOCUS:{
@@ -74,12 +74,12 @@ export const ASSETS = {
         path : 'glb/desert-bg.glb',
         asset: null
       },
-      // {
-      //   name: 'indoorBg',
-      //   loaded: false,
-      //   path : 'glb/indoor-bg.glb',
-      //   asset: null
-      // }
+      {
+        name: 'indoorBg',
+        loaded: false,
+        path : 'glb/indoor-bg.glb',
+        asset: null
+      }
     ],
     TEXTURES_FILES: []
   },
