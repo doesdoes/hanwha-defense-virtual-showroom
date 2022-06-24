@@ -1,6 +1,9 @@
 import {gsap} from 'gsap/all';
 
+const $sound = document.querySelector('#sound');
+const $audio = $sound.querySelector('.sound audio');
 window.addEventListener('DOMContentLoaded', async (event) => {
+
   setContent()
 
   document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
@@ -30,10 +33,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     this.classList.toggle('on');
 
     // [TODO]
-    if(this.class.classList.contain('on')) {
-
+    if($sound.classList.contains('on')) {
+      $audio.play()
     } else {
-
+      $audio.pause()
     }
   })
 
@@ -49,6 +52,9 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
     gsap.to('.indicator-panel', {autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7})
     gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
+
+    $sound.classList.add('on')
+    $audio.play()
   }
 
   function goToGate() {
@@ -57,6 +63,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     document.querySelector('.header').setAttribute('data-state', 'gate')
     gsap.to('.indicator-panel', {autoAlpha: 0, x: 20})
     gsap.to('.bot', {autoAlpha: 0, x: 20})
+
+    $sound.classList.remove('on')
+    $audio.pause()
+    $audio.currentTime = 0;
   }
 
 
