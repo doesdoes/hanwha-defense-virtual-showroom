@@ -19,6 +19,7 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(42,15,4)"),
     "alphaMap": "BG_Desert_Floor_UVani_A.jpg",
     "transparent": true,
+    "opacity": 0.5,
     "flipY": false,
   },
   "BG_Desert_Floor_TankShadow_s": {
@@ -33,6 +34,10 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "BG_Desert_UG_UVani.jpg",
     "flipY": false,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1
+    }
   },
   "BG_Desert_EX1": {
     "type": new THREE.MeshBasicMaterial(),

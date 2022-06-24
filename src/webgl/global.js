@@ -9,11 +9,19 @@ export const STATE = {
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
   UV_ANIMATED_OBJECTS: {
-    clouds: {
+    desertFloor: {
       mesh: null,
-      // animate: function() { 
-      //   if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.0001 
-      // }
+      animate: function() { 
+        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.001 
+      }
+    }
+  },
+  ANIMATED_OBJECTS: {
+    desertMountain: {
+      mesh: null,
+      animate: function() { 
+        this.mesh.rotation.z += 0.0001 
+      }
     }
   },
   IS_FOCUSED: false,
@@ -59,9 +67,31 @@ export const ASSETS = {
         loaded: false,
         path : 'glb/desert-bg.glb',
         asset: null
+      },
+      // {
+      //   name: 'indoorBg',
+      //   loaded: false,
+      //   path : 'glb/indoor-bg.glb',
+      //   asset: null
+      // }
+    ],
+    TEXTURES_FILES: []
+  },
+  REDBACK: {
+    MODEL_FILES: [
+      {
+        name: 'k9Tank',
+        loaded: false,
+        path : 'glb/k9-tank.glb',
+        asset: null
+      },
+      {
+        name: 'snowBg',
+        loaded: false,
+        path : 'glb/snow-bg.glb',
+        asset: null
       }
     ],
     TEXTURES_FILES: []
   },
-  // [TODO] redback
 }

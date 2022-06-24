@@ -27,6 +27,16 @@ export function loadStage( sceneName ) {
       })
       STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
 
+      DESERT_OBJECT.clone.traverse((child) => {
+        if(child.name === 'BG_Desert_UG_UVani') {
+          STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
+        }
+
+        if(child.name === 'BG_Desert_Mountain') {
+          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
+        }
+      })
+
       break
   }
 }
