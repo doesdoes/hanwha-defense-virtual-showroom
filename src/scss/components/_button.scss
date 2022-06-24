@@ -40,7 +40,7 @@
     vertical-align: middle;
     width: 18px;
     height: 18px;
-    background: url(/assets/content/svg/d-ico-arrow.svg) no-repeat 100%;
+    background: url(../content/svg/d-ico-arrow.svg) no-repeat 100%;
     right: 0.888em;
     transform: translate(0, -50%);
     transition: all 0.34s ease-in-out;
@@ -58,7 +58,7 @@
     color: $black;
     border: 1px solid rgba($black, 0.3);
     &::after {
-      background: url(/assets/content/svg/d-ico-arrow--black.svg) no-repeat 100%;
+      background: url(../content/svg/d-ico-arrow--black.svg) no-repeat 100%;
     }
   }
 
@@ -75,7 +75,7 @@
         border-color: $point1 !important;
         color: $point1 !important;
         &::after {
-          background: url(/assets/content/svg/d-ico-arrow--point1.svg) no-repeat 100% !important;
+          background: url(../content/svg/d-ico-arrow--point1.svg) no-repeat 100% !important;
         }
       }
     }
@@ -83,12 +83,12 @@
 
   &--outlink {
     &::after {
-      background: url(/assets/content/svg/d-ico-outlink.svg) no-repeat 100%;
+      background: url(../content/svg/d-ico-outlink.svg) no-repeat 100%;
     }
 
     &.btn--invert {
       &::after {
-        background: url(/assets/content/svg/d-ico-outlink--black.svg) no-repeat 100%;
+        background: url(../content/svg/d-ico-outlink--black.svg) no-repeat 100%;
       }
     }
     &:not(.btn--dynamic) {
@@ -98,7 +98,7 @@
           border-color: $point1 !important;
           color: $point1 !important;
           &::after {
-            background: url(/assets/content/svg/d-ico-outlink--point1.svg) no-repeat 100% !important;
+            background: url(../content/svg/d-ico-outlink--point1.svg) no-repeat 100% !important;
           }
         }
       }
@@ -107,11 +107,11 @@
 
   &--download {
     &::after {
-      background: url(/assets/content/svg/d-ico-download.svg) no-repeat 100%;
+      background: url(../content/svg/d-ico-download.svg) no-repeat 100%;
     }
     &.btn--invert {
       &::after {
-        background: url(/assets/content/svg/d-ico-download--black.svg) no-repeat 100%;
+        background: url(../content/svg/d-ico-download--black.svg) no-repeat 100%;
       }
     }
     &:not(.btn--dynamic) {
@@ -121,7 +121,7 @@
           border-color: $black !important;
           color: $black !important;
           &::after {
-            background: url(/assets/content/svg/d-ico-download--black.svg) no-repeat 100% !important;
+            background: url(../content/svg/d-ico-download--black.svg) no-repeat 100% !important;
           }
         }
       }
