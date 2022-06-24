@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/assets/css/app.css">
-  <title>Document</title>
+  <title>한화디펜스 - 버츄얼쇼룸</title>
 
   <style media="screen">
     /* html, body{width: 100%;height: 100%;}
@@ -23,21 +23,31 @@
 </head>
 <body>
   <!-- 할수있다! -->
-
-  <header class="header">
+  <header class="header" data-state="gate">
     <div class="header-inner">
-      <a href="/">
-        <h1 class="home">
-          <span class="a11y">한화디펜스 쇼룸</span>
-          <!-- <button class="btn--back">HOME</button> -->
-        </h1>
+      <a href="/" class="home">
+        <h1><span class="a11y">한화디펜스 쇼룸</span></h1>
       </a>
+    </div>
+    <div class="header-inner header__showroom">
 
-      <div class="drop-down"></div>
+      <div class="gnb">
+        <a href="#" id="btn-back" class="btn-back">HOME</a>
+
+        <div class="selectbox kind">
+          <button type="button" class="selectbox__selection">K9A1</button>
+        </div>
+      </div>
 
       <div class="util">
-        <div class="drop-down"></div>
-
+        <div class="selectbox lang">
+          <button type="button" class="selectbox__selection">KOR</button>
+        </div>
+        <div class="sound" id="sound">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
   </header>
@@ -49,13 +59,18 @@
       </div>
     </div> -->
 
-    <div id="webgl" class="webgl">
-      <img src="/assets/content/img/A7.png" alt="">
+    <div class="content-wrapper" id="content-wrapper">
+      <img class="bg" src="/assets/content/img/A7.png" style="opacity: 1.2;" alt="">
+
+      <div id="webgl" class="webgl">
+      </div>
     </div>
 
     <!-- <ul class="marker"></ul> -->
 
     <!-- <div class="popup"></div> -->
+
+    <!-- <div class="guide"></div> -->
 
     <div class="entry">
       <div class="entry__item entry__item--left">
@@ -69,8 +84,8 @@
           </span>
           <div class="func">
             <a href="#" class="btn btn--invert">view more</a>
-            <button type="button" class="bttn">고화질</button>
-            <button type="button" class="bttn">일반화질</button>
+            <button type="button" class="bttn" data-item="k9-high">고화질</button>
+            <button type="button" class="bttn" data-item="k9-low">일반화질</button>
             </div>
         </div>
       </div>
@@ -85,8 +100,8 @@
           </span>
           <div class="func">
             <a href="#" class="btn btn--invert">view more</a>
-            <button type="button" class="bttn">고화질</button>
-            <button type="button" class="bttn">일반화질</button>
+            <button type="button" class="bttn" data-item="redback-high">고화질</button>
+            <button type="button" class="bttn" data-item="redback-low">일반화질</button>
             </div>
         </div>
       </div>

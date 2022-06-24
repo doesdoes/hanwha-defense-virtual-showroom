@@ -6,7 +6,7 @@
 .selectbox{
   display: inline-block;
   position: relative;
-  width: 236px;
+  line-height: 1;
 
   &__selection {
     width: 100%;
@@ -18,23 +18,30 @@
     border: 1px solid $white;
     border: 0;
     background-color: transparent;
-    // font-size: 16px;
-    padding: 0 0 0.7em;
-    border-bottom: 1px solid rgba($black, 0.2);
+    font-size: inherit;
+    font-family: $font-gothic;
+    @include btn2-kr;
+    line-height: 1;
+    padding: 0;
+    // padding: 0 2em 0 0;
+    padding-right: 2em;
     cursor: pointer;
     -webkit-transition: color 0.2s;
     transition: color 0.2s;
-    color: inherit;
+    color: $white;
 
     &::after {
       content: '';
       display: inline-block;
       position: absolute;
-      width: 24px;
-      height: 24px;
-      right: 0.888em;
-      top: 7px;
-      background: url(/assets/content/common/icon-feather-plus--black.svg) no-repeat 100%;
+      width: 0.9em;
+      height: 0.9em;
+      // margin-left: 1em;
+      // right: 0.888em;
+      right: 0;
+      // top: 7px;
+      top: 50%;
+      background: url(/assets/content/svg/icon-product.svg) center center / 100% no-repeat;
       transform: translate(0, -50%);
     }
     
