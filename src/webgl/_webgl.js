@@ -36,7 +36,7 @@ window._WEBGL = (function() {
       parentContainerClass: _parentContainerClass,
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
-      cameraOptions: { fov: 45, near: 1, far: 1000, x: 5, y: 12, z: 17 },
+      cameraOptions: { fov: 45, near: 1, far: 1000, x: 0, y: 5, z: 10 },
       isDebug: _debug
     })
 
@@ -74,8 +74,8 @@ window._WEBGL = (function() {
     LOADING_MANAGER.onError = url => console.log('There was an error loading '+url)
 
     switch (_sceneName) {
-      case 'main':
-        LOADER.loadGLTF(LOADING_MANAGER, ASSETS.MAIN.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
+      case 'K9':
+        LOADER.loadGLTF(LOADING_MANAGER, ASSETS.K9.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
         break
     }
 
@@ -96,8 +96,8 @@ window._WEBGL = (function() {
 
     //load stage
     switch (_sceneName) {
-      case 'main':
-        SCENE.loadStage('main')
+      case 'K9':
+        SCENE.loadStage('K9')
         break
     }
   }
@@ -144,46 +144,46 @@ window._WEBGL = (function() {
     // }
 
     TWEEN.update( time )
-    // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-    // STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
     
-    if(STATE.WEBGL.sceneFlag === 'left') {
-      renderScene(STATE.WEBGL.views[1])
-      renderScene(STATE.WEBGL.views[0])
-    } else {
-      renderScene(STATE.WEBGL.views[0])
-      renderScene(STATE.WEBGL.views[1])
-    }
+    // if(STATE.WEBGL.sceneFlag === 'left') {
+    //   renderScene(STATE.WEBGL.views[1])
+    //   renderScene(STATE.WEBGL.views[0])
+    // } else {
+    //   renderScene(STATE.WEBGL.views[0])
+    //   renderScene(STATE.WEBGL.views[1])
+    // }
     
 
-    function renderScene(view) {
-      if( !STATE.WEBGL.disableAutoRotate && !STATE.IS_FOCUSED){
-        if (STATE.WEBGL.cameraControls.azimuthAngle > 0.5) autoRotateDirection = -1
-        if (STATE.WEBGL.cameraControls.azimuthAngle < 0.1) autoRotateDirection = 1   
-        STATE.WEBGL.cameraControls.azimuthAngle += autoRotateDirection * clock.getDelta() * THREE.MathUtils.DEG2RAD 
-      }
+  //   function renderScene(view) {
+  //     if( !STATE.WEBGL.disableAutoRotate && !STATE.IS_FOCUSED){
+  //       if (STATE.WEBGL.cameraControls.azimuthAngle > 0.5) autoRotateDirection = -1
+  //       if (STATE.WEBGL.cameraControls.azimuthAngle < 0.1) autoRotateDirection = 1   
+  //       STATE.WEBGL.cameraControls.azimuthAngle += autoRotateDirection * clock.getDelta() * THREE.MathUtils.DEG2RAD 
+  //     }
   
       STATE.WEBGL.cameraControls.normalizeRotations()
       STATE.WEBGL.cameraControls.update( clock.getDelta() )
       
-      const left = Math.floor( STATE.WEBGL.canvasWidth * view.left );
-      const bottom = Math.floor( STATE.WEBGL.canvasHeight * view.bottom );
-      const width = Math.floor( STATE.WEBGL.canvasWidth * view.width );
-      const height = Math.floor( STATE.WEBGL.canvasHeight * view.height );
+  //     const left = Math.floor( STATE.WEBGL.canvasWidth * view.left );
+  //     const bottom = Math.floor( STATE.WEBGL.canvasHeight * view.bottom );
+  //     const width = Math.floor( STATE.WEBGL.canvasWidth * view.width );
+  //     const height = Math.floor( STATE.WEBGL.canvasHeight * view.height );
   
-      STATE.WEBGL.renderer.setViewport( left, bottom, width, height );
-      STATE.WEBGL.renderer.setScissor( left, bottom, width, height );
-      STATE.WEBGL.renderer.setScissorTest( true );
-      STATE.WEBGL.renderer.setClearColor( view.background );
+  //     STATE.WEBGL.renderer.setViewport( left, bottom, width, height );
+  //     STATE.WEBGL.renderer.setScissor( left, bottom, width, height );
+  //     STATE.WEBGL.renderer.setScissorTest( true );
+  //     STATE.WEBGL.renderer.setClearColor( view.background );
   
-      // camera.aspect = width / height;
-      // camera.updateProjectionMatrix();
+  //     // camera.aspect = width / height;
+  //     // camera.updateProjectionMatrix();
   
-      // renderer.render( scene, camera );
+  //     // renderer.render( scene, camera );
   
-      STATE.WEBGL.renderer.render( STATE.WEBGL.scene, view.camera )
-      STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, view.camera )
-    }
+  //     STATE.WEBGL.renderer.render( STATE.WEBGL.scene, view.camera )
+  //     STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, view.camera )
+  //   }
   }
 
   return {

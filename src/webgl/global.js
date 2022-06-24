@@ -46,15 +46,22 @@ export const STATE = {
 }
 
 export const ASSETS = {
-  MAIN: {
+  K9: {
     MODEL_FILES: [
       {
-        name: 'scene',
+        name: 'k9Tank',
         loaded: false,
-        path : 'glb/TEST01_K9A1.glb',
+        path : 'glb/k9-tank.glb',
+        asset: null
+      },
+      {
+        name: 'desertBg',
+        loaded: false,
+        path : 'glb/desert-bg.glb',
         asset: null
       }
     ],
     TEXTURES_FILES: []
   },
+  // [TODO] redback
 }

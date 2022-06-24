@@ -3,78 +3,29 @@ import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import { StageObject } from './class/StageObject.js'
 import { STATE, ASSETS } from './global.js'
 
-import * as SCENE_PROPERTIES from './stageObjects/sceneProperties.js'
+import * as DESERT_BG_PROPERTIES from './stageObjects/desertBgProperties.js'
+import * as K9_TANK_PROPERTIES from './stageObjects/k9TankProperties.js'
 
 export function loadStage( sceneName ) {
   switch (sceneName) {
-    case 'main':
-      const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
-      directionalLight.position.set(-5, 6, -3)
-
-      let d = 10
-      directionalLight.shadow.camera.left = - d
-      directionalLight.shadow.camera.right = d
-      directionalLight.shadow.camera.top = d
-      directionalLight.shadow.camera.bottom = - d
-      directionalLight.shadow.mapSize.width = 2048
-      directionalLight.shadow.mapSize.height = 2048
-      directionalLight.castShadow = true      
-
-      STATE.WEBGL.scene.add( directionalLight )
-
-      // const drHelper = new THREE.DirectionalLightHelper( directionalLight, 1, '#0324fc' )
-      // STATE.WEBGL.scene.add( drHelper )
-
-      const hemisphereLight = new THREE.HemisphereLight( 0xffffff, 0x787878, 0.3 )
-      STATE.WEBGL.scene.add( hemisphereLight )
-
-      // const hemiHelper = new THREE.HemisphereLightHelper( hemisphereLight, 0.5, '#0324fc' )
-      // STATE.WEBGL.scene.add( hemiHelper )
-
-      const SCENE_MESH = ASSETS.MAIN.MODEL_FILES.find( obj => { return obj.name === "scene" } )
-      const SCENE_OBJECT = new StageObject({
-        originalObject: SCENE_MESH.asset.scene,
-        clonedObject: SCENE_MESH.asset.scene.clone(),
-        objectName: 'scene',
-        definition: SCENE_PROPERTIES,
+    case 'K9':
+      const TANK_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
+      const TANK_OBJECT = new StageObject({
+        originalObject: TANK_MESH.asset.scene,
+        clonedObject: TANK_MESH.asset.scene.clone(),
+        objectName: 'k9Tank',
+        definition: K9_TANK_PROPERTIES,
       })
+      STATE.WEBGL.scene.add(TANK_OBJECT.clone)
 
-      SCENE_OBJECT.clone.traverse(child => {
-        if(child.isMesh){
-          child.receiveShadow = true
-          child.castShadow = true
-        }
-
-        if (child.userData.type == 'POI') {   
-          console.log(child.name)
-          // POI buttons
-          const POI = new CSS2DObject( document.getElementById(child.name) )
-          POI.position.copy(child.position)
-          SCENE_OBJECT.clone.add( POI )
-
-          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
-          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].position)
-
-          STATE.ZONE_FOCUS[child.name].position.x += 4
-          STATE.ZONE_FOCUS[child.name].position.y += 4
-          STATE.ZONE_FOCUS[child.name].position.z += 4
-
-          POI.element.addEventListener('click', function(){
-            focusOnRegion(child.name)
-            STATE.IS_FOCUSED = true 
-          })
-        }
-
-        if(child.name == 'Plane018') STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
-      })      
-      
-      STATE.WEBGL.scene.add(SCENE_OBJECT.clone)
-
-      // map button
-      document.getElementById('map-button').addEventListener('click', function(){
-        focusOnRegion('reset')
-        STATE.IS_FOCUSED = false 
+      const DESERT_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
+      const DESERT_OBJECT = new StageObject({
+        originalObject: DESERT_MESH.asset.scene,
+        clonedObject: DESERT_MESH.asset.scene.clone(),
+        objectName: 'desertBg',
+        definition: DESERT_BG_PROPERTIES,
       })
+      STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
 
       break
   }
