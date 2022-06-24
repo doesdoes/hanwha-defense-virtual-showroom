@@ -1,0 +1,100 @@
+// ------------------------------------------------------------------------
+// 컨테이너
+// ------------------------------------------------------------------------
+.main {
+  &.sub {
+    padding-top: $h-inner;
+  }
+}
+.container {
+  position: relative;
+  // max-width: 1920px; // [NOTE] 임의로 잡아놓은 최대 크기
+  margin: 0 auto;
+  padding-left: $container-gutter;
+  padding-right: $container-gutter;
+}
+
+.bg-gray{
+  background-color:$gray-bg;
+}
+
+
+//kv for subpage
+.bg-container--subkv{
+  position: fixed;
+  // display:block;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:0;
+  &::after{
+      display:block;
+      @include center-pos-y;
+      transform:translateY(0%);
+      content:'';
+      width:100%;
+      height:50%;
+      background:$bg-gradient--sub;
+      opacity:.75;
+  }
+  // >img{
+  //   opacity:0;
+  //   // visibility: hidden;
+  // }
+}
+
+.section--subkv{
+  position: relative;
+  height:100vh;
+  // background-color: lightcoral;
+  overflow: hidden;
+  // background-image: url(/assets/content/careers/talent/talent-subkv.png) no-repeat center/cover;
+  >img{
+    height:100%;
+    object-fit: cover;
+  }
+  .subkv{
+    &-wrapper{
+        position:absolute;
+        left:0;
+        // top:100%;
+        transform:translateY(-100%);
+        padding-bottom:7.4vmin;
+        width:100%;
+        z-index: 1;
+        // >img{
+        //   position: absolute;
+        //   left:0;
+        //   bottom:0;
+        //   height:100%;
+        // }
+        >.btn-scroll-down{
+          bottom:7.4vmin;
+          img{
+            position:static;
+          }
+        }
+        & + .subkv-dim{
+          position:absolute;
+          width:100%;
+          height:100%;
+          top:0;
+          left:0;
+          z-index:2;
+          opacity:0;
+        }
+    }  
+    &-title{
+        @include break-word;
+        >p{
+            color:$point1;
+            padding-bottom:1em;
+        }
+        >p + h2{
+            color:$white;
+            padding-bottom:0.17em;
+        }
+    }
+  }
+}

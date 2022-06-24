@@ -10,7 +10,7 @@
   text-align: left;
   color: $white;
   background-color: transparent;
-  border: 1px solid $white;
+  border: 1px solid rgba($white, 0.3);
   font-family: $font-gothic;
   text-transform: uppercase;
   // overflow: hidden;
@@ -40,67 +40,105 @@
     vertical-align: middle;
     width: 18px;
     height: 18px;
-    background: url(/assets/content/common/d-ico-arrow.svg) no-repeat 100%;
+    background: url(/assets/content/d-ico-arrow.svg) no-repeat 100%;
     right: 0.888em;
     transform: translate(0, -50%);
     transition: all 0.34s ease-in-out;
   }
 
-  @media (hover: hover) {
-    &:hover,
-    &:focus {
-      // border-color: $point1;
-      // border-color: transparent;
-      
-      .txt {
-        opacity: 0;
-      }
-      &::before {
-        left: 50%;
-        transform: translateX(-50%);
-        color: $point1;
-      }
-
-      &::after {
-        transform: translate(150%, -50%);
-        opacity: 0;
+  &--dynamic {
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        
+        .txt {
+          opacity: 0;
+        }
+        &::before {
+          left: 50%;
+          transform: translateX(-50%);
+          color: $point1;
+        }
+  
+        &::after {
+          transform: translate(150%, -50%);
+          opacity: 0;
+        }
       }
     }
-  }
 
-  .txt {
-    opacity: 0;
-    visibility: collapse;
+    .txt {
+      opacity: 0;
+      visibility: collapse;
+    }
   }
 
   &--invert {
     color: $black;
-    border: 1px solid $black;
+    border: 1px solid rgba($black, 0.3);
     &::after {
-      background: url(/assets/content/common/d-ico-arrow-black.svg) no-repeat 100%;
+      background: url(/assets/content/d-ico-arrow--black.svg) no-repeat 100%;
+    }
+  }
+
+  &:not(.btn--dynamic) {
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        border-color: $point1 !important;
+        color: $point1 !important;
+        &::after {
+          background: url(/assets/content/d-ico-arrow--point1.svg) no-repeat 100% !important;
+        }
+      }
     }
   }
 
   &--outlink {
     &::after {
-      background: url(/assets/content/common/d-ico-outlink.svg) no-repeat 100%;
+      background: url(/assets/content/d-ico-outlink.svg) no-repeat 100%;
     }
 
     &.btn--invert {
       &::after {
-        background: url(/assets/content/common/d-ico-outlink--black.svg) no-repeat 100%;
+        background: url(/assets/content/d-ico-outlink--black.svg) no-repeat 100%;
+      }
+    }
+    &:not(.btn--dynamic) {
+      @media (hover: hover) {
+        &:hover,
+        &:focus {
+          border-color: $point1 !important;
+          color: $point1 !important;
+          &::after {
+            background: url(/assets/content/d-ico-outlink--point1.svg) no-repeat 100% !important;
+          }
+        }
       }
     }
   }
 
   &--download {
     &::after {
-      background: url(/assets/content/common/d-ico-download.svg) no-repeat 100%;
+      background: url(/assets/content/d-ico-download.svg) no-repeat 100%;
     }
     &.btn--invert {
       &::after {
-        background: url(/assets/content/common/d-ico-download--black.svg) no-repeat 100%;
+        background: url(/assets/content/d-ico-download--black.svg) no-repeat 100%;
+      }
+    }
+    &:not(.btn--dynamic) {
+      @media (hover: hover) {
+        &:hover,
+        &:focus {
+          border-color: $black !important;
+          color: $black !important;
+          &::after {
+            background: url(/assets/content/d-ico-download--black.svg) no-repeat 100% !important;
+          }
+        }
       }
     }
   }
+
 }

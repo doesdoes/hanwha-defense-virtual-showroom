@@ -59,7 +59,7 @@ module.exports = {
     },
     compress: true,
     port: 1116,
-    hot: true,
+    // hot: true,
     server: 'http',
   },
 }

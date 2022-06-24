@@ -1,0 +1,63 @@
+// ------------------------------------------------------------------------
+// 그리드
+// ------------------------------------------------------------------------
+
+$columns: 14;
+$grid-columns: 14;
+$grid-gutter-compensation: calc(#{$grid-gap} * 0.5 * -1);
+$grid-half-gutter-width: calc(#{$grid-gap} * 0.5);
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: $grid-gutter-compensation;
+  margin-right: $grid-gutter-compensation;
+
+  &.reverse{
+    justify-content: end;
+  }
+}
+
+@for $i from 1 to 15 {
+  .grid-#{$i} {
+    box-sizing: border-box;
+  }
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col-13,
+.col-14 {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-left: $grid-half-gutter-width;
+  padding-right: $grid-half-gutter-width;
+}
+
+// [class*=col-] {
+  
+// }
+
+@for $i from 1 to ($columns + 1) {
+  .col-#{$i} {
+    flex-basis: calc(100% / #{$columns} * #{$i});
+    max-width: calc(100% / #{$columns} * #{$i});
+  }
+
+  .col-offset-#{$i} {
+    margin-left: calc(100% / #{$columns} * #{$i});
+  }
+}
