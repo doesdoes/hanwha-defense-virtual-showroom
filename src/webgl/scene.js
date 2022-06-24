@@ -18,6 +18,13 @@ export function loadStage( sceneName ) {
       })
       STATE.WEBGL.scene.add(TANK_OBJECT.clone)
 
+      TANK_OBJECT.clone.traverse((child) => {
+        if(child.name === 'K9A1_wheel_02_lt') {
+          console.log(STATE.UV_ANIMATED_OBJECTS.rails.mesh)
+          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
+        }
+      })
+
       const DESERT_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
       const DESERT_OBJECT = new StageObject({
         originalObject: DESERT_MESH.asset.scene,

@@ -12,7 +12,13 @@ export const STATE = {
     desertFloor: {
       mesh: null,
       animate: function() { 
-        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.001 
+        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.006 
+      }
+    },
+    rails: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
       }
     }
   },

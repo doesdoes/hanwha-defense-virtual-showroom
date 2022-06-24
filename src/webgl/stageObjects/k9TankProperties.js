@@ -40,6 +40,10 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "k9a1_wheel_02.jpg",
     "flipY": false,
+    "mapTiling": {
+      repeatX: 1,
+      repeatY: 1,
+    }
   },
   "k9a1_wheel_front_s": {
     "type": new THREE.MeshBasicMaterial(),

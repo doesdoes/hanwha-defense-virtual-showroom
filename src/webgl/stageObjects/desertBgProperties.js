@@ -28,6 +28,7 @@ export const MATERIALS = {
     "alphaMap": "BG_Desert_Floor_TankShadow_A.jpg",
     "transparent": true,
     "flipY": false,
+    "opacity": 0.8,
   },
   "BG_Desert_UG_UVani_s": {
     "type": new THREE.MeshBasicMaterial(),
@@ -35,8 +36,8 @@ export const MATERIALS = {
     "map": "BG_Desert_UG_UVani.jpg",
     "flipY": false,
     "mapTiling":{
-      repeatX: 1,
-      repeatY: 1
+      repeatX: 2,
+      repeatY: 2,
     }
   },
   "BG_Desert_EX1": {
@@ -51,7 +52,7 @@ export const MATERIALS = {
     "alphaMap": "BG_Desert_Mountain_A.jpg",
     "transparent": true,
     "flipY": false,
-    "depthWrite": true,
+    "depthWrite": false,
   },
   
   
