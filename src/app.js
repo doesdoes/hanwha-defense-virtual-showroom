@@ -47,8 +47,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('#content-wrapper', {autoAlpha: 1})
     document.querySelector('.header').setAttribute('data-state', 'showroom')
 
-    gsap.to('.indicator-panel', {autoAlpha: 1, x: 0, delay: 0.2, duration: 0.7})
-    gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.4, duration: 0.6})
+    gsap.to('.indicator-panel', {autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7})
+    gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
   }
 
   function goToGate() {
@@ -61,18 +61,18 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
 
   // [NOTE] WEBGL
-  // let MAIN_ASSET_LOADED = false
+  let MAIN_ASSET_LOADED = false
 
-  // const md = new MobileDetect(window.navigator.userAgent)
-  // const isMobile = md.mobile()
+  const md = new MobileDetect(window.navigator.userAgent)
+  const isMobile = md.mobile()
 
-  // _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
+  _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
   
-  // _WEBGL.loadAssets('K9', () => {    
-  //   MAIN_ASSET_LOADED = true
+  _WEBGL.loadAssets('K9', () => {    
+    MAIN_ASSET_LOADED = true
 
-  //   _WEBGL.initScene('K9') 
-  //   _WEBGL.toggleScene('K9', true)
-  //   _WEBGL.toggleRendering(true)
-  // })
+    _WEBGL.initScene('K9') 
+    _WEBGL.toggleScene('K9', true)
+    _WEBGL.toggleRendering(true)
+  })
 });
