@@ -73,6 +73,21 @@ window._WEBGL = (function() {
       }, false)
     }
 
+    let isSnow = false;
+    document.querySelector('#change-condition').addEventListener('click', function(e) {
+      console.log(isSnow)
+      if(!isSnow) {
+        isSnow = true
+        SCENE.toggleStages(true, 'snowBg')
+        SCENE.toggleStages(false, 'indoorBg')
+      } else {
+        isSnow = false
+        SCENE.toggleStages(true, 'indoorBg')
+        SCENE.toggleStages(false, 'snowBg')
+      }
+      e.preventDefault()
+    })
+
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: context created!!`)
   }
 
