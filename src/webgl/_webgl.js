@@ -36,7 +36,7 @@ window._WEBGL = (function() {
       parentContainerClass: _parentContainerClass,
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
-      cameraOptions: { fov: 45, near: 1, far: 1000, x: 0, y: 2, z: 5 },
+      cameraOptions: { fov: 45, near: 1, far: 1000, x: 5, y: 0.5, z: -1.8 },
       isDebug: _debug
     })
 
@@ -53,9 +53,18 @@ window._WEBGL = (function() {
         }
         if ( event.key == 'r' ) STATE.ENABLE_RENDERING ? toggleRendering( false ) : toggleRendering( true )
 
-        // if ( event.key == '`' ) SCENE.focusOnRegion('reset')
-        // if ( event.key == '1' ) SCENE.focusOnRegion('zone1')
-        // if ( event.key == '2' ) SCENE.focusOnRegion('zone2')
+        if ( event.key == '1' ) {
+          SCENE.toggleStages(true, 'indoorBg')
+          SCENE.toggleStages(false, 'snowBg')
+        }
+        if ( event.key == '2' ) {
+          SCENE.toggleStages(true, 'snowBg')
+          SCENE.toggleStages(false, 'indoorBg')
+        }
+
+        if ( event.key == 'c' ) {
+          console.log(STATE.WEBGL.camera.position)
+        }
       }, false)
     }
 

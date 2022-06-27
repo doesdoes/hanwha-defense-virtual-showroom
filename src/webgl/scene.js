@@ -6,6 +6,7 @@ import { STATE, ASSETS } from './global.js'
 import * as DESERT_BG_PROPERTIES from './stageObjects/desertBgProperties.js'
 import * as K9_TANK_PROPERTIES from './stageObjects/k9TankProperties.js'
 import * as INDOOR_BG_PROPERTIES from './stageObjects/indoorBgProperties.js'
+import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
 
 export function loadStage( sceneName ) {
   switch (sceneName) {
@@ -54,9 +55,16 @@ export function loadStage( sceneName ) {
       })
       STATE.WEBGL.scene.add(INDOOR_OBJECT.clone)
 
+      const SNOW_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "snowBg" } )
+      const SNOW_OBJECT = new StageObject({
+        originalObject: SNOW_MESH.asset.scene,
+        clonedObject: SNOW_MESH.asset.scene.clone(),
+        objectName: 'snowBg',
+        definition: SNOW_BG_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(SNOW_OBJECT.clone)
+      SNOW_OBJECT.clone.visible = false
       
-      STATE.WEBGL.cameraControls.rotateTo(THREE.MathUtils.degToRad(155), THREE.MathUtils.degToRad(80), false)
-
       break
   }
 }
@@ -79,7 +87,6 @@ export function focusOnRegion( _region ){
 
 export function toggleStages( toggle, sceneName ) {
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.name === sceneName})
-
   if (stagesObjects != undefined) {
     for (let stagesObject of stagesObjects) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false

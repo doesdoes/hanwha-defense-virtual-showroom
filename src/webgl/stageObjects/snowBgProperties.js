@@ -1,17 +1,17 @@
 import * as THREE from 'three'
 
 export const PROPERTIES = {
-  scale: new THREE.Vector3(12, 12, 12),
-  position: new THREE.Vector3(0, -0.4, 0),
+  scale: new THREE.Vector3(0.6, 0.6, 0.6),
+  position: new THREE.Vector3(-0.75, -0.35, 0),
   rotation: new THREE.Euler(0, 0, 0),
   texturesQuality: "medium"
 }
 
 export const MATERIALS = {
-  "BG_Desert_HDR_s": {
+  "snow_Tex_02": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "BG_Desert_HDR.jpg",
+    "map": "baked-Aset_nature_embankment_L_vcyhedzga_LOD4Shape.jpg",
     "flipY": false,
   },
   "BG_Desert_Floor_UVani_s": {
@@ -44,16 +44,5 @@ export const MATERIALS = {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(102,102,102)"),
   },
-
-  "BG_Desert_Mountain_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "BG_Desert_Mountain_D.jpg",
-    "alphaMap": "BG_Desert_Mountain_A.jpg",
-    "transparent": true,
-    "flipY": false,
-    "depthWrite": false,
-  },
-  
   
 } 

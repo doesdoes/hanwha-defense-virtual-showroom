@@ -79,6 +79,12 @@ export const ASSETS = {
         loaded: false,
         path : 'glb/indoor-bg.glb',
         asset: null
+      },
+      {
+        name: 'snowBg',
+        loaded: false,
+        path : 'glb/snow-bg.glb',
+        asset: null
       }
     ],
     TEXTURES_FILES: []

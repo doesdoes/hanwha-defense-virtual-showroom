@@ -1,8 +1,8 @@
 import * as THREE from 'three'
 
 export const PROPERTIES = {
-  scale: new THREE.Vector3(10, 10, 10),
-  position: new THREE.Vector3(0, -0.4, 0),
+  scale: new THREE.Vector3(12, 12, 12),
+  position: new THREE.Vector3(0, -1, 0),
   rotation: new THREE.Euler(0, 0, 0),
   texturesQuality: "medium"
 }
