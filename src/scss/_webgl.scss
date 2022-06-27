@@ -185,10 +185,19 @@
   position: fixed;
   bottom: $h-gap;
   right: $h-padding-gap;
+  width: max(164px, 10.10vw);
   z-index: 1;
 
   opacity: 0;
   // pointer-events: none;
+}
+
+.indicator-panel,
+.bot {
+  .btn {
+    min-width: auto;
+    width: 100%;
+  }
 }
 
 .poi-popup {
@@ -239,4 +248,20 @@
 
   visibility: hidden;
   opacity: 0;
+}
+
+.dimmed {
+  pointer-events: none;
+  &::before,
+  &::after {
+    content: '';
+    @include full-pos;
+    opacity: 0.2;
+    background-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  &::after {
+    content: '';
+    background-image: linear-gradient(to left, #000 100%, rgba(0, 0, 0, 0) 0%);
+  }
 }
