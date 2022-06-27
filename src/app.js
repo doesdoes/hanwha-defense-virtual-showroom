@@ -1,5 +1,6 @@
 import {gsap} from 'gsap/all';
 import { canvasButton } from './canvas-button';
+import { sendGLCustomEvent } from './webgl/class/GLCustomEvent'
 
 const $sound = document.querySelector('#sound');
 const $audio = $sound.querySelector('.sound audio');
@@ -46,6 +47,14 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     }
   })
 
+  window.addEventListener('GLCustomEvent', function(e) {
+    console.log(e.detail.msg)
+    if(e.detail.msg === 'focus_point') {
+      const $popup = document.querySelector('#point-popup')
+      gsap.to($popup, { autoAlpha: 1, duration: 0.7 })
+    }
+  })
+
   function setContent() {
     gsap.set('.indicator-panel', {autoAlpha: 0, x: 20})
     gsap.set('.bot', {autoAlpha: 0, x: 20})
@@ -61,6 +70,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
     $sound.classList.add('on')
     $audio.play()
+
+    gsap.to('.poi-container', {autoAlpha: 1})
   }
 
   function goToGate() {
@@ -73,6 +84,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     $sound.classList.remove('on')
     $audio.pause()
     $audio.currentTime = 0;
+
+    gsap.to('.poi-container', {autoAlpha: 0})
   }
 
 

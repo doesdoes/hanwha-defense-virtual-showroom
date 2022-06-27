@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import {gsap} from 'gsap/all';
 import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import { StageObject } from './class/StageObject.js'
 import { STATE, ASSETS } from './global.js'
@@ -7,6 +8,8 @@ import * as DESERT_BG_PROPERTIES from './stageObjects/desertBgProperties.js'
 import * as K9_TANK_PROPERTIES from './stageObjects/k9TankProperties.js'
 import * as INDOOR_BG_PROPERTIES from './stageObjects/indoorBgProperties.js'
 import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
+
+import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
 export function loadStage( sceneName ) {
   switch (sceneName) {
@@ -31,6 +34,7 @@ export function loadStage( sceneName ) {
 
           POI.element.addEventListener('click', function(){
             focusOnRegion(child.name)
+
             STATE.IS_FOCUSED = true 
           })
         }
@@ -82,6 +86,12 @@ export function loadStage( sceneName ) {
       })
       STATE.WEBGL.scene.add(SNOW_OBJECT.clone)
       SNOW_OBJECT.clone.visible = false
+
+      document.querySelector('#point-popup .btn-close').addEventListener('click', function() {
+        focusOnRegion('reset')
+        const $popup = document.querySelector('#point-popup')
+        gsap.to($popup, { autoAlpha: 0})
+      })
       
       break
   }
@@ -99,6 +109,7 @@ export function focusOnRegion( _region ){
   ).then(() => {
     if(STATE.IS_FOCUSED){
       console.log('open popup')
+      sendGLCustomEvent({msg: _region})
     }
   })
 }

@@ -1,6 +1,9 @@
 @use "sass:math";
 
 .webgl-section {
+  word-break: keep-all;
+  word-wrap: break-word;
+
   .content-wrapper {
     height: 100vh;
   }
@@ -186,4 +189,54 @@
 
   opacity: 0;
   // pointer-events: none;
+}
+
+.poi-popup {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  @include btn2-kr;
+  width: 31em;
+  padding: 2.5em;
+  color: $white;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
+
+  top: 56%;
+  left: 8%;
+  visibility: hidden;
+  opacity: 0;
+
+  .btn-close {
+    display: block;
+    position: absolute;
+    right: 1.25em;
+    top: 1.25em;
+    width: 2em;
+    height: 2em;
+    background-image: url(/assets/content/svg/btn-close.svg);
+    background-size: 100%;
+  }
+
+  .tit {
+    padding-bottom: 0.86em;
+  }
+
+  .p {
+    line-height: 1.5;
+  }
+}
+
+.poi-container {
+  user-select: all;
+  pointer-events: all;
+  &:hover{
+    cursor: pointer;
+  } 
+  svg{width: 50px;}
+
+  visibility: hidden;
+  opacity: 0;
 }
