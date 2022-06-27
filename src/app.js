@@ -1,25 +1,31 @@
 import {gsap} from 'gsap/all';
+import { canvasButton } from './canvas-button';
 
 const $sound = document.querySelector('#sound');
 const $audio = $sound.querySelector('.sound audio');
 window.addEventListener('DOMContentLoaded', async (event) => {
 
+  canvasButton();
+
   setContent()
 
-  document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
+  // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
+  document.querySelectorAll('.entry__item .btn').forEach(bttn => {
     bttn.addEventListener('click', function() {
-      const item = this.getAttribute('data-item');
-      switch (item) {
-        case 'k9-high':
-        case 'k9-low':
-        case 'redback-high':
-        case 'redback-low':
-          goToContent()
-          break;
+      goToContent()
+
+      // const item = this.getAttribute('data-item');
+      // switch (item) {
+      //   case 'k9-high':
+      //   case 'k9-low':
+      //   case 'redback-high':
+      //   case 'redback-low':
+      //     goToContent()
+      //     break;
       
-        default:
-          break;
-      }
+      //   default:
+      //     break;
+      // }
     })
   })
 

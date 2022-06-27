@@ -54,6 +54,33 @@
     }
   }
 
+  &--dynamic {
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        
+        .txt {
+          opacity: 0;
+        }
+        &::before {
+          left: 50%;
+          transform: translateX(-50%);
+          color: $point1;
+        }
+  
+        &::after {
+          transform: translate(150%, -50%);
+          opacity: 0;
+        }
+      }
+    }
+
+    .txt {
+      opacity: 0;
+      visibility: collapse;
+    }
+  }
+
   &--invert {
     color: $black;
     border: 1px solid rgba($black, 0.3);

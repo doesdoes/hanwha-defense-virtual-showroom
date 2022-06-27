@@ -62,19 +62,19 @@
         left: calc(50% - 1px);
       }
 
-      @media (hover: hover) {
-        &:hover,
-        &:focus {
+      // @media (hover: hover) {
+      //   &:hover,
+      //   &:focus {
 
-          .btn {
-            opacity: 0;
-          }
+      //     .btn {
+      //       opacity: 0;
+      //     }
 
-          .bttn {
-            opacity: 1;
-          }
-        }
-      }
+      //     .bttn {
+      //       opacity: 1;
+      //     }
+      //   }
+      // }
     }
   }
 
