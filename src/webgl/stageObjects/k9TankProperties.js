@@ -1,60 +1,31 @@
 import * as THREE from 'three'
 
 export const PROPERTIES = {
-  scale: new THREE.Vector3(12, 12, 12),
-  position: new THREE.Vector3(0, -1, 0),
+  scale: new THREE.Vector3(0.5, 0.5, 0.5),
+  position: new THREE.Vector3(1.3, -0.5, 0),
   rotation: new THREE.Euler(0, 0, 0),
   texturesQuality: "medium"
 }
 
 export const MATERIALS = {
-  "BG_K9A1_obj": {
+  "TANK_K9A1_Head_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(200,200,200)"),
-    "map": "baked-BG_K9A1Shape.jpg",
-    // "alphaMap": "bg_alpha.png",
-    "transparent": true,
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "TANK_K9A1_Head_CAMO.jpg",
+    "flipY": false,
+    // "transparent": true,
   },
   
-  "k9a1_body_s": {
+  "TANK_K9A1_Body_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "k9a1_body.jpg",
+    "map": "TANK_K9A1_Body_CAMO.jpg",
     "flipY": false,
   },
-  "k9a1_parts_s": {
+  "TANK_K9A1_TrackWheel_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "k9a1_parts.jpg",
-    "flipY": false,
-  },
-
-  "k9a1_wheel_01_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "k9a1_wheel_01.jpg",
-    "flipY": false,
-  },
-  "k9a1_wheel_02_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "k9a1_wheel_02.jpg",
-    "flipY": false,
-    "mapTiling": {
-      repeatX: 1,
-      repeatY: 1,
-    }
-  },
-  "k9a1_wheel_front_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "k9a1_wheel_front.jpg",
-    "flipY": false,
-  },
-  "k9a1_wheel_rear_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "k9a1_wheel_rear.jpg",
+    "map": "TANK_K9A1_TrackWheel.jpg",
     "flipY": false,
   },
 } 

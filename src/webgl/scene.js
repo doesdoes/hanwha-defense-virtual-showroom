@@ -24,6 +24,7 @@ export function loadStage( sceneName ) {
       STATE.WEBGL.scene.add(TANK_OBJECT.clone)
 
       TANK_OBJECT.clone.traverse(child => {
+        console.log(child.userData)
         if (child.userData.type == 'POI') {
           // POI buttons
           const POI = new CSS2DObject( document.getElementById(child.name) )

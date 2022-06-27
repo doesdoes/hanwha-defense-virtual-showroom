@@ -51,10 +51,18 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   window.addEventListener('GLCustomEvent', function(e) {
     console.log(e.detail.msg)
-    if(e.detail.msg === 'focus_point') {
-      const $popup = document.querySelector('#point-popup')
-      gsap.to($popup, { autoAlpha: 1, duration: 0.7 })
+    switch (e.detail.msg) {
+      case 'longFiringRange':
+      case 'mobility':
+      case 'automaticControlSystem':
+        const $popup = document.querySelector('#point-popup')
+        gsap.to($popup, { autoAlpha: 1, duration: 0.7 })    
+        break;
+    
+      default:
+        break;
     }
+    
   })
 
   function setContent() {

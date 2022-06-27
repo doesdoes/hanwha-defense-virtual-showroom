@@ -36,7 +36,15 @@ export const STATE = {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
     },
-    focus_point: {
+    longFiringRange: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    mobility: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    automaticControlSystem: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
     },
@@ -65,7 +73,7 @@ export const ASSETS = {
       {
         name: 'k9Tank',
         loaded: false,
-        path : 'glb/k9-tank.glb',
+        path : 'glb/K9A1.glb',
         asset: null
       },
       {
