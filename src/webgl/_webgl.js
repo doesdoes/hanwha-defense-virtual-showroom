@@ -36,7 +36,7 @@ window._WEBGL = (function() {
       parentContainerClass: _parentContainerClass,
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
-      cameraOptions: { fov: 45, near: 1, far: 1000, x: 5, y: 0.5, z: -1.8 },
+      cameraOptions: { fov: 45, near: 0.1, far: 1000, x: 5, y: 0.5, z: -1.8 },
       isDebug: _debug
     })
 
@@ -54,6 +54,7 @@ window._WEBGL = (function() {
         if ( event.key == 'r' ) STATE.ENABLE_RENDERING ? toggleRendering( false ) : toggleRendering( true )
 
         if ( event.key == '1' ) {
+          console.log('here');
           SCENE.toggleStages(true, 'indoorBg')
           SCENE.toggleStages(false, 'snowBg')
         }
@@ -64,6 +65,10 @@ window._WEBGL = (function() {
 
         if ( event.key == 'c' ) {
           console.log(STATE.WEBGL.camera.position)
+        }
+
+        if ( event.key == 'q' ) {
+          SCENE.focusOnRegion('reset')
         }
       }, false)
     }

@@ -20,6 +20,24 @@ export function loadStage( sceneName ) {
       })
       STATE.WEBGL.scene.add(TANK_OBJECT.clone)
 
+      TANK_OBJECT.clone.traverse(child => {
+        if (child.userData.type == 'POI') {
+          // POI buttons
+          const POI = new CSS2DObject( document.getElementById(child.name) )
+          POI.position.copy(child.position)
+          TANK_OBJECT.clone.add( POI )
+
+          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
+
+          POI.element.addEventListener('click', function(){
+            focusOnRegion(child.name)
+            STATE.IS_FOCUSED = true 
+          })
+        }
+      }) 
+
+      STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
+
       // TANK_OBJECT.clone.traverse((child) => {
       //   if(child.name === 'K9A1_wheel_02_lt') {
       //     console.log(STATE.UV_ANIMATED_OBJECTS.rails.mesh)
@@ -86,7 +104,7 @@ export function focusOnRegion( _region ){
 }
 
 export function toggleStages( toggle, sceneName ) {
-  let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.name === sceneName})
+  let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
   if (stagesObjects != undefined) {
     for (let stagesObject of stagesObjects) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false

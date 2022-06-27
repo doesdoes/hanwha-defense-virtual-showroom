@@ -36,26 +36,26 @@ export const STATE = {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
     },
-    funcPoint1: {
-      position: new THREE.Vector3(4.8,1,3),
+    focus_point: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
     },
-    funcPoint2: {
-      position: new THREE.Vector3(-6,2,3),
-      target: new THREE.Vector3(0,0,0),
-    },
-    straightLane: {
-      position: new THREE.Vector3(-6,2,3),
-      target: new THREE.Vector3(0,0,0),
-    },
-    shortTrack: {
-      position: new THREE.Vector3(-6,2,3),
-      target: new THREE.Vector3(0,0,0),
-    },
-    longTrack: {
-      position: new THREE.Vector3(-6,2,3),
-      target: new THREE.Vector3(0,0,0),
-    }
+    // funcPoint2: {
+    //   position: new THREE.Vector3(-6,2,3),
+    //   target: new THREE.Vector3(0,0,0),
+    // },
+    // straightLane: {
+    //   position: new THREE.Vector3(-6,2,3),
+    //   target: new THREE.Vector3(0,0,0),
+    // },
+    // shortTrack: {
+    //   position: new THREE.Vector3(-6,2,3),
+    //   target: new THREE.Vector3(0,0,0),
+    // },
+    // longTrack: {
+    //   position: new THREE.Vector3(-6,2,3),
+    //   target: new THREE.Vector3(0,0,0),
+    // }
   }
 }
 

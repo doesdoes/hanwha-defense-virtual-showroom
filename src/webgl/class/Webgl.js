@@ -81,29 +81,29 @@ export class Webgl{
     this.cameraControls.truckSpeed = 0
     this.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
 
-    // this.userDragging = false
-    // this.disableAutoRotate = false
+    this.userDragging = false
+    // this.disableAutoRotate = true
 
-    // const onRest = () => {
-    //   this.cameraControls.removeEventListener('rest', onRest )
-    //   this.userDragging = false
-    //   this.disableAutoRotate = false
-    // }
-    // this.cameraControls.addEventListener('controlstart', () => {
-    //   this.cameraControls.removeEventListener( 'rest', onRest )
-    //   this.userDragging = true
-    //   this.disableAutoRotate = true
-    // })
-    // this.cameraControls.addEventListener('controlend', () => {
-    //   if ( this.cameraControls.active ) {
-    //     this.cameraControls.addEventListener( 'rest', onRest )
-    //   } else { onRest() }
-    // })
-    // this.cameraControls.addEventListener('transitionstart', () => {
-    //   if ( this.userDragging ) return
-    //   this.disableAutoRotate = true
-    //   this.cameraControls.addEventListener( 'rest', onRest )
-    // })
+    const onRest = () => {
+      this.cameraControls.removeEventListener('rest', onRest )
+      this.userDragging = false
+      this.disableAutoRotate = false
+    }
+    this.cameraControls.addEventListener('controlstart', () => {
+      this.cameraControls.removeEventListener( 'rest', onRest )
+      this.userDragging = true
+      this.disableAutoRotate = true
+    })
+    this.cameraControls.addEventListener('controlend', () => {
+      if ( this.cameraControls.active ) {
+        this.cameraControls.addEventListener( 'rest', onRest )
+      } else { onRest() }
+    })
+    this.cameraControls.addEventListener('transitionstart', () => {
+      if ( this.userDragging ) return
+      this.disableAutoRotate = true
+      this.cameraControls.addEventListener( 'rest', onRest )
+    })
 
     //listeners
 	  window.addEventListener('resize', this.onWindowResize.bind(this), false)

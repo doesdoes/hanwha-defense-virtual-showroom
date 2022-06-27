@@ -67,7 +67,7 @@ export class StageObject{
     this.pendingTexturesUpdated = false
 
     object.traverse( async child => {
-      child.name = this.name
+      child.sceneName = this.name
       
       if( child.material ){
         if (!this.definition.MATERIALS[child.material.name]) return
