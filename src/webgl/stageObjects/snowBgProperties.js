@@ -8,41 +8,55 @@ export const PROPERTIES = {
 }
 
 export const MATERIALS = {
+  "snow_Tex_04": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(102,102,102)"),
+    "map": "baked-Aset_nature_embankment_L_vcyiccyga_LOD5Shape.jpg",
+    "flipY": false,
+  },
+  "snow_Tex_03": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "baked-Aset_nature_snow_L_vefkajufa_LOD5Shape.jpg",
+    "flipY": false,
+  },
+  "snow_Tex_01": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "baked-Aset_nature_embankment_L_vcytca0fa_LOD5Shape.jpg",
+    "flipY": false,
+  },
+
+
   "snow_Tex_02": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "baked-Aset_nature_embankment_L_vcyhedzga_LOD4Shape.jpg",
     "flipY": false,
   },
-  "BG_Desert_Floor_UVani_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(42,15,4)"),
-    "alphaMap": "BG_Desert_Floor_UVani_A.jpg",
-    "transparent": true,
-    "opacity": 0.5,
-    "flipY": false,
-  },
-  "BG_Desert_Floor_TankShadow_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(9,3,1)"),
-    "alphaMap": "BG_Desert_Floor_TankShadow_A.jpg",
-    "transparent": true,
-    "flipY": false,
-    "opacity": 0.8,
-  },
-  "BG_Desert_UG_UVani_s": {
+  
+  "snow_Tex_05": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "BG_Desert_UG_UVani.jpg",
+    "map": "baked-Aset_nature_snow_L_vdbmabvva_LOD5Shape.jpg",
     "flipY": false,
-    "mapTiling":{
-      repeatX: 2,
-      repeatY: 2,
-    }
   },
-  "BG_Desert_EX1": {
+
+  "lambert3": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(102,102,102)"),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "AM113_028_Picea1.png",
+    
+    "flipY": false,
   },
+  "lambert4": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "AM113_028_Picea.jpeg",
+    "flipY": false,
+  },
+  
+  
+  
   
 } 
