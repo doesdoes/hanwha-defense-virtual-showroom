@@ -88,10 +88,11 @@ export function loadStage( sceneName ) {
       STATE.WEBGL.scene.add(SNOW_OBJECT.clone)
       SNOW_OBJECT.clone.visible = false
 
-      document.querySelector('#point-popup .btn-close').addEventListener('click', function() {
+      document.querySelector('#point-popup .btn-close').addEventListener('click', function(e) {
         focusOnRegion('reset')
         const $popup = document.querySelector('#point-popup')
         gsap.to($popup, { autoAlpha: 0})
+        e.preventDefault()
       })
       
       break
