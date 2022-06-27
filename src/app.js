@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
   document.querySelectorAll('.entry__item .btn').forEach(bttn => {
-    bttn.addEventListener('click', function() {
+    bttn.addEventListener('click', function(e) {
       goToContent()
 
       // const item = this.getAttribute('data-item');
@@ -27,6 +27,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       //   default:
       //     break;
       // }
+
+      e.preventDefault()
     })
   })
 

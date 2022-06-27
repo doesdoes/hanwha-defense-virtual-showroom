@@ -32,10 +32,11 @@ export function loadStage( sceneName ) {
 
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
 
-          POI.element.addEventListener('click', function(){
+          POI.element.addEventListener('click', function(e){
             focusOnRegion(child.name)
 
             STATE.IS_FOCUSED = true 
+            e.preventDefault()
           })
         }
       }) 
