@@ -27,5 +27,6 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "TANK_K9A1_TrackWheel.jpg",
     "flipY": false,
+    "side": THREE.DoubleSide,
   },
 } 

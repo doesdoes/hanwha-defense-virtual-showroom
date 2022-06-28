@@ -23,6 +23,11 @@ export function loadStage( sceneName ) {
       })
       STATE.WEBGL.scene.add(TANK_OBJECT.clone)
 
+      if(TANK_MESH.asset.animations.length > 0){
+        STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( TANK_OBJECT.clone )
+        STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ).play()
+      }
+
       TANK_OBJECT.clone.traverse(child => {
         console.log(child.userData)
         if (child.userData.type == 'POI') {
@@ -98,7 +103,7 @@ export function loadStage( sceneName ) {
       
       STATE.WEBGL.cameraControls.addEventListener('control', function() {
         const d = STATE.WEBGL.camera.position.distanceTo(TANK_OBJECT.clone.position)
-        console.log(d)
+        //console.log(d)
         if(d < 5.3) {
           gsap.to('.poi-container', {autoAlpha: 1, duration: 1})
         } else {

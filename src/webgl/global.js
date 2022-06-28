@@ -30,6 +30,11 @@ export const STATE = {
     //   }
     // }
   },
+  ANIMATIONS: {
+    _k9Tank: {
+      mixer: null,
+    },
+  },
   IS_FOCUSED: false,
   ZONE_FOCUS:{
     reset: {
@@ -73,7 +78,7 @@ export const ASSETS = {
       {
         name: 'k9Tank',
         loaded: false,
-        path : 'glb/K9A1.glb',
+        path : 'glb/rigging.glb',
         asset: null
       },
       {

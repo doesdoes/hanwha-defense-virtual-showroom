@@ -28,6 +28,9 @@ export class Webgl{
     if (this.sceneOptions.backgroundColor != undefined)
       this.scene.background = new THREE.Color(this.sceneOptions.backgroundColor)
 
+    this.clock = new THREE.Clock()
+    this.cameraClock = new THREE.Clock()
+
     //fog
     // const color = 0xBDC6D8
     // const near = 50
