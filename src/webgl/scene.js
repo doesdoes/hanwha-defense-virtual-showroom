@@ -96,6 +96,22 @@ export function loadStage( sceneName ) {
         e.preventDefault()
       })
       
+      STATE.WEBGL.cameraControls.addEventListener('control', function() {
+        const d = STATE.WEBGL.camera.position.distanceTo(TANK_OBJECT.clone.position)
+        console.log(d)
+        if(d < 5.3) {
+          gsap.to('.poi-container', {autoAlpha: 1, duration: 1})
+        } else {
+          gsap.to('.poi-container', {autoAlpha: 0, duration: 1})
+        }
+      })
+
+      document.querySelectorAll('.parts .part').forEach(part => {
+        part.addEventListener('click', function() {
+          focusOnRegion('longFiringRange')
+          STATE.IS_FOCUSED = true 
+        })
+      })
       break
   }
 }
