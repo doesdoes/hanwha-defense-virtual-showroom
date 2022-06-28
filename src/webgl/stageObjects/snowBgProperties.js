@@ -10,7 +10,7 @@ export const PROPERTIES = {
 export const MATERIALS = {
   "snow_Tex_04": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(102,102,102)"),
+    "color": new THREE.Color("rgb(255,255,255)"),
     "map": "baked-Aset_nature_embankment_L_vcyiccyga_LOD5Shape.jpg",
     "flipY": false,
   },
@@ -46,7 +46,6 @@ export const MATERIALS = {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "AM113_028_Picea1.png",
-    
     "flipY": false,
   },
   "lambert4": {
