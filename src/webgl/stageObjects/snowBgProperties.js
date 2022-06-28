@@ -46,6 +46,7 @@ export const MATERIALS = {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "AM113_028_Picea1.png",
+    "transparent": true,
     "flipY": false,
   },
   "lambert4": {
