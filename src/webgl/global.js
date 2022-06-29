@@ -78,7 +78,7 @@ export const ASSETS = {
       {
         name: 'k9Tank',
         loaded: false,
-        path : 'glb/rigging.glb',
+        path : 'glb/K9A1.glb',
         asset: null
       },
       {

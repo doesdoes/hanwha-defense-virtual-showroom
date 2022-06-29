@@ -11,9 +11,13 @@ import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
+import setLight from './light.js';
+
 export function loadStage( sceneName ) {
   switch (sceneName) {
     case 'K9':
+      setLight(STATE)
+
       const TANK_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
       const TANK_OBJECT = new StageObject({
         originalObject: TANK_MESH.asset.scene,
