@@ -18,7 +18,7 @@ export const MATERIALS = {
     "roughness": 0.5,
     "metalness": 0.1,
     "emissive": new THREE.Color("rgb(255,255,255)"),
-    "emissiveIntensity": 1.0,
+    "emissiveIntensity": 0.1,
     // "transparent": true,
   },
   
@@ -32,7 +32,7 @@ export const MATERIALS = {
     "roughness": 0.5,
     "metalness": 0.1,
     "emissive": new THREE.Color("rgb(255,255,255)"),
-    "emissiveIntensity": 1.0,
+    "emissiveIntensity": 0.1,
   },
   "TANK_K9A1_TrackWheel_s": {
     "type": new THREE.MeshPhysicalMaterial(),
@@ -45,6 +45,6 @@ export const MATERIALS = {
     "roughness": 0.5,
     "metalness": 0.1,
     "emissive": new THREE.Color("rgb(255,255,255)"),
-    "emissiveIntensity": 1.0,
+    "emissiveIntensity": 0.1,
   },
 } 
