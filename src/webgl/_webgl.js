@@ -191,13 +191,9 @@ window._WEBGL = (function() {
 
   return {
     createContext: createContext,
-    loadAssets: loadAssets,
-    initScene: initScene,
+    loadAssets: loadAssets, // glb only
+    initScene: initScene, // include texture
     toggleScene: toggleScene,
     toggleRendering: toggleRendering,
-
-    setLeftScene: () => STATE.WEBGL.setLeftScene(),
-    setRightScene: () => STATE.WEBGL.setRightScene(),
-    resetScene: () => STATE.WEBGL.resetScene(),
   }
 })()

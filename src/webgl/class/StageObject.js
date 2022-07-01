@@ -115,7 +115,7 @@ export class StageObject{
         
         this.needToBeUpdated.push( {mesh: child, clonedMaterial: cloneMat} )
 
-        if(STATE.WEBGL.isDebug) if(cloneMat.name == "Grass_bake") console.log(cloneMat)
+        if(STATE.WEBGL.isDebug) if(cloneMat.name == "TANK_K9A1_Body_s") console.log(cloneMat)
       }
     })
 

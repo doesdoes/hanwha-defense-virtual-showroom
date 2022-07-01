@@ -32,6 +32,7 @@ export function loadStage( sceneName ) {
         STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ).play()
       }
 
+      // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
         console.log(child.userData)
         if (child.userData.type == 'POI') {
