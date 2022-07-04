@@ -79,6 +79,14 @@ export function loadStage( sceneName ) {
         }
 
         if(child.name === 'Speed_Line_UV2') {
+          STATE.UV_ANIMATED_OBJECTS.speedLine2.mesh = child
+        }
+
+        if(child.name === 'Speed_Line_UV1') {
+          STATE.UV_ANIMATED_OBJECTS.speedLine1.mesh = child
+        }
+
+        if(child.name === 'Speed_Line_UV') {
           STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
         }
 

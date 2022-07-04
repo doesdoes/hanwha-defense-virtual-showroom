@@ -36,17 +36,38 @@ export const MATERIALS = {
     "flipY": false,
   },
 
-  "Grass_s1": {
+  "BG_Desert_UG_UVani_s1": {
     "type": new THREE.MeshStandardMaterial(),
-    // "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Gress/Glass.jpg",
-    "alphaMap": "Gress/Glass_Alpha.jpg",
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Ground/T_Landscape_Soil_DH_Motion_Tile.png",
+    "flipY": false,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    }
+  },
+
+  "Speed_Line_s1": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(94,43,43)"),
+    "alphaMap": "Speed_Line/Speed_Line_Alpha.jpg",
     "transparent": true,
     "flipY": false,
-    // "mapTiling":{
-    //   repeatX: 1,
-    //   repeatY: 1,
-    // },
+    // "depthTest": true,
+    "depthWrite": false,
+    "opacity": 0.5,
+    "alphaMapTiling":{
+      repeatX: 5,
+      repeatY: 5,
+    }
+  },
+
+  "Grass_s1": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Gress/Glass.jpg",
+    "transparent": true,
+    "flipY": false,
     // "emissive": new THREE.Color("rgb(0,0,0)"),
     // "emissiveIntensity": 1.0,
     "roughness": 1.0,
@@ -65,34 +86,9 @@ export const MATERIALS = {
     // "roughness": 1.0,
   },
 
-  "BG_Desert_UG_UVani_s1": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Ground/T_Landscape_Soil_DH_Motion_Tile.png",
-    "flipY": false,
-    "mapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    }
-  },
-
-  "Speed_Line_s1": {
-    "type": new THREE.MeshStandardMaterial(),
-    // "color": new THREE.Color("rgb(94,43,43)"),
-    "alphaMap": "Speed_Line/Speed_Line_Alpha.jpg",
-    "transparent": true,
-    "flipY": false,
-    // "depthTest": true,
-    "depthWrite": false,
-    "mapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    }
-  },
-
   "Dirt": {
     "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(0,0,0)"),
+    "color": new THREE.Color("rgb(132,41,11)"),
     "map": "Dirt/Dust_num/NUM_0001.jpg",
     "alphaMap": "Dirt/Dust_num/NUM_0001.jpg",
     "transparent": true,
@@ -103,11 +99,13 @@ export const MATERIALS = {
 
   "Tire_Line_s1": {
     "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(0,0,0)"),
+    "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Tire/T_Landscape_Soil_DH_Tire.jpg",
     "alphaMap": "Tire/Tire_Alpha.jpg",
     "transparent": true,
     "flipY": false,
+    "emissive": new THREE.Color("rgb(0,0,0)"),
+    "emissiveIntensity": 1.0,
   },
 
   "BG_Desert_Floor_TankShadow1": {
@@ -120,7 +118,40 @@ export const MATERIALS = {
     "depthTest": true,
     "depthWrite": true,
   },
- 
+
+  "Rock_s1": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Rock/T_Landscape_Soil_DH_Rock.jpg",
+    "flipY": false,
+  },
+  "Small_bush_s1": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,236,184)"),
+    "alphaMap": "Bush/Small_Tall_bush_Alpha.png",
+    "transparent": true,
+    "flipY": false,
+    "depthWrite": false,
+  },
+  "bushgreen_s1": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Bush/bushgreen_D.png",
+    "transparent": true,
+    "flipY": false,
+    "depthWrite": false,
+  },
+  "Soil_Part_s1": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Soil/Soil_Part.jpg",
+    "alphaMap": "Soil/Soil_Part_Alpha.jpg",
+    "transparent": true,
+    "flipY": false,
+    "depthWrite": false,
+  },
+  
+  
 
   // "BG_Desert_Floor_UVani_s": {
   //   "type": new THREE.MeshBasicMaterial(),

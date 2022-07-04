@@ -28,6 +28,20 @@ export const STATE = {
         if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.006
       }
     },
+    speedLine1: {
+      mesh: null,
+      animate: function() { 
+        // console.log(this.mesh)
+        if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.016
+      }
+    },
+    speedLine2: {
+      mesh: null,
+      animate: function() { 
+        // console.log(this.mesh)
+        if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.006
+      }
+    },
   },
   ANIMATED_OBJECTS: {
     desertMountain: {
