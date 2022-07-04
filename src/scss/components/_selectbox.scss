@@ -173,15 +173,8 @@
     line-height: 22px;
     text-align: left;
     word-break: break-all;
-    font-family: 'Hankook';
     color: $black;
     cursor: pointer;
-
-    // @media all and (max-width: $tablet){
-    //   box-sizing: border-box;
-    //   -webkit-box-sizing: border-box;
-    //   padding-left: rem(28);
-    // }
 
     &.selected, &.active{
       color: #000;

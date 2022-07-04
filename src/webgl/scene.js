@@ -54,6 +54,7 @@ export function loadStage( sceneName ) {
 
       STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
+      // [NOTE] 탱크 mesh/uv 애니메이션
       // TANK_OBJECT.clone.traverse((child) => {
       //   if(child.name === 'K9A1_wheel_02_lt') {
       //     console.log(STATE.UV_ANIMATED_OBJECTS.rails.mesh)
@@ -61,24 +62,30 @@ export function loadStage( sceneName ) {
       //   }
       // })
 
-      // const DESERT_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
-      // const DESERT_OBJECT = new StageObject({
-      //   originalObject: DESERT_MESH.asset.scene,
-      //   clonedObject: DESERT_MESH.asset.scene.clone(),
-      //   objectName: 'desertBg',
-      //   definition: DESERT_BG_PROPERTIES,
-      // })
-      // STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
+      const DESERT_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
+      const DESERT_OBJECT = new StageObject({
+        originalObject: DESERT_MESH.asset.scene,
+        clonedObject: DESERT_MESH.asset.scene.clone(),
+        objectName: 'desertBg',
+        definition: DESERT_BG_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
+      DESERT_OBJECT.clone.visible = false
 
-      // DESERT_OBJECT.clone.traverse((child) => {
-      //   if(child.name === 'BG_Desert_UG_UVani') {
-      //     STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
-      //   }
+      // [NOTE] 맵 mesh/uv 애니메이션
+      DESERT_OBJECT.clone.traverse((child) => {
+        if(child.name === 'BG_Desert_UG_UVani') {
+          STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
+        }
 
-      //   if(child.name === 'BG_Desert_Mountain') {
-      //     STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
-      //   }
-      // })
+        if(child.name === 'Speed_Line_UV2') {
+          STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
+        }
+
+        if(child.name === 'BG_Desert_Mountain') {
+          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
+        }
+      })
 
       const INDOOR_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "indoorBg" } )
       const INDOOR_OBJECT = new StageObject({

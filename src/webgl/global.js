@@ -9,26 +9,33 @@ export const STATE = {
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
   UV_ANIMATED_OBJECTS: {
-    // desertFloor: {
-    //   mesh: null,
-    //   animate: function() { 
-    //     if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.006 
-    //   }
-    // },
+    desertFloor: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.006 
+      }
+    },
     // rails: {
     //   mesh: null,
     //   animate: function() { 
     //     if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
     //   }
-    // }
+    // },
+    speedLine: {
+      mesh: null,
+      animate: function() { 
+        // console.log(this.mesh)
+        if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.006
+      }
+    },
   },
   ANIMATED_OBJECTS: {
-    // desertMountain: {
-    //   mesh: null,
-    //   animate: function() { 
-    //     this.mesh.rotation.z += 0.0001 
-    //   }
-    // }
+    desertMountain: {
+      mesh: null,
+      animate: function() { 
+        this.mesh.rotation.z += 0.0001 
+      }
+    }
   },
   ANIMATIONS: {
     _k9Tank: {

@@ -28,7 +28,7 @@ export default function setLight(STATE) {
   leftDirectionalLight.castShadow = true
   leftDirectionalLight.intensity = 0.7
 
-  const hemisphereLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 )
+  const hemisphereLight = new THREE.HemisphereLight( 0xFEC6B4, 0x955E50, 1 )
 
   STATE.WEBGL.scene.add( directionalLight )
   STATE.WEBGL.scene.add( leftDirectionalLight )

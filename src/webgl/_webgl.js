@@ -21,7 +21,7 @@ window._WEBGL = (function() {
     switch (host) {
       case 'dev.does.kr':
         // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
-        STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`
+        STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom-light/assets`
         break
       default:
         STATE.ASSET_DOMAIN_PATH = `http://${host}/assets`
@@ -78,12 +78,14 @@ window._WEBGL = (function() {
       console.log(isSnow)
       if(!isSnow) {
         isSnow = true
-        SCENE.toggleStages(true, 'snowBg')
+        // SCENE.toggleStages(true, 'snowBg')
+        SCENE.toggleStages(true, 'desertBg')
         SCENE.toggleStages(false, 'indoorBg')
       } else {
         isSnow = false
         SCENE.toggleStages(true, 'indoorBg')
-        SCENE.toggleStages(false, 'snowBg')
+        // SCENE.toggleStages(false, 'snowBg')
+        SCENE.toggleStages(false, 'desertBg')
       }
       e.preventDefault()
     })

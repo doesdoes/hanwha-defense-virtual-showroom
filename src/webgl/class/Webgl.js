@@ -39,7 +39,7 @@ export class Webgl{
 
     const color = 0xffffff
     const density = 0.01
-    this.scene.fog = new THREE.FogExp2(color, density)
+    // this.scene.fog = new THREE.FogExp2(color, density) // [NOTE] 3D 팀에서 포그를 뺀듯함..
 
     //renderer
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
