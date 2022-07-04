@@ -51,14 +51,14 @@ export default function setLight(STATE) {
   document.querySelector('.header').style.zIndex = -1
 
   const folderRight = gui.addFolder(`right light`)
-  folderRight.open()
+  // folderRight.open()
   folderRight.add(directionalLight.position, 'x', -10, 10).onChange(updateLight)
   folderRight.add(directionalLight.position, 'y', -10, 10).onChange(updateLight)
   folderRight.add(directionalLight.position, 'z', -10, 10).onChange(updateLight)
   folderRight.add(directionalLight, 'intensity', 0, 2)
 
   const folderLeft = gui.addFolder(`left light`)
-  folderLeft.open()
+  // folderLeft.open()
   folderLeft.add(leftDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
   folderLeft.add(leftDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
   folderLeft.add(leftDirectionalLight.position, 'z', -10, 10).onChange(updateLight)

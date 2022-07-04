@@ -74,6 +74,7 @@ export function loadStage( sceneName ) {
 
       // [NOTE] 맵 mesh/uv 애니메이션
       DESERT_OBJECT.clone.traverse((child) => {
+        // UV
         if(child.name === 'BG_Desert_UG_UVani') {
           STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
         }
@@ -90,8 +91,27 @@ export function loadStage( sceneName ) {
           STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
         }
 
+
+        // MESH
         if(child.name === 'BG_Desert_Mountain') {
           STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
+        }
+
+        
+        if(child.name === 'Rock_Part_01') {
+          
+          STATE.ANIMATED_OBJECTS.rock1.mesh = child
+        }
+
+        if(child.name === 'Rock_Part_02') {
+          
+          STATE.ANIMATED_OBJECTS.rock2.mesh = child
+        }
+
+        console.log('child name:: ', child.name)
+        if(child.name === 'Soil_Part_02') {
+          
+          STATE.ANIMATED_OBJECTS.soil2.mesh = child
         }
       })
 

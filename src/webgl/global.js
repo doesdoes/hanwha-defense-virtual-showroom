@@ -6,6 +6,7 @@ export const STATE = {
     NAME: '',
     VISIBLE: false
   },
+  movementX: 5.61,
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
   UV_ANIMATED_OBJECTS: {
@@ -49,7 +50,46 @@ export const STATE = {
       animate: function() { 
         this.mesh.rotation.z += 0.0001 
       }
-    }
+    },
+
+    // [TODO] each..
+    rock1: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh != undefined) {
+          this.mesh.position.x -= STATE.movementX
+          // console.log(this.mesh.position.x)
+          if(this.mesh.position.x < -300) {
+            this.mesh.position.x = 270
+          }
+        }
+      }
+    },
+    rock2: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh != undefined) {
+          this.mesh.position.x -= STATE.movementX
+          // console.log(this.mesh.position.x)
+          if(this.mesh.position.x < -300) {
+            this.mesh.position.x = 270
+          }
+        }
+      }
+    },
+    soil2: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh != undefined) {
+          this.mesh.position.x -= STATE.movementX
+          // console.log(this.mesh.position.x)
+          if(this.mesh.position.x < -300) {
+            this.mesh.position.x = 270
+          }
+        }
+      }
+    },
+
   },
   ANIMATIONS: {
     _k9Tank: {
