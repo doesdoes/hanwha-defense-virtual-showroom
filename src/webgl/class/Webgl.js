@@ -81,6 +81,9 @@ export class Webgl{
     this.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(60)
     this.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(95)
 
+    // this.cameraControls.minAzimuthAngle = THREE.MathUtils.degToRad(60)
+    // this.cameraControls.maxAzimuthAngle = THREE.MathUtils.degToRad(95)
+
     this.cameraControls.truckSpeed = 0
     this.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
 

@@ -1,6 +1,7 @@
 import {gsap} from 'gsap/all';
 import { canvasButton } from './canvas-button';
 import { sendGLCustomEvent } from './webgl/class/GLCustomEvent'
+import './webgl/_webgl';
 
 const $sound = document.querySelector('#sound');
 const $audio = $sound.querySelector('.sound audio');
@@ -111,7 +112,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   _WEBGL.loadAssets('K9', () => {    
     MAIN_ASSET_LOADED = true
 
-    _WEBGL.initScene('K9') 
+    _WEBGL.initScene('K9')
     _WEBGL.toggleScene('K9', true)
     _WEBGL.toggleRendering(true)
   })
