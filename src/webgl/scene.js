@@ -157,10 +157,10 @@ export function loadStage( sceneName ) {
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       REDBACK_OBJECT.clone.traverse(child => {
-        // console.log(child.name)
+        console.log(child.name)
 
         if(child.name === 'TANK_REDBACK_Track') {
-          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
+          STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
         }
 
         //console.log(child.userData)

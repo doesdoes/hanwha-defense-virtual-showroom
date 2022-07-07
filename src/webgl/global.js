@@ -23,7 +23,13 @@ export const STATE = {
     rails: {
       mesh: null,
       animate: function() {
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.0008 
+      }
+    },
+    redbackRails: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.0008 
       }
     },
     speedLine: {

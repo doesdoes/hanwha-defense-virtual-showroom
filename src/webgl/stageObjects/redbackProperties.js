@@ -46,5 +46,9 @@ export const MATERIALS = {
     "metalness": 0.1,
     "emissive": new THREE.Color("rgb(0,0,0)"),
     "emissiveIntensity": 0.1,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    },
   },
 } 
