@@ -95,6 +95,7 @@ export const MATERIALS = {
     "map": "Dirt_Seq/Dirt_0001.jpg",
     "alphaMap": "Dirt_Seq/Dirt_0001.jpg",
     "transparent": true,
+    "opacity": 0.4,
     "flipY": false,
     // "depthTest": false,
     "depthWrite": false,

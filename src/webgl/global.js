@@ -8,7 +8,8 @@ export const STATE = {
   },
 
   movementX: 1.61,
-  moveSpeedLine: 0.0056,
+  moveSpeedLine: 0.0456,
+  tile: 0,
 
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
@@ -28,7 +29,7 @@ export const STATE = {
     speedLine: {
       mesh: null,
       animate: function() { 
-        // console.log(this.mesh)
+        console.log(this.mesh)
         if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
@@ -43,6 +44,12 @@ export const STATE = {
       mesh: null,
       animate: function() { 
         if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.010 
+      }
+    },
+    tireLine: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y -= 0.150 
       }
     },
   },

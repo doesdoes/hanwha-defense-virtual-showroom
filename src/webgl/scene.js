@@ -11,6 +11,7 @@ import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
 
 import * as REDBACK_PROPERTIES from './stageObjects/redbackProperties.js'
 import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgProperties.js'
+import TWEEN from '@tweenjs/tween.js'
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
@@ -213,7 +214,7 @@ export function loadStage( sceneName ) {
 
       // [NOTE] 맵 mesh/uv 애니메이션
       DESERT_OBJECT.clone.traverse((child) => {
-        // console.log(child.name)
+        console.log(child.name)
         // UV
         if(child.name === 'BG_DesertGround_UV') {
           STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
@@ -223,13 +224,49 @@ export function loadStage( sceneName ) {
           STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
         }
 
+        if(child.name === 'Tire_Line_UV') {
+          STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
+        }
+
         // MESH
         if(child.name === 'BG_Desert_Mountain') {
-          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
+          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child
         }
       })
       break
   }
+}
+
+function createSpriteTween( _mesh, _tilesHoriz, _tilesVert, _duration, _delay = 0 ){
+  const _texture = _mesh.material.map
+  // _mesh.material.map = _texture
+  //_mesh.material.alphaMap = _texture
+
+  // setup wrap of texture
+  console.log(_mesh,_mesh.material.map, _texture, '=======')
+  _texture.wrapS = _texture.wrapT = THREE.RepeatWrapping
+  _texture.repeat.set( 1 / _tilesHoriz, 1 / _tilesVert )
+  _texture.flipY = false
+
+  const tileInfo = { currentTile: 0}
+  return new TWEEN.Tween( tileInfo )
+    .to( { currentTile: _tilesHoriz * _tilesVert}, _duration )
+    .delay(_delay)
+    .easing( TWEEN.Easing.Linear.None )
+    .onStart( () => {} )
+    .onUpdate( ( e, progress ) => {
+      console.log(1)
+      let tile = Math.round(tileInfo.currentTile)
+
+      if (tile >= _tilesHoriz * _tilesVert) return
+
+      let currentColumn = tile % _tilesHoriz
+      _texture.offset.x = currentColumn / _tilesHoriz
+
+      let currentRow = Math.floor( tile / _tilesHoriz )
+      _texture.offset.y = currentRow / _tilesVert
+    } )
+    .onComplete( () => {})
 }
 
 export function focusOnRegion( _region ){

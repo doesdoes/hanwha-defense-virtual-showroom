@@ -51,34 +51,21 @@ export const MATERIALS = {
 
   "Speed_Line_S": {
     "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(94,43,43)"),
+    "color": new THREE.Color("rgb(255,255,255)"),
     "alphaMap": "Speed_Line/Speed_Line_Alpha.jpg",
     "transparent": true,
     "flipY": false,
     // "depthTest": true,
     "depthWrite": false,
-    "opacity": 0.5,
+    "opacity": 0.4,
     "alphaMapTiling":{
-      repeatX: 5,
-      repeatY: 5,
+      repeatX: 3,
+      repeatY: 3,
     }
   },
 
-  // "Grass_s1": {
-  //   "type": new THREE.MeshStandardMaterial(),
-  //   "color": new THREE.Color("rgb(255,255,255)"),
-  //   "map": "Gress/Glass.jpg",
-  //   "transparent": true,
-  //   "flipY": false,
-  //   // "emissive": new THREE.Color("rgb(0,0,0)"),
-  //   // "emissiveIntensity": 1.0,
-  //   "roughness": 1.0,
-  //   "metalness": 0,
-  // },
-
   "Grass_S": {
     "type": new THREE.MeshStandardMaterial(),
-    // "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Bush/Snow_Grass_Dif.jpg",
     "alphaMap": "Bush/Snow_Grass_Alpha.jpg",
     "transparent": true,
@@ -94,6 +81,7 @@ export const MATERIALS = {
     "map": "Dirt_Seq/Dirt_0001.jpg",
     "alphaMap": "Dirt_Seq/Dirt_0001.jpg",
     "transparent": true,
+    "opacity": 0.4,
     "flipY": false,
     // "depthTest": false,
     "depthWrite": false,
@@ -108,6 +96,10 @@ export const MATERIALS = {
     "flipY": false,
     "emissive": new THREE.Color("rgb(0,0,0)"),
     "emissiveIntensity": 1.0,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    }
   },
 
   "BG_Snow_Floor_TankShadow_S": {
@@ -154,39 +146,5 @@ export const MATERIALS = {
     "flipY": false,
     "depthWrite": false,
   },
-  
-  
-
-  // "BG_Desert_Floor_UVani_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(42,15,4)"),
-  //   "alphaMap": "BG_Desert_Floor_UVani_A.jpg",
-  //   "transparent": true,
-  //   "opacity": 0.5,
-  //   "flipY": false,
-  // },
-  // "BG_Desert_UG_UVani_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(255,255,255)"),
-  //   "map": "BG_Desert_UG_UVani.jpg",
-  //   "flipY": false,
-  //   "mapTiling":{
-  //     repeatX: 2,
-  //     repeatY: 2,
-  //   }
-  // },
-
-  
-
-  // "BG_Desert_Mountain_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(255,255,255)"),
-  //   "map": "BG_Desert_Mountain_D.jpg",
-  //   "alphaMap": "BG_Desert_Mountain_A.jpg",
-  //   "transparent": true,
-  //   "flipY": false,
-  //   "depthWrite": false,
-  // },
-  
   
 } 
