@@ -19,7 +19,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   document.querySelectorAll('.entry__item .btn').forEach(bttn => {
     bttn.addEventListener('click', function(e) {
       const item = this.getAttribute('data-item')
-      goToContent(item)
+      // goToContent(item)
+      toggleItem(item)
 
       e.preventDefault()
     })
@@ -63,14 +64,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.set('.bot', {autoAlpha: 0, x: 20})
   }
 
-  function goToContent(item) {
-
-    gateToWebglView(item)
-    
-    toggleItem(item)
-
-  }
-
   function goToGate() {
     gsap.to('.entry', { autoAlpha: 1 })
     gsap.to('#content-wrapper', { autoAlpha: 0 })
@@ -110,7 +103,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         _WEBGL.toggleScene('K9', true)
         _WEBGL.toggleRendering(true)
     
-        gateToWebglView()
+        gateToWebglView(item)
       } else {
         IS_INIT_K9A1 = true
         
@@ -121,8 +114,11 @@ window.addEventListener('DOMContentLoaded', async (event) => {
           _WEBGL.toggleScene('REDBACK', false)
           _WEBGL.toggleScene('K9', true)
           _WEBGL.toggleRendering(true)
-    
-          gateToWebglView()
+
+          setTimeout(() => {
+            // [TODO] loading spinner
+            gateToWebglView(item)
+          }, 1000)
         })
       }
       
@@ -132,7 +128,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         _WEBGL.toggleScene('REDBACK', true)
         _WEBGL.toggleRendering(true)
 
-        gateToWebglView()
+        gateToWebglView(item)
       } else {
         IS_INIT_REDBACK = true
 
@@ -143,8 +139,11 @@ window.addEventListener('DOMContentLoaded', async (event) => {
           _WEBGL.toggleScene('K9', false)
           _WEBGL.toggleScene('REDBACK', true)
           _WEBGL.toggleRendering(true)
-  
-          gateToWebglView()
+          
+          setTimeout(() => {
+            // [TODO] loading spinner
+            gateToWebglView(item)
+          }, 1000)
         })
       }
     }
