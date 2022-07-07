@@ -29,14 +29,12 @@ export const STATE = {
     speedLine: {
       mesh: null,
       animate: function() { 
-        console.log(this.mesh)
         if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
     snowSpeedLine: {
       mesh: null,
       animate: function() { 
-        // console.log(this.mesh)
         if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },

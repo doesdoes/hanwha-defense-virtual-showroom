@@ -82,11 +82,19 @@ window._WEBGL = (function() {
         SCENE.toggleStages(true, 'snowBg')
         SCENE.toggleStages(false, 'k9a1IndoorBg')
         isAnim = true
+        
+        STATE.hemisphereLight.color = new THREE.Color(0xDBF3FF)
+        STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
+
+        
       } else {
         this.setAttribute('data-bg', 'k9a1IndoorBg')
         SCENE.toggleStages(false, 'snowBg')
         SCENE.toggleStages(true, 'k9a1IndoorBg')
         isAnim = false
+
+        STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
+        STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
       }
       e.preventDefault()
     })
@@ -99,11 +107,17 @@ window._WEBGL = (function() {
         SCENE.toggleStages(true, 'desertBg')
         SCENE.toggleStages(false, 'redbackIndoorBg')
         isAnim = true
+        
+        STATE.hemisphereLight.color = new THREE.Color(0xFFE5B8)
+        STATE.hemisphereLight.groundColor = new THREE.Color(0xFEF5EC)
       } else {
         this.setAttribute('data-bg', 'redbackIndoorBg')
         SCENE.toggleStages(false, 'desertBg')
         SCENE.toggleStages(true, 'redbackIndoorBg')
         isAnim = false
+
+        STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
+        STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
       }
       e.preventDefault()
     })
@@ -180,6 +194,10 @@ window._WEBGL = (function() {
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
       SCENE.toggleStages(false, 'desertBg')
     }
+
+    // [TEMP]
+    STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
+    STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
   }
 
   /**

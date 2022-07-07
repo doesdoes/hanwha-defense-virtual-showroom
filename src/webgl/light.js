@@ -37,18 +37,18 @@ export default function setLight(STATE) {
   leftDirectionalLight.intensity = 0.7
 
   // desert
-  const hemisphereLight = new THREE.HemisphereLight( 0xFEC6B4, 0x955E50, 1 )
-
+  // STATE.hemisphereLight = new THREE.HemisphereLight( 0xFFE5B8, 0xFEF5EC, 1 )
   // snow
   // const hemisphereLight = new THREE.HemisphereLight( 0xDBF3FF, 0xFFFFFF, 1 )
+  STATE.hemisphereLight = new THREE.HemisphereLight( 0xFFFFFF, 0xFFFFFF, 1 )
 
   STATE.WEBGL.scene.add( directionalLight )
   STATE.WEBGL.scene.add( leftDirectionalLight )
-  STATE.WEBGL.scene.add( hemisphereLight )
+  STATE.WEBGL.scene.add( STATE.hemisphereLight )
 
   const drHelper = new THREE.DirectionalLightHelper( directionalLight, 1, '#0324fc' )
   const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
-  const hemiHelper = new THREE.HemisphereLightHelper( hemisphereLight, 0.5, '#0324fc' )
+  const hemiHelper = new THREE.HemisphereLightHelper( STATE.hemisphereLight, 0.5, '#0324fc' )
 
   // STATE.WEBGL.scene.add( drHelper )
   // STATE.WEBGL.scene.add( leftDrHelper )
