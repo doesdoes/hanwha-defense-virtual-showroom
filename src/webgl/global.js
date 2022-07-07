@@ -6,41 +6,44 @@ export const STATE = {
     NAME: '',
     VISIBLE: false
   },
-  movementX: 5.61,
+
+  movementX: 1.61,
+  moveSpeedLine: 0.0056,
+
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
   UV_ANIMATED_OBJECTS: {
     desertFloor: {
       mesh: null,
       animate: function() { 
-        if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.006 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.001 
       }
     },
-    // rails: {
-    //   mesh: null,
-    //   animate: function() { 
-    //     if(this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
-    //   }
-    // },
+    rails: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.008 
+      }
+    },
     speedLine: {
       mesh: null,
       animate: function() { 
         // console.log(this.mesh)
-        if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.006
+        if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
     speedLine1: {
       mesh: null,
       animate: function() { 
         // console.log(this.mesh)
-        if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.016
+        if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
     speedLine2: {
       mesh: null,
       animate: function() { 
         // console.log(this.mesh)
-        if(this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= 0.006
+        if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
   },
@@ -48,7 +51,7 @@ export const STATE = {
     desertMountain: {
       mesh: null,
       animate: function() { 
-        this.mesh.rotation.z += 0.0001 
+        if(this.mesh) this.mesh.rotation.z += 0.0001 
       }
     },
 
@@ -139,7 +142,7 @@ export const ASSETS = {
       {
         name: 'k9Tank',
         loaded: false,
-        path : 'glb/K9A1.glb',
+        path : 'glb/k9a1.glb',
         asset: null
       },
       {
@@ -166,17 +169,23 @@ export const ASSETS = {
   REDBACK: {
     MODEL_FILES: [
       {
-        name: 'k9Tank',
+        name: 'redback',
         loaded: false,
-        path : 'glb/k9-tank.glb',
+        path : 'glb/redback.glb',
         asset: null
       },
       {
-        name: 'snowBg',
+        name: 'redbackIndoorBg',
         loaded: false,
-        path : 'glb/snow-bg.glb',
+        path : 'glb/redback-indoor-bg.glb',
         asset: null
-      }
+      },
+      // {
+      //   name: 'snowBg',
+      //   loaded: false,
+      //   path : 'glb/snow-bg.glb',
+      //   asset: null
+      // }
     ],
     TEXTURES_FILES: []
   },

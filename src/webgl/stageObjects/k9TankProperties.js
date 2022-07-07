@@ -1,14 +1,14 @@
 import * as THREE from 'three'
 
 export const PROPERTIES = {
-  scale: new THREE.Vector3(0.5, 0.5, 0.5),
-  position: new THREE.Vector3(1.3, -0.5, 0),
+  scale: new THREE.Vector3(10.5, 10.5, 10.5),
+  position: new THREE.Vector3(0, -1.0, 0),
   rotation: new THREE.Euler(0, 0, 0),
   texturesQuality: "medium"
 }
 
 export const MATERIALS = {
-  "TANK_K9A1_Head_s": {
+  "K9A1_Head_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "TANK_K9A1_Head_CAMO.jpg",
@@ -22,7 +22,7 @@ export const MATERIALS = {
     // "transparent": true,
   },
   
-  "TANK_K9A1_Body_s": {
+  "K9A1_Body_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "TANK_K9A1_Body_CAMO.jpg",
@@ -34,7 +34,7 @@ export const MATERIALS = {
     "emissive": new THREE.Color("rgb(255,255,255)"),
     "emissiveIntensity": 0.1,
   },
-  "TANK_K9A1_TrackWheel_s": {
+  "K9A1_Track_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "TANK_K9A1_TrackWheel.jpg",

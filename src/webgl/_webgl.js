@@ -108,6 +108,9 @@ window._WEBGL = (function() {
       case 'K9':
         LOADER.loadGLTF(LOADING_MANAGER, ASSETS.K9.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
         break
+      case 'REDBACK':
+        LOADER.loadGLTF(LOADING_MANAGER, ASSETS.REDBACK.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
+        break
     }
 
     LOADING_MANAGER.onLoad = function () {
@@ -129,6 +132,9 @@ window._WEBGL = (function() {
     switch (_sceneName) {
       case 'K9':
         SCENE.loadStage('K9')
+        break
+      case 'REDBACK':
+        SCENE.loadStage('REDBACK')
         break
     }
   }

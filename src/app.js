@@ -109,11 +109,19 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
   
-  _WEBGL.loadAssets('K9', () => {    
+  _WEBGL.loadAssets('K9', () => {
     MAIN_ASSET_LOADED = true
 
     _WEBGL.initScene('K9')
     _WEBGL.toggleScene('K9', true)
     _WEBGL.toggleRendering(true)
   })
+
+  // _WEBGL.loadAssets('REDBACK', () => {
+  //   MAIN_ASSET_LOADED = true
+
+  //   _WEBGL.initScene('REDBACK')
+  //   _WEBGL.toggleScene('REDBACK', true)
+  //   _WEBGL.toggleRendering(true)
+  // })
 });

@@ -1,7 +1,15 @@
 import * as THREE from 'three'
 import { GUI } from 'dat.gui'
 
+let isLight = false;
+
 export default function setLight(STATE) {
+
+  // [TODO] change color by scene
+  if(isLight) return
+
+  isLight = true
+
   const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
   directionalLight.position.set(-2.4, 4, -6.3)
 

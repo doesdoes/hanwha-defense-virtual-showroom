@@ -9,6 +9,9 @@ import * as K9_TANK_PROPERTIES from './stageObjects/k9TankProperties.js'
 import * as INDOOR_BG_PROPERTIES from './stageObjects/indoorBgProperties.js'
 import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
 
+import * as REDBACK_PROPERTIES from './stageObjects/redbackProperties.js'
+import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgProperties.js'
+
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
 import setLight from './light.js';
@@ -50,17 +53,16 @@ export function loadStage( sceneName ) {
             e.preventDefault()
           })
         }
-      }) 
+      })
 
       STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // [NOTE] 탱크 mesh/uv 애니메이션
-      // TANK_OBJECT.clone.traverse((child) => {
-      //   if(child.name === 'K9A1_wheel_02_lt') {
-      //     console.log(STATE.UV_ANIMATED_OBJECTS.rails.mesh)
-      //     STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
-      //   }
-      // })
+      TANK_OBJECT.clone.traverse((child) => {
+        if(child.name === 'TANK_K9A1_Track') {
+          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
+        }
+      })
 
       const DESERT_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
       const DESERT_OBJECT = new StageObject({
@@ -134,6 +136,8 @@ export function loadStage( sceneName ) {
       STATE.WEBGL.scene.add(SNOW_OBJECT.clone)
       SNOW_OBJECT.clone.visible = false
 
+      /// UI
+
       document.querySelector('#point-popup .btn-close').addEventListener('click', function(e) {
         focusOnRegion('reset')
         const $popup = document.querySelector('#point-popup')
@@ -157,6 +161,56 @@ export function loadStage( sceneName ) {
           STATE.IS_FOCUSED = true 
         })
       })
+      break
+
+    case 'REDBACK':
+      setLight(STATE)
+
+      const REDBACK_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redback" } )
+      const REDBACK_OBJECT = new StageObject({
+        originalObject: REDBACK_MESH.asset.scene,
+        clonedObject: REDBACK_MESH.asset.scene.clone(),
+        objectName: 'redback',
+        definition: REDBACK_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(REDBACK_OBJECT.clone)
+
+      if(REDBACK_MESH.asset.animations.length > 0){
+        STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( REDBACK_OBJECT.clone )
+        STATE.ANIMATIONS._k9Tank.mixer.clipAction( REDBACK_MESH.asset.animations[0] ).play()
+      }
+
+      // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
+      REDBACK_OBJECT.clone.traverse(child => {
+        console.log(child.userData)
+        if (child.userData.type == 'POI') {
+          // POI buttons
+          const POI = new CSS2DObject( document.getElementById(child.name) )
+          POI.position.copy(child.position)
+          REDBACK_OBJECT.clone.add( POI )
+
+          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
+
+          POI.element.addEventListener('click', function(e){
+            focusOnRegion(child.name)
+
+            STATE.IS_FOCUSED = true 
+            e.preventDefault()
+          })
+        }
+      })
+
+      STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
+
+      // REDBACK INDOOR
+      const REDBACK_INDOOR_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redbackIndoorBg" } )
+      const REDBACK_INDOOR_OBJECT = new StageObject({
+        originalObject: REDBACK_INDOOR_MESH.asset.scene,
+        clonedObject: REDBACK_INDOOR_MESH.asset.scene.clone(),
+        objectName: 'redbackIndoorBg',
+        definition: REDBACK_INDOOR_BG_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(REDBACK_INDOOR_OBJECT.clone)
       break
   }
 }
