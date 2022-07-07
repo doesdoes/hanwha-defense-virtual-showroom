@@ -59,27 +59,51 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   })
 
   function setContent() {
-    gsap.set('.indicator-panel', {autoAlpha: 0, x: 20})
+    gsap.set('.indicator-panel', { autoAlpha: 0, x: 20, pointerEvents: 'none' })
     gsap.set('.bot', {autoAlpha: 0, x: 20})
   }
 
   function goToContent(item) {
 
-    function gateToWebglView() {
-      gsap.to('.entry', {autoAlpha: 0})
-      gsap.to('#content-wrapper', {autoAlpha: 1})
-      document.querySelector('.header').setAttribute('data-state', 'showroom')
-
-      gsap.to('.indicator-panel', {autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7})
-      gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
-
-      $sound.classList.add('on')
-      $audio.volume = 0.0
-      $audio.play()
-
-      gsap.to('.poi-container', {autoAlpha: 1})
-    }
+    gateToWebglView(item)
     
+    toggleItem(item)
+
+  }
+
+  function goToGate() {
+    gsap.to('.entry', { autoAlpha: 1 })
+    gsap.to('#content-wrapper', { autoAlpha: 0 })
+    document.querySelector('.header').setAttribute('data-state', 'gate')
+    gsap.to('.indicator-panel', { autoAlpha: 0, x: 20, pointerEvents: 'none' })
+    gsap.to('.bot', { autoAlpha: 0, x: 20 })
+
+    document.querySelector('#change-condition-k9a1').setAttribute('data-bg', 'k9a1IndoorBg')
+    document.querySelector('#change-condition-redback').setAttribute('data-bg', 'redbackIndoorBg')
+
+    $sound.classList.remove('on')
+    $audio.pause()
+    $audio.currentTime = 0;
+
+    gsap.to('.poi-container', { autoAlpha: 0 })
+  }
+
+  function gateToWebglView(item) {
+    gsap.to('.entry', {autoAlpha: 0})
+    gsap.to('#content-wrapper', {autoAlpha: 1})
+    document.querySelector('.header').setAttribute('data-state', 'showroom')
+
+    gsap.to(`.indicator-panel[data-item="${item}"]`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
+    gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
+
+    $sound.classList.add('on')
+    $audio.volume = 0.0
+    $audio.play()
+
+    gsap.to('.poi-container', {autoAlpha: 1})
+  }
+
+  function toggleItem(item) {
     if(item === 'k9a1') {
       if(IS_INIT_K9A1) {
         _WEBGL.toggleScene('REDBACK', false)
@@ -123,23 +147,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
           gateToWebglView()
         })
       }
-      
     }
-
-  }
-
-  function goToGate() {
-    gsap.to('.entry', {autoAlpha: 1})
-    gsap.to('#content-wrapper', {autoAlpha: 0})
-    document.querySelector('.header').setAttribute('data-state', 'gate')
-    gsap.to('.indicator-panel', {autoAlpha: 0, x: 20})
-    gsap.to('.bot', {autoAlpha: 0, x: 20})
-
-    $sound.classList.remove('on')
-    $audio.pause()
-    $audio.currentTime = 0;
-
-    gsap.to('.poi-container', {autoAlpha: 0})
   }
 
   // [NOTE] WEBGL

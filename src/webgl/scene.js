@@ -16,17 +16,6 @@ import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
 import setLight from './light.js';
 
-let clip;
-
-export function playClip(_clipAction) {
-  console.log('_clipAction ========== ', _clipAction)
-  _clipAction.time = 0
-  _clipAction.paused = false
-  _clipAction.setLoop(THREE.LoopRepeat)
-  _clipAction.clampWhenFinished = true
-  _clipAction.play()
-}
-
 export function loadStage( sceneName ) {
   switch (sceneName) {
     case 'K9':
@@ -44,7 +33,6 @@ export function loadStage( sceneName ) {
       if(TANK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( TANK_OBJECT.clone )
         STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ).play()
-        // playClip(STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ))
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
@@ -67,7 +55,6 @@ export function loadStage( sceneName ) {
         }
       })
 
-
       STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // [NOTE] 탱크 mesh/uv 애니메이션
@@ -77,11 +64,11 @@ export function loadStage( sceneName ) {
         }
       })
 
-      const INDOOR_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "indoorBg" } )
+      const INDOOR_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9a1IndoorBg" } )
       const INDOOR_OBJECT = new StageObject({
         originalObject: INDOOR_MESH.asset.scene,
         clonedObject: INDOOR_MESH.asset.scene.clone(),
-        objectName: 'indoorBg',
+        objectName: 'k9a1IndoorBg',
         definition: INDOOR_BG_PROPERTIES,
       })
       STATE.WEBGL.scene.add(INDOOR_OBJECT.clone)
@@ -138,8 +125,6 @@ export function loadStage( sceneName ) {
       if(REDBACK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._REDBACK.mixer = new THREE.AnimationMixer( REDBACK_OBJECT.clone )
         STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] ).play()
-        // clip = STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] )
-        // playClip(clip)
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
@@ -203,26 +188,21 @@ export function loadStage( sceneName ) {
           STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
         }
 
-
         // MESH
         if(child.name === 'BG_Desert_Mountain') {
           STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
         }
-
         
         if(child.name === 'Rock_Part_01') {
-          
           STATE.ANIMATED_OBJECTS.rock1.mesh = child
         }
 
         if(child.name === 'Rock_Part_02') {
-          
           STATE.ANIMATED_OBJECTS.rock2.mesh = child
         }
 
         //console.log('child name:: ', child.name)
         if(child.name === 'Soil_Part_02') {
-          
           STATE.ANIMATED_OBJECTS.soil2.mesh = child
         }
       })
@@ -230,7 +210,7 @@ export function loadStage( sceneName ) {
   }
 }
 
-export function focusOnRegion( _region ){   
+export function focusOnRegion( _region ){
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,
     STATE.ZONE_FOCUS[_region].position.y,
@@ -254,6 +234,4 @@ export function toggleStages( toggle, sceneName ) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false
     }
   }
-
-  // playClip(clip)
 }

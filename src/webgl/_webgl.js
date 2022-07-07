@@ -55,12 +55,12 @@ window._WEBGL = (function() {
 
         if ( event.key == '1' ) {
           console.log('here');
-          SCENE.toggleStages(true, 'indoorBg')
+          SCENE.toggleStages(true, 'k9a1IndoorBg')
           SCENE.toggleStages(false, 'snowBg')
         }
         if ( event.key == '2' ) {
           SCENE.toggleStages(true, 'snowBg')
-          SCENE.toggleStages(false, 'indoorBg')
+          SCENE.toggleStages(false, 'k9a1IndoorBg')
         }
 
         if ( event.key == 'c' ) {
@@ -73,19 +73,32 @@ window._WEBGL = (function() {
       }, false)
     }
 
-    let isSnow = false;
-    document.querySelector('#change-condition').addEventListener('click', function(e) {
-      console.log(isSnow)
-      if(!isSnow) {
-        isSnow = true
-        // SCENE.toggleStages(true, 'snowBg')
+    document.querySelector('#change-condition-k9a1').addEventListener('click', function(e) {
+      const bg = this.getAttribute('data-bg')
+
+      if(bg === 'k9a1IndoorBg') {
+        this.setAttribute('data-bg', 'snowBg')
+        SCENE.toggleStages(true, 'snowBg')
+        SCENE.toggleStages(false, 'k9a1IndoorBg')
+      } else {
+        this.setAttribute('data-bg', 'k9a1IndoorBg')
+        SCENE.toggleStages(false, 'snowBg')
+        SCENE.toggleStages(true, 'k9a1IndoorBg')
+      }
+      e.preventDefault()
+    })
+    
+    document.querySelector('#change-condition-redback').addEventListener('click', function(e) {
+      const bg = this.getAttribute('data-bg')
+      
+      if(bg === 'redbackIndoorBg') {
+        this.setAttribute('data-bg', 'desertBg')
         SCENE.toggleStages(true, 'desertBg')
         SCENE.toggleStages(false, 'redbackIndoorBg')
       } else {
-        isSnow = false
-        SCENE.toggleStages(true, 'redbackIndoorBg')
-        // SCENE.toggleStages(false, 'snowBg')
+        this.setAttribute('data-bg', 'redbackIndoorBg')
         SCENE.toggleStages(false, 'desertBg')
+        SCENE.toggleStages(true, 'redbackIndoorBg')
       }
       e.preventDefault()
     })
@@ -99,7 +112,7 @@ window._WEBGL = (function() {
    * @param {string} sceneName name of the scene to load
    * @return {callback} return a callback when all assets are loaded
    */
-  function loadAssets(_sceneName, _callback){    
+  function loadAssets(_sceneName, _callback){
     const LOADING_MANAGER = new THREE.LoadingManager()
     LOADING_MANAGER.onProgress = ( url, itemsLoaded, itemsTotal ) => { if(STATE.WEBGL.isDebug) console.log( `%cLoading file: ${url} (${itemsLoaded}/${itemsTotal})`,'color:#787878;') }
     LOADING_MANAGER.onError = url => console.log('There was an error loading '+url)
@@ -155,10 +168,12 @@ window._WEBGL = (function() {
 
     if(_sceneName === "K9") {
       SCENE.toggleStages(_toggle, 'k9Tank')
-      SCENE.toggleStages(_toggle, 'indoorBg')
+      SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
+      SCENE.toggleStages(false, 'snowBg')
     } else {
       SCENE.toggleStages(_toggle, 'redback')
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
+      SCENE.toggleStages(false, 'desertBg')
     }
   }
 

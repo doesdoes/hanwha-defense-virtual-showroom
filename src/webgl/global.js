@@ -149,7 +149,7 @@ export const ASSETS = {
         asset: null
       },
       {
-        name: 'indoorBg',
+        name: 'k9a1IndoorBg',
         loaded: false,
         path : 'glb/indoor-bg.glb',
         asset: null
