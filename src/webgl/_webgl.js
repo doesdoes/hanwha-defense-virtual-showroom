@@ -6,6 +6,7 @@ import * as SCENE from './scene.js'
 import * as LOADER from './loader.js'
 import { STATE, ASSETS } from './global.js'
 
+let isAnim = false
 window._WEBGL = (function() {
   /**
    * Create WEBGL context object
@@ -80,10 +81,12 @@ window._WEBGL = (function() {
         this.setAttribute('data-bg', 'snowBg')
         SCENE.toggleStages(true, 'snowBg')
         SCENE.toggleStages(false, 'k9a1IndoorBg')
+        isAnim = true
       } else {
         this.setAttribute('data-bg', 'k9a1IndoorBg')
         SCENE.toggleStages(false, 'snowBg')
         SCENE.toggleStages(true, 'k9a1IndoorBg')
+        isAnim = false
       }
       e.preventDefault()
     })
@@ -95,10 +98,12 @@ window._WEBGL = (function() {
         this.setAttribute('data-bg', 'desertBg')
         SCENE.toggleStages(true, 'desertBg')
         SCENE.toggleStages(false, 'redbackIndoorBg')
+        isAnim = true
       } else {
         this.setAttribute('data-bg', 'redbackIndoorBg')
         SCENE.toggleStages(false, 'desertBg')
         SCENE.toggleStages(true, 'redbackIndoorBg')
+        isAnim = false
       }
       e.preventDefault()
     })
@@ -196,23 +201,25 @@ window._WEBGL = (function() {
     STATE.WEBGL.cameraControls.normalizeRotations()
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
 
-    // update animation mixer
-    const dTime = STATE.WEBGL.clock.getDelta()
-    for (let key in STATE.ANIMATIONS) {
-      if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( dTime )
-    }
-
-    // uv animations
-    if (STATE.UV_ANIMATED_OBJECTS) {
-      for (const key in STATE.UV_ANIMATED_OBJECTS) {
-        STATE.UV_ANIMATED_OBJECTS[key].animate()
+    if(isAnim) {
+      // update animation mixer
+      const dTime = STATE.WEBGL.clock.getDelta()
+      for (let key in STATE.ANIMATIONS) {
+        if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( dTime )
       }
-    }
 
-    // animations
-    if (STATE.ANIMATED_OBJECTS) {
-      for (const key in STATE.ANIMATED_OBJECTS) {
-        STATE.ANIMATED_OBJECTS[key].animate()
+      // uv animations
+      if (STATE.UV_ANIMATED_OBJECTS) {
+        for (const key in STATE.UV_ANIMATED_OBJECTS) {
+          STATE.UV_ANIMATED_OBJECTS[key].animate()
+        }
+      }
+
+      // animations
+      if (STATE.ANIMATED_OBJECTS) {
+        for (const key in STATE.ANIMATED_OBJECTS) {
+          STATE.ANIMATED_OBJECTS[key].animate()
+        }
       }
     }
 
