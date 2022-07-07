@@ -101,6 +101,9 @@ export const STATE = {
     _REDBACK: {
       mixer: null,
     },
+    _DESERT: {
+      mixer: null,
+    },
   },
   IS_FOCUSED: false,
   ZONE_FOCUS:{

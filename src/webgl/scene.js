@@ -169,6 +169,12 @@ export function loadStage( sceneName ) {
       STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
       DESERT_OBJECT.clone.visible = false
 
+      if(DESERT_MESH.asset.animations.length > 0){
+        console.log(123123, DESERT_MESH.asset.animations[0])
+        STATE.ANIMATIONS._DESERT.mixer = new THREE.AnimationMixer( DESERT_OBJECT.clone )
+        STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
+      }
+
       // [NOTE] 맵 mesh/uv 애니메이션
       DESERT_OBJECT.clone.traverse((child) => {
         // UV
