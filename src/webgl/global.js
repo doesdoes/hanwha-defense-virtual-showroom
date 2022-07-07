@@ -16,7 +16,7 @@ export const STATE = {
     desertFloor: {
       mesh: null,
       animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.001 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.010 
       }
     },
     rails: {

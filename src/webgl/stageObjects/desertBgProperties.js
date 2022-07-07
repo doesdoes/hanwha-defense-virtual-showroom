@@ -90,7 +90,7 @@ export const MATERIALS = {
 
   "Dirt_S": {
     "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(132,41,11)"),
+    "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Dirt_Seq/Dirt_0001.jpg",
     "alphaMap": "Dirt_Seq/Dirt_0001.jpg",
     "transparent": true,

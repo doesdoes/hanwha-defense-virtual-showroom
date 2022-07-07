@@ -129,6 +129,12 @@ export function loadStage( sceneName ) {
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       REDBACK_OBJECT.clone.traverse(child => {
+        console.log(child.name)
+
+        if(child.name === 'TANK_REDBACK_Track') {
+          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
+        }
+
         //console.log(child.userData)
         if (child.userData.type == 'POI') {
           // POI buttons
@@ -170,25 +176,29 @@ export function loadStage( sceneName ) {
       DESERT_OBJECT.clone.visible = false
 
       if(DESERT_MESH.asset.animations.length > 0){
-        console.log(123123, DESERT_MESH.asset.animations[0])
+        console.log(DESERT_MESH.asset.animations)
         STATE.ANIMATIONS._DESERT.mixer = new THREE.AnimationMixer( DESERT_OBJECT.clone )
-        STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
+        DESERT_MESH.asset.animations.forEach(anim => {
+          STATE.ANIMATIONS._DESERT.mixer.clipAction( anim ).play()
+        })
+        // STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
       }
 
       // [NOTE] 맵 mesh/uv 애니메이션
       DESERT_OBJECT.clone.traverse((child) => {
+        // console.log(child.name)
         // UV
-        if(child.name === 'BG_Desert_UG_UVani') {
+        if(child.name === 'BG_DesertGround_UV') {
           STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
         }
 
-        if(child.name === 'Speed_Line_UV2') {
-          STATE.UV_ANIMATED_OBJECTS.speedLine2.mesh = child
-        }
+        // if(child.name === 'Speed_Line_UV2') {
+        //   STATE.UV_ANIMATED_OBJECTS.speedLine2.mesh = child
+        // }
 
-        if(child.name === 'Speed_Line_UV1') {
-          STATE.UV_ANIMATED_OBJECTS.speedLine1.mesh = child
-        }
+        // if(child.name === 'Speed_Line_UV1') {
+        //   STATE.UV_ANIMATED_OBJECTS.speedLine1.mesh = child
+        // }
 
         if(child.name === 'Speed_Line_UV') {
           STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
@@ -197,19 +207,6 @@ export function loadStage( sceneName ) {
         // MESH
         if(child.name === 'BG_Desert_Mountain') {
           STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
-        }
-        
-        if(child.name === 'Rock_Part_01') {
-          STATE.ANIMATED_OBJECTS.rock1.mesh = child
-        }
-
-        if(child.name === 'Rock_Part_02') {
-          STATE.ANIMATED_OBJECTS.rock2.mesh = child
-        }
-
-        //console.log('child name:: ', child.name)
-        if(child.name === 'Soil_Part_02') {
-          STATE.ANIMATED_OBJECTS.soil2.mesh = child
         }
       })
       break
