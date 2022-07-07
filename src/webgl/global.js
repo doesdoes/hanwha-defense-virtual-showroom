@@ -98,6 +98,9 @@ export const STATE = {
     _k9Tank: {
       mixer: null,
     },
+    _REDBACK: {
+      mixer: null,
+    },
   },
   IS_FOCUSED: false,
   ZONE_FOCUS:{
@@ -146,12 +149,6 @@ export const ASSETS = {
         asset: null
       },
       {
-        name: 'desertBg',
-        loaded: false,
-        path : 'glb/desert-bg.glb',
-        asset: null
-      },
-      {
         name: 'indoorBg',
         loaded: false,
         path : 'glb/indoor-bg.glb',
@@ -178,6 +175,12 @@ export const ASSETS = {
         name: 'redbackIndoorBg',
         loaded: false,
         path : 'glb/redback-indoor-bg.glb',
+        asset: null
+      },
+      {
+        name: 'desertBg',
+        loaded: false,
+        path : 'glb/desert-bg.glb',
         asset: null
       },
       // {

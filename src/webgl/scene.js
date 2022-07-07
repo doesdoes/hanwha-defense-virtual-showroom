@@ -16,6 +16,17 @@ import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
 import setLight from './light.js';
 
+let clip;
+
+export function playClip(_clipAction) {
+  console.log('_clipAction ========== ', _clipAction)
+  _clipAction.time = 0
+  _clipAction.paused = false
+  _clipAction.setLoop(THREE.LoopRepeat)
+  _clipAction.clampWhenFinished = true
+  _clipAction.play()
+}
+
 export function loadStage( sceneName ) {
   switch (sceneName) {
     case 'K9':
@@ -33,11 +44,12 @@ export function loadStage( sceneName ) {
       if(TANK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( TANK_OBJECT.clone )
         STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ).play()
+        // playClip(STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ))
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
-        console.log(child.userData)
+        //console.log(child.userData)
         if (child.userData.type == 'POI') {
           // POI buttons
           const POI = new CSS2DObject( document.getElementById(child.name) )
@@ -55,65 +67,13 @@ export function loadStage( sceneName ) {
         }
       })
 
+
       STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // [NOTE] 탱크 mesh/uv 애니메이션
       TANK_OBJECT.clone.traverse((child) => {
         if(child.name === 'TANK_K9A1_Track') {
           STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
-        }
-      })
-
-      const DESERT_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
-      const DESERT_OBJECT = new StageObject({
-        originalObject: DESERT_MESH.asset.scene,
-        clonedObject: DESERT_MESH.asset.scene.clone(),
-        objectName: 'desertBg',
-        definition: DESERT_BG_PROPERTIES,
-      })
-      STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
-      DESERT_OBJECT.clone.visible = false
-
-      // [NOTE] 맵 mesh/uv 애니메이션
-      DESERT_OBJECT.clone.traverse((child) => {
-        // UV
-        if(child.name === 'BG_Desert_UG_UVani') {
-          STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
-        }
-
-        if(child.name === 'Speed_Line_UV2') {
-          STATE.UV_ANIMATED_OBJECTS.speedLine2.mesh = child
-        }
-
-        if(child.name === 'Speed_Line_UV1') {
-          STATE.UV_ANIMATED_OBJECTS.speedLine1.mesh = child
-        }
-
-        if(child.name === 'Speed_Line_UV') {
-          STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
-        }
-
-
-        // MESH
-        if(child.name === 'BG_Desert_Mountain') {
-          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
-        }
-
-        
-        if(child.name === 'Rock_Part_01') {
-          
-          STATE.ANIMATED_OBJECTS.rock1.mesh = child
-        }
-
-        if(child.name === 'Rock_Part_02') {
-          
-          STATE.ANIMATED_OBJECTS.rock2.mesh = child
-        }
-
-        console.log('child name:: ', child.name)
-        if(child.name === 'Soil_Part_02') {
-          
-          STATE.ANIMATED_OBJECTS.soil2.mesh = child
         }
       })
 
@@ -176,13 +136,15 @@ export function loadStage( sceneName ) {
       STATE.WEBGL.scene.add(REDBACK_OBJECT.clone)
 
       if(REDBACK_MESH.asset.animations.length > 0){
-        STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( REDBACK_OBJECT.clone )
-        STATE.ANIMATIONS._k9Tank.mixer.clipAction( REDBACK_MESH.asset.animations[0] ).play()
+        STATE.ANIMATIONS._REDBACK.mixer = new THREE.AnimationMixer( REDBACK_OBJECT.clone )
+        STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] ).play()
+        // clip = STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] )
+        // playClip(clip)
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       REDBACK_OBJECT.clone.traverse(child => {
-        console.log(child.userData)
+        //console.log(child.userData)
         if (child.userData.type == 'POI') {
           // POI buttons
           const POI = new CSS2DObject( document.getElementById(child.name) )
@@ -211,6 +173,59 @@ export function loadStage( sceneName ) {
         definition: REDBACK_INDOOR_BG_PROPERTIES,
       })
       STATE.WEBGL.scene.add(REDBACK_INDOOR_OBJECT.clone)
+
+      const DESERT_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "desertBg" } )
+      const DESERT_OBJECT = new StageObject({
+        originalObject: DESERT_MESH.asset.scene,
+        clonedObject: DESERT_MESH.asset.scene.clone(),
+        objectName: 'desertBg',
+        definition: DESERT_BG_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(DESERT_OBJECT.clone)
+      DESERT_OBJECT.clone.visible = false
+
+      // [NOTE] 맵 mesh/uv 애니메이션
+      DESERT_OBJECT.clone.traverse((child) => {
+        // UV
+        if(child.name === 'BG_Desert_UG_UVani') {
+          STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
+        }
+
+        if(child.name === 'Speed_Line_UV2') {
+          STATE.UV_ANIMATED_OBJECTS.speedLine2.mesh = child
+        }
+
+        if(child.name === 'Speed_Line_UV1') {
+          STATE.UV_ANIMATED_OBJECTS.speedLine1.mesh = child
+        }
+
+        if(child.name === 'Speed_Line_UV') {
+          STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
+        }
+
+
+        // MESH
+        if(child.name === 'BG_Desert_Mountain') {
+          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child  
+        }
+
+        
+        if(child.name === 'Rock_Part_01') {
+          
+          STATE.ANIMATED_OBJECTS.rock1.mesh = child
+        }
+
+        if(child.name === 'Rock_Part_02') {
+          
+          STATE.ANIMATED_OBJECTS.rock2.mesh = child
+        }
+
+        //console.log('child name:: ', child.name)
+        if(child.name === 'Soil_Part_02') {
+          
+          STATE.ANIMATED_OBJECTS.soil2.mesh = child
+        }
+      })
       break
   }
 }
@@ -239,4 +254,6 @@ export function toggleStages( toggle, sceneName ) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false
     }
   }
+
+  // playClip(clip)
 }

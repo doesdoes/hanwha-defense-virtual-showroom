@@ -5,6 +5,10 @@ import './webgl/_webgl';
 
 const $sound = document.querySelector('#sound');
 const $audio = $sound.querySelector('.sound audio');
+
+let IS_INIT_K9A1 = false
+let IS_INIT_REDBACK = false
+
 window.addEventListener('DOMContentLoaded', async (event) => {
 
   canvasButton();
@@ -14,20 +18,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
   document.querySelectorAll('.entry__item .btn').forEach(bttn => {
     bttn.addEventListener('click', function(e) {
-      goToContent()
-
-      // const item = this.getAttribute('data-item');
-      // switch (item) {
-      //   case 'k9-high':
-      //   case 'k9-low':
-      //   case 'redback-high':
-      //   case 'redback-low':
-      //     goToContent()
-      //     break;
-      
-      //   default:
-      //     break;
-      // }
+      const item = this.getAttribute('data-item')
+      goToContent(item)
 
       e.preventDefault()
     })
@@ -71,19 +63,69 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.set('.bot', {autoAlpha: 0, x: 20})
   }
 
-  function goToContent() {
-    gsap.to('.entry', {autoAlpha: 0})
-    gsap.to('#content-wrapper', {autoAlpha: 1})
-    document.querySelector('.header').setAttribute('data-state', 'showroom')
+  function goToContent(item) {
 
-    gsap.to('.indicator-panel', {autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7})
-    gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
+    function gateToWebglView() {
+      gsap.to('.entry', {autoAlpha: 0})
+      gsap.to('#content-wrapper', {autoAlpha: 1})
+      document.querySelector('.header').setAttribute('data-state', 'showroom')
 
-    $sound.classList.add('on')
-    $audio.volume = 0.0
-    $audio.play()
+      gsap.to('.indicator-panel', {autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7})
+      gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
 
-    gsap.to('.poi-container', {autoAlpha: 1})
+      $sound.classList.add('on')
+      $audio.volume = 0.0
+      $audio.play()
+
+      gsap.to('.poi-container', {autoAlpha: 1})
+    }
+    
+    if(item === 'k9a1') {
+      if(IS_INIT_K9A1) {
+        _WEBGL.toggleScene('REDBACK', false)
+        _WEBGL.toggleScene('K9', true)
+        _WEBGL.toggleRendering(true)
+    
+        gateToWebglView()
+      } else {
+        IS_INIT_K9A1 = true
+        
+        _WEBGL.loadAssets('K9', () => {
+          MAIN_ASSET_LOADED = true
+          _WEBGL.initScene('K9')
+
+          _WEBGL.toggleScene('REDBACK', false)
+          _WEBGL.toggleScene('K9', true)
+          _WEBGL.toggleRendering(true)
+    
+          gateToWebglView()
+        })
+      }
+      
+    } else {
+      if(IS_INIT_REDBACK) {
+        _WEBGL.toggleScene('K9', false)
+        _WEBGL.toggleScene('REDBACK', true)
+        _WEBGL.toggleRendering(true)
+
+        gateToWebglView()
+      } else {
+        IS_INIT_REDBACK = true
+
+        _WEBGL.loadAssets('REDBACK', () => {
+          MAIN_ASSET_LOADED = true
+          _WEBGL.initScene('REDBACK')
+
+          _WEBGL.toggleScene('K9', false)
+          _WEBGL.toggleScene('REDBACK', true)
+          _WEBGL.toggleRendering(true)
+  
+          gateToWebglView()
+        })
+      }
+      
+    }
+
   }
 
   function goToGate() {
@@ -100,7 +142,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('.poi-container', {autoAlpha: 0})
   }
 
-
   // [NOTE] WEBGL
   let MAIN_ASSET_LOADED = false
 
@@ -108,20 +149,4 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   const isMobile = md.mobile()
 
   _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
-  
-  _WEBGL.loadAssets('K9', () => {
-    MAIN_ASSET_LOADED = true
-
-    _WEBGL.initScene('K9')
-    _WEBGL.toggleScene('K9', true)
-    _WEBGL.toggleRendering(true)
-  })
-
-  // _WEBGL.loadAssets('REDBACK', () => {
-  //   MAIN_ASSET_LOADED = true
-
-  //   _WEBGL.initScene('REDBACK')
-  //   _WEBGL.toggleScene('REDBACK', true)
-  //   _WEBGL.toggleRendering(true)
-  // })
 });

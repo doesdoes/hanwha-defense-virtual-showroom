@@ -80,10 +80,10 @@ window._WEBGL = (function() {
         isSnow = true
         // SCENE.toggleStages(true, 'snowBg')
         SCENE.toggleStages(true, 'desertBg')
-        SCENE.toggleStages(false, 'indoorBg')
+        SCENE.toggleStages(false, 'redbackIndoorBg')
       } else {
         isSnow = false
-        SCENE.toggleStages(true, 'indoorBg')
+        SCENE.toggleStages(true, 'redbackIndoorBg')
         // SCENE.toggleStages(false, 'snowBg')
         SCENE.toggleStages(false, 'desertBg')
       }
@@ -150,8 +150,16 @@ window._WEBGL = (function() {
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: scene %c${_sceneName} %cvisibility: ${_toggle}!`,'color:#3c6bef;','color:#unherit;')
 
     if( _toggle ) STATE.CURRENT_SCENE.NAME = _sceneName
-    STATE.CURRENT_SCENE.VISIBLE = _toggle
-    SCENE.toggleStages(_toggle, _sceneName)
+    // STATE.CURRENT_SCENE.VISIBLE = _toggle
+    // SCENE.toggleStages(_toggle, _sceneName)
+
+    if(_sceneName === "K9") {
+      SCENE.toggleStages(_toggle, 'k9Tank')
+      SCENE.toggleStages(_toggle, 'indoorBg')
+    } else {
+      SCENE.toggleStages(_toggle, 'redback')
+      SCENE.toggleStages(_toggle, 'redbackIndoorBg')
+    }
   }
 
   /**
@@ -174,8 +182,9 @@ window._WEBGL = (function() {
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
 
     // update animation mixer
+    const dTime = STATE.WEBGL.clock.getDelta()
     for (let key in STATE.ANIMATIONS) {
-      if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( STATE.WEBGL.clock.getDelta() )
+      if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( dTime )
     }
 
     // uv animations
