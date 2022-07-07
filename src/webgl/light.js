@@ -43,41 +43,38 @@ export default function setLight(STATE) {
   STATE.WEBGL.scene.add( hemisphereLight )
 
   const drHelper = new THREE.DirectionalLightHelper( directionalLight, 1, '#0324fc' )
-
   const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
-
   const hemiHelper = new THREE.HemisphereLightHelper( hemisphereLight, 0.5, '#0324fc' )
 
-  STATE.WEBGL.scene.add( drHelper )
-  STATE.WEBGL.scene.add( leftDrHelper )
-  STATE.WEBGL.scene.add( hemiHelper )
-  // console.log(STATE.WEBGL.camera.position)
+  // STATE.WEBGL.scene.add( drHelper )
+  // STATE.WEBGL.scene.add( leftDrHelper )
+  // STATE.WEBGL.scene.add( hemiHelper )
+
 
   // [NOTE] gui
-  const gui = new GUI()
+  // document.querySelector('.header').style.zIndex = -1
+  // const gui = new GUI()
 
-  document.querySelector('.header').style.zIndex = -1
+  // const folderRight = gui.addFolder(`right light`)
+  // // folderRight.open()
+  // folderRight.add(directionalLight.position, 'x', -10, 10).onChange(updateLight)
+  // folderRight.add(directionalLight.position, 'y', -10, 10).onChange(updateLight)
+  // folderRight.add(directionalLight.position, 'z', -10, 10).onChange(updateLight)
+  // folderRight.add(directionalLight, 'intensity', 0, 2)
 
-  const folderRight = gui.addFolder(`right light`)
-  // folderRight.open()
-  folderRight.add(directionalLight.position, 'x', -10, 10).onChange(updateLight)
-  folderRight.add(directionalLight.position, 'y', -10, 10).onChange(updateLight)
-  folderRight.add(directionalLight.position, 'z', -10, 10).onChange(updateLight)
-  folderRight.add(directionalLight, 'intensity', 0, 2)
-
-  const folderLeft = gui.addFolder(`left light`)
-  // folderLeft.open()
-  folderLeft.add(leftDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
-  folderLeft.add(leftDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
-  folderLeft.add(leftDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
-  folderLeft.add(leftDirectionalLight, 'intensity', 0, 2)
+  // const folderLeft = gui.addFolder(`left light`)
+  // // folderLeft.open()
+  // folderLeft.add(leftDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
+  // folderLeft.add(leftDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
+  // folderLeft.add(leftDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
+  // folderLeft.add(leftDirectionalLight, 'intensity', 0, 2)
 
 
-  function updateLight() {
-    console.log(directionalLight)
-    console.log(leftDirectionalLight)
+  // function updateLight() {
+  //   console.log(directionalLight)
+  //   console.log(leftDirectionalLight)
 
-    directionalLight.target.updateMatrixWorld()
-  }
+  //   directionalLight.target.updateMatrixWorld()
+  // }
  
 }
