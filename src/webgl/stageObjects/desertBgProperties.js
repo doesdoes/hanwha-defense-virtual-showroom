@@ -19,7 +19,7 @@ export const MATERIALS = {
 
   "Clous_S": {
     "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(238,200,63)"),
+    "color": new THREE.Color("rgb(255,255,255)"),
     "alphaMap": "Sky/Cloud_Alpha.jpg",
     "transparent": true,
     "flipY": false,
@@ -110,12 +110,13 @@ export const MATERIALS = {
     "emissiveIntensity": 1.0,
   },
 
-  "BG_Floor_TankShadow_S": {
+  "BG_Snow_Floor_TankShadow_S": {
     "type": new THREE.MeshStandardMaterial(),
     "color": new THREE.Color("rgb(87,66,66)"),
     // "map": "Tank_Shadow/BG_Desert_Floor_TankShadow_D.jpg",
     "alphaMap": "Tank_Shadow/BG_Desert_Floor_TankShadow_A.jpg",
     "transparent": true,
+    "opacity": 1.0,
     "flipY": false,
     "depthTest": true,
     "depthWrite": true,

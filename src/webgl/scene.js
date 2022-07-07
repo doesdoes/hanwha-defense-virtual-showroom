@@ -83,6 +83,33 @@ export function loadStage( sceneName ) {
       STATE.WEBGL.scene.add(SNOW_OBJECT.clone)
       SNOW_OBJECT.clone.visible = false
 
+      if(SNOW_MESH.asset.animations.length > 0){
+        console.log(SNOW_MESH.asset.animations)
+        STATE.ANIMATIONS._SNOW.mixer = new THREE.AnimationMixer( SNOW_OBJECT.clone )
+        SNOW_MESH.asset.animations.forEach(anim => {
+          STATE.ANIMATIONS._SNOW.mixer.clipAction( anim ).play()
+        })
+        // STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
+      }
+
+      // [NOTE] 맵 mesh/uv 애니메이션
+      SNOW_OBJECT.clone.traverse((child) => {
+        // console.log(child.name)
+        // UV
+        if(child.name === 'BG_Snow_Ground_UV') {
+          STATE.UV_ANIMATED_OBJECTS.snowFloor.mesh = child  
+        }
+
+        if(child.name === 'Speed_Line_UV') {
+          STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
+        }
+
+        // MESH
+        if(child.name === 'BG_Snow_MountainBG_Desert') {
+          STATE.ANIMATED_OBJECTS.snowMountain.mesh = child  
+        }
+      })
+
       /// UI
 
       document.querySelector('#point-popup .btn-close').addEventListener('click', function(e) {
@@ -191,14 +218,6 @@ export function loadStage( sceneName ) {
         if(child.name === 'BG_DesertGround_UV') {
           STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
         }
-
-        // if(child.name === 'Speed_Line_UV2') {
-        //   STATE.UV_ANIMATED_OBJECTS.speedLine2.mesh = child
-        // }
-
-        // if(child.name === 'Speed_Line_UV1') {
-        //   STATE.UV_ANIMATED_OBJECTS.speedLine1.mesh = child
-        // }
 
         if(child.name === 'Speed_Line_UV') {
           STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
