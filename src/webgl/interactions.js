@@ -19,6 +19,7 @@ export function onTouchMove( e ){
 
 export function setCondition() {
   document.querySelector('#change-condition-k9a1').addEventListener('click', function(e) {
+    this.blur()
     const bg = this.getAttribute('data-bg')
   
     if(bg === 'k9a1IndoorBg') {
@@ -28,6 +29,13 @@ export function setCondition() {
       window.isAnim = true
       
       setHemisphereLightSnow(STATE)
+
+      STATE.ANIMATIONS._k9Tank.mixer._actions.forEach(anim => {
+        anim.play()
+      })
+      STATE.ANIMATIONS._SNOW.mixer._actions.forEach(anim => {
+        anim.play()
+      })
       
     } else {
       this.setAttribute('data-bg', 'k9a1IndoorBg')
@@ -36,11 +44,20 @@ export function setCondition() {
       window.isAnim = false
   
       setHemisphereLightDefault(STATE)
+
+      STATE.ANIMATIONS._k9Tank.mixer._actions.forEach(anim => {
+        anim.stop()
+      })
+      // STATE.ANIMATIONS._SNOW.mixer._actions.forEach(anim => {
+      //   anim.stop()
+      // })
+      STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
     }
     e.preventDefault()
   })
   
   document.querySelector('#change-condition-redback').addEventListener('click', function(e) {
+    this.blur()
     const bg = this.getAttribute('data-bg')
     
     if(bg === 'redbackIndoorBg') {
@@ -50,6 +67,13 @@ export function setCondition() {
       window.isAnim = true
       
       setHemisphereLightDesert(STATE)
+
+      STATE.ANIMATIONS._REDBACK.mixer._actions.forEach(anim => {
+        anim.play()
+      })
+      STATE.ANIMATIONS._DESERT.mixer._actions.forEach(anim => {
+        anim.play()
+      })
       
     } else {
       this.setAttribute('data-bg', 'redbackIndoorBg')
@@ -58,6 +82,11 @@ export function setCondition() {
       window.isAnim = false
   
       setHemisphereLightDefault(STATE)
+
+      STATE.ANIMATIONS._REDBACK.mixer._actions.forEach(anim => {
+        anim.stop()
+      })
+      STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
     }
     e.preventDefault()
   })

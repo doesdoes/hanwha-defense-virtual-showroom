@@ -93,7 +93,7 @@
 
 
     <!-- <div class="popup"></div> -->
-    <div id="point-popup" class="poi-popup" data-position="1">
+    <div class="poi-popup" data-popup="longerFiringRange">
       <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
       <h3 class="t4 tit">Longer Firing Range</h3>
       <p class="btn2-kr p">
@@ -103,25 +103,42 @@
       </p>
     </div>
 
+    <div class="poi-popup" data-popup="highMobility">
+      <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+      <h3 class="t4 tit">High Mobility</h3>
+      <p class="btn2-kr p">
+        K9A1자주포의 강력한 파워팩은 유기압 현수장치와 결합되어,
+        최대 67km/h 빠른 속도와 높은 사격정확도. 그리고 사격 후의 신속한 진지 이탈이 가능하여 아군의 생존성을 높입니다.
+      </p>
+    </div>
+
+    <div class="poi-popup" data-popup="ammunitionLoader">
+      <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+      <h3 class="t4 tit">AMMUNITION LOADER</h3>
+      <p class="btn2-kr p">
+        최대 48발의 탄약 적재 능력을 갖추고 있으며 탄약 적재로부터 이송, 장전까지의 전 과정을 자동화하여 신속한 집중 화력 제공이 가능합니다.
+      </p>
+    </div>
+
     <div class="indicator-panel" data-item="k9a1">
       <button type="button" id="change-condition-k9a1" class="btn btn--basic" data-bg="k9a1IndoorBg">Change condition</button>
       <ul class="parts">
-        <li class="part c1">Longer Firing Range<span class="num">01</span></li>
-        <li class="part c1">High Mobility<span class="num">02</span></li>
-        <li class="part c1">Ammunition Loader<span class="num">03</span></li>
-        <li class="part c1">Automatic Control System<span class="num">04</span></li>
-        <li class="part c1">IR Camera<span class="num">05</span></li>
+        <li class="part c1" data-feature="longerFiringRange">Longer Firing Range<span class="num">01</span></li>
+        <li class="part c1" data-feature="highMobility">High Mobility<span class="num">02</span></li>
+        <li class="part c1" data-feature="ammunitionLoader">Ammunition Loader<span class="num">03</span></li>
+        <li class="part c1" data-feature="">Automatic Control System<span class="num">04</span></li>
+        <li class="part c1" data-feature="">IR Camera<span class="num">05</span></li>
       </ul>
     </div>
 
     <div class="indicator-panel" data-item="redback">
       <button type="button" id="change-condition-redback" class="btn btn--basic" data-bg="redbackIndoorBg">Change condition</button>
       <ul class="parts">
-        <li class="part c1">Main Armament System<span class="num">01</span></li>
-        <li class="part c1">Anti-Tank Armament System<span class="num">02</span></li>
-        <li class="part c1">Best Mobility<span class="num">03</span></li>
-        <li class="part c1">Superior Protection<span class="num">04</span></li>
-        <li class="part c1">Isu & Rubber Track<span class="num">05</span></li>
+        <li class="part c1" data-feature="">Main Armament System<span class="num">01</span></li>
+        <li class="part c1" data-feature="">Anti-Tank Armament System<span class="num">02</span></li>
+        <li class="part c1" data-feature="">Best Mobility<span class="num">03</span></li>
+        <li class="part c1" data-feature="">Superior Protection<span class="num">04</span></li>
+        <li class="part c1" data-feature="">Isu & Rubber Track<span class="num">05</span></li>
       </ul>
     </div>
 

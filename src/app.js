@@ -9,10 +9,13 @@ const $audio = $sound.querySelector('.sound audio');
 let IS_INIT_K9A1 = false
 let IS_INIT_REDBACK = false
 
+window.UI = {
+  $currentPopup: '',
+}
+
 window.addEventListener('DOMContentLoaded', async (event) => {
 
   canvasButton();
-
   setContent()
 
   // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
@@ -44,19 +47,15 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   })
 
   window.addEventListener('GLCustomEvent', function(e) {
-    console.log(e.detail.msg)
-    switch (e.detail.msg) {
-      case 'longFiringRange':
-      case 'mobility':
-      case 'automaticControlSystem':
-        const $popup = document.querySelector('#point-popup')
-        gsap.to($popup, { autoAlpha: 1, duration: 0.7 })    
-        break;
+    // console.log(e.detail.msg)
     
-      default:
-        break;
+    if(window.UI.$currentPopup) {
+      gsap.killTweensOf(window.UI.$currentPopup)
+      gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
     }
-    
+    const $popup = document.querySelector(`[data-popup=${e.detail.msg}]`)
+    gsap.to($popup, { autoAlpha: 1, duration: 0.7 })
+    window.UI.$currentPopup = $popup
   })
 
   function setContent() {

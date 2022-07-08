@@ -34,7 +34,7 @@ export function loadStage( sceneName ) {
 
       if(TANK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( TANK_OBJECT.clone )
-        STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] ).play()
+        STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] )
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
@@ -91,7 +91,7 @@ export function loadStage( sceneName ) {
         console.log(SNOW_MESH.asset.animations)
         STATE.ANIMATIONS._SNOW.mixer = new THREE.AnimationMixer( SNOW_OBJECT.clone )
         SNOW_MESH.asset.animations.forEach(anim => {
-          STATE.ANIMATIONS._SNOW.mixer.clipAction( anim ).play()
+          STATE.ANIMATIONS._SNOW.mixer.clipAction( anim )
         })
         // STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
       }
@@ -121,15 +121,6 @@ export function loadStage( sceneName ) {
           }, 2000)
         }
       })
-
-      /// UI
-
-      document.querySelector('#point-popup .btn-close').addEventListener('click', function(e) {
-        focusOnRegion('reset')
-        const $popup = document.querySelector('#point-popup')
-        gsap.to($popup, { autoAlpha: 0})
-        e.preventDefault()
-      })
       
       STATE.WEBGL.cameraControls.addEventListener('control', function() {
 
@@ -144,12 +135,6 @@ export function loadStage( sceneName ) {
         })
       })
 
-      document.querySelectorAll('.parts .part').forEach(part => {
-        part.addEventListener('click', function() {
-          focusOnRegion('longerFiringRange')
-          STATE.IS_FOCUSED = true 
-        })
-      })
       break
 
     case 'REDBACK':
@@ -166,7 +151,7 @@ export function loadStage( sceneName ) {
 
       if(REDBACK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._REDBACK.mixer = new THREE.AnimationMixer( REDBACK_OBJECT.clone )
-        STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] ).play()
+        STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] )
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
@@ -221,7 +206,7 @@ export function loadStage( sceneName ) {
         console.log(DESERT_MESH.asset.animations)
         STATE.ANIMATIONS._DESERT.mixer = new THREE.AnimationMixer( DESERT_OBJECT.clone )
         DESERT_MESH.asset.animations.forEach(anim => {
-          STATE.ANIMATIONS._DESERT.mixer.clipAction( anim ).play()
+          STATE.ANIMATIONS._DESERT.mixer.clipAction( anim )
         })
         // STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
       }
@@ -256,9 +241,35 @@ export function loadStage( sceneName ) {
       })
       break
   }
+
+  /// UI [FIXME] 현재 2번 바인딩 됨..
+  document.querySelectorAll('.btn-close').forEach(btnClose => {
+    btnClose.addEventListener('click', function(e) {
+      focusOnRegion('reset')
+      // const $popup = document.querySelector('#point-popup')
+      const $popup = this.closest('.poi-popup')
+      gsap.to($popup, { autoAlpha: 0, duration: 0.5 })
+      e.preventDefault()
+      STATE.IS_FOCUSED = false
+    })
+  })
+
+  document.querySelectorAll('.parts .part').forEach(part => {
+    part.addEventListener('click', function() {
+      const feature = this.getAttribute('data-feature')
+      focusOnRegion(feature)
+      STATE.IS_FOCUSED = true 
+    })
+  })
 }
 
 export function focusOnRegion( _region ){
+  // console.log(window.UI.$currentPopup)
+  if(window.UI.$currentPopup) {
+    gsap.killTweensOf(window.UI.$currentPopup)
+    gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
+  }
+
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,
     STATE.ZONE_FOCUS[_region].position.y,
@@ -269,7 +280,6 @@ export function focusOnRegion( _region ){
     true 
   ).then(() => {
     if(STATE.IS_FOCUSED){
-      console.log('open popup')
       sendGLCustomEvent({msg: _region})
     }
   })

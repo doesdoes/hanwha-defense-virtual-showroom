@@ -174,13 +174,13 @@ window._WEBGL = (function() {
     STATE.WEBGL.cameraControls.normalizeRotations()
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
 
+    // update animation mixer
+    const dTime = STATE.WEBGL.clock.getDelta()
+    for (let key in STATE.ANIMATIONS) {
+      if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( dTime )
+    }
+    
     if(window.isAnim) {
-      // update animation mixer
-      const dTime = STATE.WEBGL.clock.getDelta()
-      for (let key in STATE.ANIMATIONS) {
-        if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( dTime )
-      }
-
       // uv animations
       if (STATE.UV_ANIMATED_OBJECTS) {
         for (const key in STATE.UV_ANIMATED_OBJECTS) {
