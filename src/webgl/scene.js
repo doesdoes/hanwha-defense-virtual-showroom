@@ -115,7 +115,7 @@ export function loadStage( sceneName ) {
           setTimeout(function() {
             const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
             tween.start()
-          }, 1000)
+          }, 2000)
         }
       })
 
@@ -240,7 +240,7 @@ export function loadStage( sceneName ) {
           setTimeout(function() {
             const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
             tween.start()
-          }, 1000)
+          }, 2000)
         }
 
         // MESH
