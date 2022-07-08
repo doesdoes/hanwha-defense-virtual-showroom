@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
     $sound.classList.remove('on')
     $audio.pause()
-    $audio.currentTime = 0;
+    $audio.currentTime = 0
 
     gsap.to('.poi-container', { autoAlpha: 0 })
   }

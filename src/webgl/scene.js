@@ -11,16 +11,17 @@ import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
 
 import * as REDBACK_PROPERTIES from './stageObjects/redbackProperties.js'
 import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgProperties.js'
-import TWEEN from '@tweenjs/tween.js'
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
-import setLight from './light.js';
+import { setLight } from './light.js';
+import { createSpriteTween } from './utils.js';
 
 export function loadStage( sceneName ) {
   switch (sceneName) {
     case 'K9':
       setLight(STATE)
+      const points = [];
 
       const TANK_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
       const TANK_OBJECT = new StageObject({
@@ -53,6 +54,8 @@ export function loadStage( sceneName ) {
             STATE.IS_FOCUSED = true 
             e.preventDefault()
           })
+
+          points.push(child)
         }
       })
 
@@ -129,18 +132,21 @@ export function loadStage( sceneName ) {
       })
       
       STATE.WEBGL.cameraControls.addEventListener('control', function() {
-        const d = STATE.WEBGL.camera.position.distanceTo(TANK_OBJECT.clone.position)
-        //console.log(d)
-        if(d < 5.3) {
-          gsap.to('.poi-container', {autoAlpha: 1, duration: 1})
-        } else {
-          gsap.to('.poi-container', {autoAlpha: 0, duration: 1})
-        }
+
+        points.forEach(point => {
+          const d = STATE.WEBGL.camera.position.distanceTo(point.position)
+          console.log(point.name, d)
+          if(d < 5.33) {
+            gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
+          } else {
+            gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
+          }
+        })
       })
 
       document.querySelectorAll('.parts .part').forEach(part => {
         part.addEventListener('click', function() {
-          focusOnRegion('longFiringRange')
+          focusOnRegion('longerFiringRange')
           STATE.IS_FOCUSED = true 
         })
       })
@@ -250,35 +256,6 @@ export function loadStage( sceneName ) {
       })
       break
   }
-}
-
-export function createSpriteTween( _mesh, _texture, _tilesHoriz, _tilesVert, _duration, _delay = 0 ){
-  _mesh.material.map = _texture
-  //_mesh.material.alphaMap = _texture
-
-  // setup wrap of texture
-  _texture.wrapS = _texture.wrapT = THREE.RepeatWrapping
-  _texture.repeat.set( 1 / _tilesHoriz, 1 / _tilesVert )
-  _texture.flipY = false
-
-  const tileInfo = { currentTile: 0}
-  return new TWEEN.Tween( tileInfo )
-    .to( { currentTile: _tilesHoriz * _tilesVert}, _duration )
-    .repeat(Infinity)
-    .delay(_delay)
-    .easing( TWEEN.Easing.Linear.None )
-    .onStart( () => {} )
-    .onUpdate( ( e, progress ) => {
-      let tile = Math.round(tileInfo.currentTile)
-      if (tile >= _tilesHoriz * _tilesVert) return
-
-      let currentColumn = tile % _tilesHoriz
-      _texture.offset.x = currentColumn / _tilesHoriz
-
-      let currentRow = Math.floor( tile / _tilesHoriz )
-      _texture.offset.y = currentRow / _tilesVert
-    } )
-    .onComplete( () => {})
 }
 
 export function focusOnRegion( _region ){

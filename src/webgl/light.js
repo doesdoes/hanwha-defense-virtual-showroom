@@ -3,28 +3,40 @@ import { GUI } from 'dat.gui'
 
 let isLight = false;
 
-export default function setLight(STATE) {
+export function setLight(STATE) {
 
   // [TODO] change color by scene
   if(isLight) return
 
   isLight = true
 
-  const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
-  directionalLight.position.set(-2.4, 4, -6.3)
+  const rightDirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
+  rightDirectionalLight.position.set(-2.4, 4, -6.5)
+  let targetRight = new THREE.Object3D()
+  targetRight.translateX(0)
+  targetRight.translateY(0)
+  targetRight.translateZ(-0.5)
+  rightDirectionalLight.target = targetRight
+  rightDirectionalLight.target.updateMatrixWorld()
 
   const leftDirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
-  leftDirectionalLight.position.set(-0.6, 6, 8.5)
+  leftDirectionalLight.position.set(-2.6, 6, 6.5)
+  let targetLeft = new THREE.Object3D()
+  targetLeft.translateX(0)
+  targetLeft.translateY(0)
+  targetLeft.translateZ(0.5)
+  leftDirectionalLight.target = targetLeft
+  leftDirectionalLight.target.updateMatrixWorld()
 
   let d = 10
-  directionalLight.shadow.camera.left = - d
-  directionalLight.shadow.camera.right = d
-  directionalLight.shadow.camera.top = d
-  directionalLight.shadow.camera.bottom = - d
-  directionalLight.shadow.mapSize.width = 2048
-  directionalLight.shadow.mapSize.height = 2048
-  directionalLight.castShadow = true
-  directionalLight.intensity = 0.7
+  rightDirectionalLight.shadow.camera.left = - d
+  rightDirectionalLight.shadow.camera.right = d
+  rightDirectionalLight.shadow.camera.top = d
+  rightDirectionalLight.shadow.camera.bottom = - d
+  rightDirectionalLight.shadow.mapSize.width = 2048
+  rightDirectionalLight.shadow.mapSize.height = 2048
+  rightDirectionalLight.castShadow = true
+  rightDirectionalLight.intensity = 0.6
 
   let leftD = 10
   leftDirectionalLight.shadow.camera.left = - leftD
@@ -34,37 +46,34 @@ export default function setLight(STATE) {
   leftDirectionalLight.shadow.mapSize.width = 2048
   leftDirectionalLight.shadow.mapSize.height = 2048
   leftDirectionalLight.castShadow = true
-  leftDirectionalLight.intensity = 0.7
+  leftDirectionalLight.intensity = 0.6
 
-  // desert
-  // STATE.hemisphereLight = new THREE.HemisphereLight( 0xFFE5B8, 0xFEF5EC, 1 )
-  // snow
-  // const hemisphereLight = new THREE.HemisphereLight( 0xDBF3FF, 0xFFFFFF, 1 )
   STATE.hemisphereLight = new THREE.HemisphereLight( 0xFFFFFF, 0xFFFFFF, 1 )
 
-  STATE.WEBGL.scene.add( directionalLight )
+  STATE.WEBGL.scene.add( rightDirectionalLight )
   STATE.WEBGL.scene.add( leftDirectionalLight )
   STATE.WEBGL.scene.add( STATE.hemisphereLight )
 
-  const drHelper = new THREE.DirectionalLightHelper( directionalLight, 1, '#0324fc' )
-  const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
-  const hemiHelper = new THREE.HemisphereLightHelper( STATE.hemisphereLight, 0.5, '#0324fc' )
+  // // [NOTE] HELPER
+  // const drHelper = new THREE.DirectionalLightHelper( rightDirectionalLight, 1, '#0324fc' )
+  // const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
+  // const hemiHelper = new THREE.HemisphereLightHelper( STATE.hemisphereLight, 0.5, '#0324fc' )
 
   // STATE.WEBGL.scene.add( drHelper )
   // STATE.WEBGL.scene.add( leftDrHelper )
   // STATE.WEBGL.scene.add( hemiHelper )
 
 
-  // [NOTE] gui
+  // // [NOTE] gui
   // document.querySelector('.header').style.zIndex = -1
   // const gui = new GUI()
 
   // const folderRight = gui.addFolder(`right light`)
   // // folderRight.open()
-  // folderRight.add(directionalLight.position, 'x', -10, 10).onChange(updateLight)
-  // folderRight.add(directionalLight.position, 'y', -10, 10).onChange(updateLight)
-  // folderRight.add(directionalLight.position, 'z', -10, 10).onChange(updateLight)
-  // folderRight.add(directionalLight, 'intensity', 0, 2)
+  // folderRight.add(rightDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
+  // folderRight.add(rightDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
+  // folderRight.add(rightDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
+  // folderRight.add(rightDirectionalLight, 'intensity', 0, 2)
 
   // const folderLeft = gui.addFolder(`left light`)
   // // folderLeft.open()
@@ -75,10 +84,25 @@ export default function setLight(STATE) {
 
 
   // function updateLight() {
-  //   console.log(directionalLight)
+  //   console.log(rightDirectionalLight)
   //   console.log(leftDirectionalLight)
 
-  //   directionalLight.target.updateMatrixWorld()
+  //   rightDirectionalLight.target.updateMatrixWorld()
   // }
  
+}
+
+export function setHemisphereLightDefault(STATE) {
+  STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
+}
+
+export function setHemisphereLightDesert(STATE) {
+  STATE.hemisphereLight.color = new THREE.Color(0xFFE5B8)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0xFEF5EC)
+}
+
+export function setHemisphereLightSnow(STATE) {
+  STATE.hemisphereLight.color = new THREE.Color(0xDBF3FF)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
 }

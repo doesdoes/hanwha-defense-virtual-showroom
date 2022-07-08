@@ -130,15 +130,23 @@ export const STATE = {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
     },
-    longFiringRange: {
+    longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
     },
-    mobility: {
+    highMobility: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
     },
     automaticControlSystem: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    ammunitionLoader: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    irCamera: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
     },
