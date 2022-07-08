@@ -109,6 +109,14 @@ export function loadStage( sceneName ) {
         if(child.name === 'BG_Snow_MountainBG_Desert') {
           STATE.ANIMATED_OBJECTS.snowMountain.mesh = child  
         }
+
+        if(child.name === 'Dirt_L_Part_Seq') {
+          // STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
+          setTimeout(function() {
+            const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
+            tween.start()
+          }, 1000)
+        }
       })
 
       /// UI
@@ -228,6 +236,13 @@ export function loadStage( sceneName ) {
           STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
         }
 
+        if(child.name === 'Dirt_L_Part_Seq') {
+          setTimeout(function() {
+            const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
+            tween.start()
+          }, 1000)
+        }
+
         // MESH
         if(child.name === 'BG_Desert_Mountain') {
           STATE.ANIMATED_OBJECTS.desertMountain.mesh = child
@@ -237,13 +252,11 @@ export function loadStage( sceneName ) {
   }
 }
 
-function createSpriteTween( _mesh, _tilesHoriz, _tilesVert, _duration, _delay = 0 ){
-  const _texture = _mesh.material.map
-  // _mesh.material.map = _texture
+export function createSpriteTween( _mesh, _texture, _tilesHoriz, _tilesVert, _duration, _delay = 0 ){
+  _mesh.material.map = _texture
   //_mesh.material.alphaMap = _texture
 
   // setup wrap of texture
-  console.log(_mesh,_mesh.material.map, _texture, '=======')
   _texture.wrapS = _texture.wrapT = THREE.RepeatWrapping
   _texture.repeat.set( 1 / _tilesHoriz, 1 / _tilesVert )
   _texture.flipY = false
@@ -251,13 +264,12 @@ function createSpriteTween( _mesh, _tilesHoriz, _tilesVert, _duration, _delay = 
   const tileInfo = { currentTile: 0}
   return new TWEEN.Tween( tileInfo )
     .to( { currentTile: _tilesHoriz * _tilesVert}, _duration )
+    .repeat(Infinity)
     .delay(_delay)
     .easing( TWEEN.Easing.Linear.None )
     .onStart( () => {} )
     .onUpdate( ( e, progress ) => {
-      console.log(1)
       let tile = Math.round(tileInfo.currentTile)
-
       if (tile >= _tilesHoriz * _tilesVert) return
 
       let currentColumn = tile % _tilesHoriz

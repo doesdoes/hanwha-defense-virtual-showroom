@@ -78,13 +78,23 @@ export const MATERIALS = {
   "Dirt_S": {
     "type": new THREE.MeshStandardMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Dirt_Seq/Dirt_0001.jpg",
-    "alphaMap": "Dirt_Seq/Dirt_0001.jpg",
+    // "map": "Dirt_Seq/Dirt_0001.jpg",
+    // "alphaMap": "Dirt_Seq/Dirt_0001.jpg",
+    "map": "dirt_spritesheet_horizon.png",
+    "alphaMap": "dirt_spritesheet_horizon.png",
     "transparent": true,
     "opacity": 0.4,
     "flipY": false,
     // "depthTest": false,
     "depthWrite": false,
+    // "mapTiling":{
+    //   repeatX: 1,
+    //   repeatY: 1,
+    // },
+    // "alphaMapTiling":{
+    //   repeatX: 1,
+    //   repeatY: 1,
+    // },
   },
 
   "Tire_Line_S": {
