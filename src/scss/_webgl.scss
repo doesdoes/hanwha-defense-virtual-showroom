@@ -129,7 +129,7 @@
   right: $h-padding-gap;
   width: max(164px, 10.10vw);
   transform: translate(0, -50%);
-  z-index: 1;
+  z-index: 1000;
 
   .part {
     display: flex;
