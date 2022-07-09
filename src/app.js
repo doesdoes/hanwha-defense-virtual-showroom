@@ -87,6 +87,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('.entry', {autoAlpha: 0})
     gsap.to('#content-wrapper', {autoAlpha: 1})
     document.querySelector('.header').setAttribute('data-state', 'showroom')
+    document.body.setAttribute('data-state', item)
 
     gsap.to(`.indicator-panel[data-item="${item}"]`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
     gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})

@@ -219,12 +219,6 @@ export const ASSETS = {
         path : 'glb/desert-bg.glb',
         asset: null
       },
-      // {
-      //   name: 'snowBg',
-      //   loaded: false,
-      //   path : 'glb/snow-bg.glb',
-      //   asset: null
-      // }
     ],
     TEXTURES_FILES: []
   },

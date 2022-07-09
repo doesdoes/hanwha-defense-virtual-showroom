@@ -318,6 +318,14 @@
       animation: wingwing 0.5s alternate infinite;
     }
   }
+
+  body:not([data-state="k9a1"]) &[data-item="k9a1"]{
+    visibility: collapse !important;
+  }
+
+  body:not([data-state="redback"]) &[data-item="redback"]{
+    visibility: collapse !important;
+  }
 }
 
 .dimmed {

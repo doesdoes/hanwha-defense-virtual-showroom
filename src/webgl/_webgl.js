@@ -56,7 +56,6 @@ window._WEBGL = (function() {
         if ( event.key == 'r' ) STATE.ENABLE_RENDERING ? toggleRendering( false ) : toggleRendering( true )
 
         if ( event.key == '1' ) {
-          console.log('here');
           SCENE.toggleStages(true, 'k9a1IndoorBg')
           SCENE.toggleStages(false, 'snowBg')
         }
