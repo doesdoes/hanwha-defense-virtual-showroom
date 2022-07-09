@@ -122,11 +122,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
           _WEBGL.toggleScene('REDBACK', false)
           _WEBGL.toggleScene('K9', true)
           _WEBGL.toggleRendering(true)
-
-          // setTimeout(() => {
-            // [TODO] loading spinner
-            // gateToWebglView(item)
-          // }, 1000)
         })
       }
       
@@ -151,11 +146,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
           _WEBGL.toggleScene('K9', false)
           _WEBGL.toggleScene('REDBACK', true)
           _WEBGL.toggleRendering(true)
-          
-          // setTimeout(() => {
-            // [TODO] loading spinner
-            // gateToWebglView(item)
-          // }, 1000)
         })
       }
     }
@@ -199,7 +189,4 @@ function turnoffVideo(video) {
   video.pause()
   video.currentTime = 0
   visualMedia.classList.remove('playing')
-
-  // window._WEBGL.
-
 }

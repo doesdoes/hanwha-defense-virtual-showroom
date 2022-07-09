@@ -14,18 +14,17 @@ import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgPro
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
-import { setLight } from './light.js';
-import { createSpriteTween } from './utils.js';
-import UILoadingManager from './class/UILoadingManager.js';
-import { LoadingSpinner } from './class/Lloading-Spinner'
+import { setLight } from './light.js'
+import { createSpriteTween } from './utils.js'
+import UILoadingManager from './class/UILoadingManager.js'
 
 export function loadStage( sceneName, callback ) {
-  const uiLoadingManager = new UILoadingManager()
+  const uiLoadingManager = new UILoadingManager() 
 
   switch (sceneName) {
     case 'K9':
       setLight(STATE)
-      const points = [];
+      const k9Points = [];
 
       const TANK_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
       const TANK_OBJECT = new StageObject({
@@ -58,7 +57,7 @@ export function loadStage( sceneName, callback ) {
             e.preventDefault()
           })
 
-          points.push(child)
+          k9Points.push(child)
         }
       })
 
@@ -123,24 +122,13 @@ export function loadStage( sceneName, callback ) {
           })
         }
       })
-      
-      STATE.WEBGL.cameraControls.addEventListener('control', function() {
 
-        points.forEach(point => {
-          const d = STATE.WEBGL.camera.position.distanceTo(point.position)
-          console.log(point.name, d)
-          if(d < 5.33) {
-            gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
-          } else {
-            gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
-          }
-        })
-      })
-
+      setUI(sceneName, k9Points)
       break
 
     case 'REDBACK':
       setLight(STATE)
+      const redbackPoints = []
 
       const REDBACK_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redback" } )
       const REDBACK_OBJECT = new StageObject({
@@ -179,6 +167,8 @@ export function loadStage( sceneName, callback ) {
             STATE.IS_FOCUSED = true 
             e.preventDefault()
           })
+
+          redbackPoints.push(child)
         }
       })
 
@@ -242,10 +232,23 @@ export function loadStage( sceneName, callback ) {
           STATE.ANIMATED_OBJECTS.desertMountain.mesh = child
         }
       })
+
+      setUI(sceneName, redbackPoints)
       break
   }
+}
 
-  /// UI [FIXME] 현재 2번 바인딩 됨..
+function setUI(sceneName, points) {
+  // STATE.WEBGL.cameraControls.addEventListener('control', function() {
+    updatePointVisible(points)
+  // })
+  requestAnimationFrame(updatePoint)
+  function updatePoint() {
+    
+    requestAnimationFrame(updatePoint)
+    updatePointVisible(points)
+  }
+
   document.querySelectorAll('.btn-close').forEach(btnClose => {
     btnClose.addEventListener('click', function(e) {
       focusOnRegion('reset')
@@ -263,6 +266,18 @@ export function loadStage( sceneName, callback ) {
       focusOnRegion(feature)
       STATE.IS_FOCUSED = true 
     })
+  })
+}
+
+function updatePointVisible(points) {
+  points.forEach(point => {
+    const d = STATE.WEBGL.camera.position.distanceTo(point.position)
+    // console.log(point.name, d)
+    if(d < 5.33) {
+      gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
+    } else {
+      gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
+    }
   })
 }
 

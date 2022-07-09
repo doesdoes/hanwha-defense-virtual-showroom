@@ -130,6 +130,7 @@ export const STATE = {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
     },
+
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
@@ -150,22 +151,27 @@ export const STATE = {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
     },
-    // funcPoint2: {
-    //   position: new THREE.Vector3(-6,2,3),
-    //   target: new THREE.Vector3(0,0,0),
-    // },
-    // straightLane: {
-    //   position: new THREE.Vector3(-6,2,3),
-    //   target: new THREE.Vector3(0,0,0),
-    // },
-    // shortTrack: {
-    //   position: new THREE.Vector3(-6,2,3),
-    //   target: new THREE.Vector3(0,0,0),
-    // },
-    // longTrack: {
-    //   position: new THREE.Vector3(-6,2,3),
-    //   target: new THREE.Vector3(0,0,0),
-    // }
+
+    mainArmamentSystem: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    antiTankArmamentSystem: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    bestMobility: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    superiorProtection: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
+    isuRubberTrack: {
+      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      target: new THREE.Vector3(0,0,0),
+    },
   }
 }
 
@@ -181,7 +187,7 @@ export const ASSETS = {
       {
         name: 'k9a1IndoorBg',
         loaded: false,
-        path : 'glb/indoor-bg.glb',
+        path : 'glb/k9a1-indoor-bg.glb',
         asset: null
       },
       {
