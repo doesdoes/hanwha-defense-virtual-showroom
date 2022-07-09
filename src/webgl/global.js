@@ -176,7 +176,7 @@ export const STATE = {
 }
 
 export const ASSETS = {
-  K9: {
+  K9A1: {
     MODEL_FILES: [
       {
         name: 'k9Tank',

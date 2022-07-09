@@ -102,10 +102,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   function toggleItem(item) {
     const loadingSpinner = new LoadingSpinner()
 
-    if(item === 'k9a1') {
+    if(item === 'K9A1') {
       if(IS_INIT_K9A1) {
         _WEBGL.toggleScene('REDBACK', false)
-        _WEBGL.toggleScene('K9', true)
+        _WEBGL.toggleScene('K9A1', true)
         _WEBGL.toggleRendering(true)
     
         gateToWebglView(item)
@@ -113,22 +113,22 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         IS_INIT_K9A1 = true
         
         loadingSpinner.show()
-        _WEBGL.loadAssets('K9', () => {
+        _WEBGL.loadAssets('K9A1', () => {
           MAIN_ASSET_LOADED = true
-          _WEBGL.initScene('K9', () => {
+          _WEBGL.initScene('K9A1', () => {
             gateToWebglView(item)
             loadingSpinner.hide()
           })
 
           _WEBGL.toggleScene('REDBACK', false)
-          _WEBGL.toggleScene('K9', true)
+          _WEBGL.toggleScene('K9A1', true)
           _WEBGL.toggleRendering(true)
         })
       }
       
     } else {
       if(IS_INIT_REDBACK) {
-        _WEBGL.toggleScene('K9', false)
+        _WEBGL.toggleScene('K9A1', false)
         _WEBGL.toggleScene('REDBACK', true)
         _WEBGL.toggleRendering(true)
 
@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
             loadingSpinner.hide()
           })
 
-          _WEBGL.toggleScene('K9', false)
+          _WEBGL.toggleScene('K9A1', false)
           _WEBGL.toggleScene('REDBACK', true)
           _WEBGL.toggleRendering(true)
         })

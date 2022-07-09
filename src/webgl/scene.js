@@ -22,11 +22,11 @@ export function loadStage( sceneName, callback ) {
   const uiLoadingManager = new UILoadingManager() 
 
   switch (sceneName) {
-    case 'K9':
+    case 'K9A1':
       setLight(STATE)
       const k9Points = [];
 
-      const TANK_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
+      const TANK_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
       const TANK_OBJECT = new StageObject({
         originalObject: TANK_MESH.asset.scene,
         clonedObject: TANK_MESH.asset.scene.clone(),
@@ -61,6 +61,7 @@ export function loadStage( sceneName, callback ) {
         }
       })
 
+      // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
       STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // [NOTE] 탱크 mesh/uv 애니메이션
@@ -70,7 +71,7 @@ export function loadStage( sceneName, callback ) {
         }
       })
 
-      const INDOOR_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "k9a1IndoorBg" } )
+      const INDOOR_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9a1IndoorBg" } )
       const INDOOR_OBJECT = new StageObject({
         originalObject: INDOOR_MESH.asset.scene,
         clonedObject: INDOOR_MESH.asset.scene.clone(),
@@ -79,7 +80,7 @@ export function loadStage( sceneName, callback ) {
       })
       STATE.WEBGL.scene.add(INDOOR_OBJECT.clone)
 
-      const SNOW_MESH = ASSETS.K9.MODEL_FILES.find( obj => { return obj.name === "snowBg" } )
+      const SNOW_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "snowBg" } )
       const SNOW_OBJECT = new StageObject({
         originalObject: SNOW_MESH.asset.scene,
         clonedObject: SNOW_MESH.asset.scene.clone(),
@@ -172,6 +173,7 @@ export function loadStage( sceneName, callback ) {
         }
       })
 
+      // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
       STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // REDBACK INDOOR
@@ -239,17 +241,15 @@ export function loadStage( sceneName, callback ) {
 }
 
 function setUI(sceneName, points) {
-  // STATE.WEBGL.cameraControls.addEventListener('control', function() {
-    updatePointVisible(points)
-  // })
+  
+  updatePointVisible(points)
   requestAnimationFrame(updatePoint)
   function updatePoint() {
-    
     requestAnimationFrame(updatePoint)
     updatePointVisible(points)
   }
 
-  document.querySelectorAll('.btn-close').forEach(btnClose => {
+  document.querySelectorAll(`.popup-container[data-item="${sceneName}"] .btn-close`).forEach(btnClose => {
     btnClose.addEventListener('click', function(e) {
       focusOnRegion('reset')
       // const $popup = document.querySelector('#point-popup')
@@ -260,7 +260,7 @@ function setUI(sceneName, points) {
     })
   })
 
-  document.querySelectorAll('.parts .part').forEach(part => {
+  document.querySelectorAll(`.indicator-panel[data-item="${sceneName}"] .parts .part`).forEach(part => {
     part.addEventListener('click', function() {
       const feature = this.getAttribute('data-feature')
       focusOnRegion(feature)

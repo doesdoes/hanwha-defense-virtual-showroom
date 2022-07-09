@@ -319,11 +319,11 @@
     }
   }
 
-  body:not([data-state="k9a1"]) &[data-item="k9a1"]{
+  body:not([data-state="K9A1"]) &[data-item="K9A1"]{
     visibility: collapse !important;
   }
 
-  body:not([data-state="redback"]) &[data-item="redback"]{
+  body:not([data-state="REDBACK"]) &[data-item="REDBACK"]{
     visibility: collapse !important;
   }
 }

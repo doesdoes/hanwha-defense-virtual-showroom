@@ -23,7 +23,7 @@ export function setCondition() {
     const bg = this.getAttribute('data-bg')
   
     if(bg === 'k9a1IndoorBg') {
-      document.body.setAttribute('data-state', 'k9a1-snow')
+      document.body.setAttribute('data-state', 'K9A1-SNOW')
       this.setAttribute('data-bg', 'snowBg')
       SCENE.toggleStages(true, 'snowBg')
       SCENE.toggleStages(false, 'k9a1IndoorBg')
@@ -39,7 +39,7 @@ export function setCondition() {
       })
       
     } else {
-      document.body.setAttribute('data-state', 'k9a1')
+      document.body.setAttribute('data-state', 'K9A1')
       this.setAttribute('data-bg', 'k9a1IndoorBg')
       SCENE.toggleStages(false, 'snowBg')
       SCENE.toggleStages(true, 'k9a1IndoorBg')
@@ -63,7 +63,7 @@ export function setCondition() {
     const bg = this.getAttribute('data-bg')
     
     if(bg === 'redbackIndoorBg') {
-      document.body.setAttribute('data-state', 'redback-desert')
+      document.body.setAttribute('data-state', 'REDBACK-DESERT')
       this.setAttribute('data-bg', 'desertBg')
       SCENE.toggleStages(true, 'desertBg')
       SCENE.toggleStages(false, 'redbackIndoorBg')
@@ -79,7 +79,7 @@ export function setCondition() {
       })
       
     } else {
-      document.body.setAttribute('data-state', 'redback')
+      document.body.setAttribute('data-state', 'REDBACK')
       this.setAttribute('data-bg', 'redbackIndoorBg')
       SCENE.toggleStages(false, 'desertBg')
       SCENE.toggleStages(true, 'redbackIndoorBg')

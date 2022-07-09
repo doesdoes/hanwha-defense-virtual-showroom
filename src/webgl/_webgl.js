@@ -91,8 +91,8 @@ window._WEBGL = (function() {
     LOADING_MANAGER.onError = url => console.log('There was an error loading '+url)
 
     switch (_sceneName) {
-      case 'K9':
-        LOADER.loadGLTF(LOADING_MANAGER, ASSETS.K9.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
+      case 'K9A1':
+        LOADER.loadGLTF(LOADING_MANAGER, ASSETS.K9A1.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
         break
       case 'REDBACK':
         LOADER.loadGLTF(LOADING_MANAGER, ASSETS.REDBACK.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
@@ -116,8 +116,8 @@ window._WEBGL = (function() {
 
     //load stage
     switch (_sceneName) {
-      case 'K9':
-        SCENE.loadStage('K9', callback)
+      case 'K9A1':
+        SCENE.loadStage('K9A1', callback)
         break
       case 'REDBACK':
         SCENE.loadStage('REDBACK', callback)
@@ -139,7 +139,7 @@ window._WEBGL = (function() {
     // STATE.CURRENT_SCENE.VISIBLE = _toggle
     // SCENE.toggleStages(_toggle, _sceneName)
 
-    if(_sceneName === "K9") {
+    if(_sceneName === "K9A1") {
       SCENE.toggleStages(_toggle, 'k9Tank')
       SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
       SCENE.toggleStages(false, 'snowBg')
