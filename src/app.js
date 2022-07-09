@@ -2,6 +2,8 @@ import {gsap} from 'gsap/all';
 import { canvasButton } from './canvas-button';
 import { sendGLCustomEvent } from './webgl/class/GLCustomEvent'
 import './webgl/_webgl';
+import * as THREE from 'three'
+import { LoadingSpinner } from './webgl/class/Lloading-Spinner'
 
 const $sound = document.querySelector('#sound');
 const $audio = $sound.querySelector('.sound audio');
@@ -15,17 +17,18 @@ window.UI = {
 
 window.addEventListener('DOMContentLoaded', async (event) => {
 
-  canvasButton();
+  canvasButton()
   setContent()
+  setUIEvent()
 
   // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
   document.querySelectorAll('.entry__item .btn').forEach(bttn => {
     bttn.addEventListener('click', function(e) {
       const item = this.getAttribute('data-item')
-      // goToContent(item)
       toggleItem(item)
 
       e.preventDefault()
+      e.stopPropagation()
     })
   })
 
@@ -96,6 +99,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   }
 
   function toggleItem(item) {
+    const loadingSpinner = new LoadingSpinner()
+
     if(item === 'k9a1') {
       if(IS_INIT_K9A1) {
         _WEBGL.toggleScene('REDBACK', false)
@@ -106,18 +111,22 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       } else {
         IS_INIT_K9A1 = true
         
+        loadingSpinner.show()
         _WEBGL.loadAssets('K9', () => {
           MAIN_ASSET_LOADED = true
-          _WEBGL.initScene('K9')
+          _WEBGL.initScene('K9', () => {
+            gateToWebglView(item)
+            loadingSpinner.hide()
+          })
 
           _WEBGL.toggleScene('REDBACK', false)
           _WEBGL.toggleScene('K9', true)
           _WEBGL.toggleRendering(true)
 
-          setTimeout(() => {
+          // setTimeout(() => {
             // [TODO] loading spinner
-            gateToWebglView(item)
-          }, 1000)
+            // gateToWebglView(item)
+          // }, 1000)
         })
       }
       
@@ -130,19 +139,23 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         gateToWebglView(item)
       } else {
         IS_INIT_REDBACK = true
-
+        
+        loadingSpinner.show()
         _WEBGL.loadAssets('REDBACK', () => {
           MAIN_ASSET_LOADED = true
-          _WEBGL.initScene('REDBACK')
+          _WEBGL.initScene('REDBACK', () => {
+            gateToWebglView(item)
+            loadingSpinner.hide()
+          })
 
           _WEBGL.toggleScene('K9', false)
           _WEBGL.toggleScene('REDBACK', true)
           _WEBGL.toggleRendering(true)
           
-          setTimeout(() => {
+          // setTimeout(() => {
             // [TODO] loading spinner
-            gateToWebglView(item)
-          }, 1000)
+            // gateToWebglView(item)
+          // }, 1000)
         })
       }
     }
@@ -156,3 +169,37 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
 });
+
+function setUIEvent() {
+  document.querySelectorAll('.visual-media').forEach(media => {
+    const video = media.querySelector('video')
+
+    media.addEventListener('click', function(e) {
+      toggleVideo(video)
+      
+      e.preventDefault()
+      e.stopPropagation()
+    })
+  })
+}
+
+function toggleVideo(video) {
+  const visualMedia = video.closest('.visual-media')
+  if(video.paused) {
+    video.play()
+    visualMedia.classList.add('playing')
+  } else {
+    video.pause()
+    visualMedia.classList.remove('playing')
+  }
+}
+
+function turnoffVideo(video) {
+  const visualMedia = video.closest('.visual-media')
+  video.pause()
+  video.currentTime = 0
+  visualMedia.classList.remove('playing')
+
+  // window._WEBGL.
+
+}

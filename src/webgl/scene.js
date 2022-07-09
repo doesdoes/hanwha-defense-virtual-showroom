@@ -16,8 +16,12 @@ import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
 import { setLight } from './light.js';
 import { createSpriteTween } from './utils.js';
+import UILoadingManager from './class/UILoadingManager.js';
+import { LoadingSpinner } from './class/Lloading-Spinner'
 
-export function loadStage( sceneName ) {
+export function loadStage( sceneName, callback ) {
+  const uiLoadingManager = new UILoadingManager()
+
   switch (sceneName) {
     case 'K9':
       setLight(STATE)
@@ -39,7 +43,6 @@ export function loadStage( sceneName ) {
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
-        //console.log(child.userData)
         if (child.userData.type == 'POI') {
           // POI buttons
           const POI = new CSS2DObject( document.getElementById(child.name) )
@@ -88,7 +91,6 @@ export function loadStage( sceneName ) {
       SNOW_OBJECT.clone.visible = false
 
       if(SNOW_MESH.asset.animations.length > 0){
-        console.log(SNOW_MESH.asset.animations)
         STATE.ANIMATIONS._SNOW.mixer = new THREE.AnimationMixer( SNOW_OBJECT.clone )
         SNOW_MESH.asset.animations.forEach(anim => {
           STATE.ANIMATIONS._SNOW.mixer.clipAction( anim )
@@ -114,11 +116,11 @@ export function loadStage( sceneName ) {
         }
 
         if(child.name === 'Dirt_L_Part_Seq') {
-          // STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
-          setTimeout(function() {
+          uiLoadingManager.waitTextures(function() {
             const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
             tween.start()
-          }, 2000)
+            callback && callback()
+          })
         }
       })
       
@@ -228,10 +230,11 @@ export function loadStage( sceneName ) {
         }
 
         if(child.name === 'Dirt_L_Part_Seq') {
-          setTimeout(function() {
+          uiLoadingManager.waitTextures(function() {
             const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
             tween.start()
-          }, 2000)
+            callback && callback()
+          })
         }
 
         // MESH

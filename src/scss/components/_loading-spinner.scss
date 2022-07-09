@@ -1,0 +1,63 @@
+.loading-spinner{
+  &-wrapper {
+    position:fixed;
+    top:0; left: 0;
+    width:100vw;
+    height:100vh;
+    transition:opacity 500ms ease,left 2500ms ease;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+
+    @include btn2-kr;
+  }
+  &-bg {
+    position: absolute;
+    width:100vw;
+    height:100vh;
+    background-color: #000000;
+    opacity: .4;
+  }
+  &-ring {
+    width: 2.5em;
+    height: 2.5em;
+    opacity: 1;
+    position: relative;
+  }
+  &-ring-parts{
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: $point1 transparent transparent transparent;
+    opacity: 1;
+
+    &:nth-child(1) {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    &:nth-child(3) {
+      animation-delay: .35s;
+    }
+    &:nth-child(4) {
+      animation-delay: .25s;
+    }
+    &:nth-child(5) {
+      animation-delay: .15s;
+    }
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { STATE } from '../global.js'
+import UILoadingManager from './UILoadingManager.js'
 
 export class StageObject{
   constructor(_options){
@@ -31,11 +32,15 @@ export class StageObject{
     this.LOADING_MANAGER = new THREE.LoadingManager()
     this.LOADING_MANAGER.onProgress = ( url, itemsLoaded, itemsTotal ) => { if(STATE.WEBGL.isDebug) console.log( `%cTextures loading: ${url} (${itemsLoaded}/${itemsTotal})`,'color:#787878;') }
     this.LOADING_MANAGER.onError = ( url ) => {console.log( 'There was an error loading ' + url )}
-
-    this.LOADING_MANAGER.onLoad = () => {
-      this.loadingManagerLoaded = true
-      if (!this.pendingTexturesUpdated) this.updatePendingTexures()
-    }
+    
+    const uiLoadingManager = new UILoadingManager()
+    uiLoadingManager.addTexture(new Promise((resolve, reject) => {
+      this.LOADING_MANAGER.onLoad = () => {
+        this.loadingManagerLoaded = true
+        if (!this.pendingTexturesUpdated) this.updatePendingTexures()
+        resolve()
+      }
+    }))
 
     this.textureLoader = new THREE.TextureLoader(this.LOADING_MANAGER)
 

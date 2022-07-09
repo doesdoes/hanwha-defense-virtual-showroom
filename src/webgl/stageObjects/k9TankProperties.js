@@ -24,7 +24,6 @@ export const MATERIALS = {
     "emissiveIntensity": 1.0,
     // "transparent": true,
   },
-  
   "K9A1_Body_s": {
     "type": new THREE.MeshPhongMaterial(),
     "color": new THREE.Color("rgb(102,102,102)"),

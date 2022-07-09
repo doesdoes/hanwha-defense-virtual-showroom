@@ -112,16 +112,16 @@ window._WEBGL = (function() {
    * @param {string} sceneName name of the scene to load
    * @return {void}
    */
-  function initScene(_sceneName){
+  function initScene(_sceneName, callback){
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: scene %c${_sceneName} %cinitialized!`,'color:#3c6bef;','color:#unherit;')
 
     //load stage
     switch (_sceneName) {
       case 'K9':
-        SCENE.loadStage('K9')
+        SCENE.loadStage('K9', callback)
         break
       case 'REDBACK':
-        SCENE.loadStage('REDBACK')
+        SCENE.loadStage('REDBACK', callback)
         break
     }
   }
@@ -179,7 +179,7 @@ window._WEBGL = (function() {
     for (let key in STATE.ANIMATIONS) {
       if(STATE.ANIMATIONS[key].mixer) STATE.ANIMATIONS[key].mixer.update( dTime )
     }
-    
+
     if(window.isAnim) {
       // uv animations
       if (STATE.UV_ANIMATED_OBJECTS) {
