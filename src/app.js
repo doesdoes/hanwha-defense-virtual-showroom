@@ -1,7 +1,8 @@
-import {gsap} from 'gsap/all';
-import { canvasButton } from './canvas-button';
+import {gsap} from 'gsap/all'
+import { canvasButton } from './canvas-button'
+import './dropdown'
 import { sendGLCustomEvent } from './webgl/class/GLCustomEvent'
-import './webgl/_webgl';
+import './webgl/_webgl'
 import * as THREE from 'three'
 import { LoadingSpinner } from './webgl/class/Lloading-Spinner'
 
@@ -22,13 +23,13 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   setUIEvent()
 
   // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
-  document.querySelectorAll('.entry__item .btn').forEach(bttn => {
+  document.querySelectorAll('.btn-entry-point').forEach(bttn => {
     bttn.addEventListener('click', function(e) {
       const item = this.getAttribute('data-item')
       toggleItem(item)
 
       e.preventDefault()
-      e.stopPropagation()
+      // e.stopPropagation()
     })
   })
 

@@ -36,14 +36,25 @@
         <div class="gnb">
           <a href="#" id="btn-back" class="btn-back">HOME</a>
 
-          <div class="selectbox kind">
-            <button type="button" class="selectbox__selection">K9A1</button>
+          <div class="dropdown closed kind">
+            <button type="button" class="dropdown__selection">K9A1</button>
+            <ul class="dropdown__list">
+              <li><a href="#" class="btn-entry-point" data-item="K9A1">K9A1</a></li>
+              <li><a href="#" class="btn-entry-point" data-item="REDBACK">REDBACK</a></li>
+            </ul>
           </div>
         </div>
 
         <div class="util">
-          <div class="selectbox lang">
+          <!-- <div class="selectbox lang">
             <button type="button" class="selectbox__selection">KOR</button>
+          </div> -->
+          <div class="dropdown closed lang">
+            <button type="button" class="dropdown__selection">KOR</button>
+            <ul class="dropdown__list">
+              <li><a href="#">KOR</a></li>
+              <li><a href="#">ENG</a></li>
+            </ul>
           </div>
           <div class="sound" id="sound">
             <audio src="./assets/content/539_full_transformers-war_0144.mp3" loop></audio>
@@ -183,7 +194,7 @@
               <p class="b1 desc">국내 독자 기술로 개발한 세계 최고의 자주포</p>
             </span>
             <div class="func">
-              <a href="#" class="btn btn--dynamic btn--invert" data-txt="View More" data-item="K9A1"><span class="txt">View More</span></a>
+              <a href="#" class="btn btn--dynamic btn--invert btn-entry-point" data-txt="View More" data-item="K9A1"><span class="txt">View More</span></a>
               <!-- <button type="button" class="bttn" data-item="k9-high">고화질</button>
               <button type="button" class="bttn" data-item="k9-low">일반화질</button> -->
               </div>
@@ -199,7 +210,7 @@
               <p class="b1 desc">공격 능력과 방어 능력을 모두 갖춘 미래형 보병전투장갑차</p>
             </span>
             <div class="func">
-              <a href="#" class="btn btn--dynamic btn--invert" data-txt="View More" data-item="REDBACK"><span class="txt">View More</span></a>
+              <a href="#" class="btn btn--dynamic btn--invert btn-entry-point" data-txt="View More" data-item="REDBACK"><span class="txt">View More</span></a>
               <!-- <button type="button" class="bttn" data-item="redback-high">고화질</button>
               <button type="button" class="bttn" data-item="redback-low">일반화질</button> -->
             </div>
