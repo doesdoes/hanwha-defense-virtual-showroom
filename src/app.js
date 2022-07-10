@@ -74,8 +74,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('.indicator-panel', { autoAlpha: 0, x: 20, pointerEvents: 'none' })
     gsap.to('.bot', { autoAlpha: 0, x: 20 })
 
-    document.querySelector('#change-condition-k9a1').setAttribute('data-bg', 'k9a1IndoorBg')
-    document.querySelector('#change-condition-redback').setAttribute('data-bg', 'redbackIndoorBg')
+    // document.querySelector('#change-condition-k9a1').setAttribute('data-bg', 'k9a1IndoorBg')
+    // document.querySelector('#change-condition-redback').setAttribute('data-bg', 'redbackIndoorBg')
 
     $sound.classList.remove('on')
     $audio.pause()
@@ -85,12 +85,13 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   }
 
   function gateToWebglView(item) {
+
     gsap.to('.entry', {autoAlpha: 0})
     gsap.to('#content-wrapper', {autoAlpha: 1})
     document.querySelector('.header').setAttribute('data-state', 'showroom')
     document.body.setAttribute('data-state', item)
 
-    gsap.to(`.indicator-panel[data-item="${item}"]`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
+    gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
     gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
 
     $sound.classList.add('on')
@@ -102,6 +103,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   function toggleItem(item) {
     const loadingSpinner = new LoadingSpinner()
+    window.isAnim = false
 
     if(item === 'K9A1') {
       if(IS_INIT_K9A1) {

@@ -37,6 +37,7 @@
       top: 50%;
       background: url(../content/svg/icon-product.svg) center center / 100% no-repeat;
       transform: translate(0, -50%) rotate(180deg);
+      transition: transform 0.3s;
     }
     
     &:nth-of-type(1){
@@ -51,11 +52,12 @@
     background-color: $white;
     box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
     overflow: hidden;
+    transition: transform 0.3s;
+    transform-origin: top;
+  }
 
-    a {
-      padding: 0.63em;
-      // background-color: ;
-    }
+  &__a {
+    padding: 0.63em;
   }
 
   &.closed {
@@ -66,7 +68,26 @@
       }
     }
     .dropdown__list {
-      height: 0;
+      transform: scaleY(0);
     }
   }
+}
+
+[data-state="K9A1"] {
+  .dropdown__a[data-item="K9A1"] {
+    background-color: $white;
+    color: $point1;
+  }
+}
+
+[data-state="REDBACK"] {
+  .dropdown__a[data-item="REDBACK"] {
+    background-color: $white;
+    color: $point1;
+  }
+}
+
+.dropdown__a[data-item="KOR"] {
+  background-color: $white;
+  color: $point1;
 }

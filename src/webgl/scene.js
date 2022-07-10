@@ -259,14 +259,6 @@ function setUI(sceneName, points) {
       STATE.IS_FOCUSED = false
     })
   })
-
-  document.querySelectorAll(`.indicator-panel[data-item="${sceneName}"] .parts .part`).forEach(part => {
-    part.addEventListener('click', function() {
-      const feature = this.getAttribute('data-feature')
-      focusOnRegion(feature)
-      STATE.IS_FOCUSED = true 
-    })
-  })
 }
 
 function updatePointVisible(points) {
@@ -310,4 +302,14 @@ export function toggleStages( toggle, sceneName ) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false
     }
   }
+}
+
+export function setIndicator() {
+  document.querySelectorAll(`.indicator-panel .parts .part`).forEach(part => {
+    part.addEventListener('click', function() {
+      const feature = this.getAttribute('data-feature')
+      focusOnRegion(feature)
+      STATE.IS_FOCUSED = true 
+    })
+  })
 }

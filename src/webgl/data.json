@@ -1,0 +1,16 @@
+{
+  "k9a1-indicators": [
+    { "id": "longerFiringRange", "title": "Longer Firing Range"},
+    { "id": "highMobility", "title": "High Mobility"},
+    { "id": "ammunitionLoader", "title": "Ammunition Loader"},
+    { "id": "automaticControlSystem", "title": "Automatic Control System"},
+    { "id": "irCamera", "title": "IR Camera"}
+  ],
+  "redback-indicators": [
+    { "id": "mainArmamentSystem", "title": "Main Armament System"},
+    { "id": "antiTankArmamentSystem", "title": "Anti-Tank Armament System"},
+    { "id": "bestMobility", "title": "Best Mobility"},
+    { "id": "superiorProtection", "title": "Superior Protection"},
+    { "id": "isuRubberTrack", "title": "Isu & Rubber Track"}
+  ]
+}

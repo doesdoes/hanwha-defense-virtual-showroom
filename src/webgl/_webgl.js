@@ -6,6 +6,8 @@ import * as SCENE from './scene.js'
 import * as LOADER from './loader.js'
 import { STATE, ASSETS } from './global.js'
 import { setCondition } from './interactions'
+import data from './data'
+import { setIndicator } from './scene'
 
 window.isAnim
 window._WEBGL = (function() {
@@ -75,6 +77,7 @@ window._WEBGL = (function() {
     }
 
     setCondition()
+    setIndicator()
 
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: context created!!`)
   }
@@ -138,15 +141,35 @@ window._WEBGL = (function() {
     if( _toggle ) STATE.CURRENT_SCENE.NAME = _sceneName
     // STATE.CURRENT_SCENE.VISIBLE = _toggle
     // SCENE.toggleStages(_toggle, _sceneName)
+    //Update indicator
+    
+    const $condition = document.querySelector('.indicator-panel #change-condition')
+    const $parts = document.querySelectorAll('.indicator-panel .part')
 
+    console.log(data['k9a1-indicators'])
     if(_sceneName === "K9A1") {
       SCENE.toggleStages(_toggle, 'k9Tank')
       SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
       SCENE.toggleStages(false, 'snowBg')
+
+      $condition.setAttribute('data-item', 'k9a1IndoorBg')
+
+      Array.from($parts).map((part, idx) => {
+        const partData = data['k9a1-indicators'][idx]
+        part.textContent = partData.title
+        part.setAttribute('data-feature', partData.id)
+      })
     } else {
       SCENE.toggleStages(_toggle, 'redback')
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
       SCENE.toggleStages(false, 'desertBg')
+
+      $condition.setAttribute('data-item', 'redbackIndoorBg')
+      Array.from($parts).map((part, idx) => {
+        const partData = data['redback-indicators'][idx]
+        part.textContent = partData.title
+        part.setAttribute('data-feature', partData.id)
+      })
     }
 
     // [TEMP]
