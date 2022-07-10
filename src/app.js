@@ -34,9 +34,14 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   })
 
   document.querySelector('.header .btn-back').addEventListener('click', function(e) {
-    goToGate();
+    goToGate()
 
-    e.preventDefault();
+    e.preventDefault()
+  })
+
+  document.querySelector('.btn-close-guide').addEventListener('click', function(e) {
+    document.querySelector('.main').classList.remove('guide')
+    e.preventDefault()
   })
 
   document.querySelector('#sound').addEventListener('click', function() {

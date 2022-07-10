@@ -1,0 +1,88 @@
+.guide {
+  .dimmed {
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    opacity: 0.6;
+    z-index: 2999;
+
+    &::before,
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  .header {
+    pointer-events: none;
+    .btn-back {
+      opacity: 0.2;
+    }
+
+    .util {
+      display: none;
+    }
+  }
+
+  .indicator-panel * {
+    pointer-events: none !important;
+  }
+
+  &-popup {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: max(164px, 10.10vw);
+    color: $white;
+    text-align: center;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    transition: all 0.41s;
+
+    .content {
+      padding: 1.5em
+    }
+
+    .p {
+      line-height: 1.5;
+    }
+
+    &[data-item="dropdown"] {
+      top: calc(100% + 0.73vw + 2em);
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    &[data-item="condition"] {
+      top: 0;
+      left: -100%;
+      transform: translate(-50%, -25%);
+    }
+
+    &[data-item="parts"] {
+      top: calc(100% + 0.73vw + 2em);
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .guide-popup {
+    opacity: 1;
+  }
+}
+
+.btn-close-guide {
+  display: block;
+  position: absolute;
+  right: 60px;
+  top: 44px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../content/svg/btn-close.svg);
+  background-size: 100%;
+  z-index: 30;
+  visibility: collapse;
+
+  .guide & {
+    visibility: visible;
+  }
+}
