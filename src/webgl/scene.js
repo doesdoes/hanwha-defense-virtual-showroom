@@ -102,19 +102,19 @@ export function loadStage( sceneName, callback ) {
 
       // [NOTE] 맵 mesh/uv 애니메이션
       SNOW_OBJECT.clone.traverse((child) => {
-        // console.log(child.name)
+        console.log(child.name)
         // UV
-        if(child.name === 'BG_Snow_Ground_UV') {
+        if(child.name === 'BG_Snow_Ground_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.snowFloor.mesh = child  
         }
 
-        if(child.name === 'Speed_Line_UV') {
+        if(child.name === 'BG_SpeedLine_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
         }
 
         // MESH
-        if(child.name === 'BG_Snow_MountainBG_Desert') {
-          STATE.ANIMATED_OBJECTS.snowMountain.mesh = child  
+        if(child.name === 'BG_Snow_Mountain_UVAni') {
+          STATE.ANIMATED_OBJECTS.snowMountain.mesh = child
         }
 
         if(child.name === 'Dirt_L_Part_Seq') {
@@ -126,6 +126,9 @@ export function loadStage( sceneName, callback ) {
         }
       })
 
+      uiLoadingManager.waitTextures(function() {
+        callback && callback()
+      })
       setUI(sceneName, k9Points)
       break
 

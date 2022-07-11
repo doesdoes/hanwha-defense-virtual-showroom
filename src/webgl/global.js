@@ -8,7 +8,7 @@ export const STATE = {
   },
 
   movementX: 1.61,
-  moveSpeedLine: 0.0456,
+  moveSpeedLine: 0.0156,
   tile: 0,
 
   ENABLE_MOUSE_INTERACTION: false,
@@ -23,7 +23,7 @@ export const STATE = {
     rails: {
       mesh: null,
       animate: function() {
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.0008 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x -= 0.0016
       }
     },
     redbackRails: {
@@ -47,7 +47,7 @@ export const STATE = {
     snowFloor: {
       mesh: null,
       animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.010 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.020 
       }
     },
     tireLine: {

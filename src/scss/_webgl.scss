@@ -396,6 +396,7 @@
 
 .dimmed {
   pointer-events: none;
+  opacity: 0;
   &::before,
   &::after {
     content: '';
