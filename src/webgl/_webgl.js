@@ -25,7 +25,7 @@ window._WEBGL = (function() {
     switch (host) {
       case 'dev.does.kr':
         // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
-        STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom-light/assets`
+        STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`
         break
       default:
         STATE.ASSET_DOMAIN_PATH = `http://${host}/assets`
@@ -40,7 +40,7 @@ window._WEBGL = (function() {
       parentContainerClass: _parentContainerClass,
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
-      cameraOptions: { fov: 45, near: 0.1, far: 1000, x: 5, y: 0.5, z: -1.8 },
+      cameraOptions: { fov: 45, near: 0.1, far: 1000, x: 3.7, y: 0.37, z: -1.3 },
       isDebug: _debug
     })
 
