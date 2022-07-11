@@ -114,7 +114,7 @@ export function loadStage( sceneName, callback ) {
 
         // MESH
         if(child.name === 'BG_Snow_Mountain_UVAni') {
-          STATE.ANIMATED_OBJECTS.snowMountain.mesh = child
+          STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
         }
 
         if(child.name === 'Dirt_L_Part_Seq') {

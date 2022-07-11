@@ -27,6 +27,14 @@ export const MATERIALS = {
     // "depthTest": false,
     // "depthWrite": false,
     // "alphaTest": 1,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    },
+    "alphaMapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    }
   },
 
   "BG_Snow_Ground_UVAni_s": {
@@ -49,6 +57,10 @@ export const MATERIALS = {
     // "depthTest": true,
     "depthWrite": false,
     "opacity": 1,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    },
     "alphaMapTiling":{
       repeatX: 1,
       repeatY: 1,

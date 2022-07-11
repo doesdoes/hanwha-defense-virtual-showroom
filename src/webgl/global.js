@@ -50,6 +50,12 @@ export const STATE = {
         if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.020 
       }
     },
+    snowMountain: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.000120 
+      }
+    },
     tireLine: {
       mesh: null,
       animate: function() { 
