@@ -40,7 +40,8 @@ window._WEBGL = (function() {
       parentContainerClass: _parentContainerClass,
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
-      cameraOptions: { fov: 45, near: 0.1, far: 1000, x: 3.7, y: 0.37, z: -1.3 },
+      // k9a1 기준
+      cameraOptions: { fov: 45, near: 0.1, far: 1000, x: 4.15, y: -0.01, z: -2.0 },
       isDebug: _debug
     })
 

@@ -35,17 +35,44 @@ export const MATERIALS = {
     "alphaMap": "BG_Snow_Mountain_A.jpg",
     "transparent": true,
     "flipY": false,
+    // "depthTest": false,
     // "depthWrite": false,
+    // "alphaTest": 1,
+  },
+
+  "Tree_A_S": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Tree_MOD/Snow_Tree_A_Dif.jpg",
+    "alphaMap": "Tree_MOD/Snow_Tree_A_Alpha.jpg",
+    "transparent": true,
+    "flipY": false,
+    // "depthTest": true,
+    // "depthWrite": true,
+    // "alphaTest": 0.1,
+    // "depthTest": true,
+  },
+  "Tree_B_S": {
+    "type": new THREE.MeshStandardMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Tree_MOD/Snow_Tree_B_Dif.jpg",
+    "alphaMap": "Tree_MOD/Snow_Tree_B_Alpha.jpg",
+    "transparent": true,
+    "flipY": false,
+    // "depthTest": true,
+    // "depthWrite": true,
+    // "alphaTest": 0.1,
+    // "depthTest": true,
   },
 
   "BG_Snow_Ground_UV_S": {
-    "type": new THREE.MeshStandardMaterial(),
+    "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Ground/BG_Snow_Ground_Dif.jpg",
     "flipY": false,
     "mapTiling":{
-      repeatX: 2,
-      repeatY: 2,
+      repeatX: 1,
+      repeatY: 1,
     }
   },
 
@@ -146,22 +173,6 @@ export const MATERIALS = {
     "flipY": false,
     "depthWrite": false,
   },
-  "Tree_A_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Tree_MOD/Snow_Tree_A_Dif.jpg",
-    "alphaMap": "Tree_MOD/Snow_Tree_A_Alpha.jpg",
-    "transparent": true,
-    "flipY": false,
-  },
-  "Tree_B_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Tree_MOD/Snow_Tree_B_Dif.jpg",
-    "alphaMap": "Tree_MOD/Snow_Tree_B_Alpha.jpg",
-    "transparent": true,
-    "flipY": false,
-  },
   "Snow_Soil_S": {
     "type": new THREE.MeshStandardMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
@@ -178,40 +189,6 @@ export const MATERIALS = {
     "transparent": true,
     "flipY": false,
   },
-  
-  
-  
-
-  // "BG_Desert_Floor_UVani_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(42,15,4)"),
-  //   "alphaMap": "BG_Desert_Floor_UVani_A.jpg",
-  //   "transparent": true,
-  //   "opacity": 0.5,
-  //   "flipY": false,
-  // },
-  // "BG_Desert_UG_UVani_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(255,255,255)"),
-  //   "map": "BG_Desert_UG_UVani.jpg",
-  //   "flipY": false,
-  //   "mapTiling":{
-  //     repeatX: 2,
-  //     repeatY: 2,
-  //   }
-  // },
-
-  
-
-  // "BG_Desert_Mountain_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(255,255,255)"),
-  //   "map": "BG_Desert_Mountain_D.jpg",
-  //   "alphaMap": "BG_Desert_Mountain_A.jpg",
-  //   "transparent": true,
-  //   "flipY": false,
-  //   "depthWrite": false,
-  // },
   
   
 } 
