@@ -268,8 +268,17 @@ function setUI(sceneName, points) {
 function updatePointVisible(points) {
   points.forEach(point => {
     const d = STATE.WEBGL.camera.position.distanceTo(point.position)
-    // console.log(point.name, d)
-    if(d < 5.33) {
+    const state = document.body.getAttribute('data-state')
+    let offset
+    if(state === 'K9A1')
+      offset = 3.8
+    else if(state === 'REDBACK')
+      offset = 3.7
+    else 
+      return
+
+    // console.log(point.name, d, offset)
+    if(d < offset) {
       gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
     } else {
       gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
