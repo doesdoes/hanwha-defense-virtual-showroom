@@ -49,12 +49,7 @@ export function setCondition() {
     
         setHemisphereLightDefault(STATE)
   
-        STATE.ANIMATIONS._k9Tank.mixer._actions.forEach(anim => {
-          anim.stop()
-        })
-        // STATE.ANIMATIONS._SNOW.mixer._actions.forEach(anim => {
-        //   anim.stop()
-        // })
+        STATE.ANIMATIONS._k9Tank.mixer.stopAllAction()
         STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
         break;
 
@@ -84,9 +79,7 @@ export function setCondition() {
     
         setHemisphereLightDefault(STATE)
   
-        STATE.ANIMATIONS._REDBACK.mixer._actions.forEach(anim => {
-          anim.stop()
-        })
+        STATE.ANIMATIONS._REDBACK.mixer.stopAllAction()
         STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
       break;
     

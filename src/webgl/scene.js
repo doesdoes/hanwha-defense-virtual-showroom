@@ -37,7 +37,9 @@ export function loadStage( sceneName, callback ) {
 
       if(TANK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._k9Tank.mixer = new THREE.AnimationMixer( TANK_OBJECT.clone )
-        STATE.ANIMATIONS._k9Tank.mixer.clipAction( TANK_MESH.asset.animations[0] )
+        TANK_MESH.asset.animations.forEach(anim => {
+          STATE.ANIMATIONS._k9Tank.mixer.clipAction( anim )
+        })
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
@@ -142,7 +144,9 @@ export function loadStage( sceneName, callback ) {
 
       if(REDBACK_MESH.asset.animations.length > 0){
         STATE.ANIMATIONS._REDBACK.mixer = new THREE.AnimationMixer( REDBACK_OBJECT.clone )
-        STATE.ANIMATIONS._REDBACK.mixer.clipAction( REDBACK_MESH.asset.animations[0] )
+        REDBACK_MESH.asset.animations.forEach(anim => {
+          STATE.ANIMATIONS._REDBACK.mixer.clipAction( anim )
+        })
       }
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
