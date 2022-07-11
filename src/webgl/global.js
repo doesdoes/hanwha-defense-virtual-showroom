@@ -136,15 +136,15 @@ export const STATE = {
       target: new THREE.Vector3(0,0,0),
     },
     highMobility: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(-0.34,-0.37,-3.26),
       target: new THREE.Vector3(0,0,0),
     },
     automaticControlSystem: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(-1.19,-0.11,-3.1),
       target: new THREE.Vector3(0,0,0),
     },
     ammunitionLoader: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(-2.10,0.25,3.03),
       target: new THREE.Vector3(0,0,0),
     },
     irCamera: {

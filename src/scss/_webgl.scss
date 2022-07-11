@@ -272,6 +272,16 @@
   }
 }
 
+.poi-popup[data-popup="ammunitionLoader"] {
+  top: 27%;
+  left: 8%;
+}
+
+.poi-popup[data-popup="automaticControlSystem"] {
+  top: 27%;
+  left: 8%;
+}
+
 .poi-container {
   @include btn2-kr;
   position: relative;
