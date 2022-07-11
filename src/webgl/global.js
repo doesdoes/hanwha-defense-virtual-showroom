@@ -59,7 +59,9 @@ export const STATE = {
     tireLine: {
       mesh: null,
       animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y -= 0.150 
+        if(this.mesh && this.mesh.material.alphaMap != undefined) {
+          this.mesh.material.alphaMap.offset.y -= 0.150
+        }
       }
     },
   },

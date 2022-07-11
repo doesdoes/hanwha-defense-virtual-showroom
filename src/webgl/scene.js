@@ -66,13 +66,6 @@ export function loadStage( sceneName, callback ) {
       // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
       // STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
-      // [NOTE] 탱크 mesh/uv 애니메이션
-      TANK_OBJECT.clone.traverse((child) => {
-        if(child.name === 'TANK_K9A1_Track') {
-          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
-        }
-      })
-
       const INDOOR_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9a1IndoorBg" } )
       const INDOOR_OBJECT = new StageObject({
         originalObject: INDOOR_MESH.asset.scene,
@@ -116,19 +109,28 @@ export function loadStage( sceneName, callback ) {
         if(child.name === 'BG_Snow_Mountain_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
         }
+      })
 
-        if(child.name === 'Dirt_L_Part_Seq') {
+      // [NOTE] 탱크 mesh/uv 애니메이션
+      TANK_OBJECT.clone.traverse((child) => {
+        console.log(child.name)
+        if(child.name === 'TANK_K9A1_Track_UVAni') {
+          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
+        }
+
+        if(child.name === 'BG_Snow_TrackSkid_UVAni') {
+          STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
+        }
+
+        if(child.name === 'BG_Snow_Dust_SEQAni') {
           uiLoadingManager.waitTextures(function() {
-            const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
+            const tween = createSpriteTween(child, child.material.alphaMap, 60, 1, 1500)
             tween.start()
             callback && callback()
           })
         }
       })
 
-      uiLoadingManager.waitTextures(function() {
-        callback && callback()
-      })
       setUI(sceneName, k9Points)
       break
 

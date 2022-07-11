@@ -73,7 +73,6 @@ export class StageObject{
 
     object.traverse( async child => {
       child.sceneName = this.name
-      
       if( child.material ){
         if (!this.definition.MATERIALS[child.material.name]) return
 

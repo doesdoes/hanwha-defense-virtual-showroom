@@ -54,47 +54,47 @@ export function setLight(STATE) {
   STATE.WEBGL.scene.add( leftDirectionalLight )
   STATE.WEBGL.scene.add( STATE.hemisphereLight )
 
-  // // [NOTE] HELPER
-  // const drHelper = new THREE.DirectionalLightHelper( rightDirectionalLight, 1, '#0324fc' )
-  // const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
-  // const hemiHelper = new THREE.HemisphereLightHelper( STATE.hemisphereLight, 0.5, '#0324fc' )
+  // [NOTE] HELPER
+  const drHelper = new THREE.DirectionalLightHelper( rightDirectionalLight, 1, '#0324fc' )
+  const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
+  const hemiHelper = new THREE.HemisphereLightHelper( STATE.hemisphereLight, 0.5, '#0324fc' )
 
-  // STATE.WEBGL.scene.add( drHelper )
-  // STATE.WEBGL.scene.add( leftDrHelper )
-  // STATE.WEBGL.scene.add( hemiHelper )
-
-
-  // // [NOTE] gui
-  // document.querySelector('.header').style.zIndex = -1
-  // const gui = new GUI()
-
-  // const folderRight = gui.addFolder(`right light`)
-  // // folderRight.open()
-  // folderRight.add(rightDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
-  // folderRight.add(rightDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
-  // folderRight.add(rightDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
-  // folderRight.add(rightDirectionalLight, 'intensity', 0, 2)
-
-  // const folderLeft = gui.addFolder(`left light`)
-  // // folderLeft.open()
-  // folderLeft.add(leftDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
-  // folderLeft.add(leftDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
-  // folderLeft.add(leftDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
-  // folderLeft.add(leftDirectionalLight, 'intensity', 0, 2)
+  STATE.WEBGL.scene.add( drHelper )
+  STATE.WEBGL.scene.add( leftDrHelper )
+  STATE.WEBGL.scene.add( hemiHelper )
 
 
-  // function updateLight() {
-  //   console.log(rightDirectionalLight)
-  //   console.log(leftDirectionalLight)
+  // [NOTE] gui
+  document.querySelector('.header').style.zIndex = -1
+  const gui = new GUI()
 
-  //   rightDirectionalLight.target.updateMatrixWorld()
-  // }
+  const folderRight = gui.addFolder(`right light`)
+  // folderRight.open()
+  folderRight.add(rightDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
+  folderRight.add(rightDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
+  folderRight.add(rightDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
+  folderRight.add(rightDirectionalLight, 'intensity', 0, 2)
+
+  const folderLeft = gui.addFolder(`left light`)
+  // folderLeft.open()
+  folderLeft.add(leftDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
+  folderLeft.add(leftDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
+  folderLeft.add(leftDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
+  folderLeft.add(leftDirectionalLight, 'intensity', 0, 2)
+
+
+  function updateLight() {
+    console.log(rightDirectionalLight)
+    console.log(leftDirectionalLight)
+
+    rightDirectionalLight.target.updateMatrixWorld()
+  }
  
 }
 
 export function setHemisphereLightDefault(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
+  STATE.hemisphereLight.color = new THREE.Color(0xE0EEFF)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0x778DB1)
   STATE.hemisphereLight.intensity = 1.0
 }
 
@@ -105,7 +105,7 @@ export function setHemisphereLightDesert(STATE) {
 }
 
 export function setHemisphereLightSnow(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xDBF3FF)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
+  STATE.hemisphereLight.color = new THREE.Color(0xE0EEFF)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0x778DB1)
   STATE.hemisphereLight.intensity = 1.0
 }
