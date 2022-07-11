@@ -120,9 +120,11 @@ export function loadStage( sceneName, callback ) {
 
         if(child.name === 'BG_Snow_TrackSkid_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
+          child.visible = false
         }
 
         if(child.name === 'BG_Snow_Dust_SEQAni') {
+          child.visible = false
           uiLoadingManager.waitTextures(function() {
             const tween = createSpriteTween(child, child.material.alphaMap, 60, 1, 1500)
             tween.start()
