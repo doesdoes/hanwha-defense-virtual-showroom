@@ -154,7 +154,6 @@ window._WEBGL = (function() {
       SCENE.toggleStages(false, 'snowBg')
 
       $condition.setAttribute('data-item', 'k9a1IndoorBg')
-
       Array.from($parts).map((part, idx) => {
         const partData = data['k9a1-indicators'][idx]
         part.textContent = partData.title

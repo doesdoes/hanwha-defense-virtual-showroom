@@ -64,7 +64,7 @@ export function loadStage( sceneName, callback ) {
       })
 
       // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
-      STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
+      // STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // [NOTE] 탱크 mesh/uv 애니메이션
       TANK_OBJECT.clone.traverse((child) => {
@@ -178,7 +178,7 @@ export function loadStage( sceneName, callback ) {
       })
 
       // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
-      STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
+      // STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       // REDBACK INDOOR
       const REDBACK_INDOOR_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redbackIndoorBg" } )
@@ -301,6 +301,14 @@ export function focusOnRegion( _region ){
 
 export function toggleStages( toggle, sceneName ) {
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
+
+  if(sceneName === "K9A1") {
+    STATE.ZONE_FOCUS.reset.position = new THREE.Vector3(4.15, -0.01, -2.0)
+  } else {
+    STATE.ZONE_FOCUS.reset.position = new THREE.Vector3(2.87, -0.02, -2.37)
+  }
+  focusOnRegion('reset')
+
   if (stagesObjects != undefined) {
     for (let stagesObject of stagesObjects) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false

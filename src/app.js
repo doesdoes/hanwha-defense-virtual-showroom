@@ -124,13 +124,16 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         _WEBGL.loadAssets('K9A1', () => {
           MAIN_ASSET_LOADED = true
           _WEBGL.initScene('K9A1', () => {
-            gateToWebglView(item)
-            loadingSpinner.hide()
-          })
+            setTimeout(function() {
+              gateToWebglView(item)
 
-          _WEBGL.toggleScene('REDBACK', false)
-          _WEBGL.toggleScene('K9A1', true)
-          _WEBGL.toggleRendering(true)
+              _WEBGL.toggleScene('REDBACK', false)
+              _WEBGL.toggleScene('K9A1', true)
+              _WEBGL.toggleRendering(true)
+
+              loadingSpinner.hide()
+            }, 50)
+          })
         })
       }
       
@@ -148,13 +151,16 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         _WEBGL.loadAssets('REDBACK', () => {
           MAIN_ASSET_LOADED = true
           _WEBGL.initScene('REDBACK', () => {
-            gateToWebglView(item)
-            loadingSpinner.hide()
-          })
+            setTimeout(function() {
+              gateToWebglView(item)
 
-          _WEBGL.toggleScene('K9A1', false)
-          _WEBGL.toggleScene('REDBACK', true)
-          _WEBGL.toggleRendering(true)
+              _WEBGL.toggleScene('K9A1', false)
+              _WEBGL.toggleScene('REDBACK', true)
+              _WEBGL.toggleRendering(true)
+
+              loadingSpinner.hide()
+            }, 50)
+          })
         })
       }
     }
