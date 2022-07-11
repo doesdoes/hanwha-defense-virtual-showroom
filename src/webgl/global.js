@@ -130,7 +130,10 @@ export const STATE = {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
     },
-
+    // k9a1
+    // ui {x: 3.8409734290501287, y: 0.38409734290501246, z: -1.3495312048013972}
+    // redback
+    // ui {x: 2.079701746374302, y: 0.19078797180962423, z: -2.989132705075525}
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),

@@ -8,10 +8,16 @@ export const PROPERTIES = {
 }
 
 export const MATERIALS = {
-  "REDBACK_BG_s": {
+  "REDBACK_Ground_A_S": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_BG_s.jpg",
+    "map": "READBACK_Ground_A.jpg",
+    "flipY": false,
+  },
+  "REDBACK_Ground_B_S": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "READBACK_Ground_B.jpg",
     "flipY": false,
   },
 } 
