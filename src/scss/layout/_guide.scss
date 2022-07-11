@@ -38,8 +38,50 @@
     backdrop-filter: blur(15px);
     transition: all 0.41s;
 
+    &::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      left: 0;
+      border-top: 1px solid $white;
+      border-left: 1px solid $white;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      right: 0;
+      border-top: 1px solid $white;
+      border-right: 1px solid $white;
+    }
+
     .content {
-      padding: 1.5em
+      padding: 1.5em;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 0;
+        bottom: 0;
+        border-bottom: 1px solid $white;
+        border-left: 1px solid $white;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        bottom: 0;
+        right: 0;
+        border-bottom: 1px solid $white;
+        border-right: 1px solid $white;
+      }
     }
 
     .p {
