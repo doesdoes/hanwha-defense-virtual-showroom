@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
 
     $sound.classList.add('on')
-    $audio.volume = 0.0
+    $audio.volume = 0.5
     $audio.play()
 
     gsap.to('.poi-container', {autoAlpha: 1})

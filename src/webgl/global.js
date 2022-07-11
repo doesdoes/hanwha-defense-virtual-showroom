@@ -153,7 +153,7 @@ export const STATE = {
     },
 
     mainArmamentSystem: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(1.76,-0.10,1.39),
       target: new THREE.Vector3(0,0,0),
     },
     antiTankArmamentSystem: {
@@ -161,15 +161,15 @@ export const STATE = {
       target: new THREE.Vector3(0,0,0),
     },
     bestMobility: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(2.51,-0.69,0.52),
       target: new THREE.Vector3(0,0,0),
     },
     superiorProtection: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(0.07,-0.026,3.67),
       target: new THREE.Vector3(0,0,0),
     },
     isuRubberTrack: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(0.37,-0.35,-2.07),
       target: new THREE.Vector3(0,0,0),
     },
   }

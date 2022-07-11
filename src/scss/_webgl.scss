@@ -282,6 +282,21 @@
   left: 8%;
 }
 
+.poi-popup[data-popup="superiorProtection"] {
+  top: 27%;
+  left: 8%;
+}
+
+.poi-popup[data-popup="bestMobility"] {
+  top: 27%;
+  left: 8%;
+}
+
+.poi-popup[data-popup="mainArmamentSystem"] {
+  top: 20%;
+  left: 8%;
+}
+
 .poi-container {
   @include btn2-kr;
   position: relative;
