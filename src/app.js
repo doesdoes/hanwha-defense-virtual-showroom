@@ -3,6 +3,7 @@ import { canvasButton } from './canvas-button'
 import './dropdown'
 import { sendGLCustomEvent } from './webgl/class/GLCustomEvent'
 import './webgl/_webgl'
+import './gate'
 import * as THREE from 'three'
 import { LoadingSpinner } from './webgl/class/Lloading-Spinner'
 

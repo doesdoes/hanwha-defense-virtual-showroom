@@ -334,13 +334,15 @@ export function focusOnRegion( _region ){
 export function toggleStages( toggle, sceneName ) {
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
 
-  focusOnRegion('reset')
-
   if (stagesObjects != undefined) {
     for (let stagesObject of stagesObjects) {
       toggle ? stagesObject.visible = true : stagesObject.visible = false
     }
   }
+
+  setTimeout(function() {
+    focusOnRegion('reset')
+  }, 60)
 }
 
 export function setIndicator() {

@@ -24,7 +24,6 @@ export function setCondition() {
     const viewState = document.body.getAttribute('data-state')
     let seqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true);
     let trackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true);
-    
 
     switch (viewState) {
       case 'K9A1':
@@ -33,7 +32,7 @@ export function setCondition() {
         SCENE.toggleStages(true, 'snowBg')
         SCENE.toggleStages(false, 'k9a1IndoorBg')
         window.isAnim = true
-        
+      
         setHemisphereLightSnow(STATE)
         seqAni.visible = true
         trackSkid.visible = true
