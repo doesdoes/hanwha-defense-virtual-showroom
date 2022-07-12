@@ -24,9 +24,6 @@ export const MATERIALS = {
     "alphaMap": "BG_Snow_Mountain_A.jpg",
     "transparent": true,
     "flipY": false,
-    // "depthTest": false,
-    // "depthWrite": false,
-    // "alphaTest": 1,
     "mapTiling":{
       repeatX: 1,
       repeatY: 1,
@@ -35,6 +32,17 @@ export const MATERIALS = {
       repeatX: 1,
       repeatY: 1,
     }
+  },
+
+  "BG_Snow_Tree_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Tree_Plan_GRP_Dif_02.jpg",
+    "alphaMap": "Tree_Plan_GRP_Alpha.jpg",
+    "flipY": false,
+    "transparent": true,
+    // "depthTest": false,
+    // "alphaTest": 0.9,
   },
 
   "BG_Snow_Ground_UVAni_s": {
@@ -54,29 +62,26 @@ export const MATERIALS = {
     "alphaMap": "Speed_Line_Alpha.jpg",
     "transparent": true,
     "flipY": false,
-    // "depthTest": true,
-    "depthWrite": false,
     "opacity": 1,
-    "mapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    },
     "alphaMapTiling":{
       repeatX: 1,
       repeatY: 1,
     }
   },
 
-  "BG_Snow_Tree_s": {
+  "BG_Snow_Tree_LoopAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Tree_Plan_GRP_Dif_02.jpg",
-    "alphaMap": "Tree_Plan_GRP_Alpha.jpg",
+    "map": "BG_Snow_Tree_D.jpg",
+    "alphaMap": "BG_Snow_Tree_A.jpg",
     "transparent": true,
     "flipY": false,
-    "opacity": 1.0,
-    // "emissive": new THREE.Color("rgb(0,0,0)"),
-    // "emissiveIntensity": 1.0,
-    // "depthWrite": false,
+    // "blending": THREE.NormalBlending,
   },
+  "BG_Snow_Rock_LoopAni_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "BG_Snow_Rock_D.jpg",
+    "flipY": false,
+  }
 } 

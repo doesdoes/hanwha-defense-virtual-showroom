@@ -41,9 +41,9 @@ export function setCondition() {
         STATE.ANIMATIONS._k9Tank.mixer._actions.forEach(anim => {
           anim.play()
         })
-        // STATE.ANIMATIONS._SNOW.mixer._actions.forEach(anim => {
-        //   anim.play()
-        // })
+        STATE.ANIMATIONS._SNOW.mixer._actions.forEach(anim => {
+          anim.play()
+        })
         break;
       case 'K9A1-SNOW':
         document.body.setAttribute('data-state', 'K9A1')
@@ -57,7 +57,7 @@ export function setCondition() {
         trackSkid.visible = false
   
         STATE.ANIMATIONS._k9Tank.mixer.stopAllAction()
-        // STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
+        STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
         break;
 
       case 'REDBACK':
