@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 export const PROPERTIES = {
   scale: new THREE.Vector3(12, 12, 12),
-  position: new THREE.Vector3(0, -1.0, 0),
+  position: new THREE.Vector3(0, -1.5, 0),
   rotation: new THREE.Euler(0, 0, 0),
   texturesQuality: "medium"
 }
@@ -31,8 +31,8 @@ export const MATERIALS = {
   "BG_Desert_Mountain_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "BG_Desert_Mountain_D_01.jpg",
-    "alphaMap": "BG_Desert_Mountain_A_01.jpg",
+    "map": "BG_Desert_Mountain_D_02.jpg",
+    "alphaMap": "BG_Desert_Mountain_A_02.jpg",
     "transparent": true,
     "flipY": false,
     "mapTiling":{

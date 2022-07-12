@@ -159,10 +159,6 @@ export function loadStage( sceneName, callback ) {
       REDBACK_OBJECT.clone.traverse(child => {
         // console.log(child.name)
 
-        if(child.name === 'TANK_REDBACK_Track') {
-          STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
-        }
-
         //console.log(child.userData)
         if (child.userData.type == 'POI') {
           // POI buttons
@@ -239,20 +235,31 @@ export function loadStage( sceneName, callback ) {
           child.visible = false
         }
 
-        // if(child.name === 'Dirt_L_Part_Seq') {
-        //   uiLoadingManager.waitTextures(function() {
-        //     const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
-        //     tween.start()
-        //     callback && callback()
-        //   })
-        // }
-
         // MESH
         
+      })
 
-        uiLoadingManager.waitTextures(function() {
-          callback && callback()
-        })
+      REDBACK_OBJECT.clone.traverse(child => {
+
+        if(child.name === 'TANK_REDBACK_Track') {
+          STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
+        }
+
+        if(child.name === 'BG_Desert_TrackSkid_UVAni') {
+          STATE.UV_ANIMATED_OBJECTS.redbackTireLine.mesh = child
+          // child.visible = false
+        }
+
+        if(child.name === 'BG_Desert_Dust_SEQAni') {
+          console.log(child)
+          // child.visible = false
+          uiLoadingManager.waitTextures(function() {
+            // const tween = createSpriteTween(child, child.material.alphaMap, 60, 1, 1500)
+            // tween.start()
+            
+            callback && callback()
+          })
+        }
       })
 
       setUI(sceneName, redbackPoints)

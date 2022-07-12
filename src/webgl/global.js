@@ -76,6 +76,14 @@ export const STATE = {
         }
       }
     },
+    redbackTireLine: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh && this.mesh.material.alphaMap != undefined) {
+          this.mesh.material.alphaMap.offset.y -= 0.150
+        }
+      }
+    },
   },
   ANIMATED_OBJECTS: {
     desertMountain: {

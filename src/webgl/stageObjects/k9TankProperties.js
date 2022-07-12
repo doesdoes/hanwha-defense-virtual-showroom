@@ -94,5 +94,5 @@ export const MATERIALS = {
     "alphaMap": "dirt_spritesheet_horizon.png",
     "transparent": true,
     "depthWrite": false,
-  }
+  },
 } 
