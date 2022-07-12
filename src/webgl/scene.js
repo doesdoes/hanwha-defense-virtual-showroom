@@ -247,12 +247,12 @@ export function loadStage( sceneName, callback ) {
 
         if(child.name === 'BG_Desert_TrackSkid_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.redbackTireLine.mesh = child
-          // child.visible = false
+          child.visible = false
         }
 
         if(child.name === 'BG_Desert_Dust_SEQAni') {
           console.log(child)
-          // child.visible = false
+          child.visible = false
           uiLoadingManager.waitTextures(function() {
             // const tween = createSpriteTween(child, child.material.alphaMap, 60, 1, 1500)
             // tween.start()

@@ -192,7 +192,7 @@ export const STATE = {
       target: new THREE.Vector3(0,0,0),
     },
     antiTankArmamentSystem: {
-      position: new THREE.Vector3(3.8,-0.36,-1.47),
+      position: new THREE.Vector3(0.96,0.75,3.32),
       target: new THREE.Vector3(0,0,0),
     },
     bestMobility: {
