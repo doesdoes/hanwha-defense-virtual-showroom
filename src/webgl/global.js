@@ -14,12 +14,6 @@ export const STATE = {
   ENABLE_MOUSE_INTERACTION: false,
   ENABLE_RENDERING: false,
   UV_ANIMATED_OBJECTS: {
-    desertFloor: {
-      mesh: null,
-      animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.010 
-      }
-    },
     rails: {
       mesh: null,
       animate: function() {
@@ -32,7 +26,7 @@ export const STATE = {
         if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.0008 
       }
     },
-    speedLine: {
+    desertSpeedLine: {
       mesh: null,
       animate: function() { 
         if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
@@ -50,7 +44,22 @@ export const STATE = {
         if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.020 
       }
     },
+    desertFloor: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y -= 0.020 
+      }
+    },
     snowMountain: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh && this.mesh.material.map != undefined) {
+          this.mesh.material.map.offset.x += 0.000120
+          this.mesh.material.alphaMap.offset.x += 0.000120
+        }
+      }
+    },
+    desertMountain: {
       mesh: null,
       animate: function() { 
         if(this.mesh && this.mesh.material.map != undefined) {

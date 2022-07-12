@@ -8,153 +8,92 @@ export const PROPERTIES = {
 }
 
 export const MATERIALS = {
-  "BG_Snow_HDR_S": {
+  "BG_Desert_HDR_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Sky/Sky_Desert.jpg",
+    "map": "Ultimate_Skies_4k_0000.jpg",
     "reflectivity": 1.0,
     "roughness": 1.0,
     "flipY": false,
   },
 
-  "Clous_S": {
-    "type": new THREE.MeshStandardMaterial(),
+  "BG_Desert_Ground_UVAni_s": {
+    "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "alphaMap": "Sky/Cloud_Alpha.jpg",
-    "transparent": true,
-    "flipY": false,
-    // "emissive": new THREE.Color("rgb(0,0,0)"),
-    // "emissiveIntensity": 1.0,
-    "depthWrite": false, 
-  },
-
-  "BG_Desert_Mountain_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Mountian/BG_Desert_Mountain_D.jpg",
-    "alphaMap": "Mountian/BG_Desert_Mountain_A.jpg",
-    "transparent": true,
-    "flipY": false,
-    "depthWrite": false,
-  },
-
-  "BG_Snow_Ground_UV_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Ground/T_Landscape_Soil_DH_Motion_Tile.jpg",
+    "map": "Desert_ground_02.jpg",
     "flipY": false,
     "mapTiling":{
-      repeatX: 1,
-      repeatY: 1,
+      repeatX: 30,
+      repeatY: 30,
     }
   },
 
-  "Speed_Line_S": {
-    "type": new THREE.MeshStandardMaterial(),
+  "BG_Cloud_UVAni_s": {
+    "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "alphaMap": "Speed_Line/Speed_Line_Alpha.jpg",
+    "alphaMap": "Cloud_Alpha.jpg",
     "transparent": true,
     "flipY": false,
-    // "depthTest": true,
-    "depthWrite": false,
-    "opacity": 0.4,
+  },
+
+  "BG_Desert_Mountain_UVAni_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "BG_Desert_Mountain_D_01.jpg",
+    "alphaMap": "BG_Desert_Mountain_A_01.jpg",
+    "transparent": true,
+    "flipY": false,
+  },
+
+  "Speed_Line_UVAni_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "alphaMap": "Speed_Line_Alpha.jpg",
+    "transparent": true,
+    "flipY": false,
     "alphaMapTiling":{
-      repeatX: 3,
-      repeatY: 3,
-    }
-  },
-
-  "Grass_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "map": "Bush/Snow_Grass_Dif.jpg",
-    "alphaMap": "Bush/Snow_Grass_Alpha.jpg",
-    "transparent": true,
-    "flipY": false,
-    // "emissive": new THREE.Color("rgb(0,0,0)"),
-    // "emissiveIntensity": 1.0,
-    // "roughness": 1.0,
-  },
-
-  "Dirt_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    // "map": "Dirt_Seq/Dirt_0001.jpg",
-    // "alphaMap": "Dirt_Seq/Dirt_0001.jpg",
-    "map": "dirt_spritesheet_horizon.png",
-    "alphaMap": "dirt_spritesheet_horizon.png",
-    "transparent": true,
-    "opacity": 0.4,
-    "flipY": false,
-    // "depthTest": false,
-    "depthWrite": false,
-    // "mapTiling":{
-    //   repeatX: 1,
-    //   repeatY: 1,
-    // },
-    // "alphaMapTiling":{
-    //   repeatX: 1,
-    //   repeatY: 1,
-    // },
-  },
-
-  "Tire_Line_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Tire/T_Landscape_Soil_DH_Tire.jpg",
-    "alphaMap": "Tire/Tire_Alpha_Light.jpg",
-    "transparent": true,
-    "flipY": false,
-    "emissive": new THREE.Color("rgb(0,0,0)"),
-    "emissiveIntensity": 1.0,
-    "mapTiling":{
       repeatX: 1,
       repeatY: 1,
     }
   },
 
-  "BG_Snow_Floor_TankShadow_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(87,66,66)"),
-    // "map": "Tank_Shadow/BG_Desert_Floor_TankShadow_D.jpg",
-    "alphaMap": "Tank_Shadow/BG_Desert_Floor_TankShadow_A.jpg",
+  "BG_Dessert_Tree_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Tree_Plan_D.jpg",
+    "alphaMap": "Tree_Plan_A.jpg",
     "transparent": true,
-    "opacity": 1.0,
     "flipY": false,
-    "depthTest": true,
-    "depthWrite": true,
+    
   },
 
-  "Desert_Rock_Part_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Rock/T_Landscape_Soil_DH_Rock.jpg",
+  "Props_shadow_s": {
+    
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(167, 104, 72)"),
+    "alphaMap": "prop_shadow.jpg",
     "flipY": false,
+    "transparent": true,
   },
-  "Small_bush_s1": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,236,184)"),
-    "alphaMap": "Bush/Small_Tall_bush_Alpha.png",
+
+  "Grass_Part_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "map": "Snow_Grass_D.jpg",
+    "alphaMap": "Snow_Grass_A.jpg",
     "transparent": true,
     "flipY": false,
-    "depthWrite": false,
   },
-  "bushgreen_bush_S": {
-    "type": new THREE.MeshStandardMaterial(),
+
+  "Desert_Rock_Part_s": {
+    "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Bush/bushgreen_D.jpg",
-    "alphaMap": "Bush/bushgreen_Alpha.jpg",
-    "transparent": true,
+    "map": "Rock.jpg",
     "flipY": false,
-    "depthWrite": false,
   },
-  "Desert_Soil_S": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Soil/Soil_Part.jpg",
-    "alphaMap": "Soil/Soil_Part_Alpha.jpg",
-    "transparent": true,
+
+  "Desert_Soil_Part_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "map": "Soil_D.jpg",
     "flipY": false,
-    "depthWrite": false,
   },
-  
 } 

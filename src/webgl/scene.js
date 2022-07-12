@@ -105,7 +105,6 @@ export function loadStage( sceneName, callback ) {
           STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
         }
 
-        // MESH
         if(child.name === 'BG_Snow_Mountain_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
         }
@@ -158,7 +157,7 @@ export function loadStage( sceneName, callback ) {
 
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       REDBACK_OBJECT.clone.traverse(child => {
-        console.log(child.name)
+        // console.log(child.name)
 
         if(child.name === 'TANK_REDBACK_Track') {
           STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
@@ -220,30 +219,36 @@ export function loadStage( sceneName, callback ) {
       DESERT_OBJECT.clone.traverse((child) => {
         console.log(child.name)
         // UV
-        if(child.name === 'BG_DesertGround_UV') {
+        if(child.name === 'BG_Desert_Ground_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
         }
 
-        if(child.name === 'Speed_Line_UV') {
-          STATE.UV_ANIMATED_OBJECTS.speedLine.mesh = child
+        if(child.name === 'BG_SpeedLine_UVAni') {
+          STATE.UV_ANIMATED_OBJECTS.desertSpeedLine.mesh = child
         }
 
         if(child.name === 'Tire_Line_UV') {
           STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
         }
 
-        if(child.name === 'Dirt_L_Part_Seq') {
-          uiLoadingManager.waitTextures(function() {
-            const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
-            tween.start()
-            callback && callback()
-          })
+        if(child.name === 'BG_Desert_Mountain_UVAni') {
+          STATE.UV_ANIMATED_OBJECTS.desertMountain.mesh = child
         }
 
+        // if(child.name === 'Dirt_L_Part_Seq') {
+        //   uiLoadingManager.waitTextures(function() {
+        //     const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)
+        //     tween.start()
+        //     callback && callback()
+        //   })
+        // }
+
         // MESH
-        if(child.name === 'BG_Desert_Mountain') {
-          STATE.ANIMATED_OBJECTS.desertMountain.mesh = child
-        }
+        
+
+        uiLoadingManager.waitTextures(function() {
+          callback && callback()
+        })
       })
 
       setUI(sceneName, redbackPoints)
