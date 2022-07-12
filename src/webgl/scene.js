@@ -235,6 +235,10 @@ export function loadStage( sceneName, callback ) {
           STATE.UV_ANIMATED_OBJECTS.desertMountain.mesh = child
         }
 
+        if(child.name === 'BG_Cloud_UVAni') {
+          child.visible = false
+        }
+
         // if(child.name === 'Dirt_L_Part_Seq') {
         //   uiLoadingManager.waitTextures(function() {
         //     const tween = createSpriteTween(child, child.material.map, 60, 1, 1500)

@@ -28,14 +28,6 @@ export const MATERIALS = {
     }
   },
 
-  "BG_Cloud_UVAni_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "alphaMap": "Cloud_Alpha.jpg",
-    "transparent": true,
-    "flipY": false,
-  },
-
   "BG_Desert_Mountain_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
@@ -43,6 +35,14 @@ export const MATERIALS = {
     "alphaMap": "BG_Desert_Mountain_A_01.jpg",
     "transparent": true,
     "flipY": false,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    },
+    "alphaMapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    },
   },
 
   "Speed_Line_UVAni_s": {
