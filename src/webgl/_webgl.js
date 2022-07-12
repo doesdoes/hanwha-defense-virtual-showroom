@@ -147,7 +147,6 @@ window._WEBGL = (function() {
     const $condition = document.querySelector('.indicator-panel #change-condition')
     const $parts = document.querySelectorAll('.indicator-panel .part')
 
-    console.log(data['k9a1-indicators'])
     if(_sceneName === "K9A1") {
       SCENE.toggleStages(_toggle, 'k9Tank')
       SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
@@ -159,6 +158,11 @@ window._WEBGL = (function() {
         part.textContent = partData.title
         part.setAttribute('data-feature', partData.id)
       })
+
+      if(_toggle) {
+        STATE.ZONE_FOCUS.reset.position = STATE.ZONE_FOCUS.k9a1Origin.position
+        SCENE.focusOnRegion('reset')
+      }
     } else {
       SCENE.toggleStages(_toggle, 'redback')
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
@@ -170,6 +174,10 @@ window._WEBGL = (function() {
         part.textContent = partData.title
         part.setAttribute('data-feature', partData.id)
       })
+      if(_toggle) {
+        STATE.ZONE_FOCUS.reset.position = STATE.ZONE_FOCUS.redbackOrigin.position
+        SCENE.focusOnRegion('reset')
+      }
     }
 
     // [TEMP]

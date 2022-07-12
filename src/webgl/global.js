@@ -138,10 +138,14 @@ export const STATE = {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
     },
-    // k9a1
-    // x: 4.15, y: -0.01, z: -2.0
-    // redback
-    // x: 2.87, y: -0.02, z: -2.37
+    k9a1Origin: {
+      position: new THREE.Vector3(3.99, 0.095, -2.94),
+      target: new THREE.Vector3(0,0,0),
+    },
+    redbackOrigin: {
+      position: new THREE.Vector3(2.87, -0.02, -2.37),
+      target: new THREE.Vector3(0,0,0),
+    },
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),

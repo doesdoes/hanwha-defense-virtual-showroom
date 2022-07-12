@@ -278,7 +278,7 @@ function updatePointVisible(points) {
     const state = document.body.getAttribute('data-state')
     let offset
     if(state === 'K9A1')
-      offset = 3.8
+      offset = 4.9
     else if(state === 'REDBACK')
       offset = 3.7
     else 
@@ -294,7 +294,7 @@ function updatePointVisible(points) {
 }
 
 export function focusOnRegion( _region ){
-  // console.log(window.UI.$currentPopup)
+  console.log(STATE.ZONE_FOCUS.reset.position)
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
@@ -318,11 +318,6 @@ export function focusOnRegion( _region ){
 export function toggleStages( toggle, sceneName ) {
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
 
-  if(sceneName === "K9A1") {
-    STATE.ZONE_FOCUS.reset.position = new THREE.Vector3(4.15, -0.01, -2.0)
-  } else {
-    STATE.ZONE_FOCUS.reset.position = new THREE.Vector3(2.87, -0.02, -2.37)
-  }
   focusOnRegion('reset')
 
   if (stagesObjects != undefined) {
