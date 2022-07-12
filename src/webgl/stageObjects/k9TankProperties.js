@@ -73,7 +73,7 @@ export const MATERIALS = {
   },
   "BG_Snow_Floor_TankShadow_s": {
     "type": new THREE.MeshPhysicalMaterial(),
-    "color": new THREE.Color("rgb(0,0,0)"),
+    "color": new THREE.Color("rgb(5,8,10)"),
     "transparent": true,
     "alphaMap": "BG_Snow_Floor_TankShadow_A.jpg",
   },
