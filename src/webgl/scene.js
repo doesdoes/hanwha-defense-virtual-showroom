@@ -293,7 +293,7 @@ function updatePointVisible(points) {
     const state = document.body.getAttribute('data-state')
     let offset
     if(state === 'K9A1')
-      offset = 4.9
+      offset = 4.889
     else if(state === 'REDBACK')
       offset = 3.7
     else 
