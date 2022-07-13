@@ -291,25 +291,36 @@ function updatePointVisible(points) {
   points.forEach(point => {
     const d = STATE.WEBGL.camera.position.distanceTo(point.position)
     const state = document.body.getAttribute('data-state')
-    let offset
-    if(state === 'K9A1')
-      offset = 4.889
-    else if(state === 'REDBACK')
-      offset = 3.7
-    else 
-      return
+    const focus = document.body.getAttribute('data-focus')
 
     // console.log(point.name, d, offset)
-    if(d < offset) {
-      gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
+    if(focus) {
+      if(point.name === focus) {
+        gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
+      } else {
+        gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
+      }
     } else {
-      gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
+      
+      let offset
+      if(state === 'K9A1')
+        offset = 4.9
+      else if(state === 'REDBACK')
+        offset = 3.7
+      else 
+        return
+
+      if(d < offset) {
+        gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
+      } else {
+        gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
+      }
     }
   })
 }
 
 export function focusOnRegion( _region ){
-  console.log(STATE.ZONE_FOCUS.reset.position)
+  // console.log(STATE.ZONE_FOCUS.reset.position)
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
@@ -325,7 +336,10 @@ export function focusOnRegion( _region ){
     true 
   ).then(() => {
     if(STATE.IS_FOCUSED){
+      document.body.setAttribute('data-focus', _region)
       sendGLCustomEvent({msg: _region})
+    } else {
+      document.body.setAttribute('data-focus', '')
     }
   })
 }
