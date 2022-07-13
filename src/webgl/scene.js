@@ -119,7 +119,7 @@ export function loadStage( sceneName, callback ) {
 
         if(child.name === 'BG_Snow_TrackSkid_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
-          // child.visible = false
+          child.visible = false
         }
 
         if(child.name === 'BG_Snow_Dust_SEQAni') {
@@ -301,7 +301,7 @@ function updatePointVisible(points) {
         gsap.to(`#${point.name}`, {autoAlpha: 0, duration: 1})
       }
     } else {
-      
+
       let offset
       if(state === 'K9A1')
         offset = 4.9

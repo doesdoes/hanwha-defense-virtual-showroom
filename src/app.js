@@ -92,6 +92,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   function gateToWebglView(item) {
 
+    setTimeout(() => document.querySelector('.main').classList.remove('guide'), 3500)
+
     gsap.to('.entry', {autoAlpha: 0})
     gsap.to('#content-wrapper', {autoAlpha: 1})
     document.querySelector('.header').setAttribute('data-state', 'showroom')
