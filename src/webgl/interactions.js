@@ -22,8 +22,10 @@ export function setCondition() {
     this.blur()
     // const bg = this.getAttribute('data-bg')
     const viewState = document.body.getAttribute('data-state')
-    let seqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true);
-    let trackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true);
+    let snowSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true);
+    let snowTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true);
+    let desertSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Desert_Dust_SEQAni", true);
+    let desertTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Desert_TrackSkid_UVAni", true);
 
     switch (viewState) {
       case 'K9A1':
@@ -34,8 +36,8 @@ export function setCondition() {
         window.isAnim = true
       
         setHemisphereLightSnow(STATE)
-        seqAni.visible = true
-        trackSkid.visible = true
+        snowSeqAni.visible = true
+        snowTrackSkid.visible = true
 
         STATE.ANIMATIONS._k9Tank.mixer._actions.forEach(anim => {
           anim.play()
@@ -52,8 +54,8 @@ export function setCondition() {
         window.isAnim = false
     
         setHemisphereLightDefault(STATE)
-        seqAni.visible = false
-        trackSkid.visible = false
+        snowSeqAni.visible = false
+        snowTrackSkid.visible = false
   
         STATE.ANIMATIONS._k9Tank.mixer.stopAllAction()
         STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
@@ -67,6 +69,8 @@ export function setCondition() {
         window.isAnim = true
         
         setHemisphereLightDesert(STATE)
+        desertSeqAni.visible = true
+        desertTrackSkid.visible = true
   
         STATE.ANIMATIONS._REDBACK.mixer._actions.forEach(anim => {
           anim.play()
@@ -84,6 +88,8 @@ export function setCondition() {
         window.isAnim = false
     
         setHemisphereLightDefault(STATE)
+        desertSeqAni.visible = false
+        desertTrackSkid.visible = false
   
         STATE.ANIMATIONS._REDBACK.mixer.stopAllAction()
         STATE.ANIMATIONS._DESERT.mixer.stopAllAction()

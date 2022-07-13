@@ -53,12 +53,12 @@ export const MATERIALS = {
       repeatY: 1,
     },
   },
-  "TANK_K9A1_Track_UVAni_s": {
+  "TANK_REDBACK_Track_UVAni_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "TANK_K9A1_TrackWheel.jpg",
-    "emissiveMap": "TANK_K9A1_TrackWheel.jpg",
-    "normalMap": "TANK_K9A1_TrackWheel_N.jpg",
+    "map": "REDBACK_Track_s.jpg",
+    // "emissiveMap": "REDBACK_Track_s.jpg",
+    // "normalMap": "REDBACK_Track_s_N.jpg",
     "flipY": false,
     "roughness": 1.0,
     "metalness": 0.0,
@@ -71,6 +71,14 @@ export const MATERIALS = {
       repeatY: 1,
     },
   },
+
+  "TANK_REDBACK_Wheel_s": {
+    "type": new THREE.MeshPhysicalMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "REDBACK_Track_s.jpg",
+    "flipY": false,
+  },
+
   "BG_Desert_Floor_TankShadow_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(5,8,10)"),
