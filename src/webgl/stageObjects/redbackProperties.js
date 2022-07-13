@@ -81,16 +81,21 @@ export const MATERIALS = {
 
   "BG_Desert_Floor_TankShadow_s": {
     "type": new THREE.MeshPhysicalMaterial(),
-    "color": new THREE.Color("rgb(5,8,10)"),
+    "color": new THREE.Color("rgb(43,29,18)"),
     "transparent": true,
     "alphaMap": "BG_Snow_Floor_TankShadow_A.jpg",
   },
   "BG_Desert_TrackSkid_UVAni_s": {
-    "type": new THREE.MeshPhysicalMaterial(),
+    "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
+    "map": "Tire_D.jpg",
     "alphaMap": "TrackSkid_A.jpg",
     "transparent": true,
-    "opacity": 0.4,
+    "opacity": 0.5,
+    "mapTiling":{
+      repeatX: 1,
+      repeatY: 1,
+    },
     "alphaMapTiling":{
       repeatX: 1,
       repeatY: 1,
@@ -98,9 +103,10 @@ export const MATERIALS = {
   },
   "BG_Desert_Dust_SeqAni_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
+    "color": new THREE.Color("rgb(165,127,89)"),
     "alphaMap": "dirt_spritesheet_horizon.png",
     "transparent": true,
     "depthWrite": false,
+    // "opacity": 0.0,
   },
 }

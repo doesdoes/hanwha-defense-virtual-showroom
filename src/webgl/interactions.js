@@ -1,6 +1,6 @@
 import { STATE } from './global.js'
 import * as SCENE from './scene.js'
-import { setHemisphereLightDefault, setHemisphereLightDesert, setHemisphereLightSnow } from './light.js';
+import { setHemisphereLightSnowDefault, setHemisphereLightDesertDefault, setHemisphereLightSnow, setHemisphereLightDesert } from './light.js';
 
 export function registerEvents( ){
   document.addEventListener( 'mousemove', e => onMouseMove( e, STATE.WEBGL ), false )
@@ -53,7 +53,7 @@ export function setCondition() {
         SCENE.toggleStages(true, 'k9a1IndoorBg')
         window.isAnim = false
     
-        setHemisphereLightDefault(STATE)
+        setHemisphereLightSnowDefault(STATE)
         snowSeqAni.visible = false
         snowTrackSkid.visible = false
   
@@ -87,7 +87,7 @@ export function setCondition() {
         SCENE.toggleStages(true, 'redbackIndoorBg')
         window.isAnim = false
     
-        setHemisphereLightDefault(STATE)
+        setHemisphereLightDesertDefault(STATE)
         desertSeqAni.visible = false
         desertTrackSkid.visible = false
   

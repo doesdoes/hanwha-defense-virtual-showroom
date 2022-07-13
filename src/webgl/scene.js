@@ -14,7 +14,7 @@ import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgPro
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
-import { setLight } from './light.js'
+import { setLight, setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
 import { createSpriteTween } from './utils.js'
 import UILoadingManager from './class/UILoadingManager.js'
 
@@ -24,6 +24,7 @@ export function loadStage( sceneName, callback ) {
   switch (sceneName) {
     case 'K9A1':
       setLight(STATE)
+      setHemisphereLightSnowDefault(STATE)
       const k9Points = [];
 
       const TANK_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
@@ -137,6 +138,7 @@ export function loadStage( sceneName, callback ) {
 
     case 'REDBACK':
       setLight(STATE)
+      setHemisphereLightDesertDefault(STATE)
       const redbackPoints = []
 
       const REDBACK_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redback" } )

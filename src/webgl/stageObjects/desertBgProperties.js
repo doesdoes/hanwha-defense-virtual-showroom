@@ -47,7 +47,7 @@ export const MATERIALS = {
 
   "Speed_Line_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
+    "color": new THREE.Color("rgb(193,160,127)"),
     "alphaMap": "Speed_Line_Alpha.jpg",
     "transparent": true,
     "flipY": false,
@@ -68,7 +68,6 @@ export const MATERIALS = {
   },
 
   "Props_shadow_s": {
-    
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(167, 104, 72)"),
     "alphaMap": "prop_shadow.jpg",

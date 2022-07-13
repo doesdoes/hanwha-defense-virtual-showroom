@@ -58,7 +58,7 @@ export const MATERIALS = {
 
   "BG_SpeedLine_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
+    "color": new THREE.Color("rgb(180,180,180)"),
     "alphaMap": "Speed_Line_Alpha.jpg",
     "transparent": true,
     "flipY": false,

@@ -23,7 +23,7 @@ export const STATE = {
     redbackRails: {
       mesh: null,
       animate: function() {
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.0008 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.0012
       }
     },
     desertSpeedLine: {
@@ -47,7 +47,7 @@ export const STATE = {
     desertFloor: {
       mesh: null,
       animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y -= 0.020 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y -= 0.03 
       }
     },
     snowMountain: {
@@ -81,6 +81,7 @@ export const STATE = {
       animate: function() { 
         if(this.mesh && this.mesh.material.alphaMap != undefined) {
           this.mesh.material.alphaMap.offset.y -= 0.150
+          this.mesh.material.map.offset.y -= 0.150
         }
       }
     },
