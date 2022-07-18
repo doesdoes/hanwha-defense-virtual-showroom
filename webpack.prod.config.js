@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    _webgl: './src/webgl/_webgl.js',
+    // _webgl: './src/webgl/_webgl.js',
     app: [
       './src/app.js',
       "./src/scss/app.scss",
@@ -12,7 +12,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './public'),
+    path: path.resolve(__dirname, './public/assets/webgl'),
   },
   performance : {
     hints : false
@@ -45,7 +45,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: (pathData) => {
           let res;
-          res = './assets/css/[name].css';
+          res = '/css/[name].css';
           return res;
       },
       chunkFilename: '[id].css',
