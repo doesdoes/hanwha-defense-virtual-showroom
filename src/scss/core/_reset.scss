@@ -3,6 +3,10 @@
 
 /* 추가 커스텀 리셋 */
 
+body {
+  overflow: hidden;
+}
+
 a {
   text-decoration: none;
   color: $black;

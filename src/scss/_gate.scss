@@ -96,6 +96,11 @@
   @media all and (max-width: $mobile) {
     .entry {
       flex-direction: column;
+      height: var(--cover-height);
+
+      &__item {
+        flex: 1;
+      }
     }
   }
 }
