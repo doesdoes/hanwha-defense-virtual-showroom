@@ -49,11 +49,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     e.preventDefault()
   })
 
-  document.querySelector('.btn-close-guide').addEventListener('click', function(e) {
-    document.querySelector('.main').classList.remove('guide')
-    e.preventDefault()
-  })
-
   document.querySelector('#sound').addEventListener('click', function() {
     this.classList.toggle('on');
 
@@ -77,6 +72,113 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     window.UI.$currentPopup = $popup
   })
 
+  function gateToWebglView(item) {
+
+    function showUI() {
+      gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
+      gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
+
+      $sound.classList.add('on')
+      $audio.volume = 0.5
+      $audio.play()
+
+      gsap.to('.poi-container', {autoAlpha: 1})
+    }
+
+    if(document.querySelector('.main').classList.contains('begin')) {
+
+      const step1Controller = new AbortController();
+      const step2Controller = new AbortController();
+      const guideSteps = []
+      guideSteps.push(() => {
+        return new Promise((resolve, reject) => {
+          document.body.setAttribute('data-state', 'guide-step-1')
+          const dCall = gsap.delayedCall(3, () => {
+            resolve()
+            guide.next()
+          })
+
+          step1Controller.signal.addEventListener('abort', () => {
+            console.log('abort 0 ')
+            dCall && dCall.kill()
+            resolve()
+            guide.next()
+          })
+        })
+      })
+
+      guideSteps.push(() => {
+        return new Promise((resolve, reject) => {
+          showUI()
+          const dCall1 = gsap.delayedCall(0.5, () => {
+            document.body.setAttribute('data-state', 'guide-step-2')
+          })
+          const dCall2 = gsap.delayedCall(10, () => {
+            resolve()
+            guide.next()
+          })
+
+          step2Controller.signal.addEventListener('abort', () => {
+            dCall1 && dCall1.kill()
+            dCall2 && dCall2.kill()
+            resolve()
+            guide.next()
+          })
+        })
+      })
+      guideSteps.push(() => {
+        return new Promise((resolve, reject) => {
+          document.querySelector('.main').classList.remove('begin')
+          document.body.setAttribute('data-state', item)
+          console.log('end')
+          resolve()
+
+        })
+      })
+
+      async function* genGuide() {
+        for (let i = 0; i < guideSteps.length; i++) {
+          yield await guideSteps[i]()
+        }
+      }
+
+      
+      const guide = genGuide()
+      guide.next()
+
+      document.querySelector('.btn-close-guide').addEventListener('click', function(e) {
+        step2Controller.abort()
+        e.preventDefault()
+      })
+
+      window.addEventListener('click', function() {
+        
+        
+        const state = document.body.getAttribute('data-state')
+        switch (state) {
+          case 'guide-step-1':
+            step1Controller.abort()
+            break;
+          case 'guide-step-2':
+            step2Controller.abort()
+            break;
+        
+          default:
+            break;
+        }
+      })
+      
+    } else {
+      showUI()
+      document.body.setAttribute('data-state', item)
+    }
+
+    gsap.to('.gate', {autoAlpha: 0})
+    gsap.to('#content-wrapper', {autoAlpha: 1})
+    document.querySelector('.header').setAttribute('data-state', 'showroom')
+    document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = item
+  }
+
   function setContent() {
     gsap.set('.indicator-panel', { autoAlpha: 0, x: 20, pointerEvents: 'none' })
     gsap.set('.bot', {autoAlpha: 0, x: 20})
@@ -97,36 +199,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     $audio.currentTime = 0
 
     gsap.to('.poi-container', { autoAlpha: 0 })
-  }
-
-  function gateToWebglView(item) {
-
-    if(document.querySelector('.main').classList.contains('begin')) {
-      setTimeout(() => {
-        document.querySelector('.main').classList.remove('begin')
-        document.querySelector('.main').classList.add('guide')
-
-        setTimeout(() => {
-          document.querySelector('.main').classList.remove('guide')
-          
-        }, 10000)
-      }, 2500)
-    }
-
-    gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
-    gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
-
-    $sound.classList.add('on')
-    $audio.volume = 0.5
-    $audio.play()
-
-    gsap.to('.poi-container', {autoAlpha: 1})
-
-    gsap.to('.gate', {autoAlpha: 0})
-    gsap.to('#content-wrapper', {autoAlpha: 1})
-    document.querySelector('.header').setAttribute('data-state', 'showroom')
-    document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = item
-    document.body.setAttribute('data-state', item)
   }
 
   function toggleItem(item) {
