@@ -12,8 +12,8 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, './public'),
+    filename: './assets/webgl/[name].js',
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [

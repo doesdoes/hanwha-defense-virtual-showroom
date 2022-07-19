@@ -27,6 +27,10 @@ window._WEBGL = (function() {
         // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
         STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`
         break
+      case 'hdw.doesbook.kr':
+        // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
+        STATE.ASSET_DOMAIN_PATH = `https://${host}/assets/webgl`
+        break
       default:
         STATE.ASSET_DOMAIN_PATH = `http://${host}/assets/webgl`
         break
