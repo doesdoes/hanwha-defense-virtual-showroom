@@ -72,7 +72,7 @@ window._WEBGL = (function() {
         }
 
         if ( event.key == 'c' ) {
-          console.log(STATE.WEBGL.camera.position)
+          console.log(STATE.WEBGL.camera.position, STATE.WEBGL.camera)
         }
 
         if ( event.key == 'q' ) {

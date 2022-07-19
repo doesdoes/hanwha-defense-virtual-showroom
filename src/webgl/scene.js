@@ -340,8 +340,13 @@ export function focusOnRegion( _region ){
     if(STATE.IS_FOCUSED){
       document.body.setAttribute('data-focus', _region)
       sendGLCustomEvent({msg: _region})
+      // console.log(STATE.WEBGL.cameraControls.minAzimuthAngle, STATE.WEBGL.cameraControls.maxAzimuthAngle)
+      // STATE.WEBGL.cameraControls.minAzimuthAngle = THREE.MathUtils.degToRad(0)
+      // STATE.WEBGL.cameraControls.maxAzimuthAngle = THREE.MathUtils.degToRad(90)
     } else {
       document.body.setAttribute('data-focus', '')
+      // STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
+      // STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
     }
   })
 }
