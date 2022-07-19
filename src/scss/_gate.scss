@@ -1,4 +1,12 @@
 .gate {
+  position: absolute;
+  background-color: $white;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 10;
+  
   .entry {
     position: relative;
     height: 100vh;
@@ -77,6 +85,7 @@
   }
 
   @media all and (max-width: $mobile) {
+    height: var(--cover-height);
     .entry {
       flex-direction: column;
       height: var(--cover-height);

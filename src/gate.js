@@ -1,11 +1,22 @@
 import {gsap} from 'gsap/all'
 
 (function() {
+  const md = new MobileDetect(window.navigator.userAgent)
+  const isMobile = md.mobile()
+
   document.querySelectorAll('.gate video.in').forEach(video => {
-    video.play()
-    video.addEventListener('ended', function() {
-      gsap.to(this, {autoAlpha: 0})
-    }, false)
+    if(isMobile) {
+      video.oncanplay = function() {
+        video.play()
+      }
+      video.play()
+      // video.autoplay = true
+    } else {
+      video.play()
+      video.addEventListener('ended', function() {
+        gsap.to(this, {autoAlpha: 0})
+      }, false)
+    }
   })
 
   const $entryK9a1 = document.querySelector('.entry__item--left .btn-entry-point')

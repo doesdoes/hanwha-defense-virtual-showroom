@@ -32,17 +32,16 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         toggleItem(item)
       })
     })
-  } else {
-    document.querySelectorAll('.btn-entry-point').forEach(bttn => {
-      bttn.addEventListener('click', function(e) {
-        const item = this.getAttribute('data-item')
-        toggleItem(item)
-
-        e.preventDefault()
-        e.stopPropagation()
-      })
-    })
   }
+  
+  document.querySelectorAll('.btn-entry-point').forEach(bttn => {
+    bttn.addEventListener('click', function(e) {
+      const item = this.getAttribute('data-item')
+      toggleItem(item)
+
+      e.preventDefault()
+    })
+  })
 
   document.querySelector('.header .btn-back').addEventListener('click', function(e) {
     goToGate()
@@ -84,7 +83,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   }
 
   function goToGate() {
-    gsap.to('.entry', { autoAlpha: 1 })
+    gsap.to('.gate', { autoAlpha: 1 })
     gsap.to('#content-wrapper', { autoAlpha: 0 })
     document.querySelector('.header').setAttribute('data-state', 'gate')
     gsap.to('.indicator-panel', { autoAlpha: 0, x: 20, pointerEvents: 'none' })
@@ -102,13 +101,17 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   function gateToWebglView(item) {
 
-    setTimeout(() => document.querySelector('.main').classList.remove('guide'), 3500)
+    if(document.querySelector('.main').classList.contains('begin')) {
+      setTimeout(() => {
+        document.querySelector('.main').classList.remove('begin')
+        document.querySelector('.main').classList.add('guide')
 
-    gsap.to('.entry', {autoAlpha: 0})
-    gsap.to('#content-wrapper', {autoAlpha: 1})
-    document.querySelector('.header').setAttribute('data-state', 'showroom')
-    document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = item
-    document.body.setAttribute('data-state', item)
+        setTimeout(() => {
+          document.querySelector('.main').classList.remove('guide')
+          
+        }, 10000)
+      }, 2500)
+    }
 
     gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
     gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
@@ -118,6 +121,12 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     $audio.play()
 
     gsap.to('.poi-container', {autoAlpha: 1})
+
+    gsap.to('.gate', {autoAlpha: 0})
+    gsap.to('#content-wrapper', {autoAlpha: 1})
+    document.querySelector('.header').setAttribute('data-state', 'showroom')
+    document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = item
+    document.body.setAttribute('data-state', item)
   }
 
   function toggleItem(item) {
