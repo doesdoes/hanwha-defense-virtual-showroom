@@ -148,7 +148,7 @@ window._WEBGL = (function() {
     // SCENE.toggleStages(_toggle, _sceneName)
     //Update indicator
     
-    const $condition = document.querySelector('.indicator-panel #change-condition')
+    const $condition = document.getElementById('change-condition')
     const $parts = document.querySelectorAll('.indicator-panel .part')
 
     if(_sceneName === "K9A1") {

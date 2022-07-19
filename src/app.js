@@ -32,6 +32,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         toggleItem(item)
       })
     })
+
+    const $conditionWrap = document.querySelector('.indicator-panel .condition-wrap')
+    const $bot = document.querySelector('.bot')
+    $bot.appendChild($conditionWrap)
   }
   
   document.querySelectorAll('.btn-entry-point').forEach(bttn => {

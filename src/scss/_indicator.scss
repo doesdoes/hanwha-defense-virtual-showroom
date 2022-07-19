@@ -1,0 +1,150 @@
+@use "sass:math";
+
+.indicator-panel {
+  position: fixed;
+  top: 50%;
+  right: $h-padding-gap;
+  width: max(164px, 10.10vw);
+  transform: translate(0, -50%);
+  z-index: 1000;
+
+  .part {
+    display: flex;
+    justify-content: space-between;
+    gap: 3%;
+    $partPadding: math.div(0.94vw, 2);
+    position: relative;
+    padding: calc(0.43em + #{$partPadding}) 0;
+    color: $white;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: #{$partPadding};
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(#fff, 0.3);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: #{$partPadding};
+      right: 0;
+      width: 10%;
+      height: 1px;
+      background-color: rgba(#fff, 1);
+      transition: all 0.3s;
+    }
+
+    @media (hover: hover) and (min-width: $tablet) {
+      &:hover,
+      &:focus {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &s {
+      margin-top: 1.35vw;
+    }
+  }
+
+  opacity: 0;
+
+  @media all and (max-width: $mobile) {
+    // transform: none;
+    width: auto;
+    counter-reset: section;
+    .part {
+      font-size: 0;
+
+      &::before {
+        counter-increment: section;
+        content: '0' counter(section);
+        font-size: 14px;
+        position: relative;
+        height: auto;
+        width: auto;
+        background-color: transparent;
+      }
+
+      &::after {
+        width: 100%;
+      }
+
+      & + .part {
+        &::before {
+          margin-top: 1.6em;
+        }
+      }
+    }
+
+    .condition-wrap {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.indicator-panel,
+.bot {
+  .btn {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+.bot {
+  position: fixed;
+  bottom: $h-gap;
+  right: $h-padding-gap;
+  width: max(164px, 10.10vw);
+  z-index: 1;
+
+  opacity: 0;
+  
+  @media all and (max-width: $mobile) {
+    display: flex;
+    flex-flow: row-reverse;
+    gap: 12px;
+    width: calc(100% - $h-padding-gap * 2);
+    left: $h-padding-gap;
+
+    > .btn,
+    > * {
+      width: 50%;
+    }
+  }
+}
+
+
+[data-focus="irCamera"] {
+  .part[data-feature="irCamera"] {
+    &::after {
+      width: 100%;
+    }
+  }
+  .part:not([data-feature="irCamera"]) {
+    opacity: 0.5;
+  }
+}
+
+[data-focus="automaticControlSystem"] {
+  .part[data-feature="automaticControlSystem"] {
+    &::after {
+      width: 100%;
+    }
+  }
+  .part:not([data-feature="automaticControlSystem"]) {
+    opacity: 0.5;
+  }
+}
+
+
