@@ -18,23 +18,23 @@ import {gsap} from 'gsap/all'
   $entryK9a1.addEventListener('mouseenter', function() {
     gsap.to('.entry__item--left video.in', {autoAlpha: 0})
     $k9a1Video.play()
-    gsap.to($k9a1Tit, { textFillColor: '#000' })
+    // gsap.to($k9a1Tit, { textFillColor: '#000' })
   })
 
   $entryK9a1.addEventListener('mouseleave', function() {
     $k9a1Video.playBackwards()
-    gsap.to($k9a1Tit, { textFillColor: 'transparent' })
+    // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
   })
 
   $entryRedback.addEventListener('mouseenter', function() {
     gsap.to('.entry__item--right video.in', {autoAlpha: 0})
     $redbackVideo.play()
-    gsap.to($redbackTit, { textFillColor: '#000' })
+    // gsap.to($redbackTit, { textFillColor: '#000' })
   })
 
   $entryRedback.addEventListener('mouseleave', function() {
     $redbackVideo.playBackwards()
-    gsap.to($redbackTit, { textFillColor: 'transparent' })
+    // gsap.to($redbackTit, { textFillColor: 'transparent' })
   })
 
   HTMLVideoElement.prototype.playBackwards = function() {

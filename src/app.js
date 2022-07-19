@@ -12,6 +12,8 @@ const $audio = $sound.querySelector('.sound audio');
 
 let IS_INIT_K9A1 = false
 let IS_INIT_REDBACK = false
+const md = new MobileDetect(window.navigator.userAgent)
+const isMobile = md.mobile()
 
 window.UI = {
   $currentPopup: '',
@@ -23,16 +25,24 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   setContent()
   setUIEvent()
 
-  // document.querySelectorAll('.entry__item .bttn').forEach(bttn => {
-  document.querySelectorAll('.btn-entry-point').forEach(bttn => {
-    bttn.addEventListener('click', function(e) {
-      const item = this.getAttribute('data-item')
-      toggleItem(item)
-
-      e.preventDefault()
-      // e.stopPropagation()
+  if(isMobile) {
+    document.querySelectorAll('.entry__item').forEach($entryItem => {
+      $entryItem.addEventListener('click', function() {
+        const item = this.getAttribute('data-item')
+        toggleItem(item)
+      })
     })
-  })
+  } else {
+    document.querySelectorAll('.btn-entry-point').forEach(bttn => {
+      bttn.addEventListener('click', function(e) {
+        const item = this.getAttribute('data-item')
+        toggleItem(item)
+
+        e.preventDefault()
+        e.stopPropagation()
+      })
+    })
+  }
 
   document.querySelector('.header .btn-back').addEventListener('click', function(e) {
     goToGate()
@@ -173,9 +183,9 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   // [NOTE] WEBGL
   let MAIN_ASSET_LOADED = false
 
-  const md = new MobileDetect(window.navigator.userAgent)
-  const isMobile = md.mobile()
-
+  // const md = new MobileDetect(window.navigator.userAgent)
+  // const isMobile = md.mobile()
+  console.log(isMobile)
   _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
 });
 
