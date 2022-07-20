@@ -48,7 +48,7 @@
       position: relative;
       width: 100%;
       height: 40px;
-      background-image: url(../content/svg/d-logo.svg);
+      background-image: url(../content/svg/d_logo.svg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -56,29 +56,41 @@
   }
 
   .btn-back {
+    @include btn2-kr;
+    min-width: 5.94em;
+    padding: 0.63em;
     position: relative;
     border: 0;
     background-color: transparent;
     font-family: $font-gothic;
     color: $white;
-    // font-size: 16px;
     padding-left: 2em;
-    @include btn2-kr;
+    text-align: right;
 
     &::before {
       content: '';
       display: inline-block;
       position: absolute;
       margin-right: 1em;
-      // top: 2px;
       top: 50%;
       transform: translateY(-50%);
-      left: 0;
+      left: 0.63em;
       width: 0.8em;
       height: 0.8em;
       background-image: url(../content/svg/icon-home.svg);
       background-size: 100%;
       transition: transform 0.2s;
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      height: 1em;
+      width: 1px;
+      background-color: $white;
+      top: 0.63em;
+      right: -0.73vw;
     }
 
     @media (hover: hover) {
@@ -99,6 +111,7 @@
   .kind {
     opacity: 0;
     margin-left: 0.73vw;
+    min-width: 5.94em;
   }
 
   .lang {
@@ -115,11 +128,8 @@
     margin-left: 1.25vw;
     font-size: calc(16px / var(16) * 1em);
     font-size: 1em;
-    // @function __em($size) {
-    //   @return calc(#{$size} / var(--fz) * 1em);
-    // }
     width: 1em;
-    height: 1em;
+    height: 0.65em;
     cursor: pointer;
 
     span {

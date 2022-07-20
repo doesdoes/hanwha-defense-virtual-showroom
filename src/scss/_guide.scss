@@ -130,6 +130,39 @@ body[data-state="guide-step-2"] {
     left: 50%;
     transform: translate(-50%, 0);
   }
+
+  @media all and (max-width: $mobile) {
+    &[data-item="dropdown"] {
+    }
+    &[data-item="condition"] {
+      top: auto;
+      left: 0;
+      bottom: 2em;
+      transform: translate(0, -50%);
+
+      .guide-arrow {
+        left: 50%;
+        top: auto;
+        right: auto;
+        bottom: -2em;
+        transform: translate(0, 92%) rotate(180deg);
+      }
+    }
+    &[data-item="parts"] {
+      top: 50%;
+      left: -4em;
+      transform: translate(-100%, -50%);
+
+      .guide-arrow{
+        top: 50%;
+        right: 0;
+        left: auto;
+        bottom: auto;
+        transform: rotate(90deg) translate(-50%, -92%);
+        transform-origin: top;
+      }
+    }
+  }
 }
 
 .btn-close-guide {
@@ -193,5 +226,13 @@ body[data-state="guide-step-2"] {
     transform: translate(-50%, -50%);
     color: $white;
     text-align: center;
+  }
+
+  &__visual {
+    max-width: 194.2px;
+  }
+
+  &__desc {
+    margin-top: 23.4px;
   }
 }

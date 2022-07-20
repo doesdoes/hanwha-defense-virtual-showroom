@@ -96,7 +96,8 @@
   }
 
   &:not(.btn--dynamic) {
-    @media (hover: hover) {
+    $bpTabletMin: calc(#{$tablet} + 1px);
+    @media (hover: hover) and (min-width: $bpTabletMin) {
       &:hover,
       &:focus {
         border-color: $point1 !important;
