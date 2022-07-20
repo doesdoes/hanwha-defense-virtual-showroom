@@ -11,7 +11,8 @@
   .part {
     display: flex;
     justify-content: space-between;
-    gap: 3%;
+    align-items: flex-end;
+    gap: 0.85em;
     $partPadding: math.div(0.94vw, 2);
     position: relative;
     padding: calc(0.43em + #{$partPadding}) 0;
@@ -51,6 +52,9 @@
     }
 
     &s {
+      display: flex;
+      flex-direction: column;
+      gap: 0.94vw;
       margin-top: 1.35vw;
     }
   }
@@ -58,30 +62,14 @@
   opacity: 0;
 
   @media all and (max-width: $mobile) {
-    // transform: none;
     width: auto;
-    counter-reset: section;
     .part {
-      font-size: 0;
-
-      &::before {
-        counter-increment: section;
-        content: '0' counter(section);
-        font-size: 14px;
-        position: relative;
-        height: auto;
-        width: auto;
-        background-color: transparent;
+      .txt {
+        display: none;
       }
 
       &::after {
         width: 100%;
-      }
-
-      & + .part {
-        &::before {
-          margin-top: 1.6em;
-        }
       }
     }
 

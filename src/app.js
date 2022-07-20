@@ -1,4 +1,4 @@
-import {gsap} from 'gsap/all'
+import {gsap, Quint} from 'gsap/all'
 import { canvasButton } from './canvas-button'
 import './dropdown'
 import { sendGLCustomEvent } from './webgl/class/GLCustomEvent'
@@ -65,14 +65,14 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   })
 
   window.addEventListener('GLCustomEvent', function(e) {
-    // console.log(e.detail.msg)
     
     if(window.UI.$currentPopup) {
       gsap.killTweensOf(window.UI.$currentPopup)
-      gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
+      gsap.to(window.UI.$currentPopup, { autoAlpha: 0, scale: 0.5, duration: 0.3 })
     }
     const $popup = document.querySelector(`[data-popup=${e.detail.msg}]`)
-    gsap.to($popup, { autoAlpha: 1, duration: 0.7 })
+    gsap.set($popup, { scale: 0.5 })
+    gsap.to($popup, { autoAlpha: 1, scale: 1, duration: 0.7, ease: Quint.easeInOut })
     window.UI.$currentPopup = $popup
   })
 

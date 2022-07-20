@@ -158,8 +158,9 @@ window._WEBGL = (function() {
 
       $condition.setAttribute('data-item', 'k9a1IndoorBg')
       Array.from($parts).map((part, idx) => {
+        const $txt = part.querySelector('.txt')
         const partData = data['k9a1-indicators'][idx]
-        part.textContent = partData.title
+        $txt.textContent = partData.title
         part.setAttribute('data-feature', partData.id)
       })
 
@@ -174,8 +175,9 @@ window._WEBGL = (function() {
 
       $condition.setAttribute('data-item', 'redbackIndoorBg')
       Array.from($parts).map((part, idx) => {
+        const $txt = part.querySelector('.txt')
         const partData = data['redback-indicators'][idx]
-        part.textContent = partData.title
+        $txt.textContent = partData.title
         part.setAttribute('data-feature', partData.id)
       })
       if(_toggle) {
