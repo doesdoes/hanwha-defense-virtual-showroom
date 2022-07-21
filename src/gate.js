@@ -1,4 +1,4 @@
-import {gsap} from 'gsap/all'
+import {gsap, Quint} from 'gsap/all'
 
 (function() {
   const md = new MobileDetect(window.navigator.userAgent)
@@ -10,14 +10,30 @@ import {gsap} from 'gsap/all'
         video.play()
       }
       video.play()
-      // video.autoplay = true
+
+      video.addEventListener('ended', function() {
+        // gsap.to(this, {autoAlpha: 0})
+
+        startInMotion(this)
+      }, false)
     } else {
       video.play()
       video.addEventListener('ended', function() {
         gsap.to(this, {autoAlpha: 0})
+        startInMotion(this)
       }, false)
     }
   })
+
+  function startInMotion(video) {
+    const $entry =  video.closest('[data-item')
+    const $tit = $entry.querySelector('.tit')
+    const $desc = $entry.querySelector('.desc')
+    const $func = $entry.querySelector('.func')
+    gsap.to($tit, { y: 0, duration: 0.8, ease: Quint.easeInOut })
+    gsap.to($desc, { y: 0, delay: 0.1, duration: 0.8, ease: Quint.easeInOut })
+    gsap.to($func, { y: 0, delay: 0.2, duration: 0.8, ease: Quint.easeInOut })
+  }
 
   const $entryK9a1 = document.querySelector('.entry__item--left .btn-entry-point')
   const $k9a1Video = document.querySelector('.entry__item--left video.hover')

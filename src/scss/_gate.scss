@@ -33,18 +33,26 @@
       text-align: center;
     }
 
+    .clip-wrap {
+      display: block;
+      overflow: hidden;
+    }
+
     .tit {
       text-transform: uppercase;
+      transform: translateY(100%);
     }
 
     .desc {
       padding-top: 0.85em;
       padding-bottom: 1.55em;
+      transform: translateY(100%);
     }
 
     .func {
       display: inline-block;
       position: relative;
+      transform: translateY(100%);
 
       // [NOTE] 변형 UI
       .bttn {
