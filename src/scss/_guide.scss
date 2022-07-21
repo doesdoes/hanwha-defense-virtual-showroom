@@ -41,7 +41,7 @@ body[data-state="guide-step-2"] {
     visibility: visible;
   }
 
-  .bot {
+  .bot .btn {
     pointer-events: none;
     opacity: 0.2 !important;
   }
@@ -173,14 +173,19 @@ body[data-state="guide-step-2"] {
 .btn-close-guide {
   display: block;
   position: absolute;
-  right: 60px;
   top: 44px;
+  right: 60px;
   width: 32px;
   height: 32px;
   background-image: url(../content/svg/btn-close.svg);
   background-size: 100%;
   z-index: 30;
   visibility: collapse;
+
+  @media all and (max-width: $mobile) {
+    top: 20px;
+    right: 20px;
+  }
 }
 
 .guide-arrow{
