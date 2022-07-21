@@ -78,6 +78,61 @@ window._WEBGL = (function() {
         if ( event.key == 'q' ) {
           SCENE.focusOnRegion('reset')
         }
+
+        // if ( event.key == 'a' ) {
+        //   console.log(STATE.WEBGL.camera.position)
+
+        //   STATE.WEBGL.cameraControls.setLookAt( 
+        //     STATE.WEBGL.camera.position.x -= 0.01,
+        //     STATE.WEBGL.camera.position.y,
+        //     STATE.WEBGL.camera.position.z,
+        //     0,
+        //     0,
+        //     0,
+        //     false
+        //   )
+        // }
+
+        // if ( event.key == 'd' ) {
+        //   STATE.WEBGL.cameraControls.setLookAt( 
+        //     STATE.WEBGL.camera.position.x += 0.01,
+        //     STATE.WEBGL.camera.position.y,
+        //     STATE.WEBGL.camera.position.z,
+        //     0,
+        //     0,
+        //     0,
+        //     false
+        //   )
+        // }
+
+        // if ( event.key == 'w' ) {
+        //   console.log(STATE.WEBGL.camera.position)
+
+        //   STATE.WEBGL.cameraControls.setLookAt( 
+        //     STATE.WEBGL.camera.position.x,
+        //     STATE.WEBGL.camera.position.y -= 0.01,
+        //     STATE.WEBGL.camera.position.z,
+        //     0,
+        //     0,
+        //     0,
+        //     false
+        //   )
+
+        //   console.log(STATE.WEBGL.camera.position)
+        // }
+
+        // if ( event.key == 's' ) {
+        //   STATE.WEBGL.cameraControls.setLookAt( 
+        //     STATE.WEBGL.camera.position.x,
+        //     STATE.WEBGL.camera.position.y += 0.01,
+        //     STATE.WEBGL.camera.position.z,
+        //     0,
+        //     0,
+        //     0,
+        //     false
+        //   )
+        // }
+
       }, false)
     }
 
