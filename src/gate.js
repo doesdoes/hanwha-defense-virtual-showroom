@@ -1,4 +1,4 @@
-import {gsap, Quint} from 'gsap/all'
+import {gsap, Quint, Expo} from 'gsap/all'
 
 (function() {
   const md = new MobileDetect(window.navigator.userAgent)
@@ -30,9 +30,11 @@ import {gsap, Quint} from 'gsap/all'
     const $tit = $entry.querySelector('.tit')
     const $desc = $entry.querySelector('.desc')
     const $func = $entry.querySelector('.func')
-    gsap.to($tit, { y: 0, duration: 0.8, ease: Quint.easeInOut })
-    gsap.to($desc, { y: 0, delay: 0.1, duration: 0.8, ease: Quint.easeInOut })
-    gsap.to($func, { y: 0, delay: 0.2, duration: 0.8, ease: Quint.easeInOut })
+    gsap.to($tit, { y: 0, duration: 1.01, ease: Expo.easeInOut })
+    gsap.to($desc, { y: 0, delay: 0.1, duration: 1.01, ease: Expo.easeInOut })
+    gsap.to($func, { y: 0, delay: 0.2, duration: 1.01, ease: Expo.easeInOut, onComplete: () => {
+      
+    }})
   }
 
   const $entryK9a1 = document.querySelector('.entry__item--left .btn-entry-point')
