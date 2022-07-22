@@ -23,13 +23,13 @@
       <div class="header-inner header__showroom">
 
         <div class="gnb">
-          <a href="#" id="btn-back" class="btn-back">HOME</a>
+          <a href="#gate" id="btn-back" class="btn-back" data-target="1">HOME</a>
 
           <div class="dropdown closed kind">
             <button type="button" class="dropdown__selection">K9A1</button>
             <ul class="dropdown__list">
-              <li><a href="#" class="btn-entry-point dropdown__a" data-item="K9A1">K9A1</a></li>
-              <li><a href="#" class="btn-entry-point dropdown__a" data-item="REDBACK">REDBACK</a></li>
+              <li><button type="button" class="btn-entry-point dropdown__a" data-item="K9A1">K9A1</button></li>
+              <li><button type="button" class="btn-entry-point dropdown__a" data-item="REDBACK">REDBACK</button></li>
             </ul>
 
             <div class="guide-popup btn2-kr" data-item="dropdown">
@@ -58,8 +58,8 @@
           <div class="dropdown closed lang">
             <button type="button" class="dropdown__selection">KOR</button>
             <ul class="dropdown__list">
-              <li><a href="#" class="dropdown__a" data-item="KOR">KOR</a></li>
-              <li><a href="#" class="dropdown__a" data-item="ENG">ENG</a></li>
+              <li><a href="/kor/showroom.do" class="dropdown__a" data-item="KOR">KOR</a></li>
+              <li><a href="/eng/showroom.do" class="dropdown__a" data-item="ENG">ENG</a></li>
             </ul>
           </div>
           <div class="sound" id="sound">
@@ -87,43 +87,53 @@
       <!-- <ul class="marker"></ul> -->
 
       <div id="webgl-ui">
-        <a href="#" id="longerFiringRange" class="poi-container" data-item="K9A1">
+        <a href="#popup_longerFiringRange" id="longerFiringRange" class="poi-container" data-item="K9A1">
+          <span class="a11y">longerFiringRange</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="highMobility" class="poi-container" data-item="K9A1">
+        <a href="#popup_highMobility" id="highMobility" class="poi-container" data-item="K9A1">
+          <span class="a11y">highMobility</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="automaticControlSystem" class="poi-container" data-item="K9A1">
+        <a href="#popup_automaticControlSystem" id="automaticControlSystem" class="poi-container" data-item="K9A1">
+          <span class="a11y">automaticControlSystem</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="ammunitionLoader" class="poi-container" data-item="K9A1">
+        <a href="#popup_ammunitionLoader" id="ammunitionLoader" class="poi-container" data-item="K9A1">
+          <span class="a11y">ammunitionLoader</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="irCamera" class="poi-container" data-item="K9A1">
+        <a href="#popup_irCamera" id="irCamera" class="poi-container" data-item="K9A1">
+          <span class="a11y">irCamera</span>
           <span class="inner"></span>
         </a>
 
-        <a href="#" id="mainArmamentSystem" class="poi-container" data-item="REDBACK">
+        <a href="#popup_mainArmamentSystem" id="mainArmamentSystem" class="poi-container" data-item="REDBACK">
+          <span class="a11y">mainArmamentSystem</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="antiTankArmamentSystem" class="poi-container" data-item="REDBACK">
+        <a href="#popup_antiTankArmamentSystem" id="antiTankArmamentSystem" class="poi-container" data-item="REDBACK">
+          <span class="a11y">antiTankArmamentSystem</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="bestMobility" class="poi-container" data-item="REDBACK">
+        <a href="#popup_bestMobility" id="bestMobility" class="poi-container" data-item="REDBACK">
+          <span class="a11y">bestMobility</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="superiorProtection" class="poi-container" data-item="REDBACK">
+        <a href="#popup_superiorProtection" id="superiorProtection" class="poi-container" data-item="REDBACK">
+          <span class="a11y">superiorProtection</span>
           <span class="inner"></span>
         </a>
-        <a href="#" id="isuRubberTrack" class="poi-container" data-item="REDBACK">
+        <a href="#popup_isuRubberTrack" id="isuRubberTrack" class="poi-container" data-item="REDBACK">
+          <span class="a11y">isuRubberTrack</span>
           <span class="inner"></span>
         </a>
         
       </div>
 
       <div class="popup-container" data-item="K9A1">
-        <div class="poi-popup" data-popup="longerFiringRange">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="longerFiringRange" id="popup_longerFiringRange">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <div class="content">
             <h3 class="t4 tit">Longer Firing Range</h3>
             <p class="btn2-kr p">
@@ -134,8 +144,8 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="highMobility">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="highMobility" id="popup_highMobility">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <div class="content">
             <h3 class="t4 tit">High Mobility</h3>
             <p class="btn2-kr p">
@@ -145,13 +155,13 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="ammunitionLoader">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
-          <a href="#" class="visual-media">
+        <div class="poi-popup" data-popup="ammunitionLoader" id="popup_ammunitionLoader">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
+          <div class="visual-media">
             <img src="/assets/webgl/content/video/ammunitionLoader.jpg" alt="">
             <video src="/assets/webgl/content/video/K9_3_Ammunition Loader.mp4" poster="/assets/webgl/content/video/ammunitionLoader.jpg" loop playsinline></video>
             <span class="btn-play"><span class="a11y">play</span></span>
-          </a>
+          </div>
           <div class="content">
             <h3 class="t4 tit">Ammunition Loader</h3>
             <p class="btn2-kr p">
@@ -160,8 +170,8 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="automaticControlSystem">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="automaticControlSystem" id="popup_automaticControlSystem">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <img src="/assets/webgl/content/video/automaticControlSystem.jpg" alt="">
           <div class="content">
             <h3 class="t4 tit">Automatic Control System</h3>
@@ -171,8 +181,8 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="irCamera">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="irCamera" id="popup_irCamera">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <div class="content">
             <h3 class="t4 tit">IR (Infra-Red) Camera</h3>
             <p class="btn2-kr p">
@@ -184,8 +194,8 @@
       </div>
 
       <div class="popup-container" data-item="REDBACK">
-        <div class="poi-popup" data-popup="mainArmamentSystem">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="mainArmamentSystem" id="popup_mainArmamentSystem">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <div class="content">
             <h3 class="t4 tit">Main Armament System</h3>
             <p class="btn2-kr p">
@@ -194,13 +204,13 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="antiTankArmamentSystem">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
-          <a href="#" class="visual-media">
+        <div class="poi-popup" data-popup="antiTankArmamentSystem" id="popup_antiTankArmamentSystem">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
+          <div class="visual-media">
             <img src="/assets/webgl/content/video/antiTankArmamentSystem.jpg" alt="">
             <video src="/assets/webgl/content/video/redback_2_anti-tank armament system.mp4" poster="/assets/webgl/content/video/antiTankArmamentSystem.jpg" loop playsinline></video>
             <span class="btn-play"><span class="a11y">play</span></span>
-          </a>
+          </div>
           <div class="content">
             <h3 class="t4 tit">Anti-Tank Armament System</h3>
             <p class="btn2-kr p">
@@ -209,13 +219,13 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="bestMobility">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
-          <a href="#" class="visual-media">
+        <div class="poi-popup" data-popup="bestMobility" id="popup_bestMobility">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
+          <div class="visual-media">
             <img src="/assets/webgl/content/video/bestMobility.jpg" alt="">
             <video src="/assets/webgl/content/video/redback_3_best mobility.mp4" poster="/assets/webgl/content/video/bestMobility.jpg" loop playsinline></video>
             <span class="btn-play"><span class="a11y">play</span></span>
-          </a>
+          </div>
           <div class="content">
             <h3 class="t4 tit">Best Mobility</h3>
             <p class="btn2-kr p">
@@ -224,8 +234,8 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="superiorProtection">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="superiorProtection" id="popup_superiorProtection">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <div class="content">
             <h3 class="t4 tit">Superior Protection</h3>
             <p class="btn2-kr p">
@@ -234,8 +244,8 @@
           </div>
         </div>
 
-        <div class="poi-popup" data-popup="isuRubberTrack">
-          <a href="#" class="btn-close"><span class="a11y">닫기</span></a>
+        <div class="poi-popup" data-popup="isuRubberTrack" id="popup_isuRubberTrack">
+          <button type="button" class="btn-close"><span class="a11y">닫기</span></button>
           <div class="content">
             <h3 class="t4 tit">ISU & Rubber Track</h3>
             <p class="btn2-kr p">
@@ -294,7 +304,7 @@
       </div>
     </section>
 
-    <a href="#" class="btn2-kr btn-close-guide"><span class="a11y">가이드 닫기</span></a>
+    <button type="button" class="btn2-kr btn-close-guide"><span class="a11y">가이드 닫기</span></button>
 
     <div class="guide360">
       <div class="guide360__content">
@@ -306,7 +316,7 @@
       </div>
     </div>
 
-    <section class="gate">
+    <section class="gate" id="gate">
       <div class="entry">
         <div class="entry__item entry__item--left" data-item="K9A1">
           <div class="bg">
@@ -324,7 +334,7 @@
             </span>
             <span class="clip-wrap">
               <div class="func">
-                <a href="#" class="btn btn--dynamic btn--invert btn-entry-point" data-txt="VIEW MORE" data-item="K9A1"><span class="txt">VIEW MORE</span></a>
+                <button type="button" class="btn btn--dynamic btn--invert btn-entry-point" data-txt="VIEW MORE" data-item="K9A1"><span class="txt">VIEW MORE</span></button>
                 <!-- <button type="button" class="bttn" data-item="k9-high">고화질</button>
                 <button type="button" class="bttn" data-item="k9-low">일반화질</button> -->
               </div>
@@ -347,7 +357,7 @@
             </span>
             <span class="clip-wrap">
               <div class="func">
-                <a href="#" class="btn btn--dynamic btn--invert btn-entry-point" data-txt="VIEW MORE" data-item="REDBACK"><span class="txt">VIEW MORE</span></a>
+                <button type="button" class="btn btn--dynamic btn--invert btn-entry-point" data-txt="VIEW MORE" data-item="REDBACK"><span class="txt">VIEW MORE</span></button>
                 <!-- <button type="button" class="bttn" data-item="redback-high">고화질</button>
                 <button type="button" class="bttn" data-item="redback-low">일반화질</button> -->
               </div>

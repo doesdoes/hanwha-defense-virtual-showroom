@@ -69,6 +69,7 @@
   .visual-media {
     display: block;
     position: relative;
+    cursor: pointer;
 
     video {
       @include full-pos;
@@ -104,6 +105,9 @@
     height: 2em;
     background-image: url(../content/svg/btn-close.svg);
     background-size: 100%;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
     z-index: 100;
   }
 
