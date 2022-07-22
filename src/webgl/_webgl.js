@@ -22,7 +22,7 @@ window._WEBGL = (function() {
   function createContext(_parentContainerClass, _containerId, _debug, _isMobile = false){
     let host = window.location.host
 
-
+    console.log(host)
 
     switch (host) {
       case 'dev.does.kr':
@@ -31,6 +31,7 @@ window._WEBGL = (function() {
         break
       case 'localhost:1116':
       case '0.0.0.0:1116':
+      case '0.0.0.0:3000':
         STATE.ASSET_DOMAIN_PATH = `/assets/webgl`
         break
       default:
