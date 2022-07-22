@@ -22,17 +22,19 @@ window._WEBGL = (function() {
   function createContext(_parentContainerClass, _containerId, _debug, _isMobile = false){
     let host = window.location.host
 
+
+
     switch (host) {
       case 'dev.does.kr':
         // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
         STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`
         break
-      case 'hdw.doesbook.kr':
-        // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
-        STATE.ASSET_DOMAIN_PATH = `https://${host}/assets/webgl`
+      case 'localhost:1116':
+      case '0.0.0.0:1116':
+        STATE.ASSET_DOMAIN_PATH = `/assets/webgl`
         break
       default:
-        STATE.ASSET_DOMAIN_PATH = `http://${host}/assets/webgl`
+        STATE.ASSET_DOMAIN_PATH = `https://${host}/assets/webgl`
         break
     }
    
