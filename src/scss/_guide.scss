@@ -177,8 +177,10 @@ body[data-state="guide-step-2"] {
   right: 60px;
   width: 32px;
   height: 32px;
+  background-color: transparent;
   background-image: url(../content/svg/btn-close.svg);
   background-size: 100%;
+  border: 0;
   z-index: 30;
   visibility: collapse;
 
