@@ -219,13 +219,15 @@ body[data-state="guide-step-2"] {
   transform: translate(-50%, -92%);
 
   .line {
-    border-right: 1px dotted $white;
+    // border-right: 1px dotted $white;
+    background-image: repeating-linear-gradient(to bottom,transparent 0 2px, $white 2px 4px);
     display:inline-block;
     height:2em;
+    width: 1px;
   }
   .arrow{
-  position:absolute;
-    top:-0.3rem;
+    position: absolute;
+    top:-0.5rem;
     bottom:0;
     height:1rem;
     border-right: 1px solid $white;

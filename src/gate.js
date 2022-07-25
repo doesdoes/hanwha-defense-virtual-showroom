@@ -26,7 +26,7 @@ import {gsap, Quint, Expo} from 'gsap/all'
   })
 
   function startInMotion(video) {
-    const $entry =  video.closest('[data-item')
+    const $entry =  video.closest('[data-item]')
     const $tit = $entry.querySelector('.tit')
     const $desc = $entry.querySelector('.desc')
     const $func = $entry.querySelector('.func')
