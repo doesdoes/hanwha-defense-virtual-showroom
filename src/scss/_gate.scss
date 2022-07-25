@@ -92,11 +92,15 @@
     }
   }
 
-  @media all and (max-width: $mobile) {
+  @media all and (max-width: $tablet) {
     height: var(--cover-height);
     .entry {
       flex-direction: column;
       height: var(--cover-height);
+
+      &__inner {
+        padding-bottom: 0;
+      }
 
       &__item {
         flex: 1;

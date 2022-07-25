@@ -2,12 +2,31 @@
 // 타이포그라피 가이드
 // ------------------------------------------------------------------------
 
-
 html {
   // font-size base
   font-size: 0.8333333333vw;
 
+  @media all and (min-width: 2201px) {
+    font-size: 0.8vw;
+  }
+
+  @media all and (max-width: 1799px) {
+    font-size: 0.88vw;
+  }
+
+  @media all and (max-width: 1399px) {
+    font-size: 0.93vw;
+  }
+
   @media all and (max-width: 1023px) {
+    font-size: 1.6vw;
+  }
+
+  @media all and (max-width: 729px) {
+    font-size: 2.1vw;
+  }
+
+  @media all and (max-width: 429px) {
     font-size: 2.666667vw;
   }
 }
@@ -154,8 +173,9 @@ body {
 
 @mixin btn2-kr {
   font-size: clamp(13px, 1rem, 18px);
-  line-height: 1;
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
 }
 
 .btn1-en {

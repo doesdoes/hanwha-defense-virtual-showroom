@@ -109,14 +109,24 @@
     border: 0;
     cursor: pointer;
     z-index: 100;
+
+    @media (hover: hover) and (min-width: $tablet) {
+      right: 0.86em;
+      top: 0.86em;
+      width: 1.71em;
+      height: 1.71em;
+    }
   }
 
   .tit {
     padding-bottom: 0.86em;
+    @media all and (max-width: $tablet) {
+      font-size: min(28px, 2rem);
+    }
   }
 
   .p {
-    line-height: 1.5;
+    font-weight: 100;
   }
 
   &[data-popup="ammunitionLoader"] {

@@ -64,17 +64,17 @@
     background-color: transparent;
     font-family: $font-gothic;
     color: $white;
-    padding-left: 2em;
     text-align: right;
 
     &::before {
       content: '';
       display: inline-block;
-      position: absolute;
+      // position: absolute;
+      position: relative;
       margin-right: 1em;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 0.63em;
+      top: 0.1em;
+      left: 0;
+      // transform: translateY(-50%);
       width: 0.8em;
       height: 0.8em;
       background-image: url(../content/svg/icon-home.svg);
@@ -82,22 +82,11 @@
       transition: transform 0.2s;
     }
 
-    &::after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      height: 1em;
-      width: 1px;
-      background-color: $white;
-      top: 0.63em;
-      right: -0.73vw;
-    }
-
     @media (hover: hover) {
       &:hover,
       &:focus {
         &::before {
-          transform: translate(-25%, -50%);
+          transform: translate(-50%, 0);
         }
       }
     }
@@ -114,6 +103,13 @@
     min-width: 5.94em;
   }
 
+  .bar {
+    height: 1em;
+    width: 1px;
+    background-color: $white;
+    top: 0.63em;
+  }
+
   .lang {
     opacity: 0;
   }
@@ -126,7 +122,6 @@
     display: flex;
     justify-content: space-between;
     margin-left: 1.25vw;
-    font-size: calc(16px / var(16) * 1em);
     font-size: 1em;
     width: 1em;
     height: 0.65em;
@@ -140,7 +135,6 @@
       transform-origin: bottom;
       transform: scaleY(0.6);
       animation: init 0.4s alternate-reverse;
-      // transition: transform 0.2s;
     }
 
     &.on {
@@ -193,6 +187,26 @@
 
     .sound {
       opacity: 1;
+    }
+  }
+
+  @media all and (max-width: $tablet) {
+    .btn-back {
+      min-width: initial;
+      padding-left: 0;
+      margin-right: 4.1vw;
+
+      &::before {
+        margin-right: 0.57em;
+      }
+    }
+  
+    .kind {
+      margin-left: 4.1vw;
+    }
+
+    .sound {
+      margin-left: 6.15vw;
     }
   }
 }

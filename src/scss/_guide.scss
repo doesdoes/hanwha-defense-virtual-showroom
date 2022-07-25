@@ -20,7 +20,8 @@ body[data-state="guide-step-2"] {
 
   .header {
     pointer-events: none;
-    .btn-back {
+    .btn-back,
+    .dropdown__selection {
       opacity: 0.2;
     }
 
@@ -29,8 +30,14 @@ body[data-state="guide-step-2"] {
     }
   }
 
-  .indicator-panel * {
-    pointer-events: none !important;
+  .indicator-panel {
+    * {
+      pointer-events: none !important;
+    }
+
+    .parts {
+      opacity: 0.2;
+    }
   }
 
   .guide-popup {
@@ -175,8 +182,8 @@ body[data-state="guide-step-2"] {
   position: absolute;
   top: 44px;
   right: 60px;
-  width: 32px;
-  height: 32px;
+  width: 2em;
+  height: 2em;
   background-color: transparent;
   background-image: url(../content/svg/btn-close.svg);
   background-size: 100%;
@@ -184,9 +191,23 @@ body[data-state="guide-step-2"] {
   z-index: 30;
   visibility: collapse;
 
+  span {
+    position: absolute;
+    left: -0.73vw;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    color: $white;
+  }
+
   @media all and (max-width: $mobile) {
-    top: 20px;
-    right: 20px;
+    top: calc(1.3vw + 15px);
+    right: calc(2.35vw + 15px);
+    width: 2em;
+    height: 2em;
+
+    span {
+      left: -3.06vw;
+    }
   }
 }
 
@@ -245,6 +266,6 @@ body[data-state="guide-step-2"] {
   }
 
   &__desc {
-    margin-top: 23.4px;
+    margin-top: 1.5em;
   }
 }
