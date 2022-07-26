@@ -1,0 +1,31 @@
+.landscape-layout-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $black;
+  z-index: 3999;
+  visibility: hidden;
+
+  .info-wrap {
+    width: 322px;
+    height: 160px;
+
+    background-color: rgba(#0014ff, 0.5);
+    text-align: center;
+
+    img {
+      width: 128.5px;
+      height: 113px;
+    }
+
+    .desc {
+      padding-top: 2.29em;
+      color: $white;
+    }
+  }
+}
