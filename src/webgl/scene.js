@@ -54,9 +54,8 @@ export function loadStage( sceneName, callback ) {
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
 
           POI.element.addEventListener('click', function(e){
-            focusOnRegion(child.name)
-
             STATE.IS_FOCUSED = true 
+            focusOnRegion(child.name)
             e.preventDefault()
           })
 
@@ -328,6 +327,17 @@ export function focusOnRegion( _region ){
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
   }
 
+  if(STATE.IS_FOCUSED && _region !== 'reset'){
+    document.body.setAttribute('data-focus', _region)
+    // console.log(STATE.WEBGL.cameraControls.minAzimuthAngle, STATE.WEBGL.cameraControls.maxAzimuthAngle)
+    // STATE.WEBGL.cameraControls.minAzimuthAngle = THREE.MathUtils.degToRad(0)
+    // STATE.WEBGL.cameraControls.maxAzimuthAngle = THREE.MathUtils.degToRad(90)
+  } else {
+    document.body.setAttribute('data-focus', '')
+    // STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
+    // STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
+  }
+
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,
     STATE.ZONE_FOCUS[_region].position.y,
@@ -337,16 +347,9 @@ export function focusOnRegion( _region ){
     STATE.ZONE_FOCUS[_region].target.z,
     true 
   ).then(() => {
-    if(STATE.IS_FOCUSED){
-      document.body.setAttribute('data-focus', _region)
+
+    if(STATE.IS_FOCUSED) {
       sendGLCustomEvent({msg: _region})
-      // console.log(STATE.WEBGL.cameraControls.minAzimuthAngle, STATE.WEBGL.cameraControls.maxAzimuthAngle)
-      // STATE.WEBGL.cameraControls.minAzimuthAngle = THREE.MathUtils.degToRad(0)
-      // STATE.WEBGL.cameraControls.maxAzimuthAngle = THREE.MathUtils.degToRad(90)
-    } else {
-      document.body.setAttribute('data-focus', '')
-      // STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
-      // STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
     }
   })
 }
@@ -369,8 +372,8 @@ export function setIndicator() {
   document.querySelectorAll(`.indicator-panel .parts .part`).forEach(part => {
     part.addEventListener('click', function() {
       const feature = this.getAttribute('data-feature')
-      focusOnRegion(feature)
       STATE.IS_FOCUSED = true 
+      focusOnRegion(feature)
     })
   })
 }
