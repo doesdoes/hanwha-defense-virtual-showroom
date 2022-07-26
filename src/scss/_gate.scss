@@ -67,6 +67,10 @@
       .bttn + .bttn {
         left: calc(50% - 1px);
       }
+
+      [data-bp="mobile"] {
+        display: none;
+      }
     }
 
     .bg {
@@ -120,8 +124,21 @@
         flex: 1;
       }
 
-      .func {
+      .tit,
+      .desc {
         display: none;
+      }
+
+      .func {
+        padding-bottom: 7.4vmin;
+
+        [data-bp="web"] {
+          display: none;
+        }
+
+        [data-bp="mobile"] {
+          display: block;
+        }
       }
     }
   }

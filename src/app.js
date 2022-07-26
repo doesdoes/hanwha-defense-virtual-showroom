@@ -27,12 +27,12 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   setUIEvent()
 
   if(isMobile) {
-    document.querySelectorAll('.entry__item').forEach($entryItem => {
-      $entryItem.addEventListener('click', function() {
-        const item = this.getAttribute('data-item')
-        toggleItem(item)
-      })
-    })
+    // document.querySelectorAll('.entry__item').forEach($entryItem => {
+    //   $entryItem.addEventListener('click', function() {
+    //     const item = this.getAttribute('data-item')
+    //     toggleItem(item)
+    //   })
+    // })
 
     const $conditionWrap = document.querySelector('.indicator-panel .condition-wrap')
     const $bot = document.querySelector('.bot')
