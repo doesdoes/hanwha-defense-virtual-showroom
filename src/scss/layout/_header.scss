@@ -65,6 +65,7 @@
     font-family: $font-gothic;
     color: $white;
     text-align: right;
+    line-height: 1;
 
     &::before {
       content: '';
