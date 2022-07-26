@@ -268,9 +268,13 @@ body[data-state="guide-step-2"] {
 
   &__visual {
     max-width: 194.2px;
+    opacity: 0;
+    transform: translateY(10%);
   }
 
   &__desc {
     margin-top: 1.5em;
+    opacity: 0;
+    transform: translateY(10%);
   }
 }

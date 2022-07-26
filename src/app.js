@@ -98,7 +98,9 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       guideSteps.push(() => {
         return new Promise((resolve, reject) => {
           document.body.setAttribute('data-state', 'guide-step-1')
-          const dCall = gsap.delayedCall(3, () => {
+          gsap.to('.guide360__visual', { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.2 })
+          gsap.to('.guide360__desc', { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.3 })
+          const dCall = gsap.delayedCall(2, () => {
             resolve()
             guide.next()
           })
