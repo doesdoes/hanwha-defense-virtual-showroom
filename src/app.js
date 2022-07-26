@@ -72,9 +72,20 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       gsap.to(window.UI.$currentPopup, { autoAlpha: 0, scale: 0.5, duration: 0.3 })
     }
     const $popup = document.querySelector(`[data-popup=${e.detail.msg}]`)
-    gsap.set($popup, { scale: 0.5 })
-    gsap.to($popup, { autoAlpha: 1, scale: 1, duration: 0.7, ease: Quint.easeInOut })
-    window.UI.$currentPopup = $popup
+    if($popup) {
+      console.log(e.detail.msg, $popup)
+      gsap.set($popup, { scale: 0.5 })
+      gsap.to($popup, { autoAlpha: 1, scale: 1, duration: 0.7, ease: Quint.easeInOut })
+      window.UI.$currentPopup = $popup
+
+      const video = $popup.querySelector('video')
+      if(video) {
+        video.currentTime = 0
+        video.play()
+        const visualMedia = video.closest('.visual-media')
+        visualMedia.classList.add('playing')
+      }
+    }
   })
 
   function gateToWebglView(item) {
