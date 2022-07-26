@@ -95,4 +95,91 @@ export const MATERIALS = {
     "transparent": true,
     "depthWrite": false,
   },
+  // "Glow_Effect": {
+  //   "type": new THREE.ShaderMaterial(),
+  //   "uniforms": 
+  //   { 
+  //     "s":   { type: "f", value: -1.0},
+  //     "b":   { type: "f", value: 1.0},
+  //     "p":   { type: "f", value: 2.0 },
+  //     glowColor: { type: "c", value: new THREE.Color(0x00ffff) }
+  //   },
+  //   "vertexShader": `
+  //   varying vec3 vNormal;
+  //   varying vec3 vPositionNormal;
+  //   void main() 
+  //   {
+  //     vNormal = normalize( normalMatrix * normal ); // 转换到视图空间
+  //     vPositionNormal = normalize(( modelViewMatrix * vec4(position, 1.0) ).xyz);
+  //     gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+  //   }
+  //   `,
+  //   "fragmentShader": `
+  //   uniform vec3 glowColor;
+  //   uniform float b;
+  //   uniform float p;
+  //   uniform float s;
+  //   varying vec3 vNormal;
+  //   varying vec3 vPositionNormal;
+  //   void main() 
+  //   {
+  //     float a = pow( b + s * abs(dot(vNormal, vPositionNormal)), p );
+  //     gl_FragColor = vec4( glowColor, a );
+  //   }
+  //   `,
+  //   "side": THREE.BackSide,
+  //   // "blending": THREE.MultiplyBlending,
+  //   "transparent": true,
+  //   "opacity": 0.1,
+  // },
+
+  "Glow_Effect": {
+    "type": new THREE.ShaderMaterial(),
+    "uniforms": 
+    { 
+      coefficient: {
+        // value: coefficient,
+        value: 0.5,
+      },
+      color: {
+        // value: new Color(color),
+        value: new THREE.Color(0xffffff),
+        // value: new THREE.Color('gold'),
+      },
+      power: {
+        // value: power,
+        value: 1,
+      },
+      // glowColor: { type: "c", value: new THREE.Color(0x00ffff) }
+    },
+    "vertexShader": `
+    varying vec3 vVertexWorldPosition;
+    varying vec3 vVertexNormal;
+    void main() {
+      vVertexNormal	= normalize(normalMatrix * normal);
+      vVertexWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+      gl_Position	= projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+    `,
+    "fragmentShader": `
+    uniform vec3 color;
+    uniform float coefficient;
+    uniform float power;
+    varying vec3 vVertexNormal;
+    varying vec3 vVertexWorldPosition;
+    void main() {
+      vec3 worldCameraToVertex = vVertexWorldPosition - cameraPosition;
+      vec3 viewCameraToVertex	= (viewMatrix * vec4(worldCameraToVertex, 0.0)).xyz;
+      viewCameraToVertex = normalize(viewCameraToVertex);
+      float intensity	= pow(
+        coefficient + dot(vVertexNormal, viewCameraToVertex),
+        power
+      );
+      gl_FragColor = vec4(color, intensity);
+    }
+    `,
+    "side": THREE.BackSide,
+    // "blending": THREE.MultiplyBlending,
+    "transparent": true,
+  },
 } 
