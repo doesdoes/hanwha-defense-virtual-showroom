@@ -67,28 +67,41 @@
         left: calc(50% - 1px);
       }
     }
-  }
 
-  .bg {
-    @include full-pos;
-    width: 100%;
-    height: 100%;
-    // object-fit: cover;
-
-    video.in,
-    video.hover {
+    .bg {
       @include full-pos;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      // object-fit: cover;
+  
+      video.in,
+      video.hover {
+        @include full-pos;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      &::after {
+        content: '';
+        @include full-pos;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($black, 0.1);
+        transition: background-color 0.34s;
+      }
     }
 
-    &::after {
-      content: '';
-      @include full-pos;
-      width: 100%;
-      height: 100%;
-      background-color: rgba($black, 0.1);
+    &.is-left {
+      .entry__item--right .bg::after {
+        background-color: rgba($black, 0.35);
+      }
+    }
+
+    &.is-right {
+      .entry__item--left .bg::after {
+        background-color: rgba($black, 0.35);
+      }
     }
   }
 

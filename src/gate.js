@@ -11,22 +11,31 @@ import {gsap, Quint, Expo} from 'gsap/all'
       }
       video.play()
 
-      video.addEventListener('ended', function() {
-        // gsap.to(this, {autoAlpha: 0})
-
-        startInMotion(this)
-      }, false)
+      video.addEventListener('timeupdate', function() {
+        if(this.duration - this.currentTime < 2) {
+          startInMotion(this)
+        }
+      })
     } else {
       video.play()
-      video.addEventListener('ended', function() {
-        gsap.to(this, {autoAlpha: 0})
-        startInMotion(this)
-      }, false)
+
+      video.addEventListener('timeupdate', function() {
+        if(this.duration - this.currentTime < 2) {
+          startInMotion(this)
+        }
+
+        if(this.duration - this.currentTime < 0.1) {
+          gsap.to(this, {autoAlpha: 0})
+        }
+      })
     }
   })
 
   function startInMotion(video) {
     const $entry =  video.closest('[data-item]')
+    if($entry.classList.contains('in')) return
+
+    $entry.classList.add('in')
     const $tit = $entry.querySelector('.tit')
     const $desc = $entry.querySelector('.desc')
     const $func = $entry.querySelector('.func')
@@ -37,31 +46,34 @@ import {gsap, Quint, Expo} from 'gsap/all'
     }})
   }
 
-  const $entryK9a1 = document.querySelector('.entry__item--left .btn-entry-point')
-  const $k9a1Video = document.querySelector('.entry__item--left video.hover')
-  const $k9a1Tit = document.querySelector('.entry__item--left .tit')
-  const $entryRedback = document.querySelector('.entry__item--right .btn-entry-point')
-  const $redbackVideo = document.querySelector('.entry__item--right video.hover')
-  const $redbackTit = document.querySelector('.entry__item--right .tit')
+  const $entry = document.querySelector('.gate .entry')
+  const $entryK9a1 = $entry.querySelector('.entry__item--left .btn-entry-point')
+  const $k9a1Video = $entry.querySelector('.entry__item--left video.hover')
+  const $entryRedback = $entry.querySelector('.entry__item--right .btn-entry-point')
+  const $redbackVideo = $entry.querySelector('.entry__item--right video.hover')
 
   $entryK9a1.addEventListener('mouseenter', function() {
+    $entry.classList.add('is-left')
     gsap.to('.entry__item--left video.in', {autoAlpha: 0})
     $k9a1Video.play()
     // gsap.to($k9a1Tit, { textFillColor: '#000' })
   })
 
   $entryK9a1.addEventListener('mouseleave', function() {
+    $entry.classList.remove('is-left')
     $k9a1Video.playBackwards()
     // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
   })
 
   $entryRedback.addEventListener('mouseenter', function() {
+    $entry.classList.add('is-right')
     gsap.to('.entry__item--right video.in', {autoAlpha: 0})
     $redbackVideo.play()
     // gsap.to($redbackTit, { textFillColor: '#000' })
   })
 
   $entryRedback.addEventListener('mouseleave', function() {
+    $entry.classList.remove('is-right')
     $redbackVideo.playBackwards()
     // gsap.to($redbackTit, { textFillColor: 'transparent' })
   })
@@ -81,6 +93,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
             video.currentTime += -(1/fps);
         }
     }, 1000 / fps);
-};
+  };
 
 })()
