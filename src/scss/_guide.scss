@@ -21,7 +21,8 @@ body[data-state="guide-step-2"] {
   .header {
     pointer-events: none;
     .btn-back,
-    .dropdown__selection {
+    .dropdown__selection,
+    .bar {
       opacity: 0.2;
     }
 
@@ -35,7 +36,8 @@ body[data-state="guide-step-2"] {
       pointer-events: none !important;
     }
 
-    .parts {
+    .parts,
+    .btn {
       opacity: 0.2;
     }
   }
@@ -60,6 +62,7 @@ body[data-state="guide-step-2"] {
   pointer-events: none;
   width: max(164px, 10.10vw);
   color: $white;
+  background-color: rgba($white, 0.12);
   text-align: center;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);

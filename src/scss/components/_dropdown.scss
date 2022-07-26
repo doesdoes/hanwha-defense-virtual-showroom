@@ -59,11 +59,20 @@
   }
 
   &__a {
+    width: 100%;
     padding: 0.63em;
     border: 0;
     background-color: transparent;
     font-size: inherit;
+    transition: background-color 0.2s;
     cursor: pointer;
+
+    @media all and (hover: hover) and (min-width: $tablet){
+      &:hover,
+      &:focus {
+        background-color: rgba(#373737, 0.2) !important;
+      }
+    }
   }
 
   &.closed {

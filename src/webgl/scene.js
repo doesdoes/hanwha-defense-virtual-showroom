@@ -170,9 +170,8 @@ export function loadStage( sceneName, callback ) {
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
 
           POI.element.addEventListener('click', function(e){
-            focusOnRegion(child.name)
-
             STATE.IS_FOCUSED = true 
+            focusOnRegion(child.name)
             e.preventDefault()
           })
 
@@ -327,6 +326,7 @@ export function focusOnRegion( _region ){
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
   }
 
+  // console.log(_region, STATE.IS_FOCUSED)
   if(STATE.IS_FOCUSED && _region !== 'reset'){
     document.body.setAttribute('data-focus', _region)
     // console.log(STATE.WEBGL.cameraControls.minAzimuthAngle, STATE.WEBGL.cameraControls.maxAzimuthAngle)

@@ -106,7 +106,7 @@
   .bar {
     height: 1em;
     width: 1px;
-    background-color: $white;
+    background-color: rgba($white, 0.3);
     top: 0.63em;
   }
 
@@ -122,9 +122,10 @@
     display: flex;
     justify-content: space-between;
     margin-left: 1.25vw;
+    margin-bottom: 3px;
     font-size: 1em;
     width: 1em;
-    height: 0.65em;
+    height: 0.8em;
     cursor: pointer;
 
     span {
@@ -133,7 +134,7 @@
       height: 100%;
       background-color: $point1;
       transform-origin: bottom;
-      transform: scaleY(0.6);
+      transform: scaleY(0.5);
       animation: init 0.4s alternate-reverse;
     }
 
