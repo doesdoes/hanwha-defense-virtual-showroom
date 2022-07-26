@@ -23,6 +23,8 @@
     @include btn1-kr;
   }
 
+  $bpTabletMin: calc(#{$tablet} + 1px);
+
   &::before {
     content: attr(data-txt);
     white-space: nowrap;
@@ -38,9 +40,10 @@
     position: absolute;
     top: 50%;
     vertical-align: middle;
-    width: 18px;
-    height: 18px;
+    width: 1em;
+    height: 1em;
     background: url(../content/svg/d-ico-arrow.svg) no-repeat 100%;
+    background-size: contain;
     right: 0.888em;
     transform: translate(0, -50%);
     transition: all 0.34s ease-in-out;
@@ -52,6 +55,39 @@
     &::after {
       content: none;
     }
+
+    @media (hover: hover) and (min-width: $bpTabletMin) {
+      &:hover,
+      &:focus {
+        background-color: $white;
+        color: $black;
+      }
+    }
+  }
+
+  &--invert {
+    color: $black;
+    border: 1px solid rgba($black, 0.3);
+    &::after {
+      background-image: url(../content/svg/d-ico-arrow--black.svg);
+    }
+
+    @media (hover: hover) and (min-width: $bpTabletMin) {
+      &:hover,
+      &:focus {
+        background-color: $point1 !important;
+        color: $white !important;
+        &::after {
+          background-image: url(../content/svg/d-ico-arrow.svg) !important;
+        }
+      }
+    }
+  }
+
+  &--em {
+    background-color: $white;
+    color: $black;
+    border: 0;
   }
 
   &--dynamic {
@@ -78,81 +114,6 @@
     .txt {
       opacity: 0;
       visibility: collapse;
-    }
-  }
-
-  &--invert {
-    color: $black;
-    border: 1px solid rgba($black, 0.3);
-    &::after {
-      background: url(../content/svg/d-ico-arrow--black.svg) no-repeat 100%;
-    }
-  }
-
-  &--em {
-    background-color: $white;
-    color: $black;
-    border: 0;
-  }
-
-  &:not(.btn--dynamic) {
-    $bpTabletMin: calc(#{$tablet} + 1px);
-    @media (hover: hover) and (min-width: $bpTabletMin) {
-      &:hover,
-      &:focus {
-        border-color: $point1 !important;
-        color: $point1 !important;
-        &::after {
-          background: url(../content/svg/d-ico-arrow--point1.svg) no-repeat 100% !important;
-        }
-      }
-    }
-  }
-
-  &--outlink {
-    &::after {
-      background: url(../content/svg/d-ico-outlink.svg) no-repeat 100%;
-    }
-
-    &.btn--invert {
-      &::after {
-        background: url(../content/svg/d-ico-outlink--black.svg) no-repeat 100%;
-      }
-    }
-    &:not(.btn--dynamic) {
-      @media (hover: hover) {
-        &:hover,
-        &:focus {
-          border-color: $point1 !important;
-          color: $point1 !important;
-          &::after {
-            background: url(../content/svg/d-ico-outlink--point1.svg) no-repeat 100% !important;
-          }
-        }
-      }
-    }
-  }
-
-  &--download {
-    &::after {
-      background: url(../content/svg/d-ico-download.svg) no-repeat 100%;
-    }
-    &.btn--invert {
-      &::after {
-        background: url(../content/svg/d-ico-download--black.svg) no-repeat 100%;
-      }
-    }
-    &:not(.btn--dynamic) {
-      @media (hover: hover) {
-        &:hover,
-        &:focus {
-          border-color: $black !important;
-          color: $black !important;
-          &::after {
-            background: url(../content/svg/d-ico-download--black.svg) no-repeat 100% !important;
-          }
-        }
-      }
     }
   }
 
