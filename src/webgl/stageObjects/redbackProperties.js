@@ -82,8 +82,9 @@ export const MATERIALS = {
   "BG_Desert_Floor_TankShadow_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(43,29,18)"),
-    "transparent": true,
     "alphaMap": "BG_Snow_Floor_TankShadow_A.jpg",
+    "transparent": true,
+    "opacity": 0.4,
   },
   "BG_Desert_TrackSkid_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
@@ -107,6 +108,5 @@ export const MATERIALS = {
     "alphaMap": "dirt_spritesheet_horizon.png",
     "transparent": true,
     "depthWrite": false,
-    // "opacity": 0.0,
   },
 }
