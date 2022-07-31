@@ -18,6 +18,13 @@ import { setLight, setHemisphereLightSnowDefault, setHemisphereLightDesertDefaul
 import { createSpriteTween } from './utils.js'
 import UILoadingManager from './class/UILoadingManager.js'
 
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+
+import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
+import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
+
 export function loadStage( sceneName, callback ) {
   const uiLoadingManager = new UILoadingManager() 
 
@@ -43,8 +50,14 @@ export function loadStage( sceneName, callback ) {
         })
       }
 
+      let glowTarget;
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
+        console.log(child.name)
+        if(child.name === 'Joint_TANK_K9A1_Head_Cannon_01') {
+          glowTarget = child;
+        }
+
         if (child.userData.type == 'POI') {
           // POI buttons
           const POI = new CSS2DObject( document.getElementById(child.name) )
@@ -131,6 +144,26 @@ export function loadStage( sceneName, callback ) {
           })
         }
       })
+
+      STATE.WEBGL.baseComposer = new EffectComposer( STATE.WEBGL.renderer );
+      STATE.WEBGL.composer = new EffectComposer( STATE.WEBGL.renderer );
+
+      // base model
+      const renderPassBase = new RenderPass( STATE.WEBGL.scene, STATE.WEBGL.camera );
+      STATE.WEBGL.baseComposer.addPass( renderPassBase );
+
+      const renderPass = new RenderPass( glowTarget, STATE.WEBGL.camera );
+      STATE.WEBGL.composer.addPass( renderPass);
+
+      // color to grayscale conversion
+      const effectGrayScale = new ShaderPass( LuminosityShader );
+      STATE.WEBGL.composer.addPass( effectGrayScale );
+
+      // Sobel operator
+      const effectSobel = new ShaderPass( SobelOperatorShader );
+      effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio;
+      effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio;
+      STATE.WEBGL.composer.addPass( effectSobel );
 
       setUI(sceneName, k9Points)
       break
