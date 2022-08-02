@@ -1,3 +1,4 @@
+import './translate-i18n'
 import {gsap, Quint} from 'gsap/all'
 import { canvasButton } from './canvas-button'
 import './dropdown'
@@ -283,9 +284,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   // [NOTE] WEBGL
   let MAIN_ASSET_LOADED = false
 
-  // const md = new MobileDetect(window.navigator.userAgent)
-  // const isMobile = md.mobile()
-  console.log(isMobile)
   _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
 });
 
