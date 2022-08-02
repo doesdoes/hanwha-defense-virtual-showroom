@@ -1,8 +1,8 @@
 .dropdown {
+  @include btn2-kr;
   display: inline-block;
   position: relative;
   line-height: 1;
-  @include btn2-kr;
 
   &__selection {
     width: 100%;
