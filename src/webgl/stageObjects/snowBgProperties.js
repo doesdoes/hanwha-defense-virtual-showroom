@@ -55,7 +55,8 @@ export const MATERIALS = {
       repeatX: 1,
       repeatY: 1,
     },
-    "depthTest": false,
+    "depthTest": true,
+    "depthWrite": false,
   },
 
   "BG_Snow_Tree_Far_LoopAni_s": {
@@ -63,8 +64,10 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Tree_Plan_GRP_Dif_02.jpg",
     "alphaMap": "Tree_Plan_GRP_Alpha.jpg",
-    "transparent": true,
+    // "transparent": true,
     "flipY": false,
+    // "depthWrite": false,
+    "_alphaTest": 0.85,
   },
 
   "BG_Snow_Tree_Near_LoopAni_s": {
