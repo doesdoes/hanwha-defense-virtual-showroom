@@ -37,7 +37,7 @@ import i18next from 'i18next'
       en: {
         'GATE': {
           'vsr00': 'world best',
-          'vsr01': 'HI',
+          'vsr01': 'hello battle',
           'guide360': '',
           'guide1': '',
           'guide2': '',
