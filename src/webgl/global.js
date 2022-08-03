@@ -170,22 +170,33 @@ export const STATE = {
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(49),
+      maxAzimuth: THREE.MathUtils.degToRad(121),
     },
     highMobility: {
       position: new THREE.Vector3(-0.34,-0.37,-3.26),
       target: new THREE.Vector3(0,0,0),
+      targetOffset: new THREE.Vector3(0,0.5,0),
+      minAzimuth: THREE.MathUtils.degToRad(130),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     automaticControlSystem: {
       position: new THREE.Vector3(-1.19,-0.11,-3.1),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(150),
+      maxAzimuth: THREE.MathUtils.degToRad(230),
     },
     ammunitionLoader: {
       position: new THREE.Vector3(-4.45,0.10,0.24),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(230),
+      maxAzimuth: THREE.MathUtils.degToRad(310),
     },
     irCamera: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(49),
+      maxAzimuth: THREE.MathUtils.degToRad(121),
     },
 
     mainArmamentSystem: {

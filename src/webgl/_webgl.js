@@ -78,6 +78,9 @@ window._WEBGL = (function() {
 
         if ( event.key == 'c' ) {
           console.log(STATE.WEBGL.camera.position, STATE.WEBGL.camera)
+          console.log(STATE.WEBGL.camera.rotation.y)
+          const deg = THREE.MathUtils.radToDeg(STATE.WEBGL.camera.rotation.y)
+          console.log(deg)
         }
 
         if ( event.key == 'q' ) {

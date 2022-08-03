@@ -51,8 +51,9 @@ export function loadStage( sceneName, callback ) {
           POI.position.copy(child.position)
           TANK_OBJECT.clone.add( POI )
 
-          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
-
+          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
+          STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
+          
           POI.element.addEventListener('click', function(e){
             STATE.IS_FOCUSED = true 
             focusOnRegion(child.name)
@@ -167,7 +168,8 @@ export function loadStage( sceneName, callback ) {
           POI.position.copy(child.position)
           REDBACK_OBJECT.clone.add( POI )
 
-          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)          
+          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
+          STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
 
           POI.element.addEventListener('click', function(e){
             STATE.IS_FOCUSED = true 
@@ -329,13 +331,13 @@ export function focusOnRegion( _region ){
   // console.log(_region, STATE.IS_FOCUSED)
   if(STATE.IS_FOCUSED && _region !== 'reset'){
     document.body.setAttribute('data-focus', _region)
-    // console.log(STATE.WEBGL.cameraControls.minAzimuthAngle, STATE.WEBGL.cameraControls.maxAzimuthAngle)
-    // STATE.WEBGL.cameraControls.minAzimuthAngle = THREE.MathUtils.degToRad(0)
-    // STATE.WEBGL.cameraControls.maxAzimuthAngle = THREE.MathUtils.degToRad(90)
+    
+    STATE.WEBGL.cameraControls.minAzimuthAngle = STATE.ZONE_FOCUS[_region].minAzimuth
+    STATE.WEBGL.cameraControls.maxAzimuthAngle = STATE.ZONE_FOCUS[_region].maxAzimuth
   } else {
     document.body.setAttribute('data-focus', '')
-    // STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
-    // STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
+    STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
+    STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
   }
 
   STATE.WEBGL.cameraControls.setLookAt( 
