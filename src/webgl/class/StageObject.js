@@ -119,7 +119,7 @@ export class StageObject{
         
         this.needToBeUpdated.push( {mesh: child, clonedMaterial: cloneMat} )
 
-        if(STATE.WEBGL.isDebug) if(cloneMat.name == "BG_Snow_Tree_Far_LoopAni_s") console.log(cloneMat)
+        if(STATE.WEBGL.isDebug) if(cloneMat.name == "BG_Desert_Dust_SeqAni_s") console.log(cloneMat)
       }
     })
 

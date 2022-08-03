@@ -11,7 +11,7 @@ export const MATERIALS = {
   "BG_Desert_HDR_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Ultimate_Skies_4k_0000.jpg",
+    "map": "Desert_Sky.jpg",
     "reflectivity": 1.0,
     "roughness": 1.0,
     "flipY": false,
@@ -20,11 +20,11 @@ export const MATERIALS = {
   "BG_Desert_Ground_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Desert_ground_02.jpg",
+    "map": "Desert_ground.jpg",
     "flipY": false,
     "mapTiling":{
-      repeatX: 30,
-      repeatY: 30,
+      repeatX: 15,
+      repeatY: 15,
     }
   },
 
@@ -45,7 +45,7 @@ export const MATERIALS = {
     },
   },
 
-  "Speed_Line_UVAni_s": {
+  "BG_SpeedLine_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(193,160,127)"),
     "alphaMap": "Speed_Line_Alpha.jpg",
@@ -77,8 +77,8 @@ export const MATERIALS = {
 
   "Grass_Part_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "map": "Snow_Grass_D.jpg",
-    "alphaMap": "Snow_Grass_A.jpg",
+    "map": "Desert_Grass_D.jpg",
+    "alphaMap": "Desert_Grass_A.jpg",
     "transparent": true,
     "flipY": false,
   },
@@ -86,7 +86,7 @@ export const MATERIALS = {
   "Desert_Rock_Part_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Rock.jpg",
+    "map": "Desert_Rocks.jpg",
     "flipY": false,
   },
 
@@ -95,4 +95,12 @@ export const MATERIALS = {
     "map": "Soil_D.jpg",
     "flipY": false,
   },
-} 
+
+  "Rock_Bush_Shadow_s": {
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(167, 104, 72)"),
+    "alphaMap": "Rocks_Bush_Shadow_A.jpg",
+    "flipY": false,
+    "transparent": true,
+  }
+}

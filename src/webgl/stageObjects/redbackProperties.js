@@ -11,8 +11,8 @@ export const MATERIALS = {
   "TANK_REDBACK_Head_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_Head_s.jpg",
-    "emissiveMap": "REDBACK_Head_s.jpg",
+    "map": "RedBack_Head_D_Color.jpg",
+    "emissiveMap": "RedBack_Head_D_Color.jpg",
     "normalMap": "REDBACK_Head_N.jpg",
     "flipY": false,
     "roughness": 1.0,
@@ -25,8 +25,8 @@ export const MATERIALS = {
   "TANK_REDBACK_Body_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_Body_s.jpg",
-    "emissiveMap": "REDBACK_Body_s.jpg",
+    "map": "REDBACK_Body.jpg",
+    "emissiveMap": "REDBACK_Body.jpg",
     "normalMap": "REDBACK_Body_N.jpg",
     "flipY": false,
     "roughness": 1.0,
@@ -38,9 +38,9 @@ export const MATERIALS = {
   "TANK_REDBACK_Track_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_Track_s.jpg",
-    "emissiveMap": "REDBACK_Track_s.jpg",
-    // "normalMap": "TANK_K9A1_TrackWheel_N.jpg",
+    "map": "REDBACK_TrackWheel.jpg",
+    "emissiveMap": "REDBACK_TrackWheel.jpg",
+    "normalMap": "REDBACK_TrackWheel_N.jpg",
     "flipY": false,
     "roughness": 1.0,
     "metalness": 0.0,
@@ -56,9 +56,8 @@ export const MATERIALS = {
   "TANK_REDBACK_Track_UVAni_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_Track_s.jpg",
-    // "emissiveMap": "REDBACK_Track_s.jpg",
-    // "normalMap": "REDBACK_Track_s_N.jpg",
+    "map": "REDBACK_TrackWheel.jpg",
+    "normalMap": "REDBACK_TrackWheel_N.jpg",
     "flipY": false,
     "roughness": 1.0,
     "metalness": 0.0,
@@ -75,7 +74,8 @@ export const MATERIALS = {
   "TANK_REDBACK_Wheel_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_Track_s.jpg",
+    "map": "REDBACK_TrackWheel.jpg",
+    "normalMap": "REDBACK_TrackWheel_N.jpg",
     "flipY": false,
   },
 
@@ -90,7 +90,7 @@ export const MATERIALS = {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Tire_D.jpg",
-    "alphaMap": "TrackSkid_A.jpg",
+    "alphaMap": "Tire_Alpha.jpg",
     "transparent": true,
     "opacity": 0.5,
     "mapTiling":{
