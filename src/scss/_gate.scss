@@ -6,6 +6,14 @@
   left: 0;
   height: 100vh;
   z-index: 10;
+
+  video.in-mobile {
+    @include full-pos;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
   
   .entry {
     position: relative;
@@ -112,6 +120,11 @@
 
   @media all and (max-width: $tablet) {
     height: var(--cover-height);
+
+    video.in-mobile {
+      display: block;
+    }
+
     .entry {
       flex-direction: column;
       height: var(--cover-height);
@@ -138,6 +151,13 @@
 
         [data-bp="mobile"] {
           display: block;
+        }
+      }
+
+      .bg {
+        video.in,
+        video.hover {
+          display: none;
         }
       }
     }

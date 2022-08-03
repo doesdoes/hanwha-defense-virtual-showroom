@@ -4,20 +4,27 @@ import {gsap, Quint, Expo} from 'gsap/all'
   const md = new MobileDetect(window.navigator.userAgent)
   const isMobile = md.mobile()
 
-  document.querySelectorAll('.gate video.in').forEach(video => {
-    if(isMobile) {
-      video.oncanplay = function() {
-        video.play()
-      }
-      video.play()
+  if(isMobile) {
+    const videoInMobile = document.querySelector('.gate video.in-mobile')
+    videoInMobile.play()
+    videoInMobile.addEventListener('timeupdate', function() {
+      if(this.duration - this.currentTime < 2) {
 
-      video.addEventListener('timeupdate', function() {
-        if(this.duration - this.currentTime < 2) {
-          startInMotion(this)
-        }
-      })
-    } else {
-      video.play()
+        document.querySelectorAll('.gate video.in').forEach(video => {
+          startInMotion(video)
+        })
+      }
+    })
+
+  } else {
+    const videoPromises = []
+    document.querySelectorAll('.gate video.in').forEach(video => {
+      videoPromises.push(new Promise((resolve) => {
+          video.src = video.dataset.src
+          video.addEventListener('loadedmetadata', function() {
+            resolve()
+          })
+        }))
 
       video.addEventListener('timeupdate', function() {
         if(this.duration - this.currentTime < 2) {
@@ -28,8 +35,13 @@ import {gsap, Quint, Expo} from 'gsap/all'
           gsap.to(this, {autoAlpha: 0})
         }
       })
-    }
-  })
+
+    })
+
+    Promise.all(videoPromises).then(() => {
+      document.querySelectorAll('.gate video.in').forEach(video => video.play())
+    })
+  }
 
   function startInMotion(video) {
     const $entry =  video.closest('[data-item]')
