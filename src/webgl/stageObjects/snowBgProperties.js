@@ -55,7 +55,6 @@ export const MATERIALS = {
       repeatX: 1,
       repeatY: 1,
     },
-    "depthTest": true,
     "depthWrite": false,
   },
 

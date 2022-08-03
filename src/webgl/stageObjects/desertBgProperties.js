@@ -20,7 +20,7 @@ export const MATERIALS = {
   "BG_Desert_Ground_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Desert_ground.jpg",
+    "map": "Desert_Ground.jpg",
     "flipY": false,
     "mapTiling":{
       repeatX: 15,
@@ -54,7 +54,8 @@ export const MATERIALS = {
     "alphaMapTiling":{
       repeatX: 1,
       repeatY: 1,
-    }
+    },
+    "depthWrite": false,
   },
 
   "BG_Dessert_Tree_s": {
@@ -98,9 +99,9 @@ export const MATERIALS = {
 
   "Rock_Bush_Shadow_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(167, 104, 72)"),
+    "color": new THREE.Color("rgb(23, 10, 4)"),
     "alphaMap": "Rocks_Bush_Shadow_A.jpg",
     "flipY": false,
-    "transparent": true,
+    "transparent": true, 
   }
 }

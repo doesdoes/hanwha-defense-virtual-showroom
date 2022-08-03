@@ -25,8 +25,8 @@ export const MATERIALS = {
   "TANK_REDBACK_Body_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "REDBACK_Body.jpg",
-    "emissiveMap": "REDBACK_Body.jpg",
+    "map": "REDBACK_BODY.jpg",
+    "emissiveMap": "REDBACK_BODY.jpg",
     "normalMap": "REDBACK_Body_N.jpg",
     "flipY": false,
     "roughness": 1.0,
