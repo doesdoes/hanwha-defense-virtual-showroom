@@ -159,8 +159,9 @@ body[data-state="guide-step-2"] {
         left: 50%;
         top: auto;
         right: auto;
-        bottom: -2em;
-        transform: translate(0, 92%) rotate(180deg);
+        bottom: 0;
+        transform: rotate(90deg) translate(72%, 100%);
+        transform-origin: center;
       }
     }
     &[data-item="parts"] {
@@ -173,7 +174,7 @@ body[data-state="guide-step-2"] {
         right: 0;
         left: auto;
         bottom: auto;
-        transform: rotate(90deg) translate(-50%, -92%);
+        transform: translate(100%, -50%);
         transform-origin: top;
       }
     }
@@ -262,6 +263,9 @@ body[data-state="guide-step-2"] {
     margin-top: 1.5em;
     opacity: 0;
     transform: translateY(10%);
+    font-size: min(16px, 1.4rem);
+    line-height: 1.5;
+    letter-spacing: -0.02em;
   }
 
   @media all and (max-width: $tablet) {
