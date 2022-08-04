@@ -8,7 +8,7 @@
   color: $white;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.1);
   top: 56%;
   left: 8%;
   visibility: hidden;
@@ -173,8 +173,8 @@
   @include btn2-kr;
   position: relative;
   display: block;
-  width: calc(1.75em / 2);
-  height: calc(1.75em / 2);
+  width: calc(2.4em / 2);
+  height: calc(2.4em / 2);
   border-radius: 50%;
   background-color: $point1;
   // background-color: transparent;
@@ -217,8 +217,8 @@
   .inner {
     display: block;
     position: absolute;
-    width: 1.75em;
-    height: 1.75em;
+    width: 2.4em;
+    height: 2.4em;
     border: 1px solid $point1;
     top: 50%;
     left: 50%;
@@ -229,8 +229,8 @@
 
   @media all and (min-width: $tablet) {
     &:hover {
-      width: 1.2em;
-      height: 1.2em;
+      width: calc(2.4em / 2) * 1.2;
+      height: calc(2.4em / 2) * 1.2;
     }
   }
 

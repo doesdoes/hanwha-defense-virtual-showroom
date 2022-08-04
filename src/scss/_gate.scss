@@ -48,6 +48,7 @@
     }
 
     .tit {
+      padding-bottom: 0.3em;
       text-transform: uppercase;
       transform: translateY(102%);
     }
@@ -106,14 +107,26 @@
     }
 
     &.is-left {
-      .entry__item--right .bg::after {
-        background-color: rgba($black, 0.35);
+      .entry__item--right {
+        .bg::after {
+          background-color: rgba($black, 0.35);
+        }
+
+        .entry__inner {
+          opacity: 0.2;
+        }
       }
     }
 
     &.is-right {
-      .entry__item--left .bg::after {
-        background-color: rgba($black, 0.35);
+      .entry__item--left {
+        .bg::after {
+          background-color: rgba($black, 0.35);
+        }
+
+        .entry__inner {
+          opacity: 0.2;
+        }
       }
     }
   }
