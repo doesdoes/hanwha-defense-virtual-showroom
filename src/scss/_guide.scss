@@ -135,7 +135,7 @@ body[data-state="guide-step-2"] {
       right: 0;
       left: auto;
       bottom: auto;
-      transform: rotate(90deg) translate(-50%, -92%);
+      transform: translate(100%, -50%);
       transform-origin: top;
     }
   }
@@ -219,31 +219,15 @@ body[data-state="guide-step-2"] {
   position:absolute;
   top: 0;
   left: 50%;
-  // bottom: 0;
-  transform: translate(-50%, -92%);
+  transform-origin: center;
+  transform: rotate(-90deg) translate(76%, -100%);
 
-  .line {
-    // border-right: 1px dotted $white;
-    background-image: repeating-linear-gradient(to bottom,transparent 0 2px, $white 2px 4px);
-    display:inline-block;
-    height:2em;
-    width: 1px;
-  }
-  .arrow{
-    position: absolute;
-    top:-0.5rem;
-    bottom:0;
-    height:1rem;
-    border-right: 1px solid $white;
-    display: inline-block;
-  }
-  .right{
-    left:0.3rem;
-    transform: rotate(-45deg);
-  }
-  .left{
-    right:0.3rem;
-    transform: rotate(45deg);
+  &::before {
+    content: '';
+    display: block;
+    background: url(../content/svg/arrow_guide.svg);
+    width: 30px;
+    height: 13px;
   }
 }
 
@@ -269,6 +253,7 @@ body[data-state="guide-step-2"] {
 
   &__visual {
     max-width: 194.2px;
+    max-height: 194.2px;
     opacity: 0;
     transform: translateY(10%);
   }
@@ -277,5 +262,12 @@ body[data-state="guide-step-2"] {
     margin-top: 1.5em;
     opacity: 0;
     transform: translateY(10%);
+  }
+
+  @media all and (max-width: $tablet) {
+    &__visual {
+      max-width: 166px;
+      max-height: 166px;
+    }
   }
 }
