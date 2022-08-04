@@ -181,10 +181,10 @@ export const STATE = {
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     automaticControlSystem: {
-      position: new THREE.Vector3(-1.19,-0.11,-3.1),
+      position: new THREE.Vector3(0.72,1.35,1.91),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(150),
-      maxAzimuth: THREE.MathUtils.degToRad(230),
+      minAzimuth: THREE.MathUtils.degToRad(0),
+      maxAzimuth: THREE.MathUtils.degToRad(60),
     },
     ammunitionLoader: {
       position: new THREE.Vector3(-4.45,0.10,0.24),
@@ -202,14 +202,20 @@ export const STATE = {
     mainArmamentSystem: {
       position: new THREE.Vector3(1.76,-0.10,1.39),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(30),
+      maxAzimuth: THREE.MathUtils.degToRad(110),
     },
     antiTankArmamentSystem: {
-      position: new THREE.Vector3(2.139,0.48,-2.49),
+      position: new THREE.Vector3(0.60,0.49,2.51),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(0),
+      maxAzimuth: THREE.MathUtils.degToRad(40),
     },
     bestMobility: {
       position: new THREE.Vector3(2.51,-0.69,0.52),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(30),
+      maxAzimuth: THREE.MathUtils.degToRad(110),
     },
     superiorProtection: {
       position: new THREE.Vector3(0.07,-0.026,3.67),
