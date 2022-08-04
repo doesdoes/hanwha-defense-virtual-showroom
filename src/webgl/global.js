@@ -218,10 +218,10 @@ export const STATE = {
       maxAzimuth: THREE.MathUtils.degToRad(110),
     },
     superiorProtection: {
-      position: new THREE.Vector3(0.07,-0.026,3.67),
+      position: new THREE.Vector3(0.13,-0.217,2.70),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(0),
-      maxAzimuth: THREE.MathUtils.degToRad(40),
+      maxAzimuth: THREE.MathUtils.degToRad(20),
     },
     isuRubberTrack: {
       position: new THREE.Vector3(0.37,-0.35,-2.07),
