@@ -170,15 +170,15 @@ export const STATE = {
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(49),
-      maxAzimuth: THREE.MathUtils.degToRad(121),
+      minAzimuth: THREE.MathUtils.degToRad(60),
+      maxAzimuth: THREE.MathUtils.degToRad(110),
     },
     highMobility: {
       position: new THREE.Vector3(-0.34,-0.37,-3.26),
       target: new THREE.Vector3(0,0,0),
       targetOffset: new THREE.Vector3(0,0.5,0),
-      minAzimuth: THREE.MathUtils.degToRad(130),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
+      minAzimuth: THREE.MathUtils.degToRad(150),
+      maxAzimuth: THREE.MathUtils.degToRad(190),
     },
     automaticControlSystem: {
       position: new THREE.Vector3(0.72,1.35,1.91),
@@ -189,20 +189,20 @@ export const STATE = {
     ammunitionLoader: {
       position: new THREE.Vector3(-4.45,0.10,0.24),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(230),
-      maxAzimuth: THREE.MathUtils.degToRad(310),
+      minAzimuth: THREE.MathUtils.degToRad(250),
+      maxAzimuth: THREE.MathUtils.degToRad(300),
     },
     irCamera: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(49),
-      maxAzimuth: THREE.MathUtils.degToRad(121),
+      minAzimuth: THREE.MathUtils.degToRad(60),
+      maxAzimuth: THREE.MathUtils.degToRad(110),
     },
 
     mainArmamentSystem: {
       position: new THREE.Vector3(1.76,-0.10,1.39),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(30),
+      minAzimuth: THREE.MathUtils.degToRad(50),
       maxAzimuth: THREE.MathUtils.degToRad(110),
     },
     antiTankArmamentSystem: {
@@ -214,16 +214,21 @@ export const STATE = {
     bestMobility: {
       position: new THREE.Vector3(2.51,-0.69,0.52),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(30),
+      minAzimuth: THREE.MathUtils.degToRad(60),
       maxAzimuth: THREE.MathUtils.degToRad(110),
     },
     superiorProtection: {
       position: new THREE.Vector3(0.07,-0.026,3.67),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(0),
+      maxAzimuth: THREE.MathUtils.degToRad(40),
     },
     isuRubberTrack: {
       position: new THREE.Vector3(0.37,-0.35,-2.07),
       target: new THREE.Vector3(0,0,0),
+      targetOffset: new THREE.Vector3(0,0.5,0),
+      minAzimuth: THREE.MathUtils.degToRad(160),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
     },
   }
 }
