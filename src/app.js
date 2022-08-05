@@ -9,6 +9,7 @@ import './orientation'
 import * as THREE from 'three'
 import { LoadingSpinner } from './webgl/class/Lloading-Spinner'
 import "@lottiefiles/lottie-player";
+import './tagging'
 
 const $sound = document.querySelector('#sound');
 const $audio = $sound.querySelector('.sound audio');

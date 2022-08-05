@@ -93,14 +93,16 @@
   }
 }
 
-[data-state="K9A1"] {
+[data-state="K9A1"],
+[data-state="K9A1-SNOW"] {
   .dropdown__a[data-item="K9A1"] {
     background-color: $white;
     color: $point1;
   }
 }
 
-[data-state="REDBACK"] {
+[data-state="REDBACK"],
+[data-state="REDBACK-DESERT"] {
   .dropdown__a[data-item="REDBACK"] {
     background-color: $white;
     color: $point1;
