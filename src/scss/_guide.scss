@@ -93,6 +93,10 @@ body[data-state="guide-step-2"] {
   .content {
     padding: 1.5em;
 
+    html:lang(en) & {
+      padding: 1.3em;
+    }
+
     &::before {
       content: '';
       position: absolute;
