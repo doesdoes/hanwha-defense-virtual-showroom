@@ -57,6 +57,9 @@
 
   .btn-back {
     @include btn2-kr;
+    @media all and (max-width: $tablet) {
+      font-size: min(16px, 1.4rem);
+    }
     min-width: 5.94em;
     padding: 0.63em;
     position: relative;
@@ -107,8 +110,13 @@
   .bar {
     height: 1em;
     width: 1px;
-    background-color: rgba($white, 0.3);
+    background-color: rgba($white, 0.5);
     top: 0.63em;
+
+    @include btn2-kr;
+    @media all and (max-width: $tablet) {
+      font-size: min(16px, 1.4rem);
+    }
   }
 
   .lang {
