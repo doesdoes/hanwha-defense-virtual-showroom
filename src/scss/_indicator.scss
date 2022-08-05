@@ -124,27 +124,17 @@
   }
 }
 
+$poies: "longerFiringRange", "highMobility", "ammunitionLoader", "automaticControlSystem", "irCamera", "mainArmamentSystem", "antiTankArmamentSystem", "bestMobility", "superiorProtection", "isuRubberTrack";
 
-[data-focus="irCamera"] {
-  .part[data-feature="irCamera"] {
-    &::after {
-      width: 100%;
+@each $poi in $poies {
+  [data-focus="#{$poi}"] {
+    .part[data-feature="#{$poi}"] {
+      &::after {
+        width: 100%;
+      }
+    }
+    .part:not([data-feature="#{$poi}"]) {
+      opacity: 0.5;
     }
   }
-  .part:not([data-feature="irCamera"]) {
-    opacity: 0.5;
-  }
 }
-
-[data-focus="automaticControlSystem"] {
-  .part[data-feature="automaticControlSystem"] {
-    &::after {
-      width: 100%;
-    }
-  }
-  .part:not([data-feature="automaticControlSystem"]) {
-    opacity: 0.5;
-  }
-}
-
-

@@ -17,7 +17,7 @@
   transition: all 0.34s ease-in-out;
   cursor: pointer;
   
-  @include btn1-en;
+  @include btn2-en;
 
   &[lang=ko] {
     @include btn1-kr;
@@ -40,12 +40,13 @@
     position: absolute;
     top: 50%;
     vertical-align: middle;
-    width: 1em;
-    height: 1em;
-    background: url(../content/svg/d-ico-arrow.svg) no-repeat 100%;
+    width: 0.8em;
+    height: 0.8em;
+    background: url(../content/svg/icon-home.svg) no-repeat 100%;
     background-size: contain;
     right: 0.888em;
-    transform: translate(0, -50%);
+    transform-origin: center;
+    transform: translate(0, -60%) rotate(180deg);
     transition: all 0.34s ease-in-out;
   }
 
@@ -69,7 +70,7 @@
     color: $black;
     border: 1px solid rgba($black, 0.3);
     &::after {
-      background-image: url(../content/svg/d-ico-arrow--black.svg);
+      background-image: url(../content/svg/icon-home--black.svg);
     }
 
     @media (hover: hover) and (min-width: $bpTabletMin) {
@@ -79,7 +80,7 @@
         color: $white !important;
         border-color: $point1 !important;
         &::after {
-          background-image: url(../content/svg/d-ico-arrow.svg) !important;
+          background-image: url(../content/svg/icon-home.svg) !important;
         }
       }
     }
@@ -107,7 +108,7 @@
         }
   
         &::after {
-          transform: translate(150%, -50%);
+          transform: translate(150%, -60%) rotate(180deg);
           opacity: 0;
         }
       }
