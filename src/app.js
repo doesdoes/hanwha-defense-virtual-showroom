@@ -199,6 +199,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('#content-wrapper', {autoAlpha: 1})
     document.querySelector('.header').setAttribute('data-state', 'showroom')
     document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = item
+    document.querySelector('.header .dropdown.lang .dropdown__selection').textContent = document.documentElement.lang === 'ko' ? 'KOR' : 'ENG'
   }
 
   function setContent() {

@@ -109,7 +109,16 @@
   }
 }
 
-.dropdown__a[data-item="KOR"] {
-  background-color: $white;
-  color: $point1;
+html:lang(ko) {
+  .dropdown__a[data-item="KOR"] {
+    background-color: $white;
+    color: $point1;
+  }
+}
+
+html:lang(en) {
+  .dropdown__a[data-item="ENG"] {
+    background-color: $white;
+    color: $point1;
+  }
 }
