@@ -147,6 +147,11 @@ body[data-state="guide-step-2"] {
   }
 
   @media all and (max-width: $mobile) {
+
+    font-size: min(16px, 1.4rem);
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+
     &[data-item="dropdown"] {
     }
     &[data-item="condition"] {
@@ -263,15 +268,18 @@ body[data-state="guide-step-2"] {
     margin-top: 1.5em;
     opacity: 0;
     transform: translateY(10%);
-    font-size: min(16px, 1.4rem);
-    line-height: 1.5;
-    letter-spacing: -0.02em;
   }
 
   @media all and (max-width: $tablet) {
     &__visual {
       max-width: 166px;
       max-height: 166px;
+    }
+
+    &__desc {
+      font-size: min(16px, 1.4rem);
+      line-height: 1.5;
+      letter-spacing: -0.02em;
     }
   }
 }
