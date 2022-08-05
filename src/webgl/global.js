@@ -224,9 +224,9 @@ export const STATE = {
       maxAzimuth: THREE.MathUtils.degToRad(20),
     },
     isuRubberTrack: {
-      position: new THREE.Vector3(0.37,-0.35,-2.07),
+      position: new THREE.Vector3(0.28,-0.59,-2.08),
       target: new THREE.Vector3(0,0,0),
-      targetOffset: new THREE.Vector3(0,0.5,0),
+      targetOffset: new THREE.Vector3(0,0.4,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
