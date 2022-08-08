@@ -74,8 +74,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       gsap.killTweensOf(window.UI.$currentPopup)
       gsap.to(window.UI.$currentPopup, { autoAlpha: 0, scale: 0.5, duration: 0.3 })
     }
+
+    const isShowroom = document.querySelector('.header').getAttribute('data-state') === 'showroom'
     const $popup = document.querySelector(`[data-popup=${e.detail.msg}]`)
-    if($popup) {
+    if(isShowroom && $popup) {
       console.log(e.detail.msg, $popup)
       gsap.set($popup, { scale: 0.5 })
       gsap.to($popup, { autoAlpha: 1, scale: 1, duration: 0.7, ease: Quint.easeInOut })
@@ -214,8 +216,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('.indicator-panel', { autoAlpha: 0, x: 20, pointerEvents: 'none' })
     gsap.to('.bot', { autoAlpha: 0, x: 20 })
 
-    // document.querySelector('#change-condition-k9a1').setAttribute('data-bg', 'k9a1IndoorBg')
-    // document.querySelector('#change-condition-redback').setAttribute('data-bg', 'redbackIndoorBg')
+    if(window.UI.$currentPopup) {
+      gsap.killTweensOf(window.UI.$currentPopup)
+      gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
+    }
 
     $sound.classList.remove('on')
     $audio.pause()

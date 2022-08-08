@@ -109,6 +109,10 @@ export function loadStage( sceneName, callback ) {
         if(child.name === 'BG_Snow_Mountain_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
         }
+
+        if(child.name === 'BG_Snow_Tree_Far_LoopAni') {
+          child.visible = false
+        }
       })
 
       // [NOTE] 탱크 mesh/uv 애니메이션
