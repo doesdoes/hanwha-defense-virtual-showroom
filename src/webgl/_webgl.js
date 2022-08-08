@@ -8,6 +8,7 @@ import { STATE, ASSETS } from './global.js'
 import data from './data'
 import { setCondition } from '../indicator'
 import { setIndicator } from '../indicator'
+import { setHemisphereLightSnowDefault, setHemisphereLightDesertDefault, setHemisphereLightSnow, setHemisphereLightDesert } from './light.js';
 
 window.isAnim
 window._WEBGL = (function() {
@@ -87,60 +88,6 @@ window._WEBGL = (function() {
           SCENE.focusOnRegion('reset')
         }
 
-        // if ( event.key == 'a' ) {
-        //   console.log(STATE.WEBGL.camera.position)
-
-        //   STATE.WEBGL.cameraControls.setLookAt( 
-        //     STATE.WEBGL.camera.position.x -= 0.01,
-        //     STATE.WEBGL.camera.position.y,
-        //     STATE.WEBGL.camera.position.z,
-        //     0,
-        //     0,
-        //     0,
-        //     false
-        //   )
-        // }
-
-        // if ( event.key == 'd' ) {
-        //   STATE.WEBGL.cameraControls.setLookAt( 
-        //     STATE.WEBGL.camera.position.x += 0.01,
-        //     STATE.WEBGL.camera.position.y,
-        //     STATE.WEBGL.camera.position.z,
-        //     0,
-        //     0,
-        //     0,
-        //     false
-        //   )
-        // }
-
-        // if ( event.key == 'w' ) {
-        //   console.log(STATE.WEBGL.camera.position)
-
-        //   STATE.WEBGL.cameraControls.setLookAt( 
-        //     STATE.WEBGL.camera.position.x,
-        //     STATE.WEBGL.camera.position.y -= 0.01,
-        //     STATE.WEBGL.camera.position.z,
-        //     0,
-        //     0,
-        //     0,
-        //     false
-        //   )
-
-        //   console.log(STATE.WEBGL.camera.position)
-        // }
-
-        // if ( event.key == 's' ) {
-        //   STATE.WEBGL.cameraControls.setLookAt( 
-        //     STATE.WEBGL.camera.position.x,
-        //     STATE.WEBGL.camera.position.y += 0.01,
-        //     STATE.WEBGL.camera.position.z,
-        //     0,
-        //     0,
-        //     0,
-        //     false
-        //   )
-        // }
-
       }, false)
     }
 
@@ -214,6 +161,11 @@ window._WEBGL = (function() {
     const $condition = document.getElementById('change-condition')
     const $parts = document.querySelectorAll('.indicator-panel .part')
 
+    let snowSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true);
+    let snowTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true);
+    let desertSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Desert_Dust_SEQAni", true);
+    let desertTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Desert_TrackSkid_UVAni", true);
+
     if(_sceneName === "K9A1") {
       SCENE.toggleStages(_toggle, 'k9Tank')
       SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
@@ -230,6 +182,13 @@ window._WEBGL = (function() {
       if(_toggle) {
         STATE.ZONE_FOCUS.reset.position = STATE.ZONE_FOCUS.k9a1Origin.position
         SCENE.focusOnRegion('reset')
+
+        window.isAnim = false
+        setHemisphereLightSnowDefault(STATE)
+        snowSeqAni.visible = false
+        snowTrackSkid.visible = false
+        STATE.ANIMATIONS._k9Tank.mixer.stopAllAction()
+        STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
       }
     } else {
       SCENE.toggleStages(_toggle, 'redback')
@@ -246,6 +205,13 @@ window._WEBGL = (function() {
       if(_toggle) {
         STATE.ZONE_FOCUS.reset.position = STATE.ZONE_FOCUS.redbackOrigin.position
         SCENE.focusOnRegion('reset')
+
+        window.isAnim = false
+        setHemisphereLightDesertDefault(STATE)
+        desertSeqAni.visible = false
+        desertTrackSkid.visible = false
+        STATE.ANIMATIONS._REDBACK.mixer.stopAllAction()
+        STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
       }
     }
 
