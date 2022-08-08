@@ -105,6 +105,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       $audio.play()
 
       gsap.to('.poi-container', {autoAlpha: 1})
+      Array.from(document.querySelectorAll('.guide-product-name')).map(el => el.textContent = item)
     }
 
     if(document.querySelector('.main').classList.contains('begin')) {
