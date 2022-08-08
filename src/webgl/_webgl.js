@@ -5,9 +5,9 @@ import { Webgl } from './class/Webgl.js'
 import * as SCENE from './scene.js'
 import * as LOADER from './loader.js'
 import { STATE, ASSETS } from './global.js'
-import { setCondition } from './interactions'
 import data from './data'
-import { setIndicator } from './scene'
+import { setCondition } from '../indicator'
+import { setIndicator } from '../indicator'
 
 window.isAnim
 window._WEBGL = (function() {

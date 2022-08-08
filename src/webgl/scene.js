@@ -373,13 +373,3 @@ export function toggleStages( toggle, sceneName ) {
     focusOnRegion('reset')
   }, 60)
 }
-
-export function setIndicator() {
-  document.querySelectorAll(`.indicator-panel .parts .part`).forEach(part => {
-    part.addEventListener('click', function() {
-      const feature = this.getAttribute('data-feature')
-      STATE.IS_FOCUSED = true 
-      focusOnRegion(feature)
-    })
-  })
-}
