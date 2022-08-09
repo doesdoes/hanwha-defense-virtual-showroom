@@ -25,8 +25,19 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
 import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
 
+let sobelRenderPass;
+let focusObject = new THREE.Mesh();
+let longerFiringRange;
+let head;
+let track;
+
 export function loadStage( sceneName, callback ) {
-  const uiLoadingManager = new UILoadingManager() 
+  const uiLoadingManager = new UILoadingManager()
+
+  let glowScene;
+  glowScene = new THREE.Scene()
+  const sobelLayer = new THREE.Layers();
+  sobelLayer.set(glowScene);
 
   switch (sceneName) {
     case 'K9A1':
@@ -50,12 +61,22 @@ export function loadStage( sceneName, callback ) {
         })
       }
 
-      let glowTarget;
+      // glowScene.add(TANK_OBJECT.clone)
+      
+    
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
-        console.log(child.name)
+        // console.log(child.name)
         if(child.name === 'Joint_TANK_K9A1_Head_Cannon_01') {
-          glowTarget = child;
+          longerFiringRange = child
+        }
+
+        if(child.name === 'TANK_K9A1_Head') {
+          head = child
+        }
+
+        if(child.name === 'TANK_K9A1_Wheel_04_LT') {
+          track = child
         }
 
         if (child.userData.type == 'POI') {
@@ -145,25 +166,43 @@ export function loadStage( sceneName, callback ) {
         }
       })
 
-      STATE.WEBGL.baseComposer = new EffectComposer( STATE.WEBGL.renderer );
-      STATE.WEBGL.composer = new EffectComposer( STATE.WEBGL.renderer );
+      STATE.WEBGL.sobelComposer = new EffectComposer( STATE.WEBGL.renderer );
+      STATE.WEBGL.finalComposer = new EffectComposer( STATE.WEBGL.renderer );
+
+      STATE.WEBGL.sobelComposer.renderToScreen = false;
 
       // base model
-      const renderPassBase = new RenderPass( STATE.WEBGL.scene, STATE.WEBGL.camera );
-      STATE.WEBGL.baseComposer.addPass( renderPassBase );
+      const renderScene = new RenderPass( STATE.WEBGL.scene, STATE.WEBGL.camera );
+      STATE.WEBGL.sobelComposer.addPass( renderScene );
 
-      const renderPass = new RenderPass( glowTarget, STATE.WEBGL.camera );
-      STATE.WEBGL.composer.addPass( renderPass);
+      sobelRenderPass = new RenderPass( focusObject, STATE.WEBGL.camera );
+      STATE.WEBGL.sobelComposer.addPass( sobelRenderPass);
 
       // color to grayscale conversion
       const effectGrayScale = new ShaderPass( LuminosityShader );
-      STATE.WEBGL.composer.addPass( effectGrayScale );
+      STATE.WEBGL.sobelComposer.addPass( effectGrayScale );
 
       // Sobel operator
       const effectSobel = new ShaderPass( SobelOperatorShader );
       effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio;
       effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio;
-      STATE.WEBGL.composer.addPass( effectSobel );
+      STATE.WEBGL.sobelComposer.addPass( effectSobel );
+
+      const finalPass = new ShaderPass(
+        new THREE.ShaderMaterial({
+          uniforms: {
+            baseTexture: { value: null },
+            sobelTexture: { value: STATE.WEBGL.sobelComposer.renderTarget2.texture }
+          },
+          vertexShader: document.getElementById('vertexshader').textContent,
+          fragmentShader: document.getElementById('fragmentshader').textContent,
+          defines: {}
+        }), 'baseTexture'
+      )
+      // finalPass.needsSwap = true;
+
+      STATE.WEBGL.finalComposer.addPass( renderScene );
+      STATE.WEBGL.finalComposer.addPass( finalPass );
 
       setUI(sceneName, k9Points)
       break
@@ -236,7 +275,7 @@ export function loadStage( sceneName, callback ) {
       DESERT_OBJECT.clone.visible = false
 
       if(DESERT_MESH.asset.animations.length > 0){
-        console.log(DESERT_MESH.asset.animations)
+        // console.log(DESERT_MESH.asset.animations)
         STATE.ANIMATIONS._DESERT.mixer = new THREE.AnimationMixer( DESERT_OBJECT.clone )
         DESERT_MESH.asset.animations.forEach(anim => {
           STATE.ANIMATIONS._DESERT.mixer.clipAction( anim )
@@ -359,6 +398,12 @@ export function focusOnRegion( _region ){
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
   }
 
+  if(_region === 'longerFiringRange')
+    sobelRenderPass.scene = longerFiringRange
+
+  if(_region === 'highMobility')
+    sobelRenderPass.scene = track
+
   // console.log(_region, STATE.IS_FOCUSED)
   if(STATE.IS_FOCUSED && _region !== 'reset'){
     document.body.setAttribute('data-focus', _region)
@@ -370,6 +415,9 @@ export function focusOnRegion( _region ){
     // STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
     // STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
   }
+
+  console.log(STATE.ZONE_FOCUS[_region].glowObject)
+  STATE.CUR_GLOWOBJECT = STATE.ZONE_FOCUS[_region].glowObject;
 
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,

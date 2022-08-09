@@ -154,38 +154,48 @@ export const STATE = {
     },
   },
   IS_FOCUSED: false,
+  CUR_GLOWOBJECT: null,
   ZONE_FOCUS:{
     reset: {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
     k9a1Origin: {
       position: new THREE.Vector3(3.99, 0.095, -2.94),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
     redbackOrigin: {
       position: new THREE.Vector3(2.87, -0.02, -2.37),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
+
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
     highMobility: {
       position: new THREE.Vector3(-0.34,-0.37,-3.26),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
     automaticControlSystem: {
       position: new THREE.Vector3(-1.19,-0.11,-3.1),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
     ammunitionLoader: {
       position: new THREE.Vector3(-4.45,0.10,0.24),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
     irCamera: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
+      glowObject: null,
     },
 
     mainArmamentSystem: {
