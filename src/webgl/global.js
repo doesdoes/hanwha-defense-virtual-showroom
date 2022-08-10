@@ -158,6 +158,7 @@ export const STATE = {
     reset: {
       position: new THREE.Vector3(0,0,0),
       target: new THREE.Vector3(0,0,0),
+      sobelObj: new THREE.Mesh(),
     },
     k9a1Origin: {
       position: new THREE.Vector3(3.99, 0.095, -2.94),
@@ -172,6 +173,7 @@ export const STATE = {
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(60),
       maxAzimuth: THREE.MathUtils.degToRad(110),
+      sobelObj: new THREE.Mesh(),
     },
     highMobility: {
       position: new THREE.Vector3(-0.34,-0.37,-3.26),
@@ -179,24 +181,28 @@ export const STATE = {
       targetOffset: new THREE.Vector3(0,0.5,0),
       minAzimuth: THREE.MathUtils.degToRad(150),
       maxAzimuth: THREE.MathUtils.degToRad(190),
+      sobelObj: new THREE.Mesh(),
     },
     automaticControlSystem: {
       position: new THREE.Vector3(0.72,1.35,1.91),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(0),
       maxAzimuth: THREE.MathUtils.degToRad(60),
+      sobelObj: new THREE.Mesh(),
     },
     ammunitionLoader: {
       position: new THREE.Vector3(-4.45,0.10,0.24),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(250),
       maxAzimuth: THREE.MathUtils.degToRad(300),
+      sobelObj: new THREE.Mesh(),
     },
     irCamera: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(60),
       maxAzimuth: THREE.MathUtils.degToRad(110),
+      sobelObj: new THREE.Mesh(),
     },
 
     mainArmamentSystem: {
@@ -204,24 +210,28 @@ export const STATE = {
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(50),
       maxAzimuth: THREE.MathUtils.degToRad(110),
+      sobelObj: new THREE.Mesh(),
     },
     antiTankArmamentSystem: {
       position: new THREE.Vector3(0.60,0.49,2.51),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(0),
       maxAzimuth: THREE.MathUtils.degToRad(40),
+      sobelObj: new THREE.Mesh(),
     },
     bestMobility: {
       position: new THREE.Vector3(2.51,-0.69,0.52),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(60),
       maxAzimuth: THREE.MathUtils.degToRad(110),
+      sobelObj: new THREE.Mesh(),
     },
     superiorProtection: {
       position: new THREE.Vector3(0.13,-0.217,2.70),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(0),
       maxAzimuth: THREE.MathUtils.degToRad(20),
+      sobelObj: new THREE.Mesh(),
     },
     isuRubberTrack: {
       position: new THREE.Vector3(0.28,-0.59,-2.08),
@@ -229,6 +239,7 @@ export const STATE = {
       targetOffset: new THREE.Vector3(0,0.4,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
+      sobelObj: new THREE.Mesh(),
     },
   }
 }

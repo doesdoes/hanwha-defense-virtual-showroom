@@ -10,6 +10,13 @@ import { setCondition } from '../indicator'
 import { setIndicator } from '../indicator'
 import { setHemisphereLightSnowDefault, setHemisphereLightDesertDefault, setHemisphereLightSnow, setHemisphereLightDesert } from './light.js';
 
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+
+import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
+import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
+
 window.isAnim
 window._WEBGL = (function() {
   /**
@@ -93,8 +100,53 @@ window._WEBGL = (function() {
 
     setCondition()
     setIndicator()
+    setComposer()
 
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: context created!!`)
+  }
+
+  /**
+   * Set EffectComposer for Post Processing
+   *
+   */
+  function setComposer() {
+    STATE.WEBGL.sobelComposer = new EffectComposer( STATE.WEBGL.renderer );
+    STATE.WEBGL.finalComposer = new EffectComposer( STATE.WEBGL.renderer );
+  
+    STATE.WEBGL.sobelComposer.renderToScreen = false;
+  
+    // base model
+    const renderScene = new RenderPass( STATE.WEBGL.scene, STATE.WEBGL.camera );
+    STATE.WEBGL.sobelComposer.addPass( renderScene );
+  
+    STATE.WEBGL.sobelRenderPass = new RenderPass( STATE.ZONE_FOCUS['reset'].sobelObj, STATE.WEBGL.camera );
+    STATE.WEBGL.sobelComposer.addPass( STATE.WEBGL.sobelRenderPass );
+  
+    // color to grayscale conversion
+    const effectGrayScale = new ShaderPass( LuminosityShader );
+    STATE.WEBGL.sobelComposer.addPass( effectGrayScale );
+  
+    // Sobel operator
+    const effectSobel = new ShaderPass( SobelOperatorShader );
+    effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio;
+    effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio;
+    STATE.WEBGL.sobelComposer.addPass( effectSobel );
+  
+    const finalPass = new ShaderPass(
+      new THREE.ShaderMaterial({
+        uniforms: {
+          baseTexture: { value: null },
+          sobelTexture: { value: STATE.WEBGL.sobelComposer.renderTarget2.texture }
+        },
+        vertexShader: document.getElementById('vertexshader').textContent,
+        fragmentShader: document.getElementById('fragmentshader').textContent,
+        defines: {}
+      }), 'baseTexture'
+    )
+    // finalPass.needsSwap = true;
+  
+    STATE.WEBGL.finalComposer.addPass( renderScene );
+    STATE.WEBGL.finalComposer.addPass( finalPass );
   }
 
   /**
@@ -235,7 +287,6 @@ window._WEBGL = (function() {
     requestAnimationFrame( render )
 
     if( !STATE.ENABLE_RENDERING ) return
-
     STATE.WEBGL.cameraControls.normalizeRotations()
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
 
@@ -263,7 +314,6 @@ window._WEBGL = (function() {
 
     TWEEN.update( time )
     // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-    // STATE.WEBGL.renderer.autoClear = false;
     STATE.WEBGL.sobelComposer && STATE.WEBGL.sobelComposer.render()
     STATE.WEBGL.finalComposer && STATE.WEBGL.finalComposer.render()
     STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
