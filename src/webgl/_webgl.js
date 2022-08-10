@@ -262,7 +262,10 @@ window._WEBGL = (function() {
     }
 
     TWEEN.update( time )
-    STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    // STATE.WEBGL.renderer.autoClear = false;
+    STATE.WEBGL.sobelComposer && STATE.WEBGL.sobelComposer.render()
+    STATE.WEBGL.finalComposer && STATE.WEBGL.finalComposer.render()
     STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
   }
 
