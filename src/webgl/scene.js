@@ -117,11 +117,15 @@ export function loadStage( sceneName, callback ) {
           STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
         }
 
-        if(child.name === 'BG_Snow_Mountain_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
-        }
+        // if(child.name === 'BG_Snow_Mountain_UVAni') {
+        //   STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
+        // }
 
-        if(child.name === 'BG_Snow_Tree_Far_LoopAni') {
+        if(child.name === 'BG_Snow_Tree_Far_LoopAni'
+        || child.name === 'BG_Snow_Tree_Near_LoopAni'
+        || child.name === 'Snow_Rock_Part01'
+        || child.name === 'Snow_Rock_Part02'
+        || child.name === 'BG_Snow_Tree_Near_Shadow_LoopAni') {
           child.visible = false
         }
       })
@@ -245,9 +249,9 @@ export function loadStage( sceneName, callback ) {
           STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
         }
 
-        if(child.name === 'BG_Desert_Mountain_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.desertMountain.mesh = child
-        }
+        // if(child.name === 'BG_Desert_Mountain_UVAni') {
+        //   STATE.UV_ANIMATED_OBJECTS.desertMountain.mesh = child
+        // }
 
         if(child.name === 'BG_Cloud_UVAni') {
           child.visible = false

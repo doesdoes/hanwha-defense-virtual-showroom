@@ -240,7 +240,7 @@ window._WEBGL = (function() {
         snowSeqAni.visible = false
         snowTrackSkid.visible = false
         STATE.ANIMATIONS._k9Tank.mixer.stopAllAction()
-        STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
+        // STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
       }
     } else {
       SCENE.toggleStages(_toggle, 'redback')
@@ -263,7 +263,7 @@ window._WEBGL = (function() {
         desertSeqAni.visible = false
         desertTrackSkid.visible = false
         STATE.ANIMATIONS._REDBACK.mixer.stopAllAction()
-        STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
+        // STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
       }
     }
 

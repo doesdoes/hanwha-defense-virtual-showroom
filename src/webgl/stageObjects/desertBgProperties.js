@@ -58,15 +58,15 @@ export const MATERIALS = {
     "depthWrite": false,
   },
 
-  "BG_Dessert_Tree_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Tree_Plan_D.jpg",
-    "alphaMap": "Tree_Plan_A.jpg",
-    "transparent": true,
-    "flipY": false,
+  // "BG_Dessert_Tree_s": {
+  //   "type": new THREE.MeshBasicMaterial(),
+  //   "color": new THREE.Color("rgb(255,255,255)"),
+  //   "map": "Tree_Plan_D.jpg",
+  //   "alphaMap": "Tree_Plan_A.jpg",
+  //   "transparent": true,
+  //   "flipY": false,
     
-  },
+  // },
 
   "Props_shadow_s": {
     "type": new THREE.MeshBasicMaterial(),
@@ -76,32 +76,32 @@ export const MATERIALS = {
     "transparent": true,
   },
 
-  "Grass_Part_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "map": "Desert_Grass_D.jpg",
-    "alphaMap": "Desert_Grass_A.jpg",
-    "transparent": true,
-    "flipY": false,
-  },
+  // "Grass_Part_s": {
+  //   "type": new THREE.MeshBasicMaterial(),
+  //   "map": "Desert_Grass_D.jpg",
+  //   "alphaMap": "Desert_Grass_A.jpg",
+  //   "transparent": true,
+  //   "flipY": false,
+  // },
 
-  "Desert_Rock_Part_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Desert_Rocks.jpg",
-    "flipY": false,
-  },
+  // "Desert_Rock_Part_s": {
+  //   "type": new THREE.MeshBasicMaterial(),
+  //   "color": new THREE.Color("rgb(255,255,255)"),
+  //   "map": "Desert_Rocks.jpg",
+  //   "flipY": false,
+  // },
 
-  "Desert_Soil_Part_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "map": "Soil_D.jpg",
-    "flipY": false,
-  },
+  // "Desert_Soil_Part_s": {
+  //   "type": new THREE.MeshBasicMaterial(),
+  //   "map": "Soil_D.jpg",
+  //   "flipY": false,
+  // },
 
-  "Rock_Bush_Shadow_s": {
-    "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(23, 10, 4)"),
-    "alphaMap": "Rocks_Bush_Shadow_A.jpg",
-    "flipY": false,
-    "transparent": true, 
-  }
+  // "Rock_Bush_Shadow_s": {
+  //   "type": new THREE.MeshBasicMaterial(),
+  //   "color": new THREE.Color("rgb(23, 10, 4)"),
+  //   "alphaMap": "Rocks_Bush_Shadow_A.jpg",
+  //   "flipY": false,
+  //   "transparent": true, 
+  // }
 }

@@ -10,7 +10,7 @@ export const PROPERTIES = {
 export const MATERIALS = {
   "TANK_K9A1_Head_s": {
     "type": new THREE.MeshPhongMaterial(),
-    "color": new THREE.Color("rgb(200,200,200)"),
+    "color": new THREE.Color("rgb(220,220,220)"),
     "specular": new THREE.Color("rgb(74,74,74)"),
     "map": "TANK_K9A1_Head_CAMO.jpg",
     "specularMap": "TANK_K9A1_Head_CAMO_Spec.jpg",
