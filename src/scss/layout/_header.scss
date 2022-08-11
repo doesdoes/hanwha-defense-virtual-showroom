@@ -104,7 +104,8 @@
   .kind {
     opacity: 0;
     margin-left: 0.73vw;
-    min-width: 5.94em;
+    // min-width: 5.94em;
+    min-width: 7.94em; // REDBACK IFV 로 인해 늘어남
   }
 
   .bar {

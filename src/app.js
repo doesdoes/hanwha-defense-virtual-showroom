@@ -95,6 +95,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   function gateToWebglView(item) {
 
+    const guideProductName = item === 'K9A1' ? 'K9 SPH' : 'REDBACK IFV'
+    
     function showUI() {
       gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
       gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
@@ -105,7 +107,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       $audio.play()
 
       gsap.to('.poi-container', {autoAlpha: 1})
-      Array.from(document.querySelectorAll('.guide-product-name')).map(el => el.textContent = item)
+      Array.from(document.querySelectorAll('.guide-product-name')).map(el => el.textContent = guideProductName)
     }
 
     if(document.querySelector('.main').classList.contains('begin')) {
@@ -201,7 +203,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     gsap.to('.gate', {autoAlpha: 0})
     gsap.to('#content-wrapper', {autoAlpha: 1})
     document.querySelector('.header').setAttribute('data-state', 'showroom')
-    document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = item
+    document.querySelector('.header .dropdown.kind .dropdown__selection').textContent = guideProductName
     document.querySelector('.header .dropdown.lang .dropdown__selection').textContent = document.documentElement.lang === 'ko' ? 'KOR' : 'ENG'
   }
 

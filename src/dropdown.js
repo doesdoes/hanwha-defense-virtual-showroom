@@ -4,7 +4,6 @@
     const navButtons = dropdown.querySelectorAll('a')
     
     selected.addEventListener('click', function() {
-      console.log(selected)
       selected.closest('.dropdown').classList.toggle('closed')
     })
 
