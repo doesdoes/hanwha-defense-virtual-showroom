@@ -8,10 +8,10 @@ export const PROPERTIES = {
 }
 
 export const MATERIALS = {
-  "BG_K9A1_obj": {
+  "SRoom_IN_K9A1_BG_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "baked-BG_K9A1Shape.jpg",
+    "map": "K9A1_Ground.jpg",
     "flipY": false,
   },
 } 
