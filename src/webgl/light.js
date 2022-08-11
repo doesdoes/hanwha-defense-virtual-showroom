@@ -36,7 +36,7 @@ export function setLight(STATE) {
   rightDirectionalLight.shadow.mapSize.width = 2048
   rightDirectionalLight.shadow.mapSize.height = 2048
   rightDirectionalLight.castShadow = true
-  rightDirectionalLight.intensity = 0.6
+  rightDirectionalLight.intensity = 0.4
 
   let leftD = 10
   leftDirectionalLight.shadow.camera.left = - leftD
@@ -46,7 +46,7 @@ export function setLight(STATE) {
   leftDirectionalLight.shadow.mapSize.width = 2048
   leftDirectionalLight.shadow.mapSize.height = 2048
   leftDirectionalLight.castShadow = true
-  leftDirectionalLight.intensity = 0.6
+  leftDirectionalLight.intensity = 0.4
 
   STATE.hemisphereLight = new THREE.HemisphereLight( 0xFFFFFF, 0xFFFFFF, 1 )
 
