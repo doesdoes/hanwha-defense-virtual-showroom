@@ -57,10 +57,14 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     e.preventDefault()
   })
 
+  document.addEventListener('visibilitychange', () => {
+    if( document.visibilityState === 'visible' && $sound.classList.contains('on') ) $audio.play();
+    else $audio.pause();
+  });
+
   document.querySelector('#sound').addEventListener('click', function() {
     this.classList.toggle('on');
 
-    // [TODO]
     if($sound.classList.contains('on')) {
       $audio.play()
     } else {
@@ -96,15 +100,15 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   function gateToWebglView(item) {
 
     const guideProductName = item === 'K9A1' ? 'K9 SPH' : 'REDBACK IFV'
-    
+
     function showUI() {
       gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
       gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
 
-      $sound.classList.add('on')
-      $audio.volume = 0.5
-      // $audio.volume = 0 // [DEBUG]
-      $audio.play()
+      if($sound.classList.contains('on')){
+        $audio.volume = 0.5
+        $audio.play()
+      }
 
       gsap.to('.poi-container', {autoAlpha: 1})
       Array.from(document.querySelectorAll('.guide-product-name')).map(el => el.textContent = guideProductName)
@@ -224,7 +228,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
     }
 
-    $sound.classList.remove('on')
     $audio.pause()
     $audio.currentTime = 0
 
