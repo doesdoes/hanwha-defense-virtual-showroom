@@ -97,8 +97,7 @@ export const MATERIALS = {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "alphaMap": "TrackSkid_A.jpg",
-    "transparent": true,
-    "opacity": 0.4,
+    "_alphaTest": 0.85,
     "alphaMapTiling":{
       repeatX: 1,
       repeatY: 1,
