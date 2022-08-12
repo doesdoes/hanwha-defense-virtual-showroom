@@ -18,6 +18,9 @@ import { setLight, setHemisphereLightSnowDefault, setHemisphereLightDesertDefaul
 import { createSpriteTween } from './utils.js'
 import UILoadingManager from './class/UILoadingManager.js'
 
+const md = new MobileDetect(window.navigator.userAgent)
+const isMobile = md.mobile()
+
 export function loadStage( sceneName, callback ) {
   const uiLoadingManager = new UILoadingManager()
 
@@ -346,7 +349,6 @@ function updatePointVisible(points) {
     const state = document.body.getAttribute('data-state')
     const focus = document.body.getAttribute('data-focus')
 
-    // console.log(point.name, d, offset)
     if(focus) {
       if(point.name === focus) {
         gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
@@ -357,11 +359,13 @@ function updatePointVisible(points) {
 
       let offset
       if(state === 'K9A1')
-        offset = 4.9
+        offset = isMobile ? 10.7 : 4.9
       else if(state === 'REDBACK')
-        offset = 3.7
+        offset = isMobile ? 8.7 : 3.7
       else 
         return
+
+      // console.log(point.name, d, offset)
 
       if(d < offset) {
         gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})

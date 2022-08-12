@@ -210,6 +210,9 @@ window._WEBGL = (function() {
     // STATE.CURRENT_SCENE.VISIBLE = _toggle
     // SCENE.toggleStages(_toggle, _sceneName)
     //Update indicator
+
+    const md = new MobileDetect(window.navigator.userAgent)
+    const isMobile = md.mobile()
     
     const $condition = document.getElementById('change-condition')
     const $parts = document.querySelectorAll('.indicator-panel .part')
@@ -233,7 +236,7 @@ window._WEBGL = (function() {
       })
 
       if(_toggle) {
-        STATE.ZONE_FOCUS.reset.position = STATE.ZONE_FOCUS.k9a1Origin.position
+        STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.k9a1Origin.positionM : STATE.ZONE_FOCUS.k9a1Origin.position
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false
@@ -256,7 +259,7 @@ window._WEBGL = (function() {
         part.setAttribute('data-feature', partData.id)
       })
       if(_toggle) {
-        STATE.ZONE_FOCUS.reset.position = STATE.ZONE_FOCUS.redbackOrigin.position
+        STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.redbackOrigin.positionM : STATE.ZONE_FOCUS.redbackOrigin.position
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false
@@ -319,7 +322,7 @@ window._WEBGL = (function() {
     // [NOTE] FOR SOBEL EFFECT
     // STATE.WEBGL.sobelComposer && STATE.WEBGL.sobelComposer.render()
     // STATE.WEBGL.finalComposer && STATE.WEBGL.finalComposer.render()
-    
+
     STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
   }
 
