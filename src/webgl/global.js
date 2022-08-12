@@ -200,6 +200,7 @@ export const STATE = {
     irCamera: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
+      targetOffset: new THREE.Vector3(0,0.5,0),
       minAzimuth: THREE.MathUtils.degToRad(60),
       maxAzimuth: THREE.MathUtils.degToRad(110),
       sobelObj: new THREE.Mesh(),
@@ -222,6 +223,7 @@ export const STATE = {
     bestMobility: {
       position: new THREE.Vector3(2.51,-0.69,0.52),
       target: new THREE.Vector3(0,0,0),
+      targetOffset: new THREE.Vector3(0,0.2,0),
       minAzimuth: THREE.MathUtils.degToRad(60),
       maxAzimuth: THREE.MathUtils.degToRad(110),
       sobelObj: new THREE.Mesh(),

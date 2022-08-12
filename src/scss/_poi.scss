@@ -135,26 +135,14 @@
     }
   }
 
-  &[data-popup="ammunitionLoader"] {
-    top: 27%;
-    left: 8%;
-  }
-  
-  &[data-popup="automaticControlSystem"] {
-    top: 27%;
-    left: 8%;
-  }
-  
-  &[data-popup="superiorProtection"] {
-    top: 27%;
-    left: 8%;
-  }
-  
-  &[data-popup="antiTankArmamentSystem"] {
-    top: 27%;
-    left: 8%;
-  }
-  
+  &[data-popup="ammunitionLoader"],
+  &[data-popup="longerFiringRange"],
+  &[data-popup="highMobility"],
+  &[data-popup="irCamera"],
+  &[data-popup="automaticControlSystem"],
+  &[data-popup="superiorProtection"],
+  &[data-popup="isuRubberTrack"],
+  &[data-popup="antiTankArmamentSystem"],
   &[data-popup="bestMobility"] {
     top: 27%;
     left: 8%;
@@ -171,6 +159,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
+      &[data-popup="irCamera"],
+      &[data-popup="bestMobility"] {
+        top: 40%
+      }
     }
   }
 }

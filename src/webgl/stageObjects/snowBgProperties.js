@@ -25,11 +25,11 @@ export const MATERIALS = {
     "transparent": true,
     "flipY": false,
     "mapTiling":{
-      repeatX: 1,
+      repeatX: 1.09,
       repeatY: 1,
     },
     "alphaMapTiling":{
-      repeatX: 1,
+      repeatX: 1.09,
       repeatY: 1,
     },
   },
