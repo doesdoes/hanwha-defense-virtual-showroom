@@ -100,7 +100,8 @@ window._WEBGL = (function() {
 
     setCondition()
     setIndicator()
-    setComposer()
+    // [NOTE] FOR SOBEL EFFECT
+    // setComposer()
 
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: context created!!`)
   }
@@ -313,9 +314,12 @@ window._WEBGL = (function() {
     }
 
     TWEEN.update( time )
-    // STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
-    STATE.WEBGL.sobelComposer && STATE.WEBGL.sobelComposer.render()
-    STATE.WEBGL.finalComposer && STATE.WEBGL.finalComposer.render()
+    STATE.WEBGL.renderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
+    
+    // [NOTE] FOR SOBEL EFFECT
+    // STATE.WEBGL.sobelComposer && STATE.WEBGL.sobelComposer.render()
+    // STATE.WEBGL.finalComposer && STATE.WEBGL.finalComposer.render()
+    
     STATE.WEBGL.labelRenderer.render( STATE.WEBGL.scene, STATE.WEBGL.camera )
   }
 

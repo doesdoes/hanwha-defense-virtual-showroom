@@ -379,8 +379,8 @@ export function focusOnRegion( _region ){
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
   }
 
-  console.log(STATE.WEBGL.sobelRenderPass)
-  STATE.WEBGL.sobelRenderPass.scene = STATE.ZONE_FOCUS[_region].sobelObj
+  // [NOTE] FOR SOBEL EFFECT
+  // STATE.WEBGL.sobelRenderPass.scene = STATE.ZONE_FOCUS[_region].sobelObj
 
   // console.log(_region, STATE.IS_FOCUSED)
   if(STATE.IS_FOCUSED && _region !== 'reset'){
@@ -393,9 +393,6 @@ export function focusOnRegion( _region ){
     STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
     STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
   }
-
-  console.log(STATE.ZONE_FOCUS[_region].glowObject)
-  STATE.CUR_GLOWOBJECT = STATE.ZONE_FOCUS[_region].glowObject;
 
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,
