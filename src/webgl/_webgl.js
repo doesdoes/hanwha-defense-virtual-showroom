@@ -270,10 +270,6 @@ window._WEBGL = (function() {
         // STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
       }
     }
-
-    // [TEMP]
-    STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
-    STATE.hemisphereLight.groundColor = new THREE.Color(0xFFFFFF)
   }
 
   /**
