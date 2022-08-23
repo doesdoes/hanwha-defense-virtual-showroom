@@ -85,7 +85,7 @@ export class Webgl{
     // this.cameraControls.maxAzimuthAngle = THREE.MathUtils.degToRad(95)
 
     this.cameraControls.truckSpeed = 0
-    // this.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
+    this.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
 
     this.userDragging = false
     // this.disableAutoRotate = true
