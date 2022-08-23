@@ -24,16 +24,17 @@ const isMobile = md.mobile()
 export function loadStage( sceneName, callback ) {
   const uiLoadingManager = new UILoadingManager()
 
-  let glowScene;
-  glowScene = new THREE.Scene()
-  const sobelLayer = new THREE.Layers();
-  sobelLayer.set(glowScene);
+  // let glowScene;
+  // glowScene = new THREE.Scene()
+  // const sobelLayer = new THREE.Layers();
+  // sobelLayer.set(glowScene);
 
   switch (sceneName) {
     case 'K9A1':
       setLight(STATE)
       setHemisphereLightSnowDefault(STATE)
       const k9Points = [];
+      let spriteObjectDust, spriteObjectWind = null
 
       const TANK_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
       const TANK_OBJECT = new StageObject({
@@ -51,9 +52,6 @@ export function loadStage( sceneName, callback ) {
         })
       }
 
-      // glowScene.add(TANK_OBJECT.clone)
-      
-    
       // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
         // console.log(child.name)
@@ -77,9 +75,6 @@ export function loadStage( sceneName, callback ) {
           k9Points.push(child)
         }
       })
-
-      // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
-      // STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
 
       const INDOOR_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9a1IndoorBg" } )
       const INDOOR_OBJECT = new StageObject({
@@ -117,12 +112,9 @@ export function loadStage( sceneName, callback ) {
         }
 
         if(child.name === 'BG_SpeedLine_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
+          spriteObjectWind = child
+          // STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
         }
-
-        // if(child.name === 'BG_Snow_Mountain_UVAni') {
-        //   STATE.UV_ANIMATED_OBJECTS.snowMountain.mesh = child
-        // }
 
         if(child.name === 'BG_Snow_Tree_Far_LoopAni'
         || child.name === 'BG_Snow_Tree_Near_LoopAni'
@@ -136,7 +128,7 @@ export function loadStage( sceneName, callback ) {
       // [NOTE] 탱크 mesh/uv 애니메이션
       TANK_OBJECT.clone.traverse((child) => {
         console.log(child.name)
-        if(child.name === 'TANK_K9A1_Track_UVAni') {
+        if(child.name === 'Track_LT_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
         }
 
@@ -147,15 +139,22 @@ export function loadStage( sceneName, callback ) {
 
         if(child.name === 'BG_Snow_Dust_SEQAni') {
           child.visible = false
-          uiLoadingManager.waitTextures(function() {
-            const tween = createSpriteTween(child, child.material.alphaMap, 60, 1, 1500)
-            tween.start()
-            callback && callback()
-          })
+          spriteObjectDust = child
         }
       })
 
       setUI(sceneName, k9Points)
+
+      uiLoadingManager.waitTextures(function() {
+        const tween = createSpriteTween(spriteObjectDust, spriteObjectDust.material.alphaMap, 60, 1, 1500)
+        tween.start()
+
+        const tweenWind = createSpriteTween(spriteObjectWind, spriteObjectWind.material.alphaMap, 75, 1, 1500)
+        tweenWind.start()
+
+        callback && callback()
+      })
+
       break
 
     case 'REDBACK':
@@ -204,9 +203,6 @@ export function loadStage( sceneName, callback ) {
         }
       })
 
-      // [TODO] 카메라 시점 변경 후 다른 씬으로 가면 초기화가 틀어지는데 글로벌 기준 변수를 둘 것
-      // STATE.ZONE_FOCUS.reset.position = STATE.WEBGL.camera.position.clone()
-
       // REDBACK INDOOR
       const REDBACK_INDOOR_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redbackIndoorBg" } )
       const REDBACK_INDOOR_OBJECT = new StageObject({
@@ -251,10 +247,6 @@ export function loadStage( sceneName, callback ) {
         if(child.name === 'Tire_Line_UV') {
           STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
         }
-
-        // if(child.name === 'BG_Desert_Mountain_UVAni') {
-        //   STATE.UV_ANIMATED_OBJECTS.desertMountain.mesh = child
-        // }
 
         if(child.name === 'BG_Cloud_UVAni') {
           child.visible = false
