@@ -106,7 +106,7 @@ export const MATERIALS = {
   "BG_Snow_Dust_SeqAni_s": {
     "type": new THREE.MeshStandardMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "alphaMap": "dirt_spritesheet_horizon.png",
+    "alphaMap": "spritesheet_dirt.png",
     "transparent": true,
     "side": THREE.DoubleSide,
     "depthWrite": false,

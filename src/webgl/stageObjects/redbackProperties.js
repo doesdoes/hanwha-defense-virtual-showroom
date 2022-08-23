@@ -105,7 +105,7 @@ export const MATERIALS = {
   "BG_Desert_Dust_SeqAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(165,127,89)"),
-    "alphaMap": "dirt_spritesheet_horizon.png",
+    "alphaMap": "spritesheet_dirt.png",
     "transparent": true,
     "depthWrite": false,
   },
