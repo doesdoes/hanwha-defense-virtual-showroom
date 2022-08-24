@@ -46,12 +46,14 @@ export const MATERIALS = {
   },
 
   "BG_SpeedLine_UVAni_s": {
-    "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("rgb(180,180,180)"),
+    "type": new THREE.MeshBasicMaterial(),
+    "color": new THREE.Color("rgb(255,255,255)"),
     "alphaMap": "spritesheet_wind.png",
     "transparent": true,
-    "opacity": 0.7,
+    // "opacity": 0.7,
+    "side": THREE.DoubleSide,
     "depthWrite": false,
+    "blending": THREE.AdditiveBlending,
   },
 
   "BG_Snow_Tree_Far_LoopAni_s": {

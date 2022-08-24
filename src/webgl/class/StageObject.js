@@ -98,8 +98,26 @@ export class StageObject{
                 if(this.definition.MATERIALS[child.material.name].flipY  != undefined) mapText.flipY = this.definition.MATERIALS[child.material.name].flipY
 
                 // tiling
-                if(mapKey == "map" || mapKey == "alphaMap") {                  
-                  let tiling = (mapKey == "map") ? this.definition.MATERIALS[child.material.name].mapTiling : this.definition.MATERIALS[child.material.name].alphaMapTiling
+                if(mapKey == "map" || mapKey == "alphaMap" || mapKey == "emissiveMap" || mapKey == "normalMap" || mapKey == "specularMap") {                  
+                  let tiling
+                  switch (mapKey) {
+                    case 'map':
+                      tiling = this.definition.MATERIALS[child.material.name].mapTiling
+                      break;
+                    case 'alphaMap':
+                      tiling = this.definition.MATERIALS[child.material.name].alphaMapTiling
+                      break;
+                    case 'emissiveMap':
+                      tiling = this.definition.MATERIALS[child.material.name].emissiveMapTiling
+                      break;
+                    case 'normalMap':
+                      tiling = this.definition.MATERIALS[child.material.name].normalMapTiling
+                      break;
+                    case 'specularMap':
+                      tiling = this.definition.MATERIALS[child.material.name].specularMapTiling
+                      break;
+                  }
+
                   if(tiling != undefined) {
                     mapText.wrapS = THREE.RepeatWrapping
                     mapText.wrapT = THREE.RepeatWrapping
@@ -119,7 +137,7 @@ export class StageObject{
         
         this.needToBeUpdated.push( {mesh: child, clonedMaterial: cloneMat} )
 
-        if(STATE.WEBGL.isDebug) if(cloneMat.name == "BG_Desert_Dust_SeqAni_s") console.log(cloneMat)
+        if(STATE.WEBGL.isDebug) if(cloneMat.name == "TANK_K9A1_Track_UVAni_s") console.log(cloneMat)
       }
     })
 

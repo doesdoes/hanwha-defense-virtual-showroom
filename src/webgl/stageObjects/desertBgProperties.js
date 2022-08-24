@@ -50,8 +50,9 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(193,160,127)"),
     "alphaMap": "spritesheet_wind.png",
     "transparent": true,
-    "opacity": 0.7,
+    // "opacity": 0.7,
     "depthWrite": false,
+    "blending": THREE.AdditiveBlending,
   },
 
   "Props_shadow_s": {
