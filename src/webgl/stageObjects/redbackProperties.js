@@ -34,6 +34,10 @@ export const MATERIALS = {
     "reflectivity": 0.5,
     "clearcoat": 1.0,
     "clearcoatRoughness": 0.4,
+    "normalScale": {
+      x: 0.5,
+      y: 0.5,
+    }
   },
   "TANK_REDBACK_Track_s": {
     "type": new THREE.MeshPhysicalMaterial(),
