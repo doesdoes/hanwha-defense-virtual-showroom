@@ -27,6 +27,9 @@ export const STATE = {
       mesh: null,
       animate: function() {
         if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.x += 0.0012
+        if(this.mesh && this.mesh.material.specularMap != undefined) this.mesh.material.specularMap.offset.x += 0.0012
+        if(this.mesh && this.mesh.material.emissiveMap != undefined) this.mesh.material.emissiveMap.offset.x += 0.0012
+        if(this.mesh && this.mesh.material.normalMap != undefined) this.mesh.material.normalMap.offset.x += 0.0012
       }
     },
     desertSpeedLine: {

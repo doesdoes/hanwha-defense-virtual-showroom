@@ -286,7 +286,7 @@ export function loadStage( sceneName, callback ) {
 }
 
 function setSobelFocus(mesh) {
-  console.log(mesh.name, mesh)
+  // console.log(mesh.name, mesh)
   switch (mesh.name) {
 
     // K9A1
