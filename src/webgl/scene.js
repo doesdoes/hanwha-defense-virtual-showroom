@@ -24,11 +24,6 @@ const isMobile = md.mobile()
 export function loadStage( sceneName, callback ) {
   const uiLoadingManager = new UILoadingManager()
 
-  // let glowScene;
-  // glowScene = new THREE.Scene()
-  // const sobelLayer = new THREE.Layers();
-  // sobelLayer.set(glowScene);
-
   switch (sceneName) {
     case 'K9A1':
       setLight(STATE)
@@ -113,7 +108,6 @@ export function loadStage( sceneName, callback ) {
 
         if(child.name === 'BG_SpeedLine_UVAni') {
           spriteObjectWind = child
-          // STATE.UV_ANIMATED_OBJECTS.snowSpeedLine.mesh = child
         }
 
         if(child.name === 'BG_Snow_Tree_Far_LoopAni'
@@ -149,7 +143,7 @@ export function loadStage( sceneName, callback ) {
         const tween = createSpriteTween(spriteObjectDust, spriteObjectDust.material.alphaMap, 60, 1, 1500)
         tween.start()
 
-        const tweenWind = createSpriteTween(spriteObjectWind, spriteObjectWind.material.alphaMap, 75, 1, 1500)
+        const tweenWind = createSpriteTween(spriteObjectWind, spriteObjectWind.material.alphaMap, 76, 1, 2000)
         tweenWind.start()
 
         callback && callback()
@@ -161,6 +155,7 @@ export function loadStage( sceneName, callback ) {
       setLight(STATE)
       setHemisphereLightDesertDefault(STATE)
       const redbackPoints = []
+      let spriteDesertDust, spriteDesertWind = null
 
       const REDBACK_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redback" } )
       const REDBACK_OBJECT = new StageObject({
@@ -241,7 +236,8 @@ export function loadStage( sceneName, callback ) {
         }
 
         if(child.name === 'BG_SpeedLine_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.desertSpeedLine.mesh = child
+          // STATE.UV_ANIMATED_OBJECTS.desertSpeedLine.mesh = child
+          spriteDesertWind = child
         }
 
         if(child.name === 'Tire_Line_UV') {
@@ -269,16 +265,22 @@ export function loadStage( sceneName, callback ) {
 
         if(child.name === 'BG_Desert_Dust_SEQAni') {
           child.visible = false
-          uiLoadingManager.waitTextures(function() {
-            const tween = createSpriteTween(child, child.material.alphaMap, 60, 1, 1500)
-            tween.start()
-            
-            callback && callback()
-          })
+          spriteDesertDust = child
         }
       })
 
       setUI(sceneName, redbackPoints)
+
+      uiLoadingManager.waitTextures(function() {
+        const tween = createSpriteTween(spriteDesertDust, spriteDesertDust.material.alphaMap, 60, 1, 1500)
+        tween.start()
+
+        const tweenWind = createSpriteTween(spriteDesertWind, spriteDesertWind.material.alphaMap, 76, 1, 2000)
+        tweenWind.start()
+        
+        callback && callback()
+      })
+
       break
   }
 }
@@ -291,9 +293,6 @@ function setSobelFocus(mesh) {
     case 'Joint_TANK_K9A1_Head_Cannon_01':
       STATE.ZONE_FOCUS['longerFiringRange'].sobelObj = mesh
       break;
-    // case 'TANK_K9A1_Head':
-    //   STATE.ZONE_FOCUS['irCamera'].sobelObj = mesh
-    //   break;
     case 'TANK_K9A1_Wheel_04_LT':
       STATE.ZONE_FOCUS['highMobility'].sobelObj = mesh
       break;

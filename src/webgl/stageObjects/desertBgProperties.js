@@ -48,25 +48,11 @@ export const MATERIALS = {
   "BG_SpeedLine_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(193,160,127)"),
-    "alphaMap": "Speed_Line_Alpha.jpg",
+    "alphaMap": "spritesheet_wind.png",
     "transparent": true,
-    "flipY": false,
-    "alphaMapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    },
+    "opacity": 0.7,
     "depthWrite": false,
   },
-
-  // "BG_Dessert_Tree_s": {
-  //   "type": new THREE.MeshBasicMaterial(),
-  //   "color": new THREE.Color("rgb(255,255,255)"),
-  //   "map": "Tree_Plan_D.jpg",
-  //   "alphaMap": "Tree_Plan_A.jpg",
-  //   "transparent": true,
-  //   "flipY": false,
-    
-  // },
 
   "Props_shadow_s": {
     "type": new THREE.MeshBasicMaterial(),
@@ -75,6 +61,16 @@ export const MATERIALS = {
     "flipY": false,
     "transparent": true,
   },
+
+    // "BG_Dessert_Tree_s": {
+  //   "type": new THREE.MeshBasicMaterial(),
+  //   "color": new THREE.Color("rgb(255,255,255)"),
+  //   "map": "Tree_Plan_D.jpg",
+  //   "alphaMap": "Tree_Plan_A.jpg",
+  //   "transparent": true,
+  //   "flipY": false,
+    
+  // },
 
   // "Grass_Part_s": {
   //   "type": new THREE.MeshBasicMaterial(),
