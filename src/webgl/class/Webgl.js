@@ -86,6 +86,8 @@ export class Webgl{
 
     this.cameraControls.truckSpeed = 0
     this.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
+    this.cameraControls.mouseButtons.middle = CameraControls.ACTION.NONE
+    this.cameraControls.touches.two = CameraControls.ACTION.NONE
 
     this.userDragging = false
     // this.disableAutoRotate = true
