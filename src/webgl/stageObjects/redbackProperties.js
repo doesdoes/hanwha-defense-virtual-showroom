@@ -13,7 +13,7 @@ export const MATERIALS = {
     "color": new THREE.Color("rgb(255,255,255)"),
     "map": "RedBack_Head_D_Color.jpg",
     "emissiveMap": "RedBack_Head_D_Color.jpg",
-    "normalMap": "RedBack_Head_N.jpg",
+    "normalMap": "RedBack_Head_N_Renamed.jpg",
     "flipY": false,
     "roughness": 1.0,
     "metalness": 0.0,
