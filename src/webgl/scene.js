@@ -29,7 +29,7 @@ export function loadStage( sceneName, callback ) {
       setLight(STATE)
       setHemisphereLightSnowDefault(STATE)
       const k9Points = [];
-      let spriteObjectDust, spriteObjectWind = null
+      let spriteObjectDust, spriteObjectWind, spriteObjectTrackSkid = null
 
       const TANK_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
       const TANK_OBJECT = new StageObject({
@@ -127,8 +127,8 @@ export function loadStage( sceneName, callback ) {
         }
 
         if(child.name === 'BG_Snow_TrackSkid_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
           child.visible = false
+          spriteObjectTrackSkid = child
         }
 
         if(child.name === 'BG_Snow_Dust_SEQAni') {
@@ -146,6 +146,9 @@ export function loadStage( sceneName, callback ) {
         const tweenWind = createSpriteTween(spriteObjectWind, spriteObjectWind.material.alphaMap, 76, 1, 2000)
         tweenWind.start()
 
+        const tweenTrackSkid = createSpriteTween(spriteObjectTrackSkid, spriteObjectTrackSkid.material.alphaMap, 11, 1, 100)
+        tweenTrackSkid.start()
+
         callback && callback()
       })
 
@@ -155,7 +158,7 @@ export function loadStage( sceneName, callback ) {
       setLight(STATE)
       setHemisphereLightDesertDefault(STATE)
       const redbackPoints = []
-      let spriteDesertDust, spriteDesertWind = null
+      let spriteDesertDust, spriteDesertWind, spriteDesertTrackSkid = null
 
       const REDBACK_MESH = ASSETS.REDBACK.MODEL_FILES.find( obj => { return obj.name === "redback" } )
       const REDBACK_OBJECT = new StageObject({
@@ -258,9 +261,9 @@ export function loadStage( sceneName, callback ) {
           STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
         }
 
-        if(child.name === 'BG_Desert_TrackSkid_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.redbackTireLine.mesh = child
+        if(child.name === 'BG_Desert_TrackSkid_SEQAni') {
           child.visible = false
+          spriteDesertTrackSkid = child
         }
 
         if(child.name === 'BG_Desert_Dust_SEQAni') {
@@ -277,6 +280,9 @@ export function loadStage( sceneName, callback ) {
 
         const tweenWind = createSpriteTween(spriteDesertWind, spriteDesertWind.material.alphaMap, 76, 1, 2000)
         tweenWind.start()
+
+        const tweenTrackSkid = createSpriteTween(spriteDesertTrackSkid, spriteDesertTrackSkid.material.alphaMap, 11, 1, 100)
+        tweenTrackSkid.start()
         
         callback && callback()
       })

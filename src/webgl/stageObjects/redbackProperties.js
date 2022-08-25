@@ -117,19 +117,12 @@ export const MATERIALS = {
   },
   "BG_Desert_TrackSkid_UVAni_s": {
     "type": new THREE.MeshBasicMaterial(),
-    "color": new THREE.Color("rgb(255,255,255)"),
-    "map": "Tire_D.jpg",
-    "alphaMap": "Tire_Alpha.jpg",
-    "transparent": true,
+    "color": new THREE.Color("rgb(165,127,89)"),
+    "alphaMap": "spritesheet_trackskid.png",
     "opacity": 0.5,
-    "mapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    },
-    "alphaMapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    }
+    "flipY": false,
+    "transparent": true,
+    "depthWrite": false,
   },
   "BG_Desert_Dust_SeqAni_s": {
     "type": new THREE.MeshBasicMaterial(),

@@ -110,12 +110,11 @@ export const MATERIALS = {
   "BG_Snow_TrackSkid_s": {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
-    "alphaMap": "TrackSkid_A.jpg",
-    "_alphaTest": 0.85,
-    "alphaMapTiling":{
-      repeatX: 1,
-      repeatY: 1,
-    }
+    "alphaMap": "spritesheet_trackskid.png",
+    "opacity": 0.5,
+    "flipY": false,
+    "transparent": true,
+    "depthWrite": false,
   },
   "BG_Snow_Dust_SeqAni_s": {
     "type": new THREE.MeshStandardMaterial(),
