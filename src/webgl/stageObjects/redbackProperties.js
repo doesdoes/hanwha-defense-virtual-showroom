@@ -46,7 +46,6 @@ export const MATERIALS = {
     "emissiveMap": "REDBACK_TrackWheel.jpg",
     "normalMap": "REDBACK_TrackWheel_N.jpg",
     "emissive": new THREE.Color("rgb(255,255,255)"),
-    "emissiveIntensity": 3.0,
     "flipY": false,
     "roughness": 0.66,
     "metalness": 0.0,

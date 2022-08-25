@@ -53,7 +53,7 @@ export const STATE = {
     desertFloor: {
       mesh: null,
       animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y -= 0.03 
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.03 
       }
     },
     snowMountain: {
