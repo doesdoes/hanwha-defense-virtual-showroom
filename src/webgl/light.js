@@ -93,8 +93,8 @@ export function setLight(STATE) {
 }
 
 export function setHemisphereLightSnowDefault(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xedf3fc)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0x9ca5b5)
+  STATE.hemisphereLight.color = new THREE.Color(0xf5f7fa)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0xa6abb3)
   STATE.hemisphereLight.intensity = 1.0
   // console.log('LightSnowDefault', STATE.hemisphereLight)
 }
@@ -114,8 +114,8 @@ export function setHemisphereLightDesert(STATE) {
 }
 
 export function setHemisphereLightSnow(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xE0EEFF)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0x778DB1)
+  STATE.hemisphereLight.color = new THREE.Color(0xedf4fc)
+  STATE.hemisphereLight.groundColor = new THREE.Color(0x8493ad)
   STATE.hemisphereLight.intensity = 1.0
   // console.log('LightSnow', STATE.hemisphereLight)
 }
