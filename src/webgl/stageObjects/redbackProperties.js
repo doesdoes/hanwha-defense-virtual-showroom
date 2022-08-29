@@ -119,10 +119,11 @@ export const MATERIALS = {
     "type": new THREE.MeshBasicMaterial(),
     "color": new THREE.Color("rgb(165,127,89)"),
     "alphaMap": "spritesheet_trackskid.png",
-    "opacity": 0.5,
+    "opacity": 0.7,
     "flipY": false,
     "transparent": true,
     "depthWrite": false,
+    "blending": THREE.AdditiveBlending,
   },
   "BG_Desert_Dust_SeqAni_s": {
     "type": new THREE.MeshBasicMaterial(),

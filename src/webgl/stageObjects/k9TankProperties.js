@@ -111,10 +111,11 @@ export const MATERIALS = {
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "alphaMap": "spritesheet_trackskid.png",
-    "opacity": 0.5,
+    "opacity": 0.2,
     "flipY": false,
     "transparent": true,
     "depthWrite": false,
+    "blending": THREE.AdditiveBlending,
   },
   "BG_Snow_Dust_SeqAni_s": {
     "type": new THREE.MeshStandardMaterial(),
