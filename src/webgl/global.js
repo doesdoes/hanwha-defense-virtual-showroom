@@ -251,6 +251,12 @@ export const STATE = {
       maxAzimuth: THREE.MathUtils.degToRad(210),
       sobelObj: new THREE.Mesh(),
     },
+
+    kslvOrigin: {
+      position: new THREE.Vector3(3.99, 0.095, -2.94),
+      positionM: new THREE.Vector3(8.59, 0.22, -6.35),
+      target: new THREE.Vector3(0,0,0),
+    },
   }
 }
 
@@ -301,4 +307,15 @@ export const ASSETS = {
     ],
     TEXTURES_FILES: []
   },
+  KSLV: {
+    MODEL_FILES: [
+      {
+        name: 'kslv',
+        loaded: false,
+        path : 'glb/KSLV.glb',
+        asset: null
+      },
+    ],
+    TEXTURES_FILES: []
+  }
 }

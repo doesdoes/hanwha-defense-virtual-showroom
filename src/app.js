@@ -16,6 +16,7 @@ const $audio = $sound.querySelector('.sound audio');
 
 let IS_INIT_K9A1 = false
 let IS_INIT_REDBACK = false
+let IS_INIT_KSLV = false
 const md = new MobileDetect(window.navigator.userAgent)
 const isMobile = md.mobile()
 
@@ -28,6 +29,13 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   canvasButton()
   setContent()
   setUIEvent()
+
+  // ***** TEMP ACCESS ROCKET PAGE ******
+  if(location.hash == '#rocket') {
+    setTimeout(() => {
+      toggleItem('KSLV')
+    }, 50)
+  }
 
   if(isMobile) {
     // document.querySelectorAll('.entry__item').forEach($entryItem => {
@@ -241,6 +249,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     if(item === 'K9A1') {
       if(IS_INIT_K9A1) {
         _WEBGL.toggleScene('REDBACK', false)
+        _WEBGL.toggleScene('KSLV', false)
         _WEBGL.toggleScene('K9A1', true)
         _WEBGL.toggleRendering(true)
     
@@ -256,6 +265,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
               gateToWebglView(item)
 
               _WEBGL.toggleScene('REDBACK', false)
+              _WEBGL.toggleScene('KSLV', false)
               _WEBGL.toggleScene('K9A1', true)
               _WEBGL.toggleRendering(true)
 
@@ -265,9 +275,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         })
       }
       
-    } else {
+    } else if(item === 'REDBACK'){
       if(IS_INIT_REDBACK) {
         _WEBGL.toggleScene('K9A1', false)
+        _WEBGL.toggleScene('KSLV', false)
         _WEBGL.toggleScene('REDBACK', true)
         _WEBGL.toggleRendering(true)
 
@@ -283,7 +294,36 @@ window.addEventListener('DOMContentLoaded', async (event) => {
               gateToWebglView(item)
 
               _WEBGL.toggleScene('K9A1', false)
+              _WEBGL.toggleScene('KSLV', false)
               _WEBGL.toggleScene('REDBACK', true)
+              _WEBGL.toggleRendering(true)
+
+              loadingSpinner.hide()
+            }, 50)
+          })
+        })
+      }
+    } else if(item === 'KSLV') {
+      if(IS_INIT_KSLV) {
+        _WEBGL.toggleScene('K9A1', false)
+        _WEBGL.toggleScene('REDBACK', false)
+        _WEBGL.toggleScene('KSLV', true)
+        _WEBGL.toggleRendering(true)
+
+        gateToWebglView(item)
+      } else {
+        IS_INIT_KSLV = true
+        
+        loadingSpinner.show()
+        _WEBGL.loadAssets('KSLV', () => {
+          MAIN_ASSET_LOADED = true
+          _WEBGL.initScene('KSLV', () => {
+            setTimeout(function() {
+              gateToWebglView(item)
+
+              _WEBGL.toggleScene('K9A1', false)
+              _WEBGL.toggleScene('REDBACK', false)
+              _WEBGL.toggleScene('KSLV', true)
               _WEBGL.toggleRendering(true)
 
               loadingSpinner.hide()

@@ -12,6 +12,8 @@ import * as SNOW_BG_PROPERTIES from './stageObjects/snowBgProperties.js'
 import * as REDBACK_PROPERTIES from './stageObjects/redbackProperties.js'
 import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgProperties.js'
 
+import * as KSLV_PROPERTIES from './stageObjects/KSLVProperties.js'
+
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
 import { setLight, setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
@@ -100,7 +102,6 @@ export function loadStage( sceneName, callback ) {
 
       // [NOTE] 맵 mesh/uv 애니메이션
       SNOW_OBJECT.clone.traverse((child) => {
-        console.log(child.name)
         // UV
         if(child.name === 'BG_Snow_Ground_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.snowFloor.mesh = child  
@@ -121,7 +122,6 @@ export function loadStage( sceneName, callback ) {
 
       // [NOTE] 탱크 mesh/uv 애니메이션
       TANK_OBJECT.clone.traverse((child) => {
-        console.log(child.name)
         if(child.name === 'Track_LT_UVAni') {
           STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
         }
@@ -288,6 +288,27 @@ export function loadStage( sceneName, callback ) {
       })
 
       break
+
+    case 'KSLV':
+      setLight(STATE)
+
+      const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
+      const KSLV_OBJECT = new StageObject({
+        originalObject: KSLV_MESH.asset.scene,
+        clonedObject: KSLV_MESH.asset.scene.clone(),
+        objectName: 'kslv',
+        definition: KSLV_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(KSLV_OBJECT.clone)
+
+      // const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 )
+      // const material = new THREE.MeshBasicMaterial( {color: 0x4281f5} )
+      // const mesh = new THREE.Mesh( geometry, material )
+      // mesh.position.z = 0
+      // STATE.WEBGL.scene.add( mesh )
+
+      callback && callback()
+      break
   }
 }
 
@@ -373,7 +394,7 @@ function updatePointVisible(points) {
   })
 }
 
-export function focusOnRegion( _region ){
+export function focusOnRegion( _region ) {  
   // console.log(STATE.ZONE_FOCUS.reset.position)
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)

@@ -27,7 +27,7 @@ window._WEBGL = (function() {
    * @param {boolean} _debug enable / disable debug
    * @param {boolean} _isMobile set target device
    */
-  function createContext(_parentContainerClass, _containerId, _debug, _isMobile = false){
+  function createContext(_parentContainerClass, _containerId, _debug, _isMobile = false) {
     let host = window.location.host
 
     console.log(host)
@@ -156,7 +156,7 @@ window._WEBGL = (function() {
    * @param {string} sceneName name of the scene to load
    * @return {callback} return a callback when all assets are loaded
    */
-  function loadAssets(_sceneName, _callback){
+  function loadAssets(_sceneName, _callback) {
     const LOADING_MANAGER = new THREE.LoadingManager()
     LOADING_MANAGER.onProgress = ( url, itemsLoaded, itemsTotal ) => { if(STATE.WEBGL.isDebug) console.log( `%cLoading file: ${url} (${itemsLoaded}/${itemsTotal})`,'color:#787878;') }
     LOADING_MANAGER.onError = url => console.log('There was an error loading '+url)
@@ -167,6 +167,9 @@ window._WEBGL = (function() {
         break
       case 'REDBACK':
         LOADER.loadGLTF(LOADING_MANAGER, ASSETS.REDBACK.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
+        break
+      case 'KSLV':
+        LOADER.loadGLTF(LOADING_MANAGER, ASSETS.KSLV.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
         break
     }
 
@@ -182,7 +185,7 @@ window._WEBGL = (function() {
    * @param {string} sceneName name of the scene to load
    * @return {void}
    */
-  function initScene(_sceneName, callback){
+  function initScene(_sceneName, callback) {
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: scene %c${_sceneName} %cinitialized!`,'color:#3c6bef;','color:#unherit;')
 
     //load stage
@@ -192,6 +195,9 @@ window._WEBGL = (function() {
         break
       case 'REDBACK':
         SCENE.loadStage('REDBACK', callback)
+        break
+      case 'KSLV':
+        SCENE.loadStage('KSLV', callback)
         break
     }
   }
@@ -203,7 +209,7 @@ window._WEBGL = (function() {
    * @param {boolean} toggle enable / disable scene visibility
    * @return {void}
    */
-  function toggleScene(_sceneName, _toggle){
+  function toggleScene(_sceneName, _toggle) {
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: scene %c${_sceneName} %cvisibility: ${_toggle}!`,'color:#3c6bef;','color:#unherit;')
 
     if( _toggle ) STATE.CURRENT_SCENE.NAME = _sceneName
@@ -246,7 +252,7 @@ window._WEBGL = (function() {
         STATE.ANIMATIONS._k9Tank.mixer.stopAllAction()
         // STATE.ANIMATIONS._SNOW.mixer.stopAllAction()
       }
-    } else {
+    } else if(_sceneName === "REDBACK") {
       SCENE.toggleStages(_toggle, 'redback')
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
       SCENE.toggleStages(false, 'desertBg')
@@ -269,6 +275,15 @@ window._WEBGL = (function() {
         STATE.ANIMATIONS._REDBACK.mixer.stopAllAction()
         // STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
       }
+    } else if(_sceneName === "KSLV") {
+      SCENE.toggleStages(_toggle, 'kslv')
+
+      if(_toggle) {
+        STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+        SCENE.focusOnRegion('reset')
+
+        window.isAnim = false
+      }
     }
   }
 
@@ -278,12 +293,12 @@ window._WEBGL = (function() {
    * @param {boolean} toggle enable / disable rendering
    * @return {void}
    */
-  function toggleRendering( _toggle ){
+  function toggleRendering( _toggle ) {
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: %crendering ${_toggle}!`,'color:#eb8334;')
     STATE.ENABLE_RENDERING = _toggle
   }
 
-  function render( time ){
+  function render( time ) {
     requestAnimationFrame( render )
 
     if( !STATE.ENABLE_RENDERING ) return
