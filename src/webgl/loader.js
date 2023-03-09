@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 
 export function loadGLTF(manager, assets, domain = null, draco = null) {
   let fileLoader = new GLTFLoader(manager)
@@ -22,6 +23,21 @@ export function loadTEX(manager, assets, domain = null) {
   for (let asset of assets) {
     if (!asset.loaded) {
       let filePath = (domain) ? `${domain}/${asset.path}` : `./assets/${asset.path}`
+      fileLoader.load(filePath, function ( data ) {
+        asset.loaded = true
+        asset.asset = data
+      })
+    }
+  }
+  return assets
+}
+
+export function loadHDR(manager, assets, domain = null) {  
+  let fileLoader = new RGBELoader(manager)
+  for (let asset of assets) {
+    if (!asset.loaded) {
+      let filePath = (domain) ? `${domain}/${asset.path}` : `./assets/${asset.path}`
+      
       fileLoader.load(filePath, function ( data ) {
         asset.loaded = true
         asset.asset = data

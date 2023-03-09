@@ -158,6 +158,9 @@ export const STATE = {
     _DESERT: {
       mixer: null,
     },
+    _KSLV_CAMERA: {
+      mixer: null,
+    },
   },
   IS_FOCUSED: false,
   ZONE_FOCUS:{
@@ -253,9 +256,9 @@ export const STATE = {
     },
 
     kslvOrigin: {
-      position: new THREE.Vector3(3.99, 0.095, -2.94),
-      positionM: new THREE.Vector3(8.59, 0.22, -6.35),
-      target: new THREE.Vector3(0,0,0),
+      position: new THREE.Vector3(-2.6569, 26.05, 179.23),
+      positionM: new THREE.Vector3(-2.6569, 26.05, 179.23),
+      target: new THREE.Vector3(0,20,0),
     },
   }
 }
@@ -315,7 +318,27 @@ export const ASSETS = {
         path : 'glb/KSLV.glb',
         asset: null
       },
+      {
+        name: 'kslvDome',
+        loaded: false,
+        path : 'glb/KSLV-dome.glb',
+        asset: null
+      },
+      {
+        name: 'camera',
+        loaded: false,
+        path : 'glb/camera.glb',
+        asset: null
+      },
     ],
-    TEXTURES_FILES: []
+    TEXTURES_FILES: [],
+    HDR_FILES: [
+      {
+        name: 'test',
+        loaded: false,
+        path : 'hdr/test.hdr',
+        asset: null
+      },
+    ]
   }
 }

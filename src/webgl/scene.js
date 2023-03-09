@@ -3,6 +3,7 @@ import {gsap} from 'gsap/all';
 import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import { StageObject } from './class/StageObject.js'
 import { STATE, ASSETS } from './global.js'
+import CameraControls from 'camera-controls'
 
 import * as DESERT_BG_PROPERTIES from './stageObjects/desertBgProperties.js'
 import * as K9_TANK_PROPERTIES from './stageObjects/k9TankProperties.js'
@@ -290,7 +291,20 @@ export function loadStage( sceneName, callback ) {
       break
 
     case 'KSLV':
-      setLight(STATE)
+      //setLight(STATE)
+
+      STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
+      STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(0)
+      STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(180)
+
+      console.log( ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } ) )
+      console.log( ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ) )
+      
+      const HDR_TEST = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ).asset)
+      STATE.WEBGL.scene.environment = HDR_TEST.texture
+      STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
+      STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
+      STATE.WEBGL.renderer.toneMappingExposure = 2.0
 
       const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
       const KSLV_OBJECT = new StageObject({
@@ -301,11 +315,29 @@ export function loadStage( sceneName, callback ) {
       })
       STATE.WEBGL.scene.add(KSLV_OBJECT.clone)
 
-      // const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 )
-      // const material = new THREE.MeshBasicMaterial( {color: 0x4281f5} )
-      // const mesh = new THREE.Mesh( geometry, material )
-      // mesh.position.z = 0
-      // STATE.WEBGL.scene.add( mesh )
+      const KSLV_DOME_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvDome" } )
+      STATE.WEBGL.scene.add(KSLV_DOME_MESH.asset.scene)
+
+      const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
+
+      setTimeout(() => {
+        focusOnRegion('kslvOrigin')
+      }, 2000)
+
+      if(CAMERA_ANIM.asset.animations.length > 0){
+        STATE.ANIMATIONS._KSLV_CAMERA.mixer = new THREE.AnimationMixer( STATE.WEBGL.camera )
+        CAMERA_ANIM.asset.animations.forEach(anim => {
+          STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( anim )
+        })
+
+        //console.log(CAMERA_ANIM.asset.animations[0])
+        //STATE.WEBGL.cameraControls.enabled = false
+
+        setTimeout(() => {
+          //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
+        }, 5000)
+        //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
+      }
 
       callback && callback()
       break

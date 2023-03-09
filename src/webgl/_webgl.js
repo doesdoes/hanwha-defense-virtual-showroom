@@ -170,6 +170,7 @@ window._WEBGL = (function() {
         break
       case 'KSLV':
         LOADER.loadGLTF(LOADING_MANAGER, ASSETS.KSLV.MODEL_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
+        LOADER.loadHDR(LOADING_MANAGER, ASSETS.KSLV.HDR_FILES, STATE.ASSET_DOMAIN_PATH, STATE.DRACO_LOADER)
         break
     }
 
@@ -279,7 +280,7 @@ window._WEBGL = (function() {
       SCENE.toggleStages(_toggle, 'kslv')
 
       if(_toggle) {
-        STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+        //STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false

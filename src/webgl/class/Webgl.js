@@ -58,6 +58,9 @@ export class Webgl{
     this.labelRenderer.domElement.style.pointerEvents = 'none'
     document.body.appendChild( this.labelRenderer.domElement )
 
+    //pmrem generator
+    this.pmremGenerator = new THREE.PMREMGenerator( this.renderer ) 
+
     // camera view
     // this.views = []
     // this.views.push(new View({left: -0.5, bottom: 0, width: 1, height: 1, cameraOptions: this.cameraOptions, scene: this.scene, renderer: this.renderer, enabled: false}))
