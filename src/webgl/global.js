@@ -256,9 +256,21 @@ export const STATE = {
     },
 
     kslvOrigin: {
-      position: new THREE.Vector3(-2.6569, 26.05, 179.23),
-      positionM: new THREE.Vector3(-2.6569, 26.05, 179.23),
+      position: new THREE.Vector3(-2.6569, 26.05, -80),
+      positionM: new THREE.Vector3(-2.6569, 26.05, -80),
       target: new THREE.Vector3(0,20,0),
+    },
+    focuseOne: {
+      position: new THREE.Vector3(-2.6569, 36.05, -30),
+      target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(160),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
+    },
+    focuseTwo: {
+      position: new THREE.Vector3(-2.6569, 46.05, -30),
+      target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(160),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
     },
   }
 }

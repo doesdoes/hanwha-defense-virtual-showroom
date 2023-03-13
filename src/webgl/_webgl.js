@@ -58,7 +58,7 @@ window._WEBGL = (function() {
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
       // k9a1 기준
-      cameraOptions: { fov: 45, near: 0.1, far: 1000, x: 4.15, y: -0.01, z: -2.0 },
+      cameraOptions: { fov: 45, near: 0.1, far: 200000, x: 4.15, y: -0.01, z: -2.0 },
       isDebug: _debug
     })
 
@@ -279,8 +279,16 @@ window._WEBGL = (function() {
     } else if(_sceneName === "KSLV") {
       SCENE.toggleStages(_toggle, 'kslv')
 
+      $condition.setAttribute('data-item', 'kslv')
+      Array.from($parts).map((part, idx) => {
+        const $txt = part.querySelector('.txt')
+        const partData = data['kslv-indicators'][idx]
+        $txt.textContent = partData.title
+        part.setAttribute('data-feature', partData.id)
+      })
+
       if(_toggle) {
-        //STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+        STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false

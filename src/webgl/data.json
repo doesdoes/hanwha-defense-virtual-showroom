@@ -12,5 +12,12 @@
     { "id": "bestMobility", "title": "Best Mobility"},
     { "id": "superiorProtection", "title": "Superior Protection"},
     { "id": "isuRubberTrack", "title": "ISU & Rubber Track"}
+  ],
+  "kslv-indicators": [
+    { "id": "feature01", "title": "Feature 01"},
+    { "id": "feature02", "title": "Feature 02"},
+    { "id": "feature03", "title": "Feature 03"},
+    { "id": "feature04", "title": "Feature 04"},
+    { "id": "feature05", "title": "Feature 05"}
   ]
 }

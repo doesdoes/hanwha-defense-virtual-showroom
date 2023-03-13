@@ -105,9 +105,11 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     }
   })
 
-  function gateToWebglView(item) {
-
-    const guideProductName = item === 'K9A1' ? 'K9 SPH' : 'REDBACK IFV'
+  function gateToWebglView(item) {    
+    let guideProductName
+    if(item === 'K9A1') guideProductName = 'K9 SPH'
+    else if(item === 'REDBACK') guideProductName = 'REDBACK IFV'
+    else if(item === 'KSLV') guideProductName = 'KSLV'
 
     function showUI() {
       gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })

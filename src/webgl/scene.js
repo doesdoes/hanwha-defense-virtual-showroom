@@ -291,14 +291,13 @@ export function loadStage( sceneName, callback ) {
       break
 
     case 'KSLV':
+      const kslvPoints = []
+
       //setLight(STATE)
 
       STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
       STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(0)
       STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(180)
-
-      console.log( ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } ) )
-      console.log( ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ) )
       
       const HDR_TEST = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ).asset)
       STATE.WEBGL.scene.environment = HDR_TEST.texture
@@ -313,15 +312,46 @@ export function loadStage( sceneName, callback ) {
         objectName: 'kslv',
         definition: KSLV_PROPERTIES,
       })
+      KSLV_OBJECT.clone.position.y = -20
+      KSLV_OBJECT.clone.traverse(child => {
+        setSobelFocus(child)
+
+        if (child.userData.type == 'POI') {
+          // POI buttons          
+          const POI = new CSS2DObject( document.getElementById(child.name) )
+          POI.position.copy(child.position)
+          KSLV_OBJECT.clone.add( POI )
+
+          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
+          STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
+          
+          POI.element.addEventListener('click', function(e){
+            STATE.IS_FOCUSED = true 
+            focusOnRegion(child.name)
+            e.preventDefault()
+          })
+
+          kslvPoints.push(child)
+        }
+      })
+
       STATE.WEBGL.scene.add(KSLV_OBJECT.clone)
 
       const KSLV_DOME_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvDome" } )
+      KSLV_DOME_MESH.asset.scene.traverse((child) => {
+        if(child.name === 'atmosphere') {
+          child.material.alphaMap = child.material.map
+          child.material.transparent = true
+          child.material.blending = 2
+        }
+      })
+      
       STATE.WEBGL.scene.add(KSLV_DOME_MESH.asset.scene)
 
       const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
 
       setTimeout(() => {
-        focusOnRegion('kslvOrigin')
+        //focusOnRegion('kslvOrigin')
       }, 2000)
 
       if(CAMERA_ANIM.asset.animations.length > 0){
@@ -338,6 +368,8 @@ export function loadStage( sceneName, callback ) {
         }, 5000)
         //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
       }
+
+      setUI(sceneName, kslvPoints)
 
       callback && callback()
       break
