@@ -143,7 +143,12 @@
   &[data-popup="superiorProtection"],
   &[data-popup="isuRubberTrack"],
   &[data-popup="antiTankArmamentSystem"],
-  &[data-popup="bestMobility"] {
+  &[data-popup="bestMobility"],
+  &[data-popup="ton75classEngine"],
+  &[data-popup="engineClustering"],
+  &[data-popup="liquidEngineFuelSystem"],
+  &[data-popup="ton7classEngine"],
+  &[data-popup="collisionPreventionSystem"] {
     top: 27%;
     left: 8%;
   }
@@ -238,6 +243,10 @@
   }
 
   body:not([data-state="REDBACK"]) &[data-item="REDBACK"]{
+    visibility: collapse !important;
+  }
+
+  body:not([data-state="KSLV"]) &[data-item="KSLV"]{
     visibility: collapse !important;
   }
 }

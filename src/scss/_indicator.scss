@@ -124,7 +124,7 @@
   }
 }
 
-$poies: "longerFiringRange", "highMobility", "ammunitionLoader", "automaticControlSystem", "irCamera", "mainArmamentSystem", "antiTankArmamentSystem", "bestMobility", "superiorProtection", "isuRubberTrack";
+$poies: "longerFiringRange", "highMobility", "ammunitionLoader", "automaticControlSystem", "irCamera", "mainArmamentSystem", "antiTankArmamentSystem", "bestMobility", "superiorProtection", "isuRubberTrack", "ton75classEngine", "engineClustering", "liquidEngineFuelSystem", "ton7classEngine", "collisionPreventionSystem";
 
 @each $poi in $poies {
   [data-focus="#{$poi}"] {

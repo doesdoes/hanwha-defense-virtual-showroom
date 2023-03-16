@@ -295,15 +295,20 @@ export function loadStage( sceneName, callback ) {
 
       //setLight(STATE)
 
+      // const zeroGeometry = new THREE.BoxGeometry( 10, 10, 10 )
+      // const zeroMaterial = new THREE.MeshBasicMaterial( {color: 0xff0000} )
+      // const zeroMesh = new THREE.Mesh( zeroGeometry, zeroMaterial )
+      // STATE.WEBGL.scene.add( zeroMesh )
+
       STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
-      STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(0)
-      STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(180)
+      STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
+      STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
       
       const HDR_TEST = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ).asset)
       STATE.WEBGL.scene.environment = HDR_TEST.texture
       STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
       STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
-      STATE.WEBGL.renderer.toneMappingExposure = 2.0
+      STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
       const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
       const KSLV_OBJECT = new StageObject({
@@ -312,7 +317,6 @@ export function loadStage( sceneName, callback ) {
         objectName: 'kslv',
         definition: KSLV_PROPERTIES,
       })
-      KSLV_OBJECT.clone.position.y = -20
       KSLV_OBJECT.clone.traverse(child => {
         setSobelFocus(child)
 
@@ -350,10 +354,6 @@ export function loadStage( sceneName, callback ) {
 
       const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
 
-      setTimeout(() => {
-        //focusOnRegion('kslvOrigin')
-      }, 2000)
-
       if(CAMERA_ANIM.asset.animations.length > 0){
         STATE.ANIMATIONS._KSLV_CAMERA.mixer = new THREE.AnimationMixer( STATE.WEBGL.camera )
         CAMERA_ANIM.asset.animations.forEach(anim => {
@@ -366,7 +366,6 @@ export function loadStage( sceneName, callback ) {
         setTimeout(() => {
           //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
         }, 5000)
-        //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
       }
 
       setUI(sceneName, kslvPoints)
@@ -405,6 +404,7 @@ function setSobelFocus(mesh) {
 }
 
 function setUI(sceneName, points) {
+  console.log(`:: setting UI ::`)
   
   updatePointVisible(points)
   requestAnimationFrame(updatePoint)
@@ -444,6 +444,8 @@ function updatePointVisible(points) {
         offset = isMobile ? 10.7 : 4.9
       else if(state === 'REDBACK')
         offset = isMobile ? 8.7 : 3.7
+      else if(state === 'KSLV')
+        offset = isMobile ? 300 : 300
       else 
         return
 
@@ -459,7 +461,8 @@ function updatePointVisible(points) {
 }
 
 export function focusOnRegion( _region ) {  
-  // console.log(STATE.ZONE_FOCUS.reset.position)
+  console.log(':: focusing on region ::', _region)
+
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)
     gsap.to(window.UI.$currentPopup, { autoAlpha: 0, duration: 0.3 })
@@ -471,14 +474,12 @@ export function focusOnRegion( _region ) {
   // console.log(_region, STATE.IS_FOCUSED)
   if(STATE.IS_FOCUSED && _region !== 'reset'){
     document.body.setAttribute('data-focus', _region)
-    
-    STATE.WEBGL.cameraControls.minAzimuthAngle = STATE.ZONE_FOCUS[_region].minAzimuth
-    STATE.WEBGL.cameraControls.maxAzimuthAngle = STATE.ZONE_FOCUS[_region].maxAzimuth
   } else {
     document.body.setAttribute('data-focus', '')
-    STATE.WEBGL.cameraControls.minAzimuthAngle = -Infinity
-    STATE.WEBGL.cameraControls.maxAzimuthAngle = Infinity
   }
+
+  STATE.WEBGL.cameraControls.minAzimuthAngle = STATE.ZONE_FOCUS[_region].minAzimuth
+  STATE.WEBGL.cameraControls.maxAzimuthAngle = STATE.ZONE_FOCUS[_region].maxAzimuth
 
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,
@@ -497,6 +498,8 @@ export function focusOnRegion( _region ) {
 }
 
 export function toggleStages( toggle, sceneName ) {
+  console.log(`:: toggle stages ::`, toggle, sceneName)
+  
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
 
   if (stagesObjects != undefined) {

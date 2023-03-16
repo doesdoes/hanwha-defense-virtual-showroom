@@ -7,7 +7,7 @@ import i18next from "i18next"
   i18next.init({
     lng: document.documentElement.lang,
     // debug: true,
-    ns: ['GATE', 'K9A1', 'REDBACK'],
+    ns: ['GATE', 'K9A1', 'REDBACK', 'KSLV'],
     defaultNs: 'GATE',
     resources: {
       ko: {
@@ -34,6 +34,13 @@ import i18next from "i18next"
           "superiorProtection": "STANAG LEVEL 6 의 방탄능력, STANAG LEVEL 4의 대전차 지뢰 방호력을 갖추고 있습니다. 또한 능동방어 시스템, RPG 방어시스템, BOMBLET 방어 능력을 갖추고 있습니다.",
           "isuRubberTrack": "ISU와 고무궤도를 장착하여 뛰어난 승차감과 안정된 기동성능을 확보하였습니다.",
         },
+        "KSLV": {
+          "ton75classEngine": "국문 75 ton",
+          "engineClustering": "국문 engine",
+          "liquidEngineFuelSystem": "국문 fuel system",
+          "ton7classEngine": "국문 7 ton",
+          "collisionPreventionSystem": "국문 collision",
+        },
       },
       en: {
         "GATE": {
@@ -58,6 +65,13 @@ import i18next from "i18next"
           "bestMobility": "It has a maximum speed of 65 km/h, the maneuverability of more than 600 km of range, and the ability to run on a slope of 60% longitudinally and 30% lateral.",
           "superiorProtection": "It has the bulletproof ability of STANAG LEVEL 6 and anti-tank mine protection of STANAG LEVEL 4. In addition, it is equipped with an active defense system, RPG defense system, and BOMBLET defense ability.",
           "isuRubberTrack": "ISU and rubber tracks are installed to ensure excellent ride quality and stable maneuverability.",
+        },
+        "KSLV": {
+          "ton75classEngine": "ENG 75 ton",
+          "engineClustering": "ENG engine",
+          "liquidEngineFuelSystem": "ENG fuel system",
+          "ton7classEngine": "ENG 7 ton",
+          "collisionPreventionSystem": "ENG collision",
         },
       },
     }

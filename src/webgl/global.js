@@ -169,16 +169,29 @@ export const STATE = {
       target: new THREE.Vector3(0,0,0),
       sobelObj: new THREE.Mesh(),
     },
+
     k9a1Origin: {
       position: new THREE.Vector3(3.99, 0.095, -2.94),
       positionM: new THREE.Vector3(8.59, 0.22, -6.35),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
     redbackOrigin: {
       position: new THREE.Vector3(2.87, -0.02, -2.37),
       positionM: new THREE.Vector3(6.74, -0.04, -5.56),
       target: new THREE.Vector3(0,0,0),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
+    kslvOrigin: {
+      position: new THREE.Vector3(0, 0, -80),
+      positionM: new THREE.Vector3(0, 0, -80),
+      target: new THREE.Vector3(0,0,0),
+      minAzimuth: 3.0,
+      maxAzimuth: 3.4,
+    },
+
     longerFiringRange: {
       position: new THREE.Vector3(3.8,-0.36,-1.47),
       target: new THREE.Vector3(0,0,0),
@@ -250,24 +263,35 @@ export const STATE = {
       position: new THREE.Vector3(0.28,-0.59,-2.08),
       target: new THREE.Vector3(0,0,0),
       targetOffset: new THREE.Vector3(0,0.4,0),
-      minAzimuth: THREE.MathUtils.degToRad(160),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
       sobelObj: new THREE.Mesh(),
     },
 
-    kslvOrigin: {
-      position: new THREE.Vector3(-2.6569, 26.05, -80),
-      positionM: new THREE.Vector3(-2.6569, 26.05, -80),
-      target: new THREE.Vector3(0,20,0),
-    },
-    focuseOne: {
-      position: new THREE.Vector3(-2.6569, 36.05, -30),
+    ton75classEngine: {
+      position: new THREE.Vector3(0, 6, -30),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
-    focuseTwo: {
-      position: new THREE.Vector3(-2.6569, 46.05, -30),
+    engineClustering: {
+      position: new THREE.Vector3(0, 25, -30),
+      target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(160),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
+    },
+    liquidEngineFuelSystem: {
+      position: new THREE.Vector3(0, 25, -30),
+      target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(160),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
+    },
+    ton7classEngine: {
+      position: new THREE.Vector3(0, 25, -30),
+      target: new THREE.Vector3(0,0,0),
+      minAzimuth: THREE.MathUtils.degToRad(160),
+      maxAzimuth: THREE.MathUtils.degToRad(210),
+    },
+    collisionPreventionSystem: {
+      position: new THREE.Vector3(0, 25, -30),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),

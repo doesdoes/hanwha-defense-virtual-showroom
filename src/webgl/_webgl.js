@@ -45,7 +45,7 @@ window._WEBGL = (function() {
         STATE.ASSET_DOMAIN_PATH = `/assets/webgl`
         break
       default:
-        STATE.ASSET_DOMAIN_PATH = `https://${host}/assets/webgl`
+        STATE.ASSET_DOMAIN_PATH = `http://${host}/assets/webgl`
         break
     }
    
@@ -86,9 +86,7 @@ window._WEBGL = (function() {
 
         if ( event.key == 'c' ) {
           console.log(STATE.WEBGL.camera.position, STATE.WEBGL.camera)
-          console.log(STATE.WEBGL.camera.rotation.y)
-          const deg = THREE.MathUtils.radToDeg(STATE.WEBGL.camera.rotation.y)
-          console.log(deg)
+          console.log(`azimuth angle: ${STATE.WEBGL.cameraControls.azimuthAngle}, polar angle: ${STATE.WEBGL.cameraControls.polarAngle}`)
         }
 
         if ( event.key == 'q' ) {
@@ -244,6 +242,8 @@ window._WEBGL = (function() {
 
       if(_toggle) {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.k9a1Origin.positionM : STATE.ZONE_FOCUS.k9a1Origin.position
+        STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.k9a1Origin.minAzimuth
+        STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.k9a1Origin.maxAzimuth
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false
@@ -267,6 +267,8 @@ window._WEBGL = (function() {
       })
       if(_toggle) {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.redbackOrigin.positionM : STATE.ZONE_FOCUS.redbackOrigin.position
+        STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.redbackOrigin.minAzimuth
+        STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.redbackOrigin.maxAzimuth
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false
@@ -279,7 +281,7 @@ window._WEBGL = (function() {
     } else if(_sceneName === "KSLV") {
       SCENE.toggleStages(_toggle, 'kslv')
 
-      $condition.setAttribute('data-item', 'kslv')
+      //$condition.style.display = 'none'
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
         const partData = data['kslv-indicators'][idx]
@@ -289,6 +291,9 @@ window._WEBGL = (function() {
 
       if(_toggle) {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+        STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
+        STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
+        
         SCENE.focusOnRegion('reset')
 
         window.isAnim = false
