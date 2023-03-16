@@ -343,10 +343,14 @@ export function loadStage( sceneName, callback ) {
 
       const KSLV_DOME_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvDome" } )
       KSLV_DOME_MESH.asset.scene.traverse((child) => {
-        if(child.name === 'atmosphere') {
-          child.material.alphaMap = child.material.map
-          child.material.transparent = true
-          child.material.blending = 2
+        // if(child.name === 'atmosphere') {
+        //   child.material.alphaMap = child.material.map
+        //   child.material.transparent = true
+        //   child.material.blending = 2
+        // }
+
+        if(child.name === 'Earth_MOD') {
+          STATE.ANIMATED_OBJECTS.earth.mesh = child  
         }
       })
       
@@ -439,7 +443,7 @@ function updatePointVisible(points) {
       }
     } else {
 
-      let offset
+      let offset // distance treshold to enable POI visibility
       if(state === 'K9A1')
         offset = isMobile ? 10.7 : 4.9
       else if(state === 'REDBACK')

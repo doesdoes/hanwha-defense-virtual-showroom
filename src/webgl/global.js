@@ -144,6 +144,13 @@ export const STATE = {
       }
     },
 
+    earth: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh) this.mesh.rotation.z += 0.0001 
+      }
+    },
+
   },
   ANIMATIONS: {
     _k9Tank: {

@@ -296,7 +296,7 @@ window._WEBGL = (function() {
         
         SCENE.focusOnRegion('reset')
 
-        window.isAnim = false
+        window.isAnim = true
       }
     }
   }
