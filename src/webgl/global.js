@@ -91,6 +91,28 @@ export const STATE = {
         }
       }
     },
+
+    clouds: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh && this.mesh.material.map != undefined) 
+          this.mesh.material.map.offset.x += 0.00006
+      }
+    },
+    earthDay: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh && this.mesh.material.map != undefined) 
+          this.mesh.material.map.offset.x += 0.00005
+      }
+    },
+    earthNight: {
+      mesh: null,
+      animate: function() {
+        if(this.mesh && this.mesh.material.lightMap != undefined)
+          this.mesh.material.lightMap.offset.x += 0.00005
+      }
+    },
   },
   ANIMATED_OBJECTS: {
     desertMountain: {
@@ -143,14 +165,6 @@ export const STATE = {
         }
       }
     },
-
-    earth: {
-      mesh: null,
-      animate: function() { 
-        if(this.mesh) this.mesh.rotation.z += 0.0001 
-      }
-    },
-
   },
   ANIMATIONS: {
     _k9Tank: {
@@ -274,31 +288,31 @@ export const STATE = {
     },
 
     ton75classEngine: {
-      position: new THREE.Vector3(0, 6, -30),
+      position: new THREE.Vector3(-7.47, -8.25, -26.33),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     engineClustering: {
-      position: new THREE.Vector3(0, 25, -30),
+      position: new THREE.Vector3(-5.86, -8.24, -27.35),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     liquidEngineFuelSystem: {
-      position: new THREE.Vector3(0, 25, -30),
+      position: new THREE.Vector3(4, -1.44, -25.24),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     ton7classEngine: {
-      position: new THREE.Vector3(0, 25, -30),
+      position: new THREE.Vector3(11.89, 9.11, -4.11),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     collisionPreventionSystem: {
-      position: new THREE.Vector3(0, 25, -30),
+      position: new THREE.Vector3(12.65, 9.44, 6.34),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),

@@ -58,7 +58,7 @@ window._WEBGL = (function() {
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
       // k9a1 기준
-      cameraOptions: { fov: 45, near: 0.1, far: 200000, x: 4.15, y: -0.01, z: -2.0 },
+      cameraOptions: { fov: 45, near: 1, far: 200000, x: 4.15, y: -0.01, z: -2.0 },
       isDebug: _debug
     })
 

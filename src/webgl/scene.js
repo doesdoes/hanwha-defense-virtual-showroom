@@ -14,6 +14,7 @@ import * as REDBACK_PROPERTIES from './stageObjects/redbackProperties.js'
 import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgProperties.js'
 
 import * as KSLV_PROPERTIES from './stageObjects/KSLVProperties.js'
+import * as KSLV_BG_PROPERTIES from './stageObjects/KSLVbgProperties.js'
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
@@ -308,7 +309,7 @@ export function loadStage( sceneName, callback ) {
       STATE.WEBGL.scene.environment = HDR_TEST.texture
       STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
       STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
-      STATE.WEBGL.renderer.toneMappingExposure = 1.0
+      STATE.WEBGL.renderer.toneMappingExposure = 2.0
 
       const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
       const KSLV_OBJECT = new StageObject({
@@ -342,19 +343,28 @@ export function loadStage( sceneName, callback ) {
       STATE.WEBGL.scene.add(KSLV_OBJECT.clone)
 
       const KSLV_DOME_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvDome" } )
-      KSLV_DOME_MESH.asset.scene.traverse((child) => {
-        // if(child.name === 'atmosphere') {
-        //   child.material.alphaMap = child.material.map
-        //   child.material.transparent = true
-        //   child.material.blending = 2
-        // }
 
-        if(child.name === 'Earth_MOD') {
-          STATE.ANIMATED_OBJECTS.earth.mesh = child  
+      const KSLV_DOME_OBJECT = new StageObject({
+        originalObject: KSLV_DOME_MESH.asset.scene,
+        clonedObject: KSLV_DOME_MESH.asset.scene.clone(),
+        objectName: 'kslv',
+        definition: KSLV_BG_PROPERTIES,
+      })
+      
+      KSLV_DOME_OBJECT.clone.traverse((child) => {
+        if(child.name === 'Earth_Day') {
+          STATE.UV_ANIMATED_OBJECTS.earthDay.mesh = child
+        }
+        if(child.name === 'Earth_Night') {
+          STATE.UV_ANIMATED_OBJECTS.earthNight.mesh = child
+          console.log(child)
+        }
+        if(child.name === 'Earth_Cloud') {
+          STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
         }
       })
       
-      STATE.WEBGL.scene.add(KSLV_DOME_MESH.asset.scene)
+      STATE.WEBGL.scene.add(KSLV_DOME_OBJECT.clone)
 
       const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
 

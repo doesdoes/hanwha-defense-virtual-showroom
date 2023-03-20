@@ -91,14 +91,18 @@ export class StageObject{
               }else{
                 this.loadingManagerLoaded = false
                 let mapText = this.textureLoader.load( this.texturesPath + file )
-                mapText.encoding = THREE.LinearEncoding
+                if(this.definition.MATERIALS[child.material.name].sRGBmode) {
+                  mapText.encoding = (mapKey == 'map' || mapKey == 'emissiveMap' || mapKey == 'envMap') ? THREE.sRGBEncoding : THREE.LinearEncoding
+                }else {
+                  mapText.encoding = THREE.LinearEncoding
+                }
                 mapText.mapping = THREE.EquirectangularReflectionMapping
                 cloneMat[mapKey] = mapText
 
                 if(this.definition.MATERIALS[child.material.name].flipY  != undefined) mapText.flipY = this.definition.MATERIALS[child.material.name].flipY
 
                 // tiling
-                if(mapKey == "map" || mapKey == "alphaMap" || mapKey == "emissiveMap" || mapKey == "normalMap" || mapKey == "specularMap") {                  
+                if(mapKey == "map" || mapKey == "alphaMap" || mapKey == "emissiveMap" || mapKey == "normalMap" || mapKey == "specularMap" || mapKey == "lightMap") {                  
                   let tiling
                   switch (mapKey) {
                     case 'map':
@@ -115,6 +119,9 @@ export class StageObject{
                       break;
                     case 'specularMap':
                       tiling = this.definition.MATERIALS[child.material.name].specularMapTiling
+                      break;
+                    case 'lightMap':
+                      tiling = this.definition.MATERIALS[child.material.name].lightMapTiling
                       break;
                   }
 
@@ -137,7 +144,7 @@ export class StageObject{
         
         this.needToBeUpdated.push( {mesh: child, clonedMaterial: cloneMat} )
 
-        if(STATE.WEBGL.isDebug) if(cloneMat.name == "TANK_REDBACK_Body_s") console.log(cloneMat)
+        if(STATE.WEBGL.isDebug) if(cloneMat.name == "Earth_Day_s") console.log(cloneMat)
       }
     })
 
