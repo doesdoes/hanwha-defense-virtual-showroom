@@ -165,6 +165,13 @@ export const STATE = {
         }
       }
     },
+
+    rocket: {
+      mesh: null,
+      animate: function() { 
+        if(this.mesh) this.mesh.rotation.z += 0.001 
+      }
+    },
   },
   ANIMATIONS: {
     _k9Tank: {
@@ -206,8 +213,8 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     kslvOrigin: {
-      position: new THREE.Vector3(0, 0, -80),
-      positionM: new THREE.Vector3(0, 0, -80),
+      position: new THREE.Vector3(0, 0, -50),
+      positionM: new THREE.Vector3(0, 0, -50),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: 3.0,
       maxAzimuth: 3.4,
@@ -393,7 +400,7 @@ export const ASSETS = {
       {
         name: 'test',
         loaded: false,
-        path : 'hdr/test.hdr',
+        path : 'hdr/Galaxy_hdr.hdr',
         asset: null
       },
     ]
