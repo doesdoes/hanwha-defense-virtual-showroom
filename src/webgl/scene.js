@@ -309,7 +309,7 @@ export function loadStage( sceneName, callback ) {
       STATE.WEBGL.scene.environment = HDR_TEST.texture
       STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
       STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
-      STATE.WEBGL.renderer.toneMappingExposure = 5.0
+      STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
       const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
       const KSLV_OBJECT = new StageObject({
@@ -355,8 +355,14 @@ export function loadStage( sceneName, callback ) {
       
       KSLV_DOME_OBJECT.clone.traverse((child) => {
         if(child.name === 'Earth_Day') STATE.UV_ANIMATED_OBJECTS.earthDay.mesh = child
-        if(child.name === 'Earth_Night') STATE.UV_ANIMATED_OBJECTS.earthNight.mesh = child
-        if(child.name === 'Earth_Cloud') STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
+        if(child.name === 'Earth_Night') {
+          // child.scale.set(139000,139000,139000)
+          STATE.UV_ANIMATED_OBJECTS.earthNight.mesh = child
+        }
+        if(child.name === 'Earth_Cloud') {
+          // child.scale.set(150000,150000,150000)
+          STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
+        }
       })
       
       STATE.WEBGL.scene.add(KSLV_DOME_OBJECT.clone)

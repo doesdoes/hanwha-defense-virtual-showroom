@@ -103,14 +103,14 @@ export const STATE = {
       mesh: null,
       animate: function() {
         if(this.mesh && this.mesh.material.map != undefined) 
-          this.mesh.material.map.offset.x += 0.00005
+          this.mesh.material.map.offset.x -= 0.00005
       }
     },
     earthNight: {
       mesh: null,
       animate: function() {
         if(this.mesh && this.mesh.material.lightMap != undefined)
-          this.mesh.material.lightMap.offset.x += 0.00005
+          this.mesh.material.lightMap.offset.x -= 0.00005
       }
     },
   },
@@ -213,7 +213,7 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     kslvOrigin: {
-      position: new THREE.Vector3(0, 0, -50),
+      position: new THREE.Vector3(5.52, -8.62, -48),
       positionM: new THREE.Vector3(0, 0, -50),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: 3.0,

@@ -8,8 +8,16 @@ export const PROPERTIES = {
 }
 
 export const MATERIALS = {
-  // "KSLV_II_s": {
-  //   "type": new THREE.MeshPhysicalMaterial(),
-  //   "color": new THREE.Color("rgb(0,0,0)"),
-  // }
+  "KSLV_II_s": {
+    "sRGBmode": true,
+    "type": new THREE.MeshPhysicalMaterial(),
+    "map": "KSLV_D.jpg",
+    "roughnessMap": "KSLV_R.jpg",
+    "roughness": 0.3,
+    "metalnessMap": "KSLV_M.jpg",
+    "metalness": 1,
+    "normalMap": "KSLV_N.jpg",
+    "envMapIntensity": 8,
+    "flipY": false,
+  }
 } 

@@ -11,27 +11,32 @@ export const PROPERTIES = {
 export const MATERIALS = {
   "Galaxy_s": {
     "sRGBmode": true,
-    "type": new THREE.MeshPhysicalMaterial(),
-    "map": "Milkyway_BG.jpg",
+    "type": new THREE.MeshBasicMaterial(),
+    "map": "Space_Stars_BG.png",
+    // "envMapIntensity": 10,
     "flipY": false,
   },
   "Earth_KarmanLine_s": {
     "sRGBmode": true,
-    "type": new THREE.MeshPhysicalMaterial(),
+    "type": new THREE.MeshBasicMaterial(),
     "map": "Earth_KarmanLine_D.png",
     "alphaMap": "Earth_KarmanLine_A.png",
     // "transparent": true,
     "blending": 2,
     "flipY": false,
+    "side": THREE.DoubleSide
   },
   "Earth_Night_s": {
     "sRGBmode": true,
-    "type": new THREE.MeshBasicMaterial(),
+    "type": new THREE.MeshPhysicalMaterial(),
     "lightMap": "Earth_Night_D.jpg",
     "alphaMap": "Earth_Night_A.png",
     "transparent": true,
+    "opacity": 0.95,
     "flipY": false,
-    "lightMapIntensity": 0.2,
+    "envMapIntensity": 0.4,
+    // "blending": 4,
+    "lightMapIntensity": 0.8,
     "lightMapTiling":{ repeatX: 1, repeatY: 1, },
     "alphaMapTiling":{ repeatX: 1, repeatY: 1, },
   },
@@ -39,6 +44,7 @@ export const MATERIALS = {
     "sRGBmode": true,
     "type": new THREE.MeshBasicMaterial(),
     "map": "Earth_D.jpg",
+    // "envMapIntensity": 15,
     "flipY": false,
     "mapTiling":{ repeatX: 1, repeatY: 1, },
   },
@@ -48,9 +54,10 @@ export const MATERIALS = {
     "map": "Earth_Cloud_D.jpg",
     "alphaMap": "Earth_Cloud_D.jpg",
     "transparent": true,
-    "opacity": 0.5,
+    "opacity": 0.7,
     "flipY": false,
     "mapTiling":{ repeatX: 1, repeatY: 1, },
     "alphaMapTiling":{ repeatX: 1, repeatY: 1, },
+    // "visible": false
   }
 } 
