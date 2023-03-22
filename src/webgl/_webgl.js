@@ -34,18 +34,15 @@ window._WEBGL = (function() {
 
     switch (host) {
       case 'dev.does.kr':
-        // STATE.ASSET_DOMAIN_PATH = `https://${host}/doeslab/technoring/assets`
         STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`
         break
-      case '192.168.0.3:1116':
-      case '192.168.3.150:1116':
+      case '121.162.20.78:1116':
       case 'localhost:1116':
       case '0.0.0.0:1116':
-      case '0.0.0.0:3000':
         STATE.ASSET_DOMAIN_PATH = `/assets/webgl`
         break
       default:
-        STATE.ASSET_DOMAIN_PATH = `http://${host}/assets/webgl`
+        STATE.ASSET_DOMAIN_PATH = `https://${host}/assets/webgl`
         break
     }
    
