@@ -169,7 +169,7 @@ export const STATE = {
     rocket: {
       mesh: null,
       animate: function() { 
-        if(this.mesh) this.mesh.rotation.z += 0.001 
+        if(this.mesh) this.mesh.rotation.z -= 0.001 
       }
     },
   },
@@ -213,11 +213,11 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     kslvOrigin: {
-      position: new THREE.Vector3(5.52, -8.62, -48),
+      position: new THREE.Vector3(10, -4.5, -23),
       positionM: new THREE.Vector3(0, 0, -50),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: 3.0,
-      maxAzimuth: 3.4,
+      minAzimuth: 2.5,
+      maxAzimuth: 3.2,
     },
 
     longerFiringRange: {
@@ -295,31 +295,32 @@ export const STATE = {
     },
 
     ton75classEngine: {
-      position: new THREE.Vector3(-7.47, -8.25, -26.33),
+      position: new THREE.Vector3(0.23, -4.69, -15),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     engineClustering: {
-      position: new THREE.Vector3(-5.86, -8.24, -27.35),
+      position: new THREE.Vector3(-2.94, -4.93, -16),
       target: new THREE.Vector3(0,0,0),
+      targetOffset: new THREE.Vector3(1,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     liquidEngineFuelSystem: {
-      position: new THREE.Vector3(4, -1.44, -25.24),
+      position: new THREE.Vector3(5.74, 4.28, -9.74),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     ton7classEngine: {
-      position: new THREE.Vector3(11.89, 9.11, -4.11),
+      position: new THREE.Vector3(9, 10.97, 12.04),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
     },
     collisionPreventionSystem: {
-      position: new THREE.Vector3(12.65, 9.44, 6.34),
+      position: new THREE.Vector3(11.68, 16.08, 19.83),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: THREE.MathUtils.degToRad(160),
       maxAzimuth: THREE.MathUtils.degToRad(210),
