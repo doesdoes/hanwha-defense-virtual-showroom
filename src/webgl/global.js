@@ -213,11 +213,20 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     kslvOrigin: {
-      position: new THREE.Vector3(10, -4.5, -23),
+      position: new THREE.Vector3(0, 0, 80),
       positionM: new THREE.Vector3(0, 0, -50),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: 2.5,
-      maxAzimuth: 3.2,
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
+    },
+    kslvGalaxyOrigin: {
+      position: new THREE.Vector3(21.73, -14.64, -80),
+      positionM: new THREE.Vector3(0, 0, -50),
+      target: new THREE.Vector3(0,0,0),
+      // minAzimuth: 2.5,
+      // maxAzimuth: 3.2,
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
 
     longerFiringRange: {
@@ -295,35 +304,35 @@ export const STATE = {
     },
 
     ton75classEngine: {
-      position: new THREE.Vector3(0.23, -4.69, -15),
+      position: new THREE.Vector3(1.04, -22.38, 2.89),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(160),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
     engineClustering: {
-      position: new THREE.Vector3(-2.94, -4.93, -16),
+      position: new THREE.Vector3(-1.64, -21.36, 7),
       target: new THREE.Vector3(0,0,0),
       targetOffset: new THREE.Vector3(1,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(160),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
     liquidEngineFuelSystem: {
-      position: new THREE.Vector3(5.74, 4.28, -9.74),
+      position: new THREE.Vector3(10.52, 0.32, 10.63),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(160),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
     ton7classEngine: {
-      position: new THREE.Vector3(9, 10.97, 12.04),
+      position: new THREE.Vector3(8.13, 7.5, -24.04),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(160),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
     collisionPreventionSystem: {
-      position: new THREE.Vector3(11.68, 16.08, 19.83),
+      position: new THREE.Vector3(6.24, 16.39, -19.31),
       target: new THREE.Vector3(0,0,0),
-      minAzimuth: THREE.MathUtils.degToRad(160),
-      maxAzimuth: THREE.MathUtils.degToRad(210),
+      minAzimuth: -Infinity,
+      maxAzimuth: Infinity,
     },
   }
 }
@@ -393,6 +402,12 @@ export const ASSETS = {
         name: 'camera',
         loaded: false,
         path : 'glb/camera.glb',
+        asset: null
+      },
+      {
+        name: 'kslvLauncher',
+        loaded: false,
+        path : 'glb/KSLV-launcher.glb',
         asset: null
       },
     ],

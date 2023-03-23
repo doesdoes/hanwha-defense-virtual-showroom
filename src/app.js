@@ -90,7 +90,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     const isShowroom = document.querySelector('.header').getAttribute('data-state') === 'showroom'
     const $popup = document.querySelector(`[data-popup=${e.detail.msg}]`)
     if(isShowroom && $popup) {
-      console.log(e.detail.msg, $popup)
       gsap.set($popup, { scale: 0.5 })
       gsap.to($popup, { autoAlpha: 1, scale: 1, duration: 0.7, ease: Quint.easeInOut })
       window.UI.$currentPopup = $popup

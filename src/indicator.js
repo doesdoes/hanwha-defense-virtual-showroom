@@ -89,6 +89,26 @@ export function setCondition() {
         STATE.ANIMATIONS._REDBACK.mixer.stopAllAction()
         // STATE.ANIMATIONS._DESERT.mixer.stopAllAction()
       break;
+
+      case 'KSLV':
+        console.log(`change condition to galaxy`)
+        
+        document.body.setAttribute('data-state', 'KSLV-GALAXY')
+
+        // SCENE.toggleStages(false, 'desertBg')
+        // SCENE.toggleStages(true, 'redbackIndoorBg')
+        //window.isAnim = false
+      break;
+
+      case 'KSLV-GALAXY':
+        console.log(`change condition to launch base`)
+        
+        document.body.setAttribute('data-state', 'KSLV')
+
+        // SCENE.toggleStages(false, 'desertBg')
+        // SCENE.toggleStages(true, 'redbackIndoorBg')
+        //window.isAnim = false
+      break;
     
       default:
         break;

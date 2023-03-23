@@ -15,6 +15,7 @@ import * as REDBACK_INDOOR_BG_PROPERTIES from './stageObjects/redbackIndoorBgPro
 
 import * as KSLV_PROPERTIES from './stageObjects/KSLVProperties.js'
 import * as KSLV_BG_PROPERTIES from './stageObjects/KSLVbgProperties.js'
+import * as KSLV_LAUNCHER_PROPERTIES from './stageObjects/KSLVlauncherProperties.js'
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
@@ -30,6 +31,7 @@ export function loadStage( sceneName, callback ) {
 
   switch (sceneName) {
     case 'K9A1':
+      updateSceneSettings('K9A1')
       setLight(STATE)
       setHemisphereLightSnowDefault(STATE)
       const k9Points = [];
@@ -157,6 +159,7 @@ export function loadStage( sceneName, callback ) {
       break
 
     case 'REDBACK':
+      updateSceneSettings('REDBACK')
       setLight(STATE)
       setHemisphereLightDesertDefault(STATE)
       const redbackPoints = []
@@ -292,25 +295,31 @@ export function loadStage( sceneName, callback ) {
       break
 
     case 'KSLV':
-      const kslvPoints = []
-
-      //setLight(STATE)
-
-      // const zeroGeometry = new THREE.BoxGeometry( 10, 10, 10 )
-      // const zeroMaterial = new THREE.MeshBasicMaterial( {color: 0xff0000} )
-      // const zeroMesh = new THREE.Mesh( zeroGeometry, zeroMaterial )
-      // STATE.WEBGL.scene.add( zeroMesh )
-
-      STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
-      STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
-      STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
-      
       const HDR_TEST = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ).asset)
-      STATE.WEBGL.scene.environment = HDR_TEST.texture
-      STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
-      STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
-      STATE.WEBGL.renderer.toneMappingExposure = 1.0
+      STATE.GALAXY_HDR = HDR_TEST.texture
 
+      updateSceneSettings('KSLV')
+
+      const kslvPoints = []
+      STATE.LAUNCHPAD_OBJECTS = []
+
+      const zeroGeometry = new THREE.BoxGeometry( 1, 1, 1 )
+      const zeroMaterial = new THREE.MeshBasicMaterial( {color: 0xff0000} )
+      const zeroMesh = new THREE.Mesh( zeroGeometry, zeroMaterial )
+      STATE.WEBGL.scene.add( zeroMesh )
+
+      STATE.LAUNCHPAD_OBJECTS.push(zeroMesh)
+
+      const KSLV_LAUNCHER_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvLauncher" } )
+      const KSLV_LAUNCHER_OBJECT = new StageObject({
+        originalObject: KSLV_LAUNCHER_MESH.asset.scene,
+        clonedObject: KSLV_LAUNCHER_MESH.asset.scene.clone(),
+        objectName: 'kslv',
+        definition: KSLV_LAUNCHER_PROPERTIES,
+      })
+      STATE.WEBGL.scene.add(KSLV_LAUNCHER_OBJECT.clone)
+      STATE.LAUNCHPAD_OBJECTS.push(KSLV_LAUNCHER_OBJECT.clone)
+      
       const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
       const KSLV_OBJECT = new StageObject({
         originalObject: KSLV_MESH.asset.scene,
@@ -339,7 +348,7 @@ export function loadStage( sceneName, callback ) {
           kslvPoints.push(child)
         }
 
-        if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
+        //if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
       })
 
       STATE.WEBGL.scene.add(KSLV_OBJECT.clone)
@@ -355,33 +364,27 @@ export function loadStage( sceneName, callback ) {
       
       KSLV_DOME_OBJECT.clone.traverse((child) => {
         if(child.name === 'Earth_Day') STATE.UV_ANIMATED_OBJECTS.earthDay.mesh = child
-        if(child.name === 'Earth_Night') {
-          // child.scale.set(139000,139000,139000)
-          STATE.UV_ANIMATED_OBJECTS.earthNight.mesh = child
-        }
-        if(child.name === 'Earth_Cloud') {
-          // child.scale.set(150000,150000,150000)
-          STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
-        }
+        if(child.name === 'Earth_Night') STATE.UV_ANIMATED_OBJECTS.earthNight.mesh = child
+        if(child.name === 'Earth_Cloud') STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
       })
       
       STATE.WEBGL.scene.add(KSLV_DOME_OBJECT.clone)
 
-      const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
+      // const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
 
-      if(CAMERA_ANIM.asset.animations.length > 0){
-        STATE.ANIMATIONS._KSLV_CAMERA.mixer = new THREE.AnimationMixer( STATE.WEBGL.camera )
-        CAMERA_ANIM.asset.animations.forEach(anim => {
-          STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( anim )
-        })
+      // if(CAMERA_ANIM.asset.animations.length > 0){
+      //   STATE.ANIMATIONS._KSLV_CAMERA.mixer = new THREE.AnimationMixer( STATE.WEBGL.camera )
+      //   CAMERA_ANIM.asset.animations.forEach(anim => {
+      //     STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( anim )
+      //   })
 
-        //console.log(CAMERA_ANIM.asset.animations[0])
-        //STATE.WEBGL.cameraControls.enabled = false
+      //   //console.log(CAMERA_ANIM.asset.animations[0])
+      //   //STATE.WEBGL.cameraControls.enabled = false
 
-        setTimeout(() => {
-          //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
-        }, 5000)
-      }
+      //   setTimeout(() => {
+      //     //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
+      //   }, 5000)
+      // }
 
       setUI(sceneName, kslvPoints)
 
@@ -475,8 +478,55 @@ function updatePointVisible(points) {
   })
 }
 
+function updateSceneSettings(_scene) {
+  if(_scene == 'KSLV') {
+    STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
+    STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
+    STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
+    STATE.WEBGL.renderer.toneMappingExposure = 1.0
+
+    STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
+    STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
+    STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
+  }else {
+    STATE.WEBGL.scene.environment = null
+    STATE.WEBGL.renderer.outputEncoding = THREE.LinearEncoding
+    STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
+    STATE.WEBGL.renderer.toneMappingExposure = 1.0
+
+    STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
+    STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(60)
+    STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(95)
+  }
+}
+
+function updateKSLVenvironment(_region) {
+  if(_region == 'reset') return
+
+  let launchPadVisibility
+
+  if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
+    console.log(`switch env to galaxy`)
+
+    STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
+    launchPadVisibility = false
+  } else {
+    console.log(`switch env to launch pad`)
+
+    STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+    launchPadVisibility = true
+  }
+
+  for (let index = 0; index < STATE.LAUNCHPAD_OBJECTS.length; index++) {
+    const element = STATE.LAUNCHPAD_OBJECTS[index]
+    element.visible = launchPadVisibility
+  }
+}
+
 export function focusOnRegion( _region ) {  
   console.log(':: focusing on region ::', _region)
+
+  if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)
 
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)
