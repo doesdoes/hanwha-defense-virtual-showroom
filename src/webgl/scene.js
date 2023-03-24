@@ -19,7 +19,7 @@ import * as KSLV_LAUNCHER_PROPERTIES from './stageObjects/KSLVlauncherProperties
 
 import { sendGLCustomEvent } from './class/GLCustomEvent.js'
 
-import { setLight, setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
+import { initLights, updateLights, setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
 import { createSpriteTween } from './utils.js'
 import UILoadingManager from './class/UILoadingManager.js'
 
@@ -27,12 +27,15 @@ const md = new MobileDetect(window.navigator.userAgent)
 const isMobile = md.mobile()
 
 export function loadStage( sceneName, callback ) {
+  console.log(`:: LOADING STAGE ::`)
+  
   const uiLoadingManager = new UILoadingManager()
+
+  initLights()
 
   switch (sceneName) {
     case 'K9A1':
       updateSceneSettings('K9A1')
-      setLight(STATE)
       setHemisphereLightSnowDefault(STATE)
       const k9Points = [];
       let spriteObjectDust, spriteObjectWind, spriteObjectTrackSkid = null
@@ -53,7 +56,7 @@ export function loadStage( sceneName, callback ) {
         })
       }
 
-      // [NOTE] ㅁㅔ시 visible, opacity 조정 시 여기서 캐치
+      // [NOTE] 메시 visible, opacity 조정 시 여기서 캐치
       TANK_OBJECT.clone.traverse(child => {
         // console.log(child.name)
         setSobelFocus(child)
@@ -160,7 +163,6 @@ export function loadStage( sceneName, callback ) {
 
     case 'REDBACK':
       updateSceneSettings('REDBACK')
-      setLight(STATE)
       setHemisphereLightDesertDefault(STATE)
       const redbackPoints = []
       let spriteDesertDust, spriteDesertWind, spriteDesertTrackSkid = null
@@ -303,12 +305,12 @@ export function loadStage( sceneName, callback ) {
       const kslvPoints = []
       STATE.LAUNCHPAD_OBJECTS = []
 
-      const zeroGeometry = new THREE.BoxGeometry( 1, 1, 1 )
-      const zeroMaterial = new THREE.MeshBasicMaterial( {color: 0xff0000} )
-      const zeroMesh = new THREE.Mesh( zeroGeometry, zeroMaterial )
-      STATE.WEBGL.scene.add( zeroMesh )
+      // const zeroGeometry = new THREE.BoxGeometry( 1, 1, 1 )
+      // const zeroMaterial = new THREE.MeshBasicMaterial( {color: 0xff0000} )
+      // const zeroMesh = new THREE.Mesh( zeroGeometry, zeroMaterial )
+      // STATE.WEBGL.scene.add( zeroMesh )
 
-      STATE.LAUNCHPAD_OBJECTS.push(zeroMesh)
+      // STATE.LAUNCHPAD_OBJECTS.push(zeroMesh)
 
       const KSLV_LAUNCHER_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvLauncher" } )
       const KSLV_LAUNCHER_OBJECT = new StageObject({
@@ -479,7 +481,7 @@ function updatePointVisible(points) {
 }
 
 function updateSceneSettings(_scene) {
-  if(_scene == 'KSLV') {
+  if(_scene == 'kslv') {
     STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
     STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
     STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
@@ -564,6 +566,9 @@ export function focusOnRegion( _region ) {
 
 export function toggleStages( toggle, sceneName ) {
   console.log(`:: toggle stages ::`, toggle, sceneName)
+
+  updateSceneSettings(sceneName)
+  updateLights(sceneName)
   
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
 

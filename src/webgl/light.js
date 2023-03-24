@@ -1,121 +1,70 @@
 import * as THREE from 'three'
-import { GUI } from 'dat.gui'
+import { STATE, LIGHTS } from './global.js'
 
-let isLight = false;
+export function initLights() {
+  LIGHTS.TANK.drLightRight.position.set(-2.4, 4, -6.5)
+  LIGHTS.TANK.drLightRight.shadow.camera.left = - 10
+  LIGHTS.TANK.drLightRight.shadow.camera.right = 10
+  LIGHTS.TANK.drLightRight.shadow.camera.top = 10
+  LIGHTS.TANK.drLightRight.shadow.camera.bottom = - 10
+  LIGHTS.TANK.drLightRight.shadow.mapSize.width = 2048
+  LIGHTS.TANK.drLightRight.shadow.mapSize.height = 2048
+  LIGHTS.TANK.drLightRight.castShadow = true
+  LIGHTS.TANK.drLightRight.intensity = 0.4
 
-export function setLight(STATE) {
+  LIGHTS.TANK.drLightLeft.position.set(-2.6, 6, 6.5)
+  LIGHTS.TANK.drLightLeft.shadow.camera.left = - 10
+  LIGHTS.TANK.drLightLeft.shadow.camera.right = 10
+  LIGHTS.TANK.drLightLeft.shadow.camera.top = 10
+  LIGHTS.TANK.drLightLeft.shadow.camera.bottom = - 10
+  LIGHTS.TANK.drLightLeft.shadow.mapSize.width = 2048
+  LIGHTS.TANK.drLightLeft.shadow.mapSize.height = 2048
+  LIGHTS.TANK.drLightLeft.castShadow = true
+  LIGHTS.TANK.drLightLeft.intensity = 0.4
+  
+  const targetLeft = new THREE.Object3D()
+  targetLeft.position.set(0, 0, 0.5)
+  LIGHTS.TANK.drLightLeft.target = targetLeft
+  LIGHTS.TANK.drLightLeft.target.updateMatrixWorld()
 
-  // [TODO] change color by scene
-  if(isLight) return
-
-  isLight = true
-
-  const rightDirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
-  rightDirectionalLight.position.set(-2.4, 4, -6.5)
-  let targetRight = new THREE.Object3D()
-  targetRight.translateX(0)
-  targetRight.translateY(0)
-  targetRight.translateZ(-0.5)
-  rightDirectionalLight.target = targetRight
-  rightDirectionalLight.target.updateMatrixWorld()
-
-  const leftDirectionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 )
-  leftDirectionalLight.position.set(-2.6, 6, 6.5)
-  let targetLeft = new THREE.Object3D()
-  targetLeft.translateX(0)
-  targetLeft.translateY(0)
-  targetLeft.translateZ(0.5)
-  leftDirectionalLight.target = targetLeft
-  leftDirectionalLight.target.updateMatrixWorld()
-
-  let d = 10
-  rightDirectionalLight.shadow.camera.left = - d
-  rightDirectionalLight.shadow.camera.right = d
-  rightDirectionalLight.shadow.camera.top = d
-  rightDirectionalLight.shadow.camera.bottom = - d
-  rightDirectionalLight.shadow.mapSize.width = 2048
-  rightDirectionalLight.shadow.mapSize.height = 2048
-  rightDirectionalLight.castShadow = true
-  rightDirectionalLight.intensity = 0.4
-
-  let leftD = 10
-  leftDirectionalLight.shadow.camera.left = - leftD
-  leftDirectionalLight.shadow.camera.right = leftD
-  leftDirectionalLight.shadow.camera.top = leftD
-  leftDirectionalLight.shadow.camera.bottom = - leftD
-  leftDirectionalLight.shadow.mapSize.width = 2048
-  leftDirectionalLight.shadow.mapSize.height = 2048
-  leftDirectionalLight.castShadow = true
-  leftDirectionalLight.intensity = 0.4
-
-  STATE.hemisphereLight = new THREE.HemisphereLight( 0xFFFFFF, 0xFFFFFF, 1 )
-
-  STATE.WEBGL.scene.add( rightDirectionalLight )
-  STATE.WEBGL.scene.add( leftDirectionalLight )
-  STATE.WEBGL.scene.add( STATE.hemisphereLight )
-
-  // // [NOTE] HELPER
-  // const drHelper = new THREE.DirectionalLightHelper( rightDirectionalLight, 1, '#0324fc' )
-  // const leftDrHelper = new THREE.DirectionalLightHelper( leftDirectionalLight, 1, '#0324fc' )
-  // const hemiHelper = new THREE.HemisphereLightHelper( STATE.hemisphereLight, 0.5, '#0324fc' )
-
-  // STATE.WEBGL.scene.add( drHelper )
-  // STATE.WEBGL.scene.add( leftDrHelper )
-  // STATE.WEBGL.scene.add( hemiHelper )
-
-
-  // // [NOTE] gui
-  // document.querySelector('.header').style.zIndex = -1
-  // const gui = new GUI()
-
-  // const folderRight = gui.addFolder(`right light`)
-  // // folderRight.open()
-  // folderRight.add(rightDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
-  // folderRight.add(rightDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
-  // folderRight.add(rightDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
-  // folderRight.add(rightDirectionalLight, 'intensity', 0, 2)
-
-  // const folderLeft = gui.addFolder(`left light`)
-  // // folderLeft.open()
-  // folderLeft.add(leftDirectionalLight.position, 'x', -10, 10).onChange(updateLight)
-  // folderLeft.add(leftDirectionalLight.position, 'y', -10, 10).onChange(updateLight)
-  // folderLeft.add(leftDirectionalLight.position, 'z', -10, 10).onChange(updateLight)
-  // folderLeft.add(leftDirectionalLight, 'intensity', 0, 2)
-
-
-  // function updateLight() {
-  //   console.log(rightDirectionalLight)
-  //   console.log(leftDirectionalLight)
-
-  //   rightDirectionalLight.target.updateMatrixWorld()
-  // }
- 
+  const targetRight = new THREE.Object3D()
+  targetRight.position.set(0, 0, -0.5)
+  LIGHTS.TANK.drLightRight.target = targetRight
+  LIGHTS.TANK.drLightRight.target.updateMatrixWorld()
 }
 
-export function setHemisphereLightSnowDefault(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xf5f7fa)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0xa6abb3)
-  STATE.hemisphereLight.intensity = 1.0
-  // console.log('LightSnowDefault', STATE.hemisphereLight)
+export function updateLights(_scene) {
+  if(_scene == 'kslv') {
+    STATE.WEBGL.scene.remove( LIGHTS.TANK.drLightRight )
+    STATE.WEBGL.scene.remove( LIGHTS.TANK.drLightLeft )
+    STATE.WEBGL.scene.remove( LIGHTS.TANK.hemiLight )
+  } else {
+    STATE.WEBGL.scene.add( LIGHTS.TANK.drLightRight )
+    STATE.WEBGL.scene.add( LIGHTS.TANK.drLightLeft )
+    STATE.WEBGL.scene.add( LIGHTS.TANK.hemiLight )
+  }
 }
 
-export function setHemisphereLightDesertDefault(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xFFFFFF)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0x778DB1)
-  STATE.hemisphereLight.intensity = 0.5
-  // console.log('LightDesertDefault', STATE.hemisphereLight)
+export function setHemisphereLightSnowDefault() {
+  LIGHTS.TANK.hemiLight.color = new THREE.Color(0xf5f7fa)
+  LIGHTS.TANK.hemiLight.groundColor = new THREE.Color(0xa6abb3)
+  LIGHTS.TANK.hemiLight.intensity = 1.0
 }
 
-export function setHemisphereLightDesert(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xfff0d8)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0xFEF5EC)
-  STATE.hemisphereLight.intensity = 0.5
-  // console.log('LightDesert', STATE.hemisphereLight)
+export function setHemisphereLightDesertDefault() {
+  LIGHTS.TANK.hemiLight.color = new THREE.Color(0xFFFFFF)
+  LIGHTS.TANK.hemiLight.groundColor = new THREE.Color(0x778DB1)
+  LIGHTS.TANK.hemiLight.intensity = 0.5
 }
 
-export function setHemisphereLightSnow(STATE) {
-  STATE.hemisphereLight.color = new THREE.Color(0xedf4fc)
-  STATE.hemisphereLight.groundColor = new THREE.Color(0x8493ad)
-  STATE.hemisphereLight.intensity = 1.0
-  // console.log('LightSnow', STATE.hemisphereLight)
+export function setHemisphereLightDesert() {
+  LIGHTS.TANK.hemiLight.color = new THREE.Color(0xfff0d8)
+  LIGHTS.TANK.hemiLight.groundColor = new THREE.Color(0xFEF5EC)
+  LIGHTS.TANK.hemiLight.intensity = 0.5
+}
+
+export function setHemisphereLightSnow() {
+  LIGHTS.TANK.hemiLight.color = new THREE.Color(0xedf4fc)
+  LIGHTS.TANK.hemiLight.groundColor = new THREE.Color(0x8493ad)
+  LIGHTS.TANK.hemiLight.intensity = 1.0
 }

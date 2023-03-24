@@ -337,6 +337,14 @@ export const STATE = {
   }
 }
 
+export const LIGHTS = {
+  TANK: {
+    drLightRight: new THREE.DirectionalLight( 0xffffff, 1.0 ),
+    drLightLeft: new THREE.DirectionalLight( 0xffffff, 1.0 ),
+    hemiLight: new THREE.HemisphereLight( 0xFFFFFF, 0xFFFFFF, 1 )
+  }
+}
+
 export const ASSETS = {
   K9A1: {
     MODEL_FILES: [
