@@ -346,11 +346,10 @@ export function loadStage( sceneName, callback ) {
         if (child.userData.type == 'POI') {
           // POI buttons          
           const POI = new CSS2DObject( document.getElementById(child.name) )
-          POI.position.copy(child.position)
-          KSLV_OBJECT.clone.add( POI )
+          child.add( POI )
 
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
-          STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
+          // STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
           
           POI.element.addEventListener('click', function(e){
             STATE.IS_FOCUSED = true 
@@ -358,7 +357,7 @@ export function loadStage( sceneName, callback ) {
             e.preventDefault()
           })
 
-          kslvPoints.push(child)
+          //kslvPoints.push(child)
         }
 
         //if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
@@ -515,7 +514,7 @@ function updateKSLVenvironment(_region) {
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
     launchPadVisibility = true
 
-    STATE.playRocket(-1)
+    STATE.playRocket(-4)
   }
 
   for (let index = 0; index < STATE.LAUNCHPAD_OBJECTS.length; index++) {

@@ -19,5 +19,13 @@ export const MATERIALS = {
     "normalMap": "KSLV_N.jpg",
     "envMapIntensity": 8,
     "flipY": false,
+  },
+  "KSLV_II_Insaid_s": {
+    "sRGBmode": true,
+    "type": new THREE.MeshPhysicalMaterial(),
+    "roughness": 0.3,
+    "metalness": 1,
+    "envMapIntensity": 8,
+    "flipY": false,
   }
-} 
+}
