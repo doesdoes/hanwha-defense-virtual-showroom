@@ -9,10 +9,10 @@ export const PROPERTIES = {
 }
 
 export const MATERIALS = {
-  "Galaxy_s": {
+  "Galaxy_BG_s": {
     "sRGBmode": true,
     "type": new THREE.MeshBasicMaterial(),
-    "map": "Space_Stars_BG.png",
+    "map": "BG_Earth_Galaxy.png",
     // "envMapIntensity": 10,
     "flipY": false,
   },

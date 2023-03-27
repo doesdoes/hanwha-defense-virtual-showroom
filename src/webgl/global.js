@@ -186,6 +186,9 @@ export const STATE = {
     _DESERT: {
       mixer: null,
     },
+    _KSLV: {
+      mixer: null,
+    },
     _KSLV_CAMERA: {
       mixer: null,
     },

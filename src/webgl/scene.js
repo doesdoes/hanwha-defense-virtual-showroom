@@ -305,13 +305,6 @@ export function loadStage( sceneName, callback ) {
       const kslvPoints = []
       STATE.LAUNCHPAD_OBJECTS = []
 
-      // const zeroGeometry = new THREE.BoxGeometry( 1, 1, 1 )
-      // const zeroMaterial = new THREE.MeshBasicMaterial( {color: 0xff0000} )
-      // const zeroMesh = new THREE.Mesh( zeroGeometry, zeroMaterial )
-      // STATE.WEBGL.scene.add( zeroMesh )
-
-      // STATE.LAUNCHPAD_OBJECTS.push(zeroMesh)
-
       const KSLV_LAUNCHER_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvLauncher" } )
       const KSLV_LAUNCHER_OBJECT = new StageObject({
         originalObject: KSLV_LAUNCHER_MESH.asset.scene,
@@ -329,9 +322,27 @@ export function loadStage( sceneName, callback ) {
         objectName: 'kslv',
         definition: KSLV_PROPERTIES,
       })
-      KSLV_OBJECT.clone.traverse(child => {
-        setSobelFocus(child)
 
+      if(KSLV_MESH.asset.animations.length > 0) {
+        STATE.ANIMATIONS._KSLV.mixer = new THREE.AnimationMixer( KSLV_OBJECT.clone )
+        KSLV_MESH.asset.animations.forEach(anim => {
+          STATE.ANIMATIONS._KSLV.mixer.clipAction( anim )
+        })
+        for (const action of STATE.ANIMATIONS._KSLV.mixer._actions) {
+          action.setLoop(THREE.LoopOnce)
+          action.clampWhenFinished = true    
+        }
+      }
+
+      STATE.playRocket = (_timeScale) => {
+        for (const anim of KSLV_MESH.asset.animations) {
+          STATE.ANIMATIONS._KSLV.mixer.clipAction( anim ).timeScale = _timeScale
+          STATE.ANIMATIONS._KSLV.mixer.clipAction( anim ).paused = false
+          STATE.ANIMATIONS._KSLV.mixer.clipAction( anim ).play()
+        }
+      }
+
+      KSLV_OBJECT.clone.traverse(child => {
         if (child.userData.type == 'POI') {
           // POI buttons          
           const POI = new CSS2DObject( document.getElementById(child.name) )
@@ -371,22 +382,6 @@ export function loadStage( sceneName, callback ) {
       })
       
       STATE.WEBGL.scene.add(KSLV_DOME_OBJECT.clone)
-
-      // const CAMERA_ANIM = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "camera" } )
-
-      // if(CAMERA_ANIM.asset.animations.length > 0){
-      //   STATE.ANIMATIONS._KSLV_CAMERA.mixer = new THREE.AnimationMixer( STATE.WEBGL.camera )
-      //   CAMERA_ANIM.asset.animations.forEach(anim => {
-      //     STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( anim )
-      //   })
-
-      //   //console.log(CAMERA_ANIM.asset.animations[0])
-      //   //STATE.WEBGL.cameraControls.enabled = false
-
-      //   setTimeout(() => {
-      //     //STATE.ANIMATIONS._KSLV_CAMERA.mixer.clipAction( CAMERA_ANIM.asset.animations[0] ).play()
-      //   }, 5000)
-      // }
 
       setUI(sceneName, kslvPoints)
 
@@ -512,11 +507,15 @@ function updateKSLVenvironment(_region) {
 
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
     launchPadVisibility = false
+
+    STATE.playRocket(1)
   } else {
     console.log(`switch env to launch pad`)
 
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
     launchPadVisibility = true
+
+    STATE.playRocket(-1)
   }
 
   for (let index = 0; index < STATE.LAUNCHPAD_OBJECTS.length; index++) {
