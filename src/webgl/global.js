@@ -168,8 +168,15 @@ export const STATE = {
 
     rocket: {
       mesh: null,
-      animate: function() { 
-        if(this.mesh) this.mesh.rotation.z -= 0.001 
+      reset: true,
+      animate: function() {
+        if(this.mesh) {
+          if(this.reset) {
+            this.mesh.rotation.z = 0
+          } else{
+            this.mesh.rotation.z -= 0.001
+          }
+        }
       }
     },
   },

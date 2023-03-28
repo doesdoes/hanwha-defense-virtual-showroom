@@ -360,7 +360,7 @@ export function loadStage( sceneName, callback ) {
           kslvPoints.push(child)
         }
 
-        //if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
+        if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
       })
 
       STATE.WEBGL.scene.add(KSLV_OBJECT.clone)
@@ -481,7 +481,8 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
     STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
-    STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
+    // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
+    STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
     STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
   }else {
@@ -509,6 +510,7 @@ function updateKSLVenvironment(_region) {
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.maxAzimuth
     launchPadVisibility = false
 
+    STATE.ANIMATED_OBJECTS.rocket.reset = false
     STATE.playRocket(1)
   } else {
     console.log(`switch env to launch pad`)
@@ -518,7 +520,8 @@ function updateKSLVenvironment(_region) {
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
     launchPadVisibility = true
 
-    STATE.playRocket(-2)
+    STATE.ANIMATED_OBJECTS.rocket.reset = true
+    STATE.playRocket(-20)
   }
 
   for (let index = 0; index < STATE.LAUNCHPAD_OBJECTS.length; index++) {

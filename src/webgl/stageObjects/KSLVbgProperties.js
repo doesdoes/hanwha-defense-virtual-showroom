@@ -48,7 +48,7 @@ export const MATERIALS = {
     "type": new THREE.MeshStandardMaterial(),
     // "color": new THREE.Color("rgb(255,255,255)"),
     "map": "Earth_Blue_D.jpg",
-    "normalMap": "Earth_N.jpg",
+    // "normalMap": "Earth_N.jpg",
     "envMapIntensity": 25,
     "roughness": 0.5,
     "flipY": false,
