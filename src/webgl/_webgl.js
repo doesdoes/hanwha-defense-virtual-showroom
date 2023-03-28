@@ -57,7 +57,7 @@ window._WEBGL = (function() {
       container: document.getElementById(_containerId),
       sceneOptions: { backgroundColor: 0xd1e4f0 },
       // k9a1 기준
-      cameraOptions: { fov: 45, near: 1, far: 1000000, x: 4.15, y: -0.01, z: -2.0 },
+      cameraOptions: { fov: 45, near: 1, far: 1000000, x: 4.15, y: -0.01, z: 2.0 },
       isDebug: _debug
     })
 
@@ -315,7 +315,7 @@ window._WEBGL = (function() {
     requestAnimationFrame( render )
 
     if( !STATE.ENABLE_RENDERING ) return
-    STATE.WEBGL.cameraControls.normalizeRotations()
+    // STATE.WEBGL.cameraControls.normalizeRotations()
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
 
     // update animation mixer

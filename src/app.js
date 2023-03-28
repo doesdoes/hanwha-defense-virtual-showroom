@@ -271,12 +271,12 @@ window.addEventListener('DOMContentLoaded', async (event) => {
               _WEBGL.toggleRendering(true)
 
               loadingSpinner.hide()
-            }, 50)
+            }, 1000)
           })
         })
       }
       
-    } else if(item === 'REDBACK'){
+    } else if(item === 'REDBACK'){      
       if(IS_INIT_REDBACK) {
         _WEBGL.toggleScene('K9A1', false)
         _WEBGL.toggleScene('KSLV', false)
@@ -300,7 +300,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
               _WEBGL.toggleRendering(true)
 
               loadingSpinner.hide()
-            }, 50)
+            }, 1000)
           })
         })
       }
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
               _WEBGL.toggleRendering(true)
 
               loadingSpinner.hide()
-            }, 50)
+            }, 1000)
           })
         })
       }

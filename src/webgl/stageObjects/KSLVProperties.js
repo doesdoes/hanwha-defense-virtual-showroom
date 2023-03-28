@@ -23,7 +23,7 @@ export const MATERIALS = {
   "KSLV_II_Insaid_s": {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
-    "roughness": 0.3,
+    "roughness": 0.1,
     "metalness": 1,
     "envMapIntensity": 8,
     "flipY": false,

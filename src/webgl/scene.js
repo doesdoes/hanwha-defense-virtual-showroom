@@ -348,7 +348,7 @@ export function loadStage( sceneName, callback ) {
           const POI = new CSS2DObject( document.getElementById(child.name) )
           child.add( POI )
 
-          child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
+          //child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
           // STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
           
           POI.element.addEventListener('click', function(e){
@@ -357,7 +357,7 @@ export function loadStage( sceneName, callback ) {
             e.preventDefault()
           })
 
-          //kslvPoints.push(child)
+          kslvPoints.push(child)
         }
 
         //if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
@@ -478,7 +478,7 @@ function updateSceneSettings(_scene) {
   if(_scene == 'kslv') {
     STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
     STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
-    STATE.WEBGL.renderer.toneMapping = THREE.ACESFilmicToneMapping
+    STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
     STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
@@ -505,6 +505,8 @@ function updateKSLVenvironment(_region) {
     console.log(`switch env to galaxy`)
 
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
+    STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.minAzimuth
+    STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.maxAzimuth
     launchPadVisibility = false
 
     STATE.playRocket(1)
@@ -512,9 +514,11 @@ function updateKSLVenvironment(_region) {
     console.log(`switch env to launch pad`)
 
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+    STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
+    STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
     launchPadVisibility = true
 
-    STATE.playRocket(-4)
+    STATE.playRocket(-2)
   }
 
   for (let index = 0; index < STATE.LAUNCHPAD_OBJECTS.length; index++) {
@@ -523,7 +527,7 @@ function updateKSLVenvironment(_region) {
   }
 }
 
-export function focusOnRegion( _region ) {  
+export function focusOnRegion( _region ) {
   console.log(':: focusing on region ::', _region)
 
   if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)
@@ -542,7 +546,7 @@ export function focusOnRegion( _region ) {
   } else {
     document.body.setAttribute('data-focus', '')
   }
-
+  
   STATE.WEBGL.cameraControls.minAzimuthAngle = STATE.ZONE_FOCUS[_region].minAzimuth
   STATE.WEBGL.cameraControls.maxAzimuthAngle = STATE.ZONE_FOCUS[_region].maxAzimuth
 
