@@ -342,6 +342,11 @@ export function loadStage( sceneName, callback ) {
         }
       }
 
+      STATE.resetRocket = () => {
+        for (const anim of KSLV_MESH.asset.animations)
+          STATE.ANIMATIONS._KSLV.mixer.clipAction( anim ).stop()
+      }
+
       KSLV_OBJECT.clone.traverse(child => {
         if (child.userData.type == 'POI') {
           // POI buttons          
@@ -485,6 +490,9 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
     STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
+
+    STATE.ANIMATED_OBJECTS.rocket.reset = true
+    STATE.resetRocket()
   }else {
     STATE.WEBGL.scene.environment = null
     STATE.WEBGL.renderer.outputEncoding = THREE.LinearEncoding
@@ -503,8 +511,6 @@ function updateKSLVenvironment(_region) {
   let launchPadVisibility
 
   if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
-    console.log(`switch env to galaxy`)
-
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.maxAzimuth
@@ -513,15 +519,13 @@ function updateKSLVenvironment(_region) {
     STATE.ANIMATED_OBJECTS.rocket.reset = false
     STATE.playRocket(1)
   } else {
-    console.log(`switch env to launch pad`)
-
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
     launchPadVisibility = true
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
-    STATE.playRocket(-20)
+    STATE.resetRocket()
   }
 
   for (let index = 0; index < STATE.LAUNCHPAD_OBJECTS.length; index++) {

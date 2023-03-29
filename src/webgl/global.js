@@ -337,7 +337,7 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     collisionPreventionSystem: {
-      position: new THREE.Vector3(7.13, 4.14, -3.42),
+      position: new THREE.Vector3(3.95, 1.62, -5.00),
       target: new THREE.Vector3(2.1686, 2.8143, 2.6509),
       minAzimuth: -Infinity,
       maxAzimuth: Infinity,
