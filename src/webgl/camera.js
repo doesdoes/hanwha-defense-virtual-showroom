@@ -1,12 +1,14 @@
 import * as THREE from 'three'
 import { STATE } from './global.js'
-import * as UTILS from './utils'
 
 // parallax effect on mouse hover
-// export function parallax(){
-//   const [ xMul, yMul, lerpFactor ] = [ 4, 4, 0.05 ]
+export function parallax(_delta){
+  const [ xMul, yMul, lerpFactor ] = [ 5, 5, 0.01 ]
 
-//   STATE.WEBGL.camera.position.x = UTILS.lerp(STATE.WEBGL.camera.position.x, - STATE.WEBGL.mouse.x * xMul + STATE.WEBGL.cameraOptions.x, lerpFactor)
-//   STATE.WEBGL.camera.position.y = UTILS.lerp(STATE.WEBGL.camera.position.y, - STATE.WEBGL.mouse.y * yMul + STATE.WEBGL.cameraOptions.y, lerpFactor)
-//   STATE.WEBGL.camera.lookAt(new THREE.Vector3(0,0,0))
-// }
+  const { mouse, cameraControls, ACTIVE_FOCUS } = STATE.WEBGL
+
+  const targetX = THREE.MathUtils.lerp(STATE.ZONE_FOCUS[ACTIVE_FOCUS].position.x, - mouse.x * (xMul * STATE.ZONE_FOCUS[ACTIVE_FOCUS].position.z), lerpFactor)
+  const targetY = THREE.MathUtils.lerp(STATE.ZONE_FOCUS[ACTIVE_FOCUS].position.y, - mouse.y * (yMul * STATE.ZONE_FOCUS[ACTIVE_FOCUS].position.z), lerpFactor)
+
+  cameraControls.setPosition( targetX, targetY, STATE.ZONE_FOCUS[ACTIVE_FOCUS].position.z, true )
+}

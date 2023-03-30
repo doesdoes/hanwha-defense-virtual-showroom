@@ -6,16 +6,17 @@ import * as SCENE from './scene.js'
 import * as LOADER from './loader.js'
 import { STATE, ASSETS } from './global.js'
 import data from './data'
-import { setCondition } from '../indicator'
-import { setIndicator } from '../indicator'
-import { setHemisphereLightSnowDefault, setHemisphereLightDesertDefault, setHemisphereLightSnow, setHemisphereLightDesert } from './light.js';
+import { setCondition, setIndicator } from '../indicator'
+import { setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
+import { parallax } from './camera.js'
+import { registerEvents } from './interactions.js'
 
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
 
-import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
-import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
+import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js'
+import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js'
 
 window.isAnim
 window._WEBGL = (function() {
@@ -60,6 +61,9 @@ window._WEBGL = (function() {
       cameraOptions: { fov: 45, near: 1, far: 1000000, x: 4.15, y: -0.01, z: 2.0 },
       isDebug: _debug
     })
+
+    // mouse event listeners
+    registerEvents()
 
     //start webgl render loop
     render()
@@ -219,7 +223,7 @@ window._WEBGL = (function() {
     const isMobile = md.mobile()
     
     const $condition = document.getElementById('change-condition')
-    const $parts = document.querySelectorAll('.indicator-panel .part')
+    const $parts = document.querySelectorAll('.indicator-panel .part')    
 
     let snowSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true);
     let snowTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true);
@@ -231,6 +235,7 @@ window._WEBGL = (function() {
       SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
       SCENE.toggleStages(false, 'snowBg')
 
+      $condition.style.display = 'block'
       $condition.setAttribute('data-item', 'k9a1IndoorBg')
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
@@ -257,6 +262,7 @@ window._WEBGL = (function() {
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
       SCENE.toggleStages(false, 'desertBg')
 
+      $condition.style.display = 'block'
       $condition.setAttribute('data-item', 'redbackIndoorBg')
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
@@ -280,7 +286,7 @@ window._WEBGL = (function() {
     } else if(_sceneName === "KSLV") {
       SCENE.toggleStages(_toggle, 'kslv')
 
-      //$condition.style.display = 'none'
+      $condition.style.display = 'none'
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
         const partData = data['kslv-indicators'][idx]
@@ -317,6 +323,7 @@ window._WEBGL = (function() {
     if( !STATE.ENABLE_RENDERING ) return
     // STATE.WEBGL.cameraControls.normalizeRotations()
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
+    if(STATE.WEBGL.parallax) parallax( time )
 
     // update animation mixer
     const dTime = STATE.WEBGL.clock.getDelta()

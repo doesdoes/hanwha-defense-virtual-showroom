@@ -10,7 +10,7 @@ export const PROPERTIES = {
 export const MATERIALS = {
   "lambert1.001": {
     "sRGBmode": true,
-    "map": "KSLV_D.jpg",
+    "aoMap": "KSLV_D.jpg",
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "envMapIntensity": 8,
@@ -20,7 +20,7 @@ export const MATERIALS = {
   },
   "Material #40": {
     "sRGBmode": true,
-    "map": "KSLV_D.jpg",
+    "aoMap": "KSLV_D.jpg",
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "envMapIntensity": 8,
@@ -30,7 +30,7 @@ export const MATERIALS = {
   },
   "Material #45": {
     "sRGBmode": true,
-    "map": "KSLV_D.jpg",
+    "aoMap": "KSLV_D.jpg",
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "envMapIntensity": 8,
@@ -40,7 +40,7 @@ export const MATERIALS = {
   },
   "Material": {
     "sRGBmode": true,
-    "map": "KSLV_D.jpg",
+    "aoMap": "KSLV_D.jpg",
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "envMapIntensity": 8,
@@ -50,7 +50,7 @@ export const MATERIALS = {
   },
   "VRayMtl34": {
     "sRGBmode": true,
-    "map": "KSLV_D.jpg",
+    "aoMap": "KSLV_D.jpg",
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "envMapIntensity": 8,
@@ -60,7 +60,7 @@ export const MATERIALS = {
   },
   "glow_01": {
     "sRGBmode": true,
-    "map": "KSLV_D.jpg",
+    "aoMap": "KSLV_D.jpg",
     "type": new THREE.MeshPhysicalMaterial(),
     "color": new THREE.Color("rgb(255,255,255)"),
     "envMapIntensity": 8,

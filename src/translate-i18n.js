@@ -35,11 +35,11 @@ import i18next from "i18next"
           "isuRubberTrack": "ISU와 고무궤도를 장착하여 뛰어난 승차감과 안정된 기동성능을 확보하였습니다.",
         },
         "KSLV": {
-          "ton75classEngine": "국문 75 ton",
-          "engineClustering": "국문 engine",
-          "liquidEngineFuelSystem": "국문 fuel system",
-          "ton7classEngine": "국문 7 ton",
-          "collisionPreventionSystem": "국문 collision",
+          "ton75classEngine": "나로호 개발 당시 선행연구로 진행한 30톤급 액체 엔진 기술을 바탕으로 개발을 진행해, 연소불안정 현상의 기술적 한계를 극복하고 지상 연소시험과 시험발사체 발사를 통한 비행성능 시험을 거쳐 세계 7번째로 중대형 액체엔진 개발에 성공하였습니다​",
+          "engineClustering": "75톤급 액체엔진 4기를 묶어 300톤의 추력을 내는 클러스터링(Clustering)방식을 활용하였으며, 200회에 가까운 실제 연소시험을 거쳐 4기의 엔진을 구조적 안정성을 유지하면서 마치 하나의 엔진처럼 동일한 추력을 내는 기술을 구현하였습니다​",
+          "liquidEngineFuelSystem": "한화는 국내 최초로 중. 대형급 액체 발사체 추진공급계를 개발하였습니다​ 균등한 추진제 공급을 통해 안정적인 발사 성능을 구현하며 공급 배관 및 충전 배출/개폐 밸브 포함 1,473종의 구성품으로 구성됩니다",
+          "ton7classEngine": "75톤급과 동일하게 가스발생기 사이클의 액체 엔진이며 누리호 3단에 장착됩니다​",
+          "collisionPreventionSystem": "안정적인 단, 위성 분리를 지원하는 구동 및 충돌방지 시스템입니다",
         },
       },
       en: {

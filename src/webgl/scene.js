@@ -488,6 +488,8 @@ function updateSceneSettings(_scene) {
 
     // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
+    STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.NONE
+
     STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
 
@@ -537,6 +539,8 @@ function updateKSLVenvironment(_region) {
 export function focusOnRegion( _region ) {
   console.log(':: focusing on region ::', _region)
 
+  STATE.WEBGL.parallax = false
+
   if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)
 
   if(window.UI.$currentPopup) {
@@ -566,10 +570,9 @@ export function focusOnRegion( _region ) {
     STATE.ZONE_FOCUS[_region].target.z,
     true 
   ).then(() => {
-
-    if(STATE.IS_FOCUSED) {
-      sendGLCustomEvent({msg: _region})
-    }
+    if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
+    STATE.WEBGL.ACTIVE_FOCUS = _region
+    STATE.WEBGL.parallax = true
   })
 }
 
