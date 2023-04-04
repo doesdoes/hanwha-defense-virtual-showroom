@@ -300,6 +300,9 @@ export function loadStage( sceneName, callback ) {
       const HDR_TEST = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ).asset)
       STATE.GALAXY_HDR = HDR_TEST.texture
 
+      const HDR_LAUNCHER = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "launcher" } ).asset)
+      STATE.LAUNCHER_HDR = HDR_LAUNCHER.texture
+
       updateSceneSettings('KSLV')
 
       const kslvPoints = []
@@ -481,7 +484,7 @@ function updatePointVisible(points) {
 
 function updateSceneSettings(_scene) {
   if(_scene == 'kslv') {
-    STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
+    STATE.WEBGL.scene.environment = STATE.LAUNCHER_HDR
     STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
     STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
     STATE.WEBGL.renderer.toneMappingExposure = 1.0
@@ -513,6 +516,7 @@ function updateKSLVenvironment(_region) {
   let launchPadVisibility
 
   if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
+    STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.maxAzimuth
@@ -521,6 +525,7 @@ function updateKSLVenvironment(_region) {
     STATE.ANIMATED_OBJECTS.rocket.reset = false
     STATE.playRocket(1)
   } else {
+    STATE.WEBGL.scene.environment = STATE.LAUNCHER_HDR
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth

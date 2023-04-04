@@ -110,6 +110,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     else if(item === 'REDBACK') guideProductName = 'REDBACK IFV'
     else if(item === 'KSLV') guideProductName = 'KSLV'
 
+    document.body.setAttribute('data-scene', guideProductName)
+
     function showUI() {
       gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
       gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})

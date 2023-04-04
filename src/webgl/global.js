@@ -435,6 +435,12 @@ export const ASSETS = {
         path : 'hdr/Galaxy_hdr.hdr',
         asset: null
       },
+      {
+        name: 'launcher',
+        loaded: false,
+        path : 'hdr/launcher.hdr',
+        asset: null
+      },
     ]
   }
 }
