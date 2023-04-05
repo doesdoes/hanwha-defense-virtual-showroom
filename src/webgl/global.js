@@ -438,7 +438,7 @@ export const ASSETS = {
       {
         name: 'launcher',
         loaded: false,
-        path : 'hdr/launcher.hdr',
+        path : 'hdr/Sky_hdr.hdr',
         asset: null
       },
     ]
