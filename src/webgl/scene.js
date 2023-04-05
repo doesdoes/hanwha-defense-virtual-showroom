@@ -492,9 +492,13 @@ function updateSceneSettings(_scene) {
     // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
     STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.NONE
+    STATE.WEBGL.cameraControls.touches.one = CameraControls.ACTION.NONE
 
     STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
+
+    STATE.WEBGL.camera.fov = (isMobile) ? 60 : 45
+    STATE.WEBGL.camera.updateProjectionMatrix()    
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
     STATE.resetRocket()
@@ -505,8 +509,14 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
+    STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.ROTATE
+    STATE.WEBGL.cameraControls.touches.one = CameraControls.ACTION.TOUCH_ROTATE
+
     STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(60)
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(95)
+
+    STATE.WEBGL.camera.fov = 45
+    STATE.WEBGL.camera.updateProjectionMatrix() 
   }
 }
 
@@ -518,6 +528,7 @@ function updateKSLVenvironment(_region) {
   if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
     STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
+    STATE.ZONE_FOCUS.reset.target = STATE.ZONE_FOCUS.kslvGalaxyOrigin.target
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.maxAzimuth
     launchPadVisibility = false
@@ -527,6 +538,7 @@ function updateKSLVenvironment(_region) {
   } else {
     STATE.WEBGL.scene.environment = STATE.LAUNCHER_HDR
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvOrigin.positionM : STATE.ZONE_FOCUS.kslvOrigin.position
+    STATE.ZONE_FOCUS.reset.target = STATE.ZONE_FOCUS.kslvGalaxyOrigin.target
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
     launchPadVisibility = true
