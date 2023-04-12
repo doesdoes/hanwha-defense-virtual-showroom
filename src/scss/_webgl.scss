@@ -42,33 +42,33 @@
   left: 0;
 }
 
-.bttn {
-  display: inline-block;
-  position: relative;
-  padding: 0.888em 0.888em 0.888em 1.333em;
-  text-align: left;
-  color: $point1;
-  background-color: transparent;
-  border: 1px solid $point1;
-  font-family: $font-gothic;
-  text-transform: uppercase;
-  transition: all 0.34s ease-in-out;
-  cursor: pointer;
+// .bttn {
+//   display: inline-block;
+//   position: relative;
+//   padding: 0.888em 0.888em 0.888em 1.333em;
+//   text-align: left;
+//   color: $point1;
+//   background-color: transparent;
+//   border: 1px solid $point1;
+//   font-family: $font-gothic;
+//   text-transform: uppercase;
+//   transition: all 0.34s ease-in-out;
+//   cursor: pointer;
   
-  @extend .btn1-en;
+//   @extend .btn1-en;
 
-  &[lang=ko] {
-    @extend .btn1-kr;
-  }
+//   &[lang=ko] {
+//     @extend .btn1-kr;
+//   }
 
-  @media (hover: hover) and (min-width: $tablet) {
-    &:hover,
-    &:focus {
-      background-color: $point1;
-      color: $white;
-    }
-  }
-}
+//   @media (hover: hover) and (min-width: $tablet) {
+//     &:hover,
+//     &:focus {
+//       background-color: $point1;
+//       color: $white;
+//     }
+//   }
+// }
 
 .dimmed {
   pointer-events: none;
