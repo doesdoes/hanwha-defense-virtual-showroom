@@ -114,6 +114,10 @@
     background-color: rgba($white, 0.5);
     top: 0.63em;
 
+    [data-scene="KSLV"] & {
+      display: none;
+    }
+
     @include btn2-kr;
     @media all and (max-width: $tablet) {
       font-size: min(16px, 1.4rem);
@@ -191,9 +195,9 @@
     .kind {
       opacity: 1;
 
-      // [data-scene="KSLV"] & {
-      //   display: none;
-      // }
+      [data-scene="KSLV"] & {
+        display: none;
+      }
     }
 
     .lang {
