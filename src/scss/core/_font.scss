@@ -33,12 +33,13 @@
   src: url('../fonts/HanwhaGothicEL.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'Hanwha';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/HanwhaR.woff2') format('woff2');
-}
+// [NOTE : DOES] 디자인 팀 요청으로 삭제. 이 후 해당 폰트 적용부분 발견 시 해당 부분 제거 필요
+// @font-face {
+//   font-family: 'Hanwha';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('/assets/fonts/HanwhaR.woff2') format('woff2');
+// }
 
 @font-face {
   font-family: 'Hanwha';

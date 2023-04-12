@@ -3,7 +3,7 @@
   z-index: 1000;
   top: 0;
   left: 0;
-  @include btn2-kr;
+  @extend .btn2-kr;
   width: 31em;
   color: $white;
   background-color: rgba($black, 0.1);
@@ -174,7 +174,7 @@
 }
 
 .poi-container {
-  @include btn2-kr;
+  @extend .btn2-kr;
   position: relative;
   display: block;
   width: calc(2.4em / 2);

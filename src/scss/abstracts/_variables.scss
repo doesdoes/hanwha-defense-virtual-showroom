@@ -28,6 +28,10 @@ $gray5: #eee;
 $gray-border : #ddd;
 $gray-bg : #f6f6f6;
 
+//weight
+$btn-en-weight:400;
+
+
 // blur
 @mixin color-blur {
   -webkit-backdrop-filter: blur(30px);

@@ -56,7 +56,7 @@
   }
 
   .btn-back {
-    @include btn2-kr;
+    @extend .btn2-kr;
     @media all and (max-width: $tablet) {
       font-size: min(16px, 1.4rem);
     }
@@ -118,7 +118,7 @@
       display: none;
     }
 
-    @include btn2-kr;
+    @extend .btn2-kr;
     @media all and (max-width: $tablet) {
       font-size: min(16px, 1.4rem);
     }

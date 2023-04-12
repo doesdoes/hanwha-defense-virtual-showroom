@@ -20,7 +20,7 @@
     background-color: transparent;
     font-size: inherit;
     font-family: $font-gothic;
-    @include btn2-kr;
+    @extend .btn2-kr;
     line-height: 1;
     padding: 0;
     // padding: 0 2em 0 0;

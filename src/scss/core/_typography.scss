@@ -1,209 +1,364 @@
+// // ------------------------------------------------------------------------
+// // 타이포그라피 가이드
+// // ------------------------------------------------------------------------
+
+// html {
+//   // font-size base
+//   font-size: 0.8333333333vw;
+
+//   @media all and (min-width: 2201px) {
+//     font-size: 0.8vw;
+//   }
+
+//   @media all and (max-width: 1799px) {
+//     font-size: 0.88vw;
+//   }
+
+//   @media all and (max-width: 1399px) {
+//     font-size: 0.93vw;
+//   }
+
+//   @media all and (max-width: 1023px) {
+//     font-size: 1.6vw;
+//   }
+
+//   @media all and (max-width: 729px) {
+//     font-size: 2.1vw;
+//   }
+
+//   @media all and (max-width: 429px) {
+//     font-size: 2.666667vw;
+//   }
+// }
+
+// body {
+//   font-family: 'HanwhaGothic', sans-serif;
+//   font-weight: normal;
+// }
+
+// .h1 {
+//   font-size: 8.75rem;
+//   font-weight: 900;
+//   line-height: 1.1;
+//   letter-spacing: 0.2em;
+// }
+
+// .h2 {
+//   font-size: 7.5rem;
+//   font-weight: 900;
+//   line-height: 1.1;
+//   letter-spacing: 0;
+// }
+
+// .h3 {
+//   font-size: 6rem;
+//   font-weight: 900;
+//   line-height: 1.1;
+//   letter-spacing: 0;
+// }
+
+// .h4 {
+//   font-size: 5rem;
+//   font-weight: 900;
+//   line-height: 1.1;
+//   letter-spacing: -0.01em;
+// }
+
+// .h5 {
+//   font-size: 4.5rem;
+//   font-weight: 900;
+//   line-height: 1.25;
+//   letter-spacing: -0.01em;
+// }
+
+// .h6 {
+//   font-size: 4rem;
+//   font-weight: 900;
+//   line-height: 1.1;
+//   letter-spacing: 0;
+// }
+
+// .h7 {
+//   font-size: 3.5rem;
+//   font-weight: 900;
+//   line-height: 1.1;
+//   letter-spacing: 0;
+// }
+
+// .h8 {
+//   font-size: 5.75rem;
+//   font-weight: 900;
+//   line-height: 1.25;
+//   letter-spacing: -0.01em;
+// }
+
+// .t1 {
+//   font-size: 3rem;
+//   font-weight: 700;
+//   line-height: 1.5;
+//   letter-spacing: -0.01em;
+// }
+
+// .t2-en {
+//   font-size: max(18px, 1.5rem);
+//   line-height: 1.5;
+//   letter-spacing: 0.02em;
+// }
+
+// .t2-kr {
+//   font-size: max(18px, 1.5rem);
+//   line-height: 1.5;
+//   letter-spacing: -0.01em;
+// }
+
+// .t3 {
+//   font-size: max(18px, 1.25rem);
+//   font-weight: 100;
+//   line-height: 1.5;
+//   letter-spacing: -0.01em;
+// }
+
+// .t4 {
+//   font-size: max(24px, 1.75rem);
+//   line-height: 1.5;
+//   letter-spacing: -0.01em;
+// }
+
+// .b1 {
+//   font-size: max(14px, 1.125rem);
+//   font-weight: 100;
+//   line-height: 1.5;
+//   letter-spacing: -0.02em;
+// }
+
+// .b2 {
+//   font-size: max(14px, 1.125rem);
+//   font-weight: 100;
+//   line-height: 1.67;
+//   letter-spacing: -0.02em;
+// }
+
+// .c1 {
+//   font-size: max(12px, 0.875rem);
+//   font-weight: 100;
+//   line-height: 1.5;
+//   letter-spacing: 0.01em;
+// }
+
+// .lt {
+//   font-size: 25rem;
+//   font-weight: 700;
+//   line-height: 1;
+//   letter-spacing: -0.04em;
+//   color: $white;
+// }
+
+// @mixin btn1-en {
+//   font-size: clamp(14px, 1.125rem, 20px);
+//   line-height: 1;
+//   letter-spacing: 0.02em;
+// }
+
+// @mixin btn1-kr {
+//   font-size: clamp(14px, 1.125rem, 20px);
+//   line-height: 1;
+//   letter-spacing: -0.01em;
+// }
+
+// @mixin btn2-en {
+//   font-size: clamp(13px, 1rem, 18px);
+//   line-height: 1;
+//   letter-spacing: 0.02em;
+// }
+
+// @mixin btn2-kr {
+//   font-size: clamp(13px, 1rem, 18px);
+//   font-weight: 400;
+//   line-height: 1.5;
+//   letter-spacing: -0.03em;
+// }
+
+// .btn1-en {
+//   @include btn1-en;
+// }
+
+// .btn1-kr {
+//   @include btn1-kr;
+// }
+
+// .btn2-en {
+//   @include btn2-en;
+// }
+
+// .btn2-kr {
+//   @include btn2-kr;
+// }
+
+// .hw_re {
+//   font-family: 'Hanwha';
+//   font-style: normal;
+//   font-weight: 400;
+// }
+
+// .hw_li {
+//   font-family: 'Hanwha';
+//   font-style: normal;
+//   font-weight: 100;
+// }
+
+// // [TODO] mobile
+
 // ------------------------------------------------------------------------
 // 타이포그라피 가이드
 // ------------------------------------------------------------------------
 
+@mixin defineFont($name : "default",$size : 1em ,$weight : 400,$lineHeight : 1.5,$letterSpacing : 0, $isEn : false){
+  --font:#{$name};
+
+  font-size: #{$size};
+  font-weight: #{$weight};
+  line-height: #{$lineHeight};
+  letter-spacing: #{$letterSpacing};
+  @if ($isEn == true){
+    font-family: 'canada-type-gibson', sans-serif;
+  }
+  @if ($isEn == false){
+    font-family:'HanwhaGothic', sans-serif;
+  }
+}
+
 html {
+  body {
+    font-family:'HanwhaGothic', sans-serif;
+    font-weight: normal;
+    word-break: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+
   // font-size base
   font-size: 0.8333333333vw;
 
-  @media all and (min-width: 2201px) {
+  @media all and (min-width: 2200px) {
     font-size: 0.8vw;
   }
-
-  @media all and (max-width: 1799px) {
+  @media all and (min-width : 1800px) and (max-width: 2200px) {
+    font-size: 0.8333333333vw;
+  }
+  @media all and (min-width : 1400px) and (max-width: 1800px) {
     font-size: 0.88vw;
   }
-
-  @media all and (max-width: 1399px) {
+  @media all and (max-width: 1400px) {
     font-size: 0.93vw;
   }
 
-  @media all and (max-width: 1023px) {
-    font-size: 1.6vw;
+  .headline-1 {@include defineFont($name:"headline-1",$size:max(66px, 7.75rem) ,$weight:200,$lineHeight:.96,$letterSpacing:-0.03em, $isEn : true)}
+  .headline-2-en {@include defineFont($name:"headline-2-en", $size: max(51px, 6rem), $weight:200, $lineHeight:.96, $letterSpacing:-0.03em, $isEn : true)}
+  .headline-2-kr {@include defineFont($name:"headline-2-kr", $size: max(51px, 6rem), $weight:400, $lineHeight:1.25, $letterSpacing:-0.04em)}
+
+  .headline-3-en {@include defineFont($name:"headline-3-en", $size: max(45px, 5.25rem), $weight:200, $lineHeight: 1, $letterSpacing:-0.03em, $isEn : true)}
+  .headline-3-kr{@include defineFont($name:"headline-3-kr", $size: max(45px, 5.25rem), $weight:400, $lineHeight:1.25, $letterSpacing:-0.04em)}
+  .headline-4-kr{@include defineFont($name:"headline-4-kr", $size: max(36px, 4.25rem), $weight:400, $lineHeight:1.25, $letterSpacing:-0.04em)}
+  .headline-5{@include defineFont($name:"headline-5", $size: max(48px, 5.625rem), $weight:400, $lineHeight:1.25, $letterSpacing:-0.04em)}
+  .headline-6{@include defineFont($name:"headline-6", $size: max(66px, 7.125rem), $weight:200, $lineHeight:.96, $letterSpacing:-0.03em, $isEn : true)}
+
+  .title1-kr{@include defineFont($name:"title1-kr", $size: max(24px, 2.75rem), $weight:400, $lineHeight:1.5, $letterSpacing:-0.04em)}
+  .title1-en{@include defineFont($name:"title1-en", $size: max(24px, 2.75rem), $weight:200, $lineHeight:1.1, $letterSpacing:-0.01em, $isEn : true)}
+  .title2,.title2-kr{@include defineFont($name:"title2-kr", $size: max(20px, 1.75rem), $weight:400, $lineHeight:1.4, $letterSpacing:-0.015em)}
+  .title2-en{@include defineFont($name:"title2-en", $size: max(20px, 1.75rem), $weight:300, $lineHeight:1.25, $letterSpacing:-0.01em, $isEn : true)}
+  .title3{@include defineFont($name:"title3", $size: max(24px, 2.5rem), $weight:400, $lineHeight:1.4, $letterSpacing:-0.04em)}
+
+  .body1{@include defineFont($name:"body1", $size: max(17px, 1.375rem), $weight:400, $lineHeight:1.5, $letterSpacing:-0.015em)}
+  .body2{@include defineFont($name:"body2", $size: max(16px, 1.25rem), $weight:400, $lineHeight:1.5, $letterSpacing:-0.015em)}
+  .body3{@include defineFont($name:"body3", $size: max(16px, 1.25rem), $weight:400, $lineHeight:2, $letterSpacing:-0.015em)}
+  .body4{@include defineFont($name:"body4", $size: max(12px, 0.9375rem), $weight:400, $lineHeight:1.6, $letterSpacing:-0.015em)}
+  .body5{@include defineFont($name:"body5", $size: max(14px, 1.125rem), $weight:400, $lineHeight:1.6, $letterSpacing:-0.015em)}
+
+  .caption1-en {@include defineFont($name:"caption1-en", $size: max(14px, 1.125rem), $weight:300, $lineHeight:1.4, $letterSpacing:-0.015em, $isEn : true)}
+  .caption1-kr {@include defineFont($name:"caption1-kr", $size: max(14px, 1.125rem), $weight:400, $lineHeight:1.4, $letterSpacing:-0.015em)}
+
+  .btn1-en {@include defineFont($name:"btn1-en", $size: clamp(18px, 1.5rem, 32px), $weight:$btn-en-weight, $lineHeight:1.25, $letterSpacing:-0.01em, $isEn : true)}
+  .btn1-kr {@include defineFont($name:"btn1-kr", $size: clamp(18px, 1.5rem, 32px), $weight:400, $lineHeight:1.25, $letterSpacing:-0.01em)}
+  .btn2-en {@include defineFont($name:"btn2-en", $size: clamp(16px, 1.25rem, 24px), $weight:$btn-en-weight, $lineHeight:1.25, $letterSpacing:-0.01em, $isEn : true)}
+  .btn2-kr {@include defineFont($name:"btn2-kr", $size: clamp(16px, 1.25rem, 24px), $weight:400, $lineHeight:1.25, $letterSpacing:-0.01em)}
+  .btn3-en {@include defineFont($name:"btn3-en", $size: clamp(14px, 1.125rem, 22px), $weight:$btn-en-weight, $lineHeight:1.25, $letterSpacing:-0.01em, $isEn : true)}
+  .btn3-kr {@include defineFont($name:"btn3-kr", $size: clamp(14px, 1.125rem, 22px), $weight:400, $lineHeight:1.25, $letterSpacing:-0.01em)}
+  .btn4-en {@include defineFont($name:"btn4-en", $size: clamp(13px, 1rem, 20px), $weight:300, $lineHeight:1.25, $letterSpacing:-0.01em, $isEn : true)}
+  .btn4-kr {@include defineFont($name:"btn4-kr", $size: clamp(13px, 1rem, 20px), $weight:400, $lineHeight:1.25, $letterSpacing:-0.01em)}
+
+  .cp-name{
+    font-family: 'Hanwha' !important;
+  }
+}
+
+html:lang(en) {
+  .headline-2-kr,
+  .headline-3-kr,
+  .headline-4-kr,
+  .headline-5,
+  .title1-kr,
+  .title2,.title2-kr,
+  .title3,
+  .caption1-kr,
+  .btn1-kr,
+  .btn2-kr,
+  .btn3-kr,
+  .btn4-kr,
+  .body1,
+  .body2,
+  .body3,
+  .body4,
+  .body5{
+    font-family: 'canada-type-gibson', sans-serif;
+  }
+  .headline-2-kr,
+  .headline-3-kr {
+    line-height: 1.1;
+    font-weight: 200;
+  }
+  .headline-4-kr {
+    line-height: 1.15;
+    font-weight: 200;
+  }
+  .headline-5 {
+    line-height: 1.1;
+    font-weight: 200;
+  }
+  .title1-kr {
+    line-height: 1.3;
+    font-weight: 200;
+  }
+  .title2, .title2-kr {
+    line-height: 1.4;
+    font-weight: 300;
+  }
+  .title3 {
+    font-weight: 200;
+  }
+  .body1,
+  .body2,
+  .body3,
+  .body4,
+  .body5 {
+    font-weight: 300;
+  }
+  .body1,
+  .body2 {
+    line-height: 1.4;
+  }
+  .body3 {
+    line-height: 1.9;
+  }
+  .body4 {
+    line-height: 1.5;
+  }
+  .body5 {
+    line-height: 1.45;
+  }
+  .caption1-kr {
+    font-weight: 300;
+  }
+  .btn4-kr {
+    font-weight: 300;
   }
 
-  @media all and (max-width: 729px) {
-    font-size: 2.1vw;
-  }
-
-  @media all and (max-width: 429px) {
-    font-size: 2.666667vw;
-  }
 }
-
-body {
-  font-family: 'HanwhaGothic', sans-serif;
-  font-weight: normal;
-}
-
-.h1 {
-  font-size: 8.75rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0.2em;
-}
-
-.h2 {
-  font-size: 7.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-
-.h3 {
-  font-size: 6rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-
-.h4 {
-  font-size: 5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.h5 {
-  font-size: 4.5rem;
-  font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-
-.h6 {
-  font-size: 4rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-
-.h7 {
-  font-size: 3.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: 0;
-}
-
-.h8 {
-  font-size: 5.75rem;
-  font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-
-.t1 {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-}
-
-.t2-en {
-  font-size: max(18px, 1.5rem);
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-}
-
-.t2-kr {
-  font-size: max(18px, 1.5rem);
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-}
-
-.t3 {
-  font-size: max(18px, 1.25rem);
-  font-weight: 100;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-}
-
-.t4 {
-  font-size: max(24px, 1.75rem);
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-}
-
-.b1 {
-  font-size: max(14px, 1.125rem);
-  font-weight: 100;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-}
-
-.b2 {
-  font-size: max(14px, 1.125rem);
-  font-weight: 100;
-  line-height: 1.67;
-  letter-spacing: -0.02em;
-}
-
-.c1 {
-  font-size: max(12px, 0.875rem);
-  font-weight: 100;
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-}
-
-.lt {
-  font-size: 25rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: $white;
-}
-
-@mixin btn1-en {
-  font-size: clamp(14px, 1.125rem, 20px);
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-
-@mixin btn1-kr {
-  font-size: clamp(14px, 1.125rem, 20px);
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-
-@mixin btn2-en {
-  font-size: clamp(13px, 1rem, 18px);
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-
-@mixin btn2-kr {
-  font-size: clamp(13px, 1rem, 18px);
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: -0.03em;
-}
-
-.btn1-en {
-  @include btn1-en;
-}
-
-.btn1-kr {
-  @include btn1-kr;
-}
-
-.btn2-en {
-  @include btn2-en;
-}
-
-.btn2-kr {
-  @include btn2-kr;
-}
-
-.hw_re {
-  font-family: 'Hanwha';
-  font-style: normal;
-  font-weight: 400;
-}
-
-.hw_li {
-  font-family: 'Hanwha';
-  font-style: normal;
-  font-weight: 100;
-}
-
-// [TODO] mobile

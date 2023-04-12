@@ -88,3 +88,7 @@
       height: 12px;
   }
 }
+
+@mixin bgURL($url, $option : contain, $color : transparent){
+  background:url('/assets/content/' + $url) #{$color} 50% 50%/ $option no-repeat;
+}

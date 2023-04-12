@@ -1,5 +1,5 @@
 .dropdown {
-  @include btn2-en;
+  @extend .btn2-en;
 
   @media all and (max-width: $tablet) {
     font-size: min(16px, 1.4rem);

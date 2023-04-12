@@ -17,10 +17,10 @@
   transition: all 0.34s ease-in-out;
   cursor: pointer;
   
-  @include btn2-en;
+  @extend .btn2-en;
 
   &[lang=ko] {
-    @include btn1-kr;
+    @extend .btn1-kr;
   }
 
   @media all and (max-width: $tablet) {
@@ -124,4 +124,297 @@
     }
   }
 
+}
+
+// ------------------------------------------------------------------------
+// 2023 UPDATED VERS
+// ------------------------------------------------------------------------
+
+
+.bttn{
+  $btn-default-transition: all 0.34s ease-in-out;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: $btn-default-transition;
+  cursor: pointer;
+
+  &-txt{
+    &--circle{
+      overflow: hidden;
+
+      &[size="l"]{
+        $size-l-font:24px;
+        span{@include defineFont($name:"btn1-en", $size: clamp(18px, 1.5rem, 32px), $weight:$btn-en-weight, $lineHeight:.75, $letterSpacing:-0.01em, $isEn : true);}
+        .txt{
+          margin-right: to-em(7px, $base : $size-l-font);
+        }
+        .icon{
+          width: to-em($px : 26px, $base : $size-l-font);
+          height: to-em($px : 26px, $base : $size-l-font);
+          
+          &::before,&::after{
+            width: to-em($px : 13px, $base : $size-l-font);
+            height: to-em($px : 13px, $base : $size-l-font);
+          }
+        }
+      }
+      &[size="m"]{
+        $size-m-font:20px;
+        &,&[lang='en']{span{@include defineFont($name:"btn2-en", $size: clamp(16px, 1.25rem, 24px), $weight:$btn-en-weight, $lineHeight:.9, $letterSpacing:-0.01em, $isEn : true);}}
+        &[lang='kr']{span{@include defineFont($name:"btn2-kr", $size: clamp(16px, 1.25rem, 24px), $weight:400, $lineHeight:1.1, $letterSpacing:-0.01em);}}
+        
+        .txt{
+          margin-right: to-em(6px, $base : $size-m-font);
+        }
+        .icon{
+          width: to-em($px : 22px, $base : $size-m-font);
+          height: to-em($px : 22px, $base : $size-m-font);
+          
+          &::before,&::after{
+            width: to-em($px : 11px, $base : $size-m-font);
+            height: to-em($px : 11px, $base : $size-m-font);
+          }
+        }
+      }
+      &[size="s"]{
+        $size-s-font:18px;
+        &[lang='en']{@include defineFont($name:"btn3-en", $size: clamp(14px, 1.125rem, 22px), $weight:$btn-en-weight, $lineHeight:1, $letterSpacing:-0.01em, $isEn : true);}
+        &[lang='kr']{@include defineFont($name:"btn3-kr", $size: clamp(14px, 1.125rem, 22px), $weight:400, $lineHeight:1, $letterSpacing:-0.01em);}
+        .txt{
+          margin-right: to-em(5px, $base : $size-s-font);
+        }
+        .icon{
+          width: to-em($px : 20px, $base : $size-s-font);
+          height: to-em($px : 20px, $base : $size-s-font);
+          
+          &::before,&::after{
+            width: to-em($px : 10px, $base : $size-s-font);
+            height: to-em($px : 10px, $base : $size-s-font);
+          }
+        }
+      }
+      &[color="black"]{
+        .txt{
+          color: #000;
+        }
+        .icon{
+          background-color: #000;
+          
+          &::before,&::after{
+            @include bgURL('svg/icon/txt-circle-w.svg', $option : cover)
+          }
+        }
+      }
+      &[color="white"]{
+        .txt{
+          color: #fff;
+        }
+        .icon{
+          background-color: #fff;
+          
+          &::before,&::after{
+            @include bgURL('svg/icon/txt-circle-b.svg', $option : cover)
+          }
+        }
+      }
+      &[dir='plus']{
+        .icon{
+          background-color: #000;
+          
+          &::before,&::after{
+            @include bgURL('svg/btn-plus-w.svg', $option : cover)
+          }
+        }
+        &[color="white"]{
+          .icon{
+            background-color: #fff;
+            
+            &::before,&::after{
+              @include bgURL('svg/btn-plus-b.svg', $option : cover)
+            }
+          }
+        }
+      }
+      span{
+        position: relative;
+        font-size: inherit;
+      }
+      .txt{
+        transition: $btn-default-transition;
+        &::after{
+          content: attr(data-txt);
+          position: absolute;
+          top: 150%;
+          left: 0;
+        }
+      }
+      .icon{
+        border-radius: 100%;
+        overflow: hidden;
+        &::before,&::after{
+          content: '';
+          @include center-pos-xy;
+          transition: $btn-default-transition;
+        }
+
+        &::after{
+          transform: translate(-250%,-50%);
+        }
+      }
+
+      &:hover{
+        .txt{
+          transform: translate(0, -150%);
+          opacity: .5;
+        }
+        .icon{
+          &::before{
+            transform: translate(150%,-50%);
+          }
+  
+          &::after{
+            transform: translate(-50%,-50%);
+          }
+        }
+
+        &[dir='plus']{
+          .icon{
+            &::before{
+              transform: translate(-50%,-50%);
+            }
+    
+            &::after{
+              transform: translate(-250%,-50%);
+            }
+          }
+        }
+      }
+    }
+
+    &--ico{
+      .txt{
+        transition: $btn-default-transition;
+      }
+      &[size="m"]{
+        $size-m-font:20px;
+        span{@include defineFont($name:"btn2-kr", $size: clamp(16px, 1.25rem, 24px), $weight:400, $lineHeight:1.35, $letterSpacing:-0.01em);}
+        .txt{
+          margin-right: to-em(6px, $base : $size-m-font);
+        }
+        .icon{
+          width: to-em($px : 18px, $base : $size-m-font);
+          height: to-em($px : 18px, $base : $size-m-font);
+        }
+      }
+      &[size="s"]{
+        $size-s-font:18px;
+        span{@include defineFont($name:"btn3-kr", $size: clamp(14px, 1.125rem, 22px), $weight:400, $lineHeight:1.35, $letterSpacing:-0.01em);}
+        
+        .txt{
+          margin-right: to-em(5px, $base : $size-s-font);
+        }
+        .icon{
+          width: to-em($px : 16px, $base : $size-s-font);
+          height: to-em($px : 16px, $base : $size-s-font);
+        }
+      }
+      &:hover{
+        .txt{
+          opacity: .5;
+        }
+      }
+
+    }
+  }
+  &-circle{
+    font-size:clamp(13px, 1rem, 20px);
+    width: to-em($px : 32px, $base : 16px);
+    height: to-em($px : 32px, $base : 16px);
+    border-radius: to-em($px : 32px, $base : 16px);
+    background-color: #f6f6f6;
+    overflow: hidden;
+    .icon,&::after{
+      font-size: inherit;
+      width: 1em;
+      height: 1em;
+      opacity: .5;
+      @include bgURL('svg/icon/arrow-icon-bottom.svg', $option : cover);
+      transition: $btn-default-transition;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      transform: translate(0, -200%);
+    }
+    &:hover,&.is-active{
+      .icon,&::after{
+        opacity: 1;
+      }
+    }
+    &:hover{
+      .icon{
+        transform: translate(0, 200%);
+      }
+      &::after{
+        transform: translate(0, 0%);
+      }
+    }
+    &.is-active{
+      .icon{
+        transform: translate(0, 200%) rotate(180deg);
+      }
+      &::after{
+        transform: translate(0, 0%) rotate(180deg);
+      }
+    }
+  }
+  &-number{
+    &,span{@include defineFont($name:"btn3-en", $size: clamp(14px, 1.125rem, 22px), $weight:$btn-en-weight, $lineHeight:1.25, $letterSpacing:-0.01em, $isEn : true)}
+    
+    width: to-em($px : 32px, $base : 16px);
+    height: to-em($px : 32px, $base : 16px);
+    border-radius: to-em($px : 32px, $base : 16px);
+    background-color: #eee;
+    cursor: default;
+    span{ 
+      color: #000;
+    }
+  }
+  &-box{
+    &,span{
+      @include defineFont($name:"btn2-kr", $size: clamp(16px, 1.25rem, 24px), $weight:400, $lineHeight:1.1, $letterSpacing:-0.01em)
+    }
+    padding: to-em($px : 14px, $base : 20px) to-em($px : 20px, $base : 20px);
+    border-radius: to-em($px : 10px, $base : 20px);
+    border: 1px solid rgba($black, 0.2);
+    transition: $btn-default-transition;
+
+    &:hover{
+      border-color: rgba($black, 1);
+    }
+
+    .txt{
+
+    }
+    .icon{
+      width: to-em($px : 18px, $base : 20px);
+      height: to-em($px : 18px, $base : 20px);
+      margin-left: to-em($px : 6px, $base : 20px);
+      img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }

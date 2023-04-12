@@ -3,3 +3,7 @@
 @function __em($size) {
   @return calc(#{$size} / var(--fz) * 1em);
 }
+
+@function to-em($px, $base : 1rem) {
+  @return calc($px / $base) * 1em;
+}
