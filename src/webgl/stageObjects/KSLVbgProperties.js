@@ -11,8 +11,7 @@ export const MATERIALS = {
   "Galaxy_BG_s": {
     "sRGBmode": true,
     "type": new THREE.MeshBasicMaterial(),
-    "map": "BG_Earth_Galaxy.png",
-    // "envMapIntensity": 10,
+    "map": "Galaxy_BG_D.jpg",
     "flipY": false,
   },
   "Earth_KarmanLine_s": {
@@ -68,5 +67,29 @@ export const MATERIALS = {
     "mapTiling":{ repeatX: 1, repeatY: 1, },
     "alphaMapTiling":{ repeatX: 1, repeatY: 1, },
     // "visible": false
+  },
+  "Cloud_Main_s": {
+    "sRGBmode": true,
+    "type": new THREE.MeshStandardMaterial(),
+    "map": "Cloud_Main_D.jpg",
+    "alphaMap": "Cloud_Main_D.jpg",
+    "envMapIntensity": 0.2,
+    "transparent": true,
+    // "opacity": 0.5,
+    "depthWrite": false,
+    "flipY": false,
+    "blending": 2
+  },
+  "Cloud_Small_s": {
+    "sRGBmode": true,
+    "type": new THREE.MeshStandardMaterial(),
+    "map": "Cloud_Small_D.jpg",
+    "alphaMap": "Cloud_Small_D.jpg",
+    "envMapIntensity": 0.2,
+    "transparent": true,
+    // "opacity": 0.5,
+    "depthWrite": false,
+    "flipY": false,
+    "blending": 2
   }
 } 
