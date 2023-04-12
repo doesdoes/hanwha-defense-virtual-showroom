@@ -11,8 +11,7 @@ export const MATERIALS = {
   "Galaxy_BG_s": {
     "sRGBmode": true,
     "type": new THREE.MeshBasicMaterial(),
-    "map": "BG_Earth_Galaxy.png",
-    // "envMapIntensity": 10,
+    "map": "Galaxy_BG_D.jpg",
     "flipY": false,
   },
   "Earth_KarmanLine_s": {

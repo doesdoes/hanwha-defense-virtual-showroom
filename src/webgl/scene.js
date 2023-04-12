@@ -501,7 +501,7 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.camera.updateProjectionMatrix()    
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
-    STATE.resetRocket()
+    if(STATE.resetRocket) STATE.resetRocket()
   }else {
     STATE.WEBGL.scene.environment = null
     STATE.WEBGL.renderer.outputEncoding = THREE.LinearEncoding
