@@ -59,33 +59,50 @@ import {gsap, Quint, Expo} from 'gsap/all'
   }
 
   const $entry = document.querySelector('.gate .entry')
-  const $entryK9a1 = $entry.querySelector('.entry__item--left .btn-entry-point')
-  const $k9a1Video = $entry.querySelector('.entry__item--left video.hover')
-  const $entryRedback = $entry.querySelector('.entry__item--right .btn-entry-point')
-  const $redbackVideo = $entry.querySelector('.entry__item--right video.hover')
+  const $entryKSLV = $entry.querySelector('.entry__item--left .btn-entry-point')
+  const $kslvVideo = $entry.querySelector('.entry__item--left video.hover')
+  const $entryK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point')
+  const $k9a1Video = $entry.querySelector('.entry__item--top video.hover')
+  const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point')
+  const $redbackVideo = $entry.querySelector('.entry__item--bottom video.hover')
+  console.log($redbackVideo)
 
-  $entryK9a1.addEventListener('mouseenter', function() {
+  $entryKSLV.addEventListener('mouseenter', function() {
     $entry.classList.add('is-left')
     gsap.to('.entry__item--left video.in', {autoAlpha: 0})
+    $kslvVideo.play()
+  })
+
+  $entryKSLV.addEventListener('mouseleave', function() {
+    $entry.classList.remove('is-left')
+    $kslvVideo.playBackwards()
+    // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
+  })
+
+
+  $entryK9a1.addEventListener('mouseenter', function() {
+    $entry.classList.add('is-top')
+    gsap.to('.entry__item--top video.in', {autoAlpha: 0})
     $k9a1Video.play()
     // gsap.to($k9a1Tit, { textFillColor: '#000' })
   })
 
   $entryK9a1.addEventListener('mouseleave', function() {
-    $entry.classList.remove('is-left')
+    $entry.classList.remove('is-top')
     $k9a1Video.playBackwards()
     // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
   })
 
   $entryRedback.addEventListener('mouseenter', function() {
-    $entry.classList.add('is-right')
-    gsap.to('.entry__item--right video.in', {autoAlpha: 0})
+    $entry.classList.add('is-bottom')
+    gsap.to('.entry__item--bottom video.in', {autoAlpha: 0})
     $redbackVideo.play()
+    console.log('coucou')
     // gsap.to($redbackTit, { textFillColor: '#000' })
   })
 
   $entryRedback.addEventListener('mouseleave', function() {
-    $entry.classList.remove('is-right')
+    $entry.classList.remove('is-bottom')
     $redbackVideo.playBackwards()
     // gsap.to($redbackTit, { textFillColor: 'transparent' })
   })
