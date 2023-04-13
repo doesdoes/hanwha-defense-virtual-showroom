@@ -44,7 +44,8 @@
 
     &__inner {
       position: relative;
-      padding-left: 5rem;
+      padding-left: 4.4444vmin;
+      padding-bottom: 4.4444vmin;
     }
 
     .clip-wrap {
@@ -53,9 +54,17 @@
     }
 
     .tit {
-      padding-bottom: 0.3em;
       text-transform: uppercase;
       transform: translateY(102%);
+
+      &.headline-4-kr { 
+        padding-bottom: to-em(24px, $base: 68px);
+      }
+
+      &.headline-3-en {
+        padding-bottom: to-em(24px, $base: 84px);
+      }
+
     }
 
     .desc {

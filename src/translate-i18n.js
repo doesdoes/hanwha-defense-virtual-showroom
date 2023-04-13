@@ -14,10 +14,10 @@ import i18next from "i18next"
         "GATE": {
           "vsr00": "국내 독자 기술로 개발한 세계 최고의 자주포",
           "vsr01": "공격 능력과 방어 능력을 모두 갖춘 미래형 보병전투장갑차",
-          "guide360": "제품을 <em>360도</em> 돌려보고<br> 추가정보를 확인해보세요",
-          "guide1": "제품명을 클릭해서 <em>다른 제품의 쇼룸</em> 이동해보세요",
-          "guide2": "<em>다양한 환경</em>에서도 최적화되어있는 <span class='guide-product-name'>K9 SPH</span>의 모습을 확인해보세요",
-          "guide3": "<em><span class='guide-product-name'>K9 SPH</span></em> 더 자세히 알아보세요",
+          "guide360": "제품을 360도 돌려보고<br> 추가정보를 확인해보세요",
+          "guide1": "제품명을 클릭해서 다른 제품의 쇼룸 이동해보세요",
+          "guide2": "다양한 환경에서도 최적화되어있는 <span class='guide-product-name'>K9 SPH</span>의 모습을 확인해보세요",
+          "guide3": "<span class='guide-product-name'>K9 SPH</span> 더 자세히 알아보세요",
           "close": "닫기",
         },
         "K9A1": {
@@ -46,10 +46,10 @@ import i18next from "i18next"
         "GATE": {
           "vsr00": "The world's best self-propelled howitzer developed with Hanwha's technology",
           "vsr01": "The futuristic infantry fighting vehicle with state-of-art defensive & offensive technologies",
-          "guide360": "Turn the product <em>360 degrees</em><br> and check for additional information",
-          "guide1": "Click to go to <br><em>other product's showroom</em>",
-          "guide2": "Check out the <span class='guide-product-name'>K9 SPH</span> that's optimized<br> in <em>any operational environment</em>",
-          "guide3": "Learn more about <em><span class='guide-product-name'>K9 SPH</span></em>",
+          "guide360": "Turn the product 360 degrees<br> and check for additional information",
+          "guide1": "Click to go to other product's showroom",
+          "guide2": "Check out the <span class='guide-product-name'>K9 SPH</span> that's optimized in any operational environment",
+          "guide3": "Learn more about <span class='guide-product-name'>K9 SPH</span>",
           "close": "Close",
         },
         "K9A1": {

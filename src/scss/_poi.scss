@@ -3,7 +3,7 @@
   z-index: 1000;
   top: 0;
   left: 0;
-  @extend .btn2-kr;
+  @extend .body4;
   width: 31em;
   color: $white;
   background-color: rgba($black, 0.1);
@@ -13,58 +13,59 @@
   top: 56%;
   left: 8%;
   visibility: hidden;
+  border-radius: 10px;
   
   opacity: 0;
 
 
-  &::before {
-    content: '';
-    position: absolute;
-    width: 0.6em;
-    height: 0.6em;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    border-top: 1px solid $white;
-    border-left: 1px solid $white;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    width: 0.6em;
-    height: 0.6em;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    border-top: 1px solid $white;
-    border-right: 1px solid $white;
-  }
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   width: 0.6em;
+  //   height: 0.6em;
+  //   top: 0;
+  //   left: 0;
+  //   z-index: 1;
+  //   border-top: 1px solid $white;
+  //   border-left: 1px solid $white;
+  // }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   width: 0.6em;
+  //   height: 0.6em;
+  //   top: 0;
+  //   right: 0;
+  //   z-index: 1;
+  //   border-top: 1px solid $white;
+  //   border-right: 1px solid $white;
+  // }
 
   .content {
     padding: 2.5em;
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 0.6em;
-      height: 0.6em;
-      left: 0;
-      bottom: 0;
-      z-index: 1;
-      border-bottom: 1px solid $white;
-      border-left: 1px solid $white;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0.6em;
-      height: 0.6em;
-      bottom: 0;
-      right: 0;
-      z-index: 1;
-      border-bottom: 1px solid $white;
-      border-right: 1px solid $white;
-    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 0.6em;
+    //   height: 0.6em;
+    //   left: 0;
+    //   bottom: 0;
+    //   z-index: 1;
+    //   border-bottom: 1px solid $white;
+    //   border-left: 1px solid $white;
+    // }
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 0.6em;
+    //   height: 0.6em;
+    //   bottom: 0;
+    //   right: 0;
+    //   z-index: 1;
+    //   border-bottom: 1px solid $white;
+    //   border-right: 1px solid $white;
+    // }
   }
 
   .visual-media {

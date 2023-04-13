@@ -64,31 +64,32 @@ body[data-state="guide-step-2"] {
   color: $white;
   background-color: rgba($white, 0.12);
   text-align: center;
+  border-radius: 10px;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
   transition: all 0.41s;
 
-  &::before {
-    content: '';
-    position: absolute;
-    width: 0.6em;
-    height: 0.6em;
-    top: 0;
-    left: 0;
-    border-top: 1px solid $white;
-    border-left: 1px solid $white;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    width: 0.6em;
-    height: 0.6em;
-    top: 0;
-    right: 0;
-    border-top: 1px solid $white;
-    border-right: 1px solid $white;
-  }
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   width: 0.6em;
+  //   height: 0.6em;
+  //   top: 0;
+  //   left: 0;
+  //   border-top: 1px solid $white;
+  //   border-left: 1px solid $white;
+  // }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   width: 0.6em;
+  //   height: 0.6em;
+  //   top: 0;
+  //   right: 0;
+  //   border-top: 1px solid $white;
+  //   border-right: 1px solid $white;
+  // }
 
   .content {
     padding: 1.5em;
@@ -97,26 +98,26 @@ body[data-state="guide-step-2"] {
       padding: 1.3em;
     }
 
-    &::before {
-      content: '';
-      position: absolute;
-      width: 0.6em;
-      height: 0.6em;
-      left: 0;
-      bottom: 0;
-      border-bottom: 1px solid $white;
-      border-left: 1px solid $white;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0.6em;
-      height: 0.6em;
-      bottom: 0;
-      right: 0;
-      border-bottom: 1px solid $white;
-      border-right: 1px solid $white;
-    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 0.6em;
+    //   height: 0.6em;
+    //   left: 0;
+    //   bottom: 0;
+    //   border-bottom: 1px solid $white;
+    //   border-left: 1px solid $white;
+    // }
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 0.6em;
+    //   height: 0.6em;
+    //   bottom: 0;
+    //   right: 0;
+    //   border-bottom: 1px solid $white;
+    //   border-right: 1px solid $white;
+    // }
   }
 
   .p {
@@ -286,4 +287,8 @@ body[data-state="guide-step-2"] {
       letter-spacing: -0.02em;
     }
   }
+}
+
+html:lang(en) {
+  font-family: "canada-type-gibson", sans-serif;
 }

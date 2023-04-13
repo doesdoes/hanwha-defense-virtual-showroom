@@ -1,5 +1,5 @@
 .dropdown {
-  @extend .btn2-en;
+  @extend .btn3-en;
 
   @media all and (max-width: $tablet) {
     font-size: min(16px, 1.4rem);
@@ -10,6 +10,7 @@
   line-height: 1;
 
   &__selection {
+    @extend .btn3-en;
     width: 100%;
     height: auto;
     color: $black;
@@ -117,8 +118,14 @@ html:lang(ko) {
 }
 
 html:lang(en) {
+  .dropdown__selection, .btn-back .txt { 
+    font-family: "canada-type-gibson", sans-serif;   
+    font-weight: 200; 
+  }
+
   .dropdown__a[data-item="ENG"] {
     background-color: $white;
-    color: $point1;
+    //color: $point1;
+    font-family: "canada-type-gibson", sans-serif;
   }
 }
