@@ -215,20 +215,16 @@ window._WEBGL = (function() {
     if(STATE.WEBGL.isDebug) console.log(`WEBGL: scene %c${_sceneName} %cvisibility: ${_toggle}!`,'color:#3c6bef;','color:#unherit;')
 
     if( _toggle ) STATE.CURRENT_SCENE.NAME = _sceneName
-    // STATE.CURRENT_SCENE.VISIBLE = _toggle
-    // SCENE.toggleStages(_toggle, _sceneName)
-    //Update indicator
-
     const md = new MobileDetect(window.navigator.userAgent)
     const isMobile = md.mobile()
     
     const $condition = document.getElementById('change-condition')
     const $parts = document.querySelectorAll('.indicator-panel .part')    
 
-    let snowSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true);
-    let snowTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true);
-    let desertSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Desert_Dust_SEQAni", true);
-    let desertTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Desert_TrackSkid_SEQAni", true);
+    const snowSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Snow_Dust_SEQAni", true)
+    const snowTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Snow_TrackSkid_UVAni", true)
+    const desertSeqAni = STATE.WEBGL.scene.getObjectByName("BG_Desert_Dust_SEQAni", true)
+    const desertTrackSkid = STATE.WEBGL.scene.getObjectByName("BG_Desert_TrackSkid_SEQAni", true)
 
     if(_sceneName === "K9A1") {
       SCENE.toggleStages(_toggle, 'k9Tank')
@@ -248,7 +244,7 @@ window._WEBGL = (function() {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.k9a1Origin.positionM : STATE.ZONE_FOCUS.k9a1Origin.position
         STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.k9a1Origin.minAzimuth
         STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.k9a1Origin.maxAzimuth
-        SCENE.focusOnRegion('reset')
+        SCENE.focusOnRegion('reset', false)
 
         window.isAnim = false
         setHemisphereLightSnowDefault(STATE)
@@ -274,7 +270,7 @@ window._WEBGL = (function() {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.redbackOrigin.positionM : STATE.ZONE_FOCUS.redbackOrigin.position
         STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.redbackOrigin.minAzimuth
         STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.redbackOrigin.maxAzimuth
-        SCENE.focusOnRegion('reset')
+        SCENE.focusOnRegion('reset', false)
 
         window.isAnim = false
         setHemisphereLightDesertDefault(STATE)
@@ -299,7 +295,7 @@ window._WEBGL = (function() {
         STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
         STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
         
-        SCENE.focusOnRegion('reset')
+        SCENE.focusOnRegion('reset', false)
 
         window.isAnim = true
       }

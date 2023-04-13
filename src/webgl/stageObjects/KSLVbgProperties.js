@@ -83,8 +83,8 @@ export const MATERIALS = {
   "Cloud_Small_s": {
     "sRGBmode": true,
     "type": new THREE.MeshStandardMaterial(),
-    "map": "Cloud_Small_D.jpg",
-    "alphaMap": "Cloud_Small_D.jpg",
+    "map": "Cloud_Small_D.png",
+    "alphaMap": "Cloud_Small_D.png",
     "envMapIntensity": 0.2,
     "transparent": true,
     // "opacity": 0.5,

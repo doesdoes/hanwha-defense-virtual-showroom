@@ -1,9 +1,14 @@
 import * as THREE from 'three'
-import {gsap} from 'gsap/all';
+import { gsap } from 'gsap/all'
 import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
-import { StageObject } from './class/StageObject.js'
-import { STATE, ASSETS } from './global.js'
 import CameraControls from 'camera-controls'
+
+import { STATE, ASSETS } from './global.js'
+import { createSpriteTween } from './utils.js'
+import { StageObject } from './class/StageObject.js'
+import UILoadingManager from './class/UILoadingManager.js'
+import { sendGLCustomEvent } from './class/GLCustomEvent.js'
+import { initLights, updateLights, setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
 
 import * as DESERT_BG_PROPERTIES from './stageObjects/desertBgProperties.js'
 import * as K9_TANK_PROPERTIES from './stageObjects/k9TankProperties.js'
@@ -17,27 +22,20 @@ import * as KSLV_PROPERTIES from './stageObjects/KSLVProperties.js'
 import * as KSLV_BG_PROPERTIES from './stageObjects/KSLVbgProperties.js'
 import * as KSLV_LAUNCHER_PROPERTIES from './stageObjects/KSLVlauncherProperties.js'
 
-import { sendGLCustomEvent } from './class/GLCustomEvent.js'
-
-import { initLights, updateLights, setHemisphereLightSnowDefault, setHemisphereLightDesertDefault } from './light.js'
-import { createSpriteTween } from './utils.js'
-import UILoadingManager from './class/UILoadingManager.js'
-
 const md = new MobileDetect(window.navigator.userAgent)
 const isMobile = md.mobile()
 
-export function loadStage( sceneName, callback ) {
-  console.log(`:: LOADING STAGE ::`)
-  
+export function loadStage( sceneName, callback ) {  
   const uiLoadingManager = new UILoadingManager()
 
+  // light initialization
   initLights()
 
   switch (sceneName) {
     case 'K9A1':
       updateSceneSettings('K9A1')
       setHemisphereLightSnowDefault(STATE)
-      const k9Points = [];
+      const k9Points = []
       let spriteObjectDust, spriteObjectWind, spriteObjectTrackSkid = null
 
       const TANK_MESH = ASSETS.K9A1.MODEL_FILES.find( obj => { return obj.name === "k9Tank" } )
@@ -110,14 +108,8 @@ export function loadStage( sceneName, callback ) {
       // [NOTE] 맵 mesh/uv 애니메이션
       SNOW_OBJECT.clone.traverse((child) => {
         // UV
-        if(child.name === 'BG_Snow_Ground_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.snowFloor.mesh = child  
-        }
-
-        if(child.name === 'BG_SpeedLine_UVAni') {
-          spriteObjectWind = child
-        }
-
+        if(child.name === 'BG_Snow_Ground_UVAni') STATE.UV_ANIMATED_OBJECTS.snowFloor.mesh = child
+        if(child.name === 'BG_SpeedLine_UVAni') spriteObjectWind = child
         if(child.name === 'BG_Snow_Tree_Far_LoopAni'
         || child.name === 'BG_Snow_Tree_Near_LoopAni'
         || child.name === 'Snow_Rock_Part01'
@@ -129,15 +121,11 @@ export function loadStage( sceneName, callback ) {
 
       // [NOTE] 탱크 mesh/uv 애니메이션
       TANK_OBJECT.clone.traverse((child) => {
-        if(child.name === 'Track_LT_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
-        }
-
+        if(child.name === 'Track_LT_UVAni') STATE.UV_ANIMATED_OBJECTS.rails.mesh = child
         if(child.name === 'BG_Snow_TrackSkid_UVAni') {
           child.visible = false
           spriteObjectTrackSkid = child
         }
-
         if(child.name === 'BG_Snow_Dust_SEQAni') {
           child.visible = false
           spriteObjectDust = child
@@ -229,45 +217,23 @@ export function loadStage( sceneName, callback ) {
       DESERT_OBJECT.clone.visible = false
 
       if(DESERT_MESH.asset.animations.length > 0){
-        // console.log(DESERT_MESH.asset.animations)
         STATE.ANIMATIONS._DESERT.mixer = new THREE.AnimationMixer( DESERT_OBJECT.clone )
         DESERT_MESH.asset.animations.forEach(anim => {
           STATE.ANIMATIONS._DESERT.mixer.clipAction( anim )
         })
-        // STATE.ANIMATIONS._DESERT.mixer.clipAction( DESERT_MESH.asset.animations[0] ).play()
       }
 
       // [NOTE] 맵 mesh/uv 애니메이션
       DESERT_OBJECT.clone.traverse((child) => {
-        console.log(child.name)
         // UV
-        if(child.name === 'BG_Desert_Ground_UVAni') {
-          STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
-        }
-
-        if(child.name === 'BG_SpeedLine_UVAni') {
-          // STATE.UV_ANIMATED_OBJECTS.desertSpeedLine.mesh = child
-          spriteDesertWind = child
-        }
-
-        if(child.name === 'Tire_Line_UV') {
-          STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
-        }
-
-        if(child.name === 'BG_Cloud_UVAni') {
-          child.visible = false
-        }
-
-        // MESH
-        
+        if(child.name === 'BG_Desert_Ground_UVAni') STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
+        if(child.name === 'BG_SpeedLine_UVAni') spriteDesertWind = child
+        if(child.name === 'Tire_Line_UV') STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
+        if(child.name === 'BG_Cloud_UVAni') child.visible = false
       })
 
       REDBACK_OBJECT.clone.traverse(child => {
-
-        if(child.name === 'TANK_REDBACK_Track') {
-          STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
-        }
-
+        if(child.name === 'TANK_REDBACK_Track') STATE.UV_ANIMATED_OBJECTS.redbackRails.mesh = child
         if(child.name === 'BG_Desert_TrackSkid_SEQAni') {
           child.visible = false
           spriteDesertTrackSkid = child
@@ -356,9 +322,6 @@ export function loadStage( sceneName, callback ) {
           const POI = new CSS2DObject( document.getElementById(child.name) )
           child.add( POI )
 
-          //child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
-          // STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
-          
           POI.element.addEventListener('click', function(e){
             STATE.IS_FOCUSED = true 
             focusOnRegion(child.name)
@@ -398,9 +361,7 @@ export function loadStage( sceneName, callback ) {
 }
 
 function setSobelFocus(mesh) {
-  // console.log(mesh.name, mesh)
   switch (mesh.name) {
-
     // K9A1
     case 'Joint_TANK_K9A1_Head_Cannon_01':
       STATE.ZONE_FOCUS['longerFiringRange'].sobelObj = mesh
@@ -425,9 +386,7 @@ function setSobelFocus(mesh) {
   }
 }
 
-function setUI(sceneName, points) {
-  console.log(`:: setting UI ::`)
-  
+function setUI(sceneName, points) {  
   updatePointVisible(points)
   requestAnimationFrame(updatePoint)
   function updatePoint() {
@@ -438,7 +397,6 @@ function setUI(sceneName, points) {
   document.querySelectorAll(`.popup-container[data-item="${sceneName}"] .btn-close`).forEach(btnClose => {
     btnClose.addEventListener('click', function(e) {
       focusOnRegion('reset')
-      // const $popup = document.querySelector('#point-popup')
       const $popup = this.closest('.poi-popup')
       gsap.to($popup, { autoAlpha: 0, duration: 0.5 })
       e.preventDefault()
@@ -486,8 +444,6 @@ function updateSceneSettings(_scene) {
   if(_scene == 'kslv') {
     STATE.WEBGL.scene.environment = STATE.LAUNCHER_HDR
     STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
-    STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
-    STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
     // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
@@ -505,8 +461,6 @@ function updateSceneSettings(_scene) {
   }else {
     STATE.WEBGL.scene.environment = null
     STATE.WEBGL.renderer.outputEncoding = THREE.LinearEncoding
-    STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
-    STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
     STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.ROTATE
@@ -553,9 +507,7 @@ function updateKSLVenvironment(_region) {
   }
 }
 
-export function focusOnRegion( _region ) {
-  console.log(':: focusing on region ::', _region)
-
+export function focusOnRegion( _region, _anim = true ) {
   STATE.WEBGL.parallax = false
 
   if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)
@@ -585,17 +537,15 @@ export function focusOnRegion( _region ) {
     STATE.ZONE_FOCUS[_region].target.x,
     STATE.ZONE_FOCUS[_region].target.y,
     STATE.ZONE_FOCUS[_region].target.z,
-    true 
+    _anim 
   ).then(() => {
     if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
     STATE.WEBGL.ACTIVE_FOCUS = _region
-    STATE.WEBGL.parallax = true
+    if(STATE.CURRENT_SCENE.NAME == 'KSLV') STATE.WEBGL.parallax = true
   })
 }
 
 export function toggleStages( toggle, sceneName ) {
-  console.log(`:: toggle stages ::`, toggle, sceneName)
-
   updateSceneSettings(sceneName)
   updateLights(sceneName)
   
