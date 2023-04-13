@@ -44,6 +44,8 @@ body[data-state="guide-step-2"] {
 
   .guide-popup {
     opacity: 1;
+
+    @extend .body4;
   }
 
   .btn-close-guide {
@@ -69,6 +71,10 @@ body[data-state="guide-step-2"] {
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
   transition: all 0.41s;
+  font-size: max(12px, 0.9375rem); 
+  line-height:1.6;
+  font-weight: 400;
+  letter-spacing: 0.015em;
 
   // &::before {
   //   content: '';
@@ -153,9 +159,12 @@ body[data-state="guide-step-2"] {
 
   @media all and (max-width: $mobile) {
 
-    font-size: min(16px, 1.4rem);
+    font-size: max(16px, 1.25rem);
     line-height: 1.5;
     letter-spacing: -0.02em;
+    html:lang(en) & { 
+      font-family: "canada-type-gibson", sans-serif;
+    }
 
     &[data-item="dropdown"] {
     }

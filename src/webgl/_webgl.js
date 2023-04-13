@@ -231,7 +231,7 @@ window._WEBGL = (function() {
       SCENE.toggleStages(_toggle, 'k9a1IndoorBg')
       SCENE.toggleStages(false, 'snowBg')
 
-      $condition.style.display = 'block'
+      $condition.style.display = 'inline-flex'
       $condition.setAttribute('data-item', 'k9a1IndoorBg')
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
@@ -258,7 +258,7 @@ window._WEBGL = (function() {
       SCENE.toggleStages(_toggle, 'redbackIndoorBg')
       SCENE.toggleStages(false, 'desertBg')
 
-      $condition.style.display = 'block'
+      $condition.style.display = 'inline-flex'
       $condition.setAttribute('data-item', 'redbackIndoorBg')
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
@@ -282,7 +282,7 @@ window._WEBGL = (function() {
     } else if(_sceneName === "KSLV") {
       SCENE.toggleStages(_toggle, 'kslv')
 
-      $condition.style.display = 'none'
+      $condition.style.display = 'inline-flex'
       Array.from($parts).map((part, idx) => {
         const $txt = part.querySelector('.txt')
         const partData = data['kslv-indicators'][idx]
