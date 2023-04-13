@@ -486,8 +486,6 @@ function updateSceneSettings(_scene) {
   if(_scene == 'kslv') {
     STATE.WEBGL.scene.environment = STATE.LAUNCHER_HDR
     STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
-    STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
-    STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
     // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
@@ -505,8 +503,6 @@ function updateSceneSettings(_scene) {
   }else {
     STATE.WEBGL.scene.environment = null
     STATE.WEBGL.renderer.outputEncoding = THREE.LinearEncoding
-    STATE.WEBGL.renderer.toneMapping = THREE.LinearToneMapping
-    STATE.WEBGL.renderer.toneMappingExposure = 1.0
 
     STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
     STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.ROTATE
@@ -589,7 +585,7 @@ export function focusOnRegion( _region ) {
   ).then(() => {
     if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
     STATE.WEBGL.ACTIVE_FOCUS = _region
-    STATE.WEBGL.parallax = true
+    if(STATE.CURRENT_SCENE.NAME == 'KSLV') STATE.WEBGL.parallax = true
   })
 }
 
