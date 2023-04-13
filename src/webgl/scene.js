@@ -549,7 +549,7 @@ function updateKSLVenvironment(_region) {
   }
 }
 
-export function focusOnRegion( _region ) {
+export function focusOnRegion( _region, _anim = true ) {
   console.log(':: focusing on region ::', _region)
 
   STATE.WEBGL.parallax = false
@@ -581,7 +581,7 @@ export function focusOnRegion( _region ) {
     STATE.ZONE_FOCUS[_region].target.x,
     STATE.ZONE_FOCUS[_region].target.y,
     STATE.ZONE_FOCUS[_region].target.z,
-    true 
+    _anim 
   ).then(() => {
     if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
     STATE.WEBGL.ACTIVE_FOCUS = _region

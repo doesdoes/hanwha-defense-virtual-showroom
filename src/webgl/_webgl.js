@@ -244,7 +244,7 @@ window._WEBGL = (function() {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.k9a1Origin.positionM : STATE.ZONE_FOCUS.k9a1Origin.position
         STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.k9a1Origin.minAzimuth
         STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.k9a1Origin.maxAzimuth
-        SCENE.focusOnRegion('reset')
+        SCENE.focusOnRegion('reset', false)
 
         window.isAnim = false
         setHemisphereLightSnowDefault(STATE)
@@ -270,7 +270,7 @@ window._WEBGL = (function() {
         STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.redbackOrigin.positionM : STATE.ZONE_FOCUS.redbackOrigin.position
         STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.redbackOrigin.minAzimuth
         STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.redbackOrigin.maxAzimuth
-        SCENE.focusOnRegion('reset')
+        SCENE.focusOnRegion('reset', false)
 
         window.isAnim = false
         setHemisphereLightDesertDefault(STATE)
@@ -295,7 +295,7 @@ window._WEBGL = (function() {
         STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
         STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
         
-        SCENE.focusOnRegion('reset')
+        SCENE.focusOnRegion('reset', false)
 
         window.isAnim = true
       }
