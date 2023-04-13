@@ -30,13 +30,6 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   setContent()
   setUIEvent()
 
-  // ***** TEMP ACCESS ROCKET PAGE ******
-  if(location.hash == '#rocket') {
-    setTimeout(() => {
-      toggleItem('KSLV')
-    }, 50)
-  }
-
   if(isMobile) {
     // document.querySelectorAll('.entry__item').forEach($entryItem => {
     //   $entryItem.addEventListener('click', function() {
@@ -330,7 +323,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
               _WEBGL.toggleRendering(true)
 
               loadingSpinner.hide()
-            }, 1000)
+            }, 3000)
           })
         })
       }
