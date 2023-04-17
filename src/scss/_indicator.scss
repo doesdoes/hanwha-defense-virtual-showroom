@@ -117,7 +117,23 @@
     letter-spacing: -0.01em;
   }
 
+  .condition-wrap {
+    [data-state="KSLV"] & {
+      display: none;
+    }
+  }
+
   [data-bp="mobile"] { display: none; }
+
+  @media all and (max-width: $tablet) {
+    [data-bp="web"] {
+      display: none;
+    }
+
+    [data-bp="mobile"] {
+      display: inline-flex;
+    }
+  }
 }
 
 .bot {
