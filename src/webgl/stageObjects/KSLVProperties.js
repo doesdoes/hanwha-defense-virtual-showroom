@@ -14,11 +14,11 @@ export const MATERIALS = {
     "map": "KSLV_II_D.jpg",
     "aoMap": "KSLV_II_AO.jpg",
     "roughnessMap": "KSLV_II_R.jpg",
-    "roughness": 0.5,
+    "roughness": 0.75,
     "metalnessMap": "KSLV_II_M.jpg",
     "metalness": 1,
     "normalMap": "KSLV_II_N.jpg",
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   "KSLV_II_Insaid_s": {
@@ -26,7 +26,7 @@ export const MATERIALS = {
     "type": new THREE.MeshPhysicalMaterial(),
     "roughness": 0.25,
     "metalness": 1,
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   }
 }
