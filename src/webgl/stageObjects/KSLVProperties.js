@@ -12,20 +12,21 @@ export const MATERIALS = {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
     "map": "KSLV_II_D.jpg",
+    "aoMap": "KSLV_II_AO.jpg",
     "roughnessMap": "KSLV_II_R.jpg",
-    "roughness": 0.1,
+    "roughness": 0.75,
     "metalnessMap": "KSLV_II_M.jpg",
     "metalness": 1,
     "normalMap": "KSLV_II_N.jpg",
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
-  "KSLV_II_Insaid_s": {
+  "KSLV_II_Inside_s": {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
-    "roughness": 0.25,
+    "roughness": 0.3,
     "metalness": 1,
-    "envMapIntensity": 1,
+    "envMapIntensity": 0.3,
     "flipY": false,
   }
 }

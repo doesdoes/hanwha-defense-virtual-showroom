@@ -263,8 +263,8 @@ export function loadStage( sceneName, callback ) {
       break
 
     case 'KSLV':
-      const HDR_TEST = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "test" } ).asset)
-      STATE.GALAXY_HDR = HDR_TEST.texture
+      const HDR_GALAXY = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "galaxy" } ).asset)
+      STATE.GALAXY_HDR = HDR_GALAXY.texture
 
       const HDR_LAUNCHER = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "launcher" } ).asset)
       STATE.LAUNCHER_HDR = HDR_LAUNCHER.texture

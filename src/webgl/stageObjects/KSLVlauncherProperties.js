@@ -15,7 +15,7 @@ export const MATERIALS = {
     "aoMap": "Launcher_Floor_AO.jpg",
     "roughnessMap": "Launcher_ORM.jpg",
     "metalnessMap": "Launcher_ORM.jpg",
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   "Launcher_Main_s": {
@@ -25,7 +25,7 @@ export const MATERIALS = {
     "aoMap": "Launcher_Main_AO.jpg",
     "roughnessMap": "Launcher_ORM.jpg",
     "metalnessMap": "Launcher_ORM.jpg",
-    "envMapIntensity": 1,
+    "envMapIntensity": 2,
     "flipY": false,
   },
   "Launcher_Prop_s": {
@@ -35,13 +35,13 @@ export const MATERIALS = {
     "aoMap": "Launcher_Prop_AO.jpg",
     "roughnessMap": "Launcher_ORM.jpg",
     "metalnessMap": "Launcher_ORM.jpg",
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   "Launcher_Floor_Light_s": {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
 } 
