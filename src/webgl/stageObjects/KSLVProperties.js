@@ -21,12 +21,12 @@ export const MATERIALS = {
     "envMapIntensity": 1.5,
     "flipY": false,
   },
-  "KSLV_II_Insaid_s": {
+  "KSLV_II_Inside_s": {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
-    "roughness": 0.25,
+    "roughness": 0.3,
     "metalness": 1,
-    "envMapIntensity": 1.5,
+    "envMapIntensity": 0.3,
     "flipY": false,
   }
 }
