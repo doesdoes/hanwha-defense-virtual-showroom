@@ -14,10 +14,10 @@
     { "id": "isuRubberTrack", "title": "ISU & Rubber Track"}
   ],
   "kslv-indicators": [
-    { "id": "ton75classEngine", "title": "75-ton-class Engine"},
+    { "id": "ton75classEngine", "title": "75-ton Engine"},
     { "id": "engineClustering", "title": "Engine Clustering"},
-    { "id": "liquidEngineFuelSystem", "title": "Liquid Engine Fuel System"},
-    { "id": "ton7classEngine", "title": "7-ton-class Engine"},
-    { "id": "collisionPreventionSystem", "title": "Collision Prevention System"}
+    { "id": "liquidEngineFuelSystem", "title": "Propellant Feed System"},
+    { "id": "ton7classEngine", "title": "7-ton Engine"},
+    { "id": "collisionPreventionSystem", "title": "Fairing Separation System"}
   ]
 }
