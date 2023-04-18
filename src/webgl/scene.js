@@ -445,9 +445,9 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.scene.environment = STATE.LAUNCHER_HDR
     STATE.WEBGL.renderer.outputEncoding = THREE.sRGBEncoding
 
-    STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
-    // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
-    STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.ROTATE
+    // STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.DOLLY
+    STATE.WEBGL.cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE
+    STATE.WEBGL.cameraControls.mouseButtons.left = CameraControls.ACTION.NONE
     STATE.WEBGL.cameraControls.touches.one = CameraControls.ACTION.NONE
 
     STATE.WEBGL.cameraControls.minPolarAngle = THREE.MathUtils.degToRad(80)
