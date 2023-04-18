@@ -319,7 +319,7 @@ window._WEBGL = (function() {
     if( !STATE.ENABLE_RENDERING ) return
     // STATE.WEBGL.cameraControls.normalizeRotations()
     STATE.WEBGL.cameraControls.update( STATE.WEBGL.cameraClock.getDelta() )
-    if(STATE.WEBGL.parallax) parallax( time )
+    //if(STATE.WEBGL.parallax) parallax( time )
 
     // update animation mixer
     const dTime = STATE.WEBGL.clock.getDelta()

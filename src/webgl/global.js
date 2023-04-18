@@ -318,7 +318,7 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     engineClustering: {
-      position: new THREE.Vector3(5.6, -21.49, 2.96),
+      position: new THREE.Vector3(7.83, -20.62, 7.8),
       target: new THREE.Vector3(1.26, -22.33, 0.74),
       // targetOffset: new THREE.Vector3(1,0,0),
       minAzimuth: -Infinity,
@@ -337,7 +337,7 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     collisionPreventionSystem: {
-      position: new THREE.Vector3(3.95, 1.62, -5.00),
+      position: new THREE.Vector3(4.51, 0.87, -8.11),
       target: new THREE.Vector3(2.1686, 2.8143, 2.6509),
       minAzimuth: -Infinity,
       maxAzimuth: Infinity,
@@ -430,7 +430,7 @@ export const ASSETS = {
     TEXTURES_FILES: [],
     HDR_FILES: [
       {
-        name: 'test',
+        name: 'galaxy',
         loaded: false,
         path : 'hdr/Galaxy_hdr.hdr',
         asset: null
@@ -438,7 +438,7 @@ export const ASSETS = {
       {
         name: 'launcher',
         loaded: false,
-        path : 'hdr/Sky_hdr.hdr',
+        path : 'hdr/quarry_04_1k.hdr',
         asset: null
       },
     ]
