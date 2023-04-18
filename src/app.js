@@ -99,7 +99,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
   function gateToWebglView(item) {    
     let guideProductName
-    if(item === 'K9A1') guideProductName = 'K9 SPH'
+    if(item === 'K9A1') guideProductName = (document.documentElement.lang === 'ko' ? 'K9 자주포' : 'K9 SPH')
     else if(item === 'REDBACK') guideProductName = 'REDBACK IFV'
     else if(item === 'KSLV') guideProductName = 'KSLV'
 
