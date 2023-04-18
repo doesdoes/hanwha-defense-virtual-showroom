@@ -122,17 +122,37 @@
 
   .tit {
     padding-bottom: 0.86em;
+    font-size: max(20px, 1.75rem);
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-family: "canada-type-gibson",sans-serif;
+
     @media all and (max-width: $tablet) {
-      font-size: min(28px, 2rem);
+      font-size: max(24px, 2.75rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      font-family: "canada-type-gibson",sans-serif;
     }
   }
 
   .p {
     font-weight: 100;
+    font-size: max(12px, 0.9375rem);
+    line-height: 1.6;
+    letter-spacing: -0.015em;
+    font-family: "HanwhaGothic",sans-serif;
+
+    html:lang(en) {
+      font-family: "canada-type-gibson",sans-serif;
+    }
 
     @media all and (max-width: $tablet) {
-      font-size: min(16px, 1.4rem);
-      letter-spacing: -0.02em;
+      font-size: max(16px, 1.25rem);
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+      font-family: "HanwhaGothic",sans-serif;
     }
   }
 

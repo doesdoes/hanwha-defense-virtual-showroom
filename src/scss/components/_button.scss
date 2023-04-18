@@ -273,29 +273,31 @@
         }
       }
 
-      &:hover{
-        .txt{
-          transform: translate(0, -150%);
-          opacity: .5;
-        }
-        .icon{
-          &::before{
-            transform: translate(150%,-50%);
+      @media (hover: hover) {
+        &:hover{
+          .txt{
+            transform: translate(0, -150%);
+            opacity: .5;
           }
-  
-          &::after{
-            transform: translate(-50%,-50%);
-          }
-        }
-
-        &[dir='plus']{
           .icon{
             &::before{
-              transform: translate(-50%,-50%);
+              transform: translate(150%,-50%);
             }
     
             &::after{
-              transform: translate(-250%,-50%);
+              transform: translate(-50%,-50%);
+            }
+          }
+  
+          &[dir='plus']{
+            .icon{
+              &::before{
+                transform: translate(-50%,-50%);
+              }
+      
+              &::after{
+                transform: translate(-250%,-50%);
+              }
             }
           }
         }
@@ -329,9 +331,12 @@
           height: to-em($px : 16px, $base : $size-s-font);
         }
       }
-      &:hover{
-        .txt{
-          opacity: .5;
+
+      @media (hover: hover) {
+        &:hover{
+          .txt{
+            opacity: .5;
+          }
         }
       }
 
@@ -362,14 +367,17 @@
         opacity: 1;
       }
     }
-    &:hover{
-      .icon{
-        transform: translate(0, 200%);
-      }
-      &::after{
-        transform: translate(0, 0%);
+    @media (hover: hover) {
+      &:hover{
+        .icon{
+          transform: translate(0, 200%);
+        }
+        &::after{
+          transform: translate(0, 0%);
+        }
       }
     }
+
     &.is-active{
       .icon{
         transform: translate(0, 200%) rotate(180deg);
@@ -400,8 +408,10 @@
     border: 1px solid rgba($black, 0.2);
     transition: $btn-default-transition;
 
-    &:hover{
-      border-color: rgba($black, 1);
+    @media (hover: hover) {
+      &:hover{
+        border-color: rgba($black, 1);
+      }
     }
 
     .txt{

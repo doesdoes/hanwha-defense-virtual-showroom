@@ -226,12 +226,6 @@
 
         .headline-5, .headline-3-en {
           color: $white;
-          &:hover {
-            .txt {
-              transform: none;
-            }
-          }
-
           
           .txt { 
             margin-top: to-em($px: 7px, $base: 34px);
