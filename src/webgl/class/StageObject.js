@@ -145,7 +145,7 @@ export class StageObject{
         
         this.needToBeUpdated.push( {mesh: child, clonedMaterial: cloneMat} )
 
-        if(STATE.WEBGL.isDebug) if(cloneMat.name == "Earth_Cloud_s") console.log(cloneMat)
+        if(STATE.WEBGL.isDebug) if(cloneMat.name == "Earth_Night_s") console.log(cloneMat)
       }
     })
 

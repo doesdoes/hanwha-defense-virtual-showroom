@@ -329,6 +329,21 @@ export function loadStage( sceneName, callback ) {
           })
 
           kslvPoints.push(child)
+
+          // Line test
+          if(child.name == 'liquidEngineFuelSystem') {
+            const target = KSLV_OBJECT.clone.getObjectByName("liquidEngineFuelSystemTarget", true)
+            const material = new THREE.LineBasicMaterial( { color: 0xf37321 } )
+
+            const points = []
+            points.push( child.position )
+            points.push( target.position )
+            
+            const geometry = new THREE.BufferGeometry().setFromPoints( points )
+            const line = new THREE.Line( geometry, material )
+
+            STATE.WEBGL.scene.add( line )
+          }
         }
 
         if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
