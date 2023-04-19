@@ -12,7 +12,7 @@ export const MATERIALS = {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
     "map": "KSLV_II_D.jpg",
-    "aoMap": "KSLV_II_AO.jpg",
+    "aoMap": "KSLV_II_AO_BlueTone.jpg",
     "roughnessMap": "KSLV_II_R.jpg",
     "roughness": 0.75,
     "metalnessMap": "KSLV_II_M.jpg",

@@ -95,8 +95,8 @@ export const STATE = {
     clouds: {
       mesh: null,
       animate: function() {
-        if(this.mesh && this.mesh.material.map != undefined) 
-          this.mesh.material.map.offset.x += 0.00006
+        if(this.mesh && this.mesh.material.alphaMap != undefined) 
+          this.mesh.material.alphaMap.offset.x -= 0.00004
       }
     },
     earthDay: {
