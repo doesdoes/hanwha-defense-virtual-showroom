@@ -469,6 +469,7 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
 
     STATE.WEBGL.camera.fov = (isMobile) ? 60 : 45
+    STATE.WEBGL.camera.near = 1
     STATE.WEBGL.camera.updateProjectionMatrix()    
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
@@ -485,6 +486,7 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(95)
 
     STATE.WEBGL.camera.fov = 45
+    STATE.WEBGL.camera.near = 0.1
     STATE.WEBGL.camera.updateProjectionMatrix() 
   }
 }
