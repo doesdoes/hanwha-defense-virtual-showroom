@@ -17,7 +17,7 @@ import i18next from "i18next"
           "guide360": "제품을 360도 돌려보고<br> 추가정보를 확인해보세요",
           "guide1": "제품명을 클릭해서 다른 제품의 쇼룸 이동해보세요",
           "guide2": "다양한 환경에서도 최적화되어있는 <span class='guide-product-name'>K9 자주포</span>의 모습을 확인해보세요",
-          "guide3": "<span class='guide-product-name'>K9 자주포</span> 더 자세히 알아보세요",
+          "guide3": "<span class='guide-product-name'>K9 자주포</span>에 대해 더 자세히 알아보세요",
           "close": "닫기",
         },
         "K9A1": {
