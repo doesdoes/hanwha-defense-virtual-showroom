@@ -119,7 +119,7 @@
   }
 
   .condition-wrap {
-    [data-scene="KSLV"] & {
+    [data-scene="누리호"] &, [data-state="KSLV"] &, [data-scene="Nuri Project"] & {
       display: none;
     }
   }
