@@ -329,6 +329,21 @@ export function loadStage( sceneName, callback ) {
           })
 
           kslvPoints.push(child)
+
+          // Line test
+          if(child.name == 'liquidEngineFuelSystem') {
+            const target = KSLV_OBJECT.clone.getObjectByName("liquidEngineFuelSystemTarget", true)
+            const material = new THREE.LineBasicMaterial( { color: 0xf37321 } )
+
+            const points = []
+            points.push( child.position )
+            points.push( target.position )
+            
+            const geometry = new THREE.BufferGeometry().setFromPoints( points )
+            const line = new THREE.Line( geometry, material )
+
+            STATE.WEBGL.scene.add( line )
+          }
         }
 
         if(child.name == 'KSLV') STATE.ANIMATED_OBJECTS.rocket.mesh = child
@@ -454,6 +469,7 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(100)
 
     STATE.WEBGL.camera.fov = (isMobile) ? 60 : 45
+    STATE.WEBGL.camera.near = 1
     STATE.WEBGL.camera.updateProjectionMatrix()    
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
@@ -470,6 +486,7 @@ function updateSceneSettings(_scene) {
     STATE.WEBGL.cameraControls.maxPolarAngle = THREE.MathUtils.degToRad(95)
 
     STATE.WEBGL.camera.fov = 45
+    STATE.WEBGL.camera.near = 0.1
     STATE.WEBGL.camera.updateProjectionMatrix() 
   }
 }
