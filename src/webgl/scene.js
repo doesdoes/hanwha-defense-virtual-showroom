@@ -547,6 +547,8 @@ export function focusOnRegion( _region, _anim = true ) {
   STATE.WEBGL.cameraControls.minAzimuthAngle = STATE.ZONE_FOCUS[_region].minAzimuth
   STATE.WEBGL.cameraControls.maxAzimuthAngle = STATE.ZONE_FOCUS[_region].maxAzimuth
 
+  if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
+
   STATE.WEBGL.cameraControls.setLookAt( 
     STATE.ZONE_FOCUS[_region].position.x,
     STATE.ZONE_FOCUS[_region].position.y,
@@ -556,7 +558,6 @@ export function focusOnRegion( _region, _anim = true ) {
     STATE.ZONE_FOCUS[_region].target.z,
     _anim 
   ).then(() => {
-    if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
     STATE.WEBGL.ACTIVE_FOCUS = _region
     if(STATE.CURRENT_SCENE.NAME == 'KSLV') STATE.WEBGL.parallax = true
   })

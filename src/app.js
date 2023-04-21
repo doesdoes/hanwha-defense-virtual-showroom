@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     const $popup = document.querySelector(`[data-popup=${e.detail.msg}]`)
     if(isShowroom && $popup) {
       gsap.set($popup, { scale: 0.5 })
-      gsap.to($popup, { autoAlpha: 1, scale: 1, duration: 0.7, ease: Quint.easeInOut })
+      gsap.to($popup, { autoAlpha: 1, scale: 1, delay: 0.3, duration: 0.7, ease: Quint.easeInOut })
       window.UI.$currentPopup = $popup
 
       const video = $popup.querySelector('video')
