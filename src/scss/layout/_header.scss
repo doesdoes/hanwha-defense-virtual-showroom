@@ -84,7 +84,7 @@
     background-color: rgba($white, 0.5);
     top: 0.63em;
 
-    [data-scene="KSLV"] & {
+    [data-scene="누리호"] &, [data-state="KSLV"] &, [data-scene="Nuri Project"] & {
       display: none;
     }
 
@@ -165,7 +165,7 @@
     .kind {
       opacity: 1;
 
-      [data-scene="KSLV"] & {
+      [data-scene="누리호"] &, [data-state="KSLV"] &, [data-scene="Nuri Project"] & {
         display: none;
       }
     }

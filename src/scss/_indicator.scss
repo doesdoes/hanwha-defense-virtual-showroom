@@ -47,7 +47,7 @@
     cursor: pointer;
     font-size: max(12px, 0.875rem);
     letter-spacing: -0.01em;
-    font-weight: 200;
+    font-weight: 400;
 
     &::before {
       content: '';
@@ -112,14 +112,14 @@
     border-radius: 10px;
     min-width: auto;
     width: 100%;
-    font-weight: 200;
+    font-weight: 400;
     font-size: max(14px, 1rem);
     letter-spacing: -0.01em;
     justify-content: center;
   }
 
   .condition-wrap {
-    [data-scene="KSLV"] & {
+    [data-scene="누리호"] &, [data-state="KSLV"] &, [data-scene="Nuri Project"] & {
       display: none;
     }
   }
