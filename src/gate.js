@@ -65,7 +65,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
   const $k9a1Video = $entry.querySelector('.entry__item--top video.hover')
   const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point')
   const $redbackVideo = $entry.querySelector('.entry__item--bottom video.hover')
-  console.log($redbackVideo)
 
   $entryKSLV.addEventListener('mouseenter', function() {
     $entry.classList.add('is-left')
@@ -97,7 +96,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
     $entry.classList.add('is-bottom')
     gsap.to('.entry__item--bottom video.in', {autoAlpha: 0})
     $redbackVideo.play()
-    console.log('coucou')
     // gsap.to($redbackTit, { textFillColor: '#000' })
   })
 
