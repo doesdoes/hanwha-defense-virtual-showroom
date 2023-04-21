@@ -68,9 +68,8 @@ export function loadStage( sceneName, callback ) {
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
           STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
           
-          POI.element.addEventListener('click', function(e){
-            STATE.IS_FOCUSED = true 
-            focusOnRegion(child.name)
+          POI.element.addEventListener('click', function(e) {            
+            if(STATE.FOCUSED_SCENE != child.name) focusOnRegion(child.name)
             e.preventDefault()
           })
 
@@ -186,9 +185,8 @@ export function loadStage( sceneName, callback ) {
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
           STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
 
-          POI.element.addEventListener('click', function(e){
-            STATE.IS_FOCUSED = true 
-            focusOnRegion(child.name)
+          POI.element.addEventListener('click', function(e) {
+            if(STATE.FOCUSED_SCENE != child.name) focusOnRegion(child.name)
             e.preventDefault()
           })
 
@@ -322,9 +320,8 @@ export function loadStage( sceneName, callback ) {
           const POI = new CSS2DObject( document.getElementById(child.name) )
           child.add( POI )
 
-          POI.element.addEventListener('click', function(e){
-            STATE.IS_FOCUSED = true 
-            focusOnRegion(child.name)
+          POI.element.addEventListener('click', function(e) {
+            if(STATE.FOCUSED_SCENE != child.name) focusOnRegion(child.name)
             e.preventDefault()
           })
 
@@ -525,6 +522,8 @@ function updateKSLVenvironment(_region) {
 }
 
 export function focusOnRegion( _region, _anim = true ) {
+  if(_region !== 'reset') STATE.IS_FOCUSED = true
+  STATE.FOCUSED_SCENE = _region
   STATE.WEBGL.parallax = false
 
   if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)

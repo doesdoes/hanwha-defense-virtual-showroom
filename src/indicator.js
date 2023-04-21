@@ -6,8 +6,7 @@ export function setIndicator() {
   document.querySelectorAll(`.indicator-panel .parts .part`).forEach(part => {
     part.addEventListener('click', function() {
       const feature = this.getAttribute('data-feature')
-      STATE.IS_FOCUSED = true 
-      SCENE.focusOnRegion(feature)
+      if(STATE.FOCUSED_SCENE != feature) SCENE.focusOnRegion(feature)
     })
   })
 }
