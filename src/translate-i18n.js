@@ -73,7 +73,7 @@ import i18next from "i18next"
           "engineClustering": "Our development efforts involved utilizing a clustering method to combine four 75-ton liquid engines, generating a total thrust of 300 tons, and we were able to ensure structural stability of the engines while producing the same thrust as a single engine, thereby contributing to technological advancements. ​",
           "liquidEngineFuelSystem": "For the first time in Korea, the Korea Aerospace Research Institute and Hanwha Aerospace jointly developed a propulsion supply system for medium-sized liquid-propellant launch vehicles. This system consists of supply pipes, charging and discharge valves, and enables stable launch performance through uninterrupted fuel supply.",
           "ton7classEngine": "The third stage of the Nuri rocket will be outfitted with a liquid-propellant engine featuring a gas generator cycle identical to that of the 75-ton engine.",
-          "collisionPreventionSystem": "The K9 self-propelled howitzer can carry up to 48 rounds of ammunition at maximum capacity. With full automation of the ammunition supply, transportation, and loading process, the K9A2 self-propelled howitzer currently under development is expected to have a much-improved firing speed.",
+          "collisionPreventionSystem": "This system is designed to control fairing separation to safeguard the satellite. ",
         },
       },
     }
