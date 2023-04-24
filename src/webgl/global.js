@@ -308,6 +308,8 @@ export const STATE = {
       position: new THREE.Vector3(0.28,-0.59,-2.08),
       target: new THREE.Vector3(0,0,0),
       targetOffset: new THREE.Vector3(0,0.4,0),
+      minAzimuth: 2.5,
+      maxAzimuth: 3.8,
       sobelObj: new THREE.Mesh(),
     },
 
