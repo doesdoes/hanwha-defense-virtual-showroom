@@ -38,6 +38,8 @@ window._WEBGL = (function() {
         STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`
         break
       case '121.162.20.78:1116':
+      case '192.168.79.1:1116':
+      case '192.168.79.9:1116':
       case 'localhost:1116':
       case 'localhost:3030':
       case '0.0.0.0:1116':

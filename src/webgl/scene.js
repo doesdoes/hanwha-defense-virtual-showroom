@@ -261,6 +261,12 @@ export function loadStage( sceneName, callback ) {
       break
 
     case 'KSLV':
+      if(isMobile) {
+        KSLV_PROPERTIES.PROPERTIES.texturesQuality = 'low'
+        KSLV_LAUNCHER_PROPERTIES.PROPERTIES.texturesQuality = 'low'
+        KSLV_BG_PROPERTIES.PROPERTIES.texturesQuality = 'low'
+      }
+
       const HDR_GALAXY = STATE.WEBGL.pmremGenerator.fromEquirectangular(ASSETS.KSLV.HDR_FILES.find( obj => { return obj.name === "galaxy" } ).asset)
       STATE.GALAXY_HDR = HDR_GALAXY.texture
 
