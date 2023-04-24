@@ -4,44 +4,32 @@ import {gsap, Quint, Expo} from 'gsap/all'
   const md = new MobileDetect(window.navigator.userAgent)
   const isMobile = md.mobile()
 
-  if(isMobile) {
-    const videoInMobile = document.querySelector('.gate video.in-mobile')
-    videoInMobile.play()
-    videoInMobile.addEventListener('timeupdate', function() {
-      if(this.duration - this.currentTime < 2) {
 
-        document.querySelectorAll('.gate video.in').forEach(video => {
-          startInMotion(video)
+  const videoPromises = []
+  document.querySelectorAll('.gate video.in').forEach(video => {
+    videoPromises.push(new Promise((resolve) => {
+        video.src = video.dataset.src
+        video.addEventListener('loadedmetadata', function() {
+          resolve()
         })
+      }))
+
+    video.addEventListener('timeupdate', function() {
+      if(this.duration - this.currentTime < 2) {
+        startInMotion(this)
+      }
+
+      if(this.duration - this.currentTime < 0.1) {
+        gsap.to(this, {autoAlpha: 0})
       }
     })
 
-  } else {
-    const videoPromises = []
-    document.querySelectorAll('.gate video.in').forEach(video => {
-      videoPromises.push(new Promise((resolve) => {
-          video.src = video.dataset.src
-          video.addEventListener('loadedmetadata', function() {
-            resolve()
-          })
-        }))
+  })
 
-      video.addEventListener('timeupdate', function() {
-        if(this.duration - this.currentTime < 2) {
-          startInMotion(this)
-        }
-
-        if(this.duration - this.currentTime < 0.1) {
-          gsap.to(this, {autoAlpha: 0})
-        }
-      })
-
-    })
-
-    Promise.all(videoPromises).then(() => {
-      document.querySelectorAll('.gate video.in').forEach(video => video.play())
-    })
-  }
+  Promise.all(videoPromises).then(() => {
+    document.querySelectorAll('.gate video.in').forEach(video => video.play())
+  })
+  
 
   function startInMotion(video) {
     const $entry =  video.closest('[data-item]')
@@ -82,20 +70,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
     // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
   })
 
-  
-  // $entryTitleKSLV.addEventListener('mouseenter', function() {
-  //   $entry.classList.add('is-left')
-  //   gsap.to('.entry__item--left video.in', {autoAlpha: 0})
-  //   $kslvVideo.play()
-  // })
-
-  // $entryTitleKSLV.addEventListener('mouseleave', function() {
-  //   $entry.classList.remove('is-left')
-  //   $kslvVideo.playBackwards()
-  //   // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
-  // })
-
-
   //K9
   $entryK9a1.addEventListener('mouseenter', function() {
     $entry.classList.add('is-top')
@@ -110,19 +84,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
     // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
   })
 
-  // $entryTitleK9a1.addEventListener('mouseenter', function() {
-  //   $entry.classList.add('is-top')
-  //   gsap.to('.entry__item--top video.in', {autoAlpha: 0})
-  //   $k9a1Video.play()
-  //   // gsap.to($k9a1Tit, { textFillColor: '#000' })
-  // })
-
-  // $entryTitleK9a1.addEventListener('mouseleave', function() {
-  //   $entry.classList.remove('is-top')
-  //   $k9a1Video.playBackwards()
-  //   // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
-  // })
-
   // REDBACK
   $entryRedback.addEventListener('mouseenter', function() {
     $entry.classList.add('is-bottom')
@@ -136,18 +97,7 @@ import {gsap, Quint, Expo} from 'gsap/all'
     $redbackVideo.playBackwards()
     // gsap.to($redbackTit, { textFillColor: 'transparent' })
   })
-  // $entryTitleRedback.addEventListener('mouseenter', function() {
-  //   $entry.classList.add('is-bottom')
-  //   gsap.to('.entry__item--bottom video.in', {autoAlpha: 0})
-  //   $redbackVideo.play()
-  //   // gsap.to($redbackTit, { textFillColor: '#000' })
-  // })
 
-  // $entryTitleRedback.addEventListener('mouseleave', function() {
-  //   $entry.classList.remove('is-bottom')
-  //   $redbackVideo.playBackwards()
-  //   // gsap.to($redbackTit, { textFillColor: 'transparent' })
-  // })
 
   HTMLVideoElement.prototype.playBackwards = function() {
     this.pause();
