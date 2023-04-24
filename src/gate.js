@@ -59,13 +59,13 @@ import {gsap, Quint, Expo} from 'gsap/all'
   }
 
   const $entry = document.querySelector('.gate .entry')
-  const $entryKSLV = $entry.querySelector('.entry__item--left .btn-entry-point.bttn')
+  const $entryKSLV = $entry.querySelector('.entry__item--left .btn-entry-point')
   // const $entryTitleKSLV = $entry.querySelector('.entry__item--left .btn-entry-point.tit')
   const $kslvVideo = $entry.querySelector('.entry__item--left video.hover')
-  const $entryK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point.bttn')
+  const $entryK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point')
   // const $entryTitleK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point.tit')
   const $k9a1Video = $entry.querySelector('.entry__item--top video.hover')
-  const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point.bttn')
+  const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point')
   // const $entryTitleRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point.tit')
   const $redbackVideo = $entry.querySelector('.entry__item--bottom video.hover')
 
