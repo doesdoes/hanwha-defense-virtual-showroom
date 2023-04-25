@@ -57,7 +57,7 @@ export const MATERIALS = {
   "Earth_Cloud_s": {
     "sRGBmode": true,
     "type": new THREE.MeshStandardMaterial(),
-    "color": new THREE.Color("0xB5C3CE"),
+    "color": new THREE.Color(0xB5C3CE),
     // "map": "Earth_Cloud_D.jpg",
     "alphaMap": "Earth_Cloud_D.jpg",
     "envMapIntensity": 2,
