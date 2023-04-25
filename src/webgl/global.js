@@ -223,8 +223,8 @@ export const STATE = {
       maxAzimuth: Infinity,
     },
     kslvOrigin: {
-      position: new THREE.Vector3(0, 0, 80),
-      positionM: new THREE.Vector3(0, 0, 80),
+      position: new THREE.Vector3(5, -18, 60),
+      positionM: new THREE.Vector3(5, -18, 60),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: -0.7,
       maxAzimuth: 0.7,
