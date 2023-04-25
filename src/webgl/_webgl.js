@@ -42,6 +42,7 @@ window._WEBGL = (function() {
       case '192.168.79.9:1116':
       case 'localhost:1116':
       case 'localhost:3030':
+      case 'localhost:3000':
       case '0.0.0.0:1116':
       case 'localhost:3030':
         STATE.ASSET_DOMAIN_PATH = `/assets/webgl`
