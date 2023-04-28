@@ -125,7 +125,7 @@
     &.is-left {
       .entry__item--right {
         .bg::after {
-          background-color: rgba($black, 0.35);
+          background-color: rgba($black, 0.6);
         }
 
         .entry__inner {
@@ -137,7 +137,7 @@
     &.is-top {
       .entry__item--left {
         .bg::after {
-          background-color: rgba($black, 0.35);
+          background-color: rgba($black, 0.6);
         }
 
         .entry__inner {
@@ -147,7 +147,7 @@
 
       .entry__item--bottom {
         .bg::after {
-          background-color: rgba($black, 0.35);
+          background-color: rgba($black, 0.6);
         }
 
         .entry__inner {
@@ -159,7 +159,7 @@
     &.is-bottom {
       .entry__item--left {
         .bg::after {
-          background-color: rgba($black, 0.35);
+          background-color: rgba($black, 0.6);
         }
 
         .entry__inner {
@@ -169,7 +169,7 @@
       
       .entry__item--top {
         .bg::after {
-          background-color: rgba($black, 0.35);
+          background-color: rgba($black, 0.6);
         }
 
         .entry__inner {
