@@ -11,7 +11,7 @@ export const MATERIALS = {
   "Galaxy_BG_s": {
     "sRGBmode": true,
     "type": new THREE.MeshBasicMaterial(),
-    "map": "Galaxy_BG_D.jpg",
+    "map": "test.jpg",
     "flipY": false,
   },
   "Earth_KarmanLine_s": {
@@ -80,7 +80,7 @@ export const MATERIALS = {
     "opacity": 0.25,
     "depthWrite": false,
     "flipY": false,
-    "blending": 2
+    "blending": 2,
   },
   "Cloud_Small_s": {
     "sRGBmode": true,
@@ -93,6 +93,6 @@ export const MATERIALS = {
     "opacity": 0.25,
     "depthWrite": false,
     "flipY": false,
-    "blending": 2
+    "blending": 2,
   }
 } 

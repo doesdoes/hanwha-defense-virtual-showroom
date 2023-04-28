@@ -333,8 +333,6 @@ export function loadStage( sceneName, callback ) {
 
           kslvPoints.push(child)
 
-          console.log(child.name, child.position)
-
           // Popup lines
           if(STATE.POPUP_LINES_TARGETS[child.name]) {
             let originPos = child.position
