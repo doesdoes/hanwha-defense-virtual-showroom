@@ -333,19 +333,19 @@ export function loadStage( sceneName, callback ) {
 
           kslvPoints.push(child)
 
-          // Line test
-          if(child.name == 'liquidEngineFuelSystem') {
-            const target = KSLV_OBJECT.clone.getObjectByName("liquidEngineFuelSystemTarget", true)
-            const material = new THREE.LineBasicMaterial( { color: 0xf37321 } )
+          console.log(child.name, child.position)
 
-            const points = []
-            points.push( child.position )
-            points.push( target.position )
-            
-            const geometry = new THREE.BufferGeometry().setFromPoints( points )
-            const line = new THREE.Line( geometry, material )
+          // Popup lines
+          if(STATE.POPUP_LINES_TARGETS[child.name]) {
+            let originPos = child.position
+            if(child.name == 'ton7classEngine') originPos = new THREE.Vector3(-0.8364, -2.1841, -5.1432)
+            if(child.name == 'collisionPreventionSystem') originPos = new THREE.Vector3(1.9876, 3.006, 3.223)
 
-            STATE.WEBGL.scene.add( line )
+            const geometry = new THREE.BufferGeometry().setFromPoints( [originPos, STATE.POPUP_LINES_TARGETS[child.name]] )
+            const line = new THREE.Line( geometry, STATE.POPUP_LINES_MATERIAL )
+            STATE.POPUP_LINES[child.name] = line
+            STATE.POPUP_LINES[child.name].visible = false
+            STATE.WEBGL.scene.add( STATE.POPUP_LINES[child.name] )
           }
         }
 
@@ -533,6 +533,10 @@ export function focusOnRegion( _region, _anim = true ) {
   STATE.WEBGL.parallax = false
 
   if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)
+
+  // popup lines visibility
+  for (const key in STATE.POPUP_LINES) STATE.POPUP_LINES[key].visible = false
+  if(STATE.POPUP_LINES[_region]) STATE.POPUP_LINES[_region].visible = true
 
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)

@@ -3,7 +3,7 @@ import { STATE } from './global.js'
 
 // parallax effect on mouse hover
 export function parallax(_delta){
-  const [ xMul, yMul, lerpFactor ] = [ 5, 5, 0.01 ]
+  const [ xMul, yMul, lerpFactor ] = [ 4, 4, 0.01 ]
 
   const { mouse, cameraControls, ACTIVE_FOCUS } = STATE.WEBGL
 
