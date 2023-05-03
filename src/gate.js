@@ -37,7 +37,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
     })
 
     document.querySelector('.gate video.in').addEventListener('timeupdate', function() {
-      console.log(this.duration, this.currentTime)
       if(this.duration - this.currentTime < 0.05) {
         document.querySelectorAll('.gate .product').forEach(entry => {
           startInMotion(entry)
@@ -54,7 +53,6 @@ import {gsap, Quint, Expo} from 'gsap/all'
 
   function startInMotion(entry) {
     const $entry =  entry.closest('[data-item]')
-    console.log(entry)
     if($entry.classList.contains('in')) return
 
     $entry.classList.add('in')
