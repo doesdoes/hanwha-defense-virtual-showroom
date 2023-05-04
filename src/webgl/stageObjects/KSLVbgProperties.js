@@ -82,10 +82,11 @@ export const MATERIALS = {
     "flipY": false,
     "blending": 2,
   },
-  "Cloud_Small_s": {
+  "Cloud_Small_s.001": {
     "sRGBmode": true,
     "type": new THREE.MeshBasicMaterial(),
-    "map": "Cloud_Small_D.png",
+    "color": new THREE.Color(0xECCDB5),
+    // "map": "Cloud_Small_D.png",
     "alphaMap": "Cloud_Small_D.png",
     "envMapIntensity": 0,
     "envMap": null,
@@ -93,6 +94,7 @@ export const MATERIALS = {
     "opacity": 0.25,
     "depthWrite": false,
     "flipY": false,
-    "blending": 2,
+    "blending": 1,
+    "visible": false
   }
 } 

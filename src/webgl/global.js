@@ -323,13 +323,13 @@ export const STATE = {
     },
 
     ton75classEngine: {
-      position: new THREE.Vector3(-0.356, -22.09, 3.56),
+      position: new THREE.Vector3(-0.356, -21.9, 3.56),
       target: new THREE.Vector3(-0.38, -22.40, 1.82),
       minAzimuth: -Infinity,
       maxAzimuth: Infinity,
     },
     engineClustering: {
-      position: new THREE.Vector3(7.83, -20.62, 7.8),
+      position: new THREE.Vector3(3.83, -20.62, 7.8),
       target: new THREE.Vector3(1.26, -22.33, 0.74),
       // targetOffset: new THREE.Vector3(1,0,0),
       minAzimuth: -Infinity,
@@ -449,7 +449,7 @@ export const ASSETS = {
       {
         name: 'launcher',
         loaded: false,
-        path : 'hdr/quarry_04_1k.hdr',
+        path : 'hdr/forest.hdr',
         asset: null
       },
     ]
