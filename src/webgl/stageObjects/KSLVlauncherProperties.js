@@ -74,7 +74,7 @@ export const MATERIALS = {
     "aoMap": "Launcher_Prop_AO.jpg",
     "roughnessMap": "Launcher_ORM.jpg",
     "metalnessMap": "Launcher_ORM.jpg",
-    "metalness": 0.5,
+    "metalness": 0.6,
     "roughness": 0.5,
     "envMapIntensity": 1.5,
     "flipY": false,
