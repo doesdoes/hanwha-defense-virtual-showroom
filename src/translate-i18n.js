@@ -36,6 +36,7 @@ import i18next from "i18next"
           "isuRubberTrack": "ISU와 고무궤도를 장착하여 뛰어난 승차감과 안정된 기동성능을 확보하였습니다.",
         },
         "KSLV": {
+          "title": "누리호",
           "ton75classEngine": "나로호 개발 당시 선행연구로 진행한 30톤급 액체 엔진 기술을 바탕으로 개발을 진행해, 연소불안정 현상의 기술적 한계를 극복하고 지상 연소시험과 시험발사체 발사를 통한 비행성능 시험을 거쳐 세계 7번째로 중대형 액체엔진 개발에 성공하였습니다​",
           "engineClustering": "75톤급 액체엔진 4기를 묶어 300톤의 추력을 내는 클러스터링(Clustering)방식을 활용하였으며, 4기의 엔진을 구조적 안정성을 유지하면서 마치 하나의 엔진처럼 동일한 추력을 내는 기술 개발에 기여하였습니다.​",
           "liquidEngineFuelSystem": "항우연과 한화는 국내 최초로 중형급 액체 발사체 추진공급계를 개발에 참여하였습니다. 균등한 추진제 공급을 통해 안정적인 발사 성능을 구현하며 공급 배관 및 충전 배출/개폐 밸브 등으로 구성됩니다. ",
@@ -69,6 +70,7 @@ import i18next from "i18next"
           "isuRubberTrack": "ISU and rubber tracks are installed to ensure excellent ride quality and stable maneuverability.",
         },
         "KSLV": {
+          "title": "NURI PROJECT",
           "ton75classEngine": "Leveraging the 30-ton liquid engine technology we developed for the Naro rocket through preliminary research, we were able to surmount the technical obstacles related to combustion instability. Through static firing tests on the ground and test firing conducted to evaluate flight performance, we successfully developed a large liquid-propellant engine, becoming the 7th country in the world to achieve this feat. ​",
           "engineClustering": "Our development efforts involved utilizing a clustering method to combine four 75-ton liquid engines, generating a total thrust of 300 tons, and we were able to ensure structural stability of the engines while producing the same thrust as a single engine, thereby contributing to technological advancements. ​",
           "liquidEngineFuelSystem": "For the first time in Korea, the Korea Aerospace Research Institute and Hanwha Aerospace jointly developed a propulsion supply system for medium-sized liquid-propellant launch vehicles. This system consists of supply pipes, charging and discharge valves, and enables stable launch performance through uninterrupted fuel supply.",
