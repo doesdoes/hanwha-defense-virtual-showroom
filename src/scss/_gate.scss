@@ -20,6 +20,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: none;
   }
 
   video.in-mobile {
@@ -198,11 +199,11 @@
   @media all and (max-width: $tablet) {
     height: var(--cover-height);
 
-    video.in-mobile {
+    video.in-mobile, img.in-mobile {
       display: block;
     }
 
-    video.in-web {
+    video.in-web, img.in-web {
       display: none;
     }
 
