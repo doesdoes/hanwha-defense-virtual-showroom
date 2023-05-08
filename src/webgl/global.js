@@ -18,7 +18,7 @@ export const STATE = {
   POPUP_LINES_TARGETS: {
     ton75classEngine: new THREE.Vector3(-1.58, -22.40, 1.82),
     engineClustering: new THREE.Vector3(-1.75, -22.04, 3.10),
-    liquidEngineFuelSystem: new THREE.Vector3(-7.05, -8.84, 6.71),
+    liquidEngineFuelSystem: new THREE.Vector3(-6.55, -8.5, 6.71),
     ton7classEngine: new THREE.Vector3(5, -1.78, -5.14),
     collisionPreventionSystem: new THREE.Vector3(7.87, 3.07, 3.20),
   },
