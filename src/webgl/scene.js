@@ -278,6 +278,7 @@ export function loadStage( sceneName, callback ) {
       updateSceneSettings('KSLV')
 
       const kslvPoints = []
+      STATE.KSLVPOINTS = kslvPoints
       STATE.LAUNCHPAD_OBJECTS = []
 
       const KSLV_LAUNCHER_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslvLauncher" } )
@@ -447,8 +448,6 @@ function updatePointVisible(points) {
       else 
         return
 
-      // console.log(point.name, d, offset)
-
       if(d < offset) {
         gsap.to(`#${point.name}`, {autoAlpha: 1, duration: 1})
       } else {
@@ -499,6 +498,9 @@ function updateKSLVenvironment(_region) {
 
   let launchPadVisibility
 
+  console.log(STATE.KSLVPOINTS)
+  
+
   if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
     STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
     STATE.ZONE_FOCUS.reset.position = isMobile ? STATE.ZONE_FOCUS.kslvGalaxyOrigin.positionM : STATE.ZONE_FOCUS.kslvGalaxyOrigin.position
@@ -506,6 +508,8 @@ function updateKSLVenvironment(_region) {
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvGalaxyOrigin.maxAzimuth
     launchPadVisibility = false
+
+    STATE.KSLVPOINTS[2].position.x = 9999
 
     STATE.ANIMATED_OBJECTS.rocket.reset = false
     STATE.playRocket(1)
@@ -516,6 +520,8 @@ function updateKSLVenvironment(_region) {
     STATE.ZONE_FOCUS.reset.minAzimuth = STATE.ZONE_FOCUS.kslvOrigin.minAzimuth
     STATE.ZONE_FOCUS.reset.maxAzimuth = STATE.ZONE_FOCUS.kslvOrigin.maxAzimuth
     launchPadVisibility = true
+
+    STATE.KSLVPOINTS[2].position.x = 0
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
     STATE.resetRocket()
@@ -535,12 +541,14 @@ export function focusOnRegion( _region, _anim = true ) {
   if(STATE.CURRENT_SCENE.NAME == 'KSLV') updateKSLVenvironment(_region)
 
   // popup lines visibility
-  for (const key in STATE.POPUP_LINES) STATE.POPUP_LINES[key].visible = false
-  if(STATE.POPUP_LINES[_region]) {
-    clearTimeout(popupLineTimeout)
-    popupLineTimeout = setTimeout(() => {
-      STATE.POPUP_LINES[_region].visible = true
-    }, 500)
+  if(!isMobile) {
+    for (const key in STATE.POPUP_LINES) STATE.POPUP_LINES[key].visible = false
+    if(STATE.POPUP_LINES[_region]) {
+      clearTimeout(popupLineTimeout)
+      popupLineTimeout = setTimeout(() => {
+        STATE.POPUP_LINES[_region].visible = true
+      }, 500)
+    }
   }
 
   if(window.UI.$currentPopup) {

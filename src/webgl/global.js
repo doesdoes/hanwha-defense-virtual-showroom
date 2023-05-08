@@ -240,7 +240,7 @@ export const STATE = {
     },
     kslvGalaxyOrigin: {
       position: new THREE.Vector3(8.48, -2.99, -14.73),
-      positionM: new THREE.Vector3(8.48, -2.99, -14.73),
+      positionM: new THREE.Vector3(8.48, -3.99, -16.73),
       target: new THREE.Vector3(0,0,0),
       minAzimuth: 2.5,
       maxAzimuth: 3.1,
