@@ -31,8 +31,6 @@ window._WEBGL = (function() {
   function createContext(_parentContainerClass, _containerId, _debug, _isMobile = false) {
     let host = window.location.host
 
-    console.log(host)
-
     switch (host) {
       case 'dev.does.kr':
         STATE.ASSET_DOMAIN_PATH = `https://${host}/2022/showroom/assets`

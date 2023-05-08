@@ -496,10 +496,7 @@ function updateSceneSettings(_scene) {
 function updateKSLVenvironment(_region) {
   if(_region == 'reset') return
 
-  let launchPadVisibility
-
-  console.log(STATE.KSLVPOINTS)
-  
+  let launchPadVisibility  
 
   if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
     STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
