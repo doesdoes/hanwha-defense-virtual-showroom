@@ -105,6 +105,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
     document.body.setAttribute('data-scene', guideProductName)
 
+    $audio.src = (item === 'KSLV') ? "/assets/webgl/content/nuriho.mp3" : "/assets/webgl/content/539_full_transformers-war_0144.mp3"
+
     function showUI() {
       gsap.to(`.indicator-panel`, { autoAlpha: 1, x: 0, delay: 0.5, duration: 0.7, pointerEvents: 'initial' })
       gsap.to('.bot', {autoAlpha: 1, x: 0, delay: 0.7, duration: 0.6})
@@ -333,7 +335,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   // [NOTE] WEBGL
   let MAIN_ASSET_LOADED = false
 
-  _WEBGL.createContext('.webgl-container', 'webgl', true, isMobile)
+  _WEBGL.createContext('.webgl-container', 'webgl', false, isMobile)
 });
 
 function setUIEvent() {
