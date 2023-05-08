@@ -544,7 +544,7 @@ export function focusOnRegion( _region, _anim = true ) {
       clearTimeout(popupLineTimeout)
       popupLineTimeout = setTimeout(() => {
         STATE.POPUP_LINES[_region].visible = true
-      }, 500)
+      }, 800)
     }
   }
 
