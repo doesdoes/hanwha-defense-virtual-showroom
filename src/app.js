@@ -59,7 +59,9 @@ window.addEventListener('DOMContentLoaded', async (event) => {
   })
 
   document.addEventListener('visibilitychange', () => {
-    if( document.visibilityState === 'visible' && $sound.classList.contains('on') ) $audio.play();
+    const dataScene = document.body.getAttribute('data-scene')
+    
+    if( document.visibilityState === 'visible' && $sound.classList.contains('on') && dataScene != '' ) $audio.play();
     else $audio.pause();
   });
 
@@ -238,6 +240,8 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     $audio.currentTime = 0
 
     gsap.to('.poi-container', { autoAlpha: 0 })
+
+    document.body.setAttribute('data-scene', '')
   }
 
   function toggleItem(item) {
