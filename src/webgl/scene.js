@@ -25,6 +25,8 @@ import * as KSLV_LAUNCHER_PROPERTIES from './stageObjects/KSLVlauncherProperties
 const md = new MobileDetect(window.navigator.userAgent)
 const isMobile = md.mobile()
 
+let popupLineTimeout
+
 export function loadStage( sceneName, callback ) {  
   const uiLoadingManager = new UILoadingManager()
 
@@ -534,7 +536,12 @@ export function focusOnRegion( _region, _anim = true ) {
 
   // popup lines visibility
   for (const key in STATE.POPUP_LINES) STATE.POPUP_LINES[key].visible = false
-  if(STATE.POPUP_LINES[_region]) STATE.POPUP_LINES[_region].visible = true
+  if(STATE.POPUP_LINES[_region]) {
+    clearTimeout(popupLineTimeout)
+    popupLineTimeout = setTimeout(() => {
+      STATE.POPUP_LINES[_region].visible = true
+    }, 500)
+  }
 
   if(window.UI.$currentPopup) {
     gsap.killTweensOf(window.UI.$currentPopup)

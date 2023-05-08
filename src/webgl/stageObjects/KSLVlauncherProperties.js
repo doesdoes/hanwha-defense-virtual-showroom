@@ -13,7 +13,7 @@ export const MATERIALS = {
     "type": new THREE.MeshPhysicalMaterial(),
     "map": "Floor_Base_D.jpg",
     "aoMap": "Launcher_Floor_Base_AO.jpg",
-    "envMapIntensity": 1.0,
+    "envMapIntensity": 1.5,
     "flipY": false,
     "mapTiling":{
       repeatX: 1,
@@ -25,7 +25,7 @@ export const MATERIALS = {
     "type": new THREE.MeshPhysicalMaterial(),
     "map": "Floor_Main_D.jpg",
     "aoMap": "Launcher_Floor_Main_AO.jpg",
-    "envMapIntensity": 1.0,
+    "envMapIntensity": 1.5,
     "flipY": false,
     "mapTiling":{
       repeatX: 1,
@@ -39,7 +39,7 @@ export const MATERIALS = {
     "aoMap": "Launcher_Floor_Center_AO.jpg",
     "metalness": 0.35,
     "roughness": 0.47,
-    "envMapIntensity": 1.0,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   "Launcher_Main_s": {
@@ -51,7 +51,7 @@ export const MATERIALS = {
     "metalnessMap": "Launcher_ORM.jpg",
     "metalness": 0.8,
     "roughness": 0.6,
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   "Launchingpad_s": {
@@ -64,7 +64,7 @@ export const MATERIALS = {
     "normalMap": "Launchingpad_N.jpg",
     "metalness": 1,
     "roughness": 0.5,
-    "envMapIntensity": 1,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   "Launcher_Prop_s": {
@@ -74,15 +74,15 @@ export const MATERIALS = {
     "aoMap": "Launcher_Prop_AO.jpg",
     "roughnessMap": "Launcher_ORM.jpg",
     "metalnessMap": "Launcher_ORM.jpg",
-    "metalness": 0.5,
+    "metalness": 0.6,
     "roughness": 0.5,
-    "envMapIntensity": 1.0,
+    "envMapIntensity": 1.5,
     "flipY": false,
   },
   // "Launcher_Floor_Light_s": {
   //   "sRGBmode": true,
   //   "type": new THREE.MeshPhysicalMaterial(),
-  //   "envMapIntensity": 1.5,
+  //   "envMapIntensity": 2.5,
   //   "flipY": false,
   // },
 } 
