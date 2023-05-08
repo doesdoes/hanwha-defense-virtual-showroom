@@ -59,9 +59,9 @@ import {gsap, Quint, Expo} from 'gsap/all'
     const $tit = $entry.querySelector('.tit')
     const $desc = $entry.querySelector('.desc')
     const $func = $entry.querySelector('.func')
-    gsap.to($tit, { y: 0, duration: 1.01, ease: Expo.easeInOut })
-    gsap.to($desc, { y: 0, delay: 0.1, duration: 1.01, ease: Expo.easeInOut })
-    gsap.to($func, { y: 0, delay: 0.2, duration: 1.01, ease: Expo.easeInOut, onComplete: () => {
+    gsap.to($tit, { y: 0, duration: 0.1, ease: Expo.easeInOut })
+    gsap.to($desc, { y: 0, duration: 0.1, ease: Expo.easeInOut })
+    gsap.to($func, { y: 0, duration: 0.1, ease: Expo.easeInOut, onComplete: () => {
       
     }})
   }
@@ -116,21 +116,21 @@ import {gsap, Quint, Expo} from 'gsap/all'
   })
 
 
-  HTMLVideoElement.prototype.playBackwards = function() {
-    this.pause();
+  // HTMLVideoElement.prototype.playBackwards = function() {
+  //   this.pause();
 
-    var video = this;
+  //   var video = this;
 
-    var fps = 25;
-    var intervalRewind = setInterval(function() {
-        if(video.currentTime == 0){
-           clearInterval(intervalRewind);
-           video.pause();
-        }
-        else {
-            video.currentTime += -(1/fps);
-        }
-    }, 1000 / fps);
-  };
+  //   var fps = 25;
+  //   var intervalRewind = setInterval(function() {
+  //       if(video.currentTime == 0){
+  //          clearInterval(intervalRewind);
+  //          video.pause();
+  //       }
+  //       else {
+  //           video.currentTime += -(1/fps);
+  //       }
+  //   }, 1000 / fps);
+  // };
 
 })()
