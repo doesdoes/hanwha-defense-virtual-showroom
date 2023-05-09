@@ -64,54 +64,40 @@ import {gsap, Quint, Expo} from 'gsap/all'
     gsap.to($func, { y: 0, duration: 0.1, ease: Expo.easeInOut })
   }
 
-  const $entry = document.querySelector('.gate .entry')
-  const $entryKSLV = $entry.querySelector('.entry__item--left .btn-entry-point')
-  // const $kslvVideo = $entry.querySelector('.entry__item--left video.hover')
-  const $entryK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point')
-  // const $k9a1Video = $entry.querySelector('.entry__item--top video.hover')
-  const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point')
-  // const $redbackVideo = $entry.querySelector('.entry__item--bottom video.hover')
-
+  
   // KSLV
-  $entryKSLV.addEventListener('mouseenter', function() {
-    $entry.classList.add('is-left')
-    // gsap.to('.entry__item--left video.in', {autoAlpha: 0})
-    // $kslvVideo.play()
-  })
-
-  $entryKSLV.addEventListener('mouseleave', function() {
-    $entry.classList.remove('is-left')
-    //$kslvVideo.playBackwards()
-    // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
-  })
-
-  //K9
-  $entryK9a1.addEventListener('mouseenter', function() {
-    $entry.classList.add('is-top')
-    // gsap.to('.entry__item--top video.in', {autoAlpha: 0})
-    // $k9a1Video.play()
-    // gsap.to($k9a1Tit, { textFillColor: '#000' })
-  })
-
-  $entryK9a1.addEventListener('mouseleave', function() {
-    $entry.classList.remove('is-top')
-    //$k9a1Video.playBackwards()
-    // gsap.to($k9a1Tit, { textFillColor: 'transparent' })
-  })
-
-  // REDBACK
-  $entryRedback.addEventListener('mouseenter', function() {
-    $entry.classList.add('is-bottom')
-    // gsap.to('.entry__item--bottom video.in', {autoAlpha: 0})
-    // $redbackVideo.play()
-    // gsap.to($redbackTit, { textFillColor: '#000' })
-  })
-
-  $entryRedback.addEventListener('mouseleave', function() {
-    $entry.classList.remove('is-bottom')
-    // $redbackVideo.playBackwards()
-    // gsap.to($redbackTit, { textFillColor: 'transparent' })
-  })
+  if(!isMobile) {
+    const $entry = document.querySelector('.gate .entry')
+    const $entryKSLV = $entry.querySelector('.entry__item--left .btn-entry-point')
+    const $entryK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point')
+    const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point')
+    
+    $entryKSLV.addEventListener('mouseenter', function() {
+      $entry.classList.add('is-left')
+    })
+  
+    $entryKSLV.addEventListener('mouseleave', function() {
+      $entry.classList.remove('is-left')
+    })
+  
+    //K9
+    $entryK9a1.addEventListener('mouseenter', function() {
+      $entry.classList.add('is-top')
+    })
+  
+    $entryK9a1.addEventListener('mouseleave', function() {
+      $entry.classList.remove('is-top')
+    })
+  
+    // REDBACK
+    $entryRedback.addEventListener('mouseenter', function() {
+      $entry.classList.add('is-bottom')
+    })
+  
+    $entryRedback.addEventListener('mouseleave', function() {
+      $entry.classList.remove('is-bottom')
+    })
+  }
 
 
   // HTMLVideoElement.prototype.playBackwards = function() {
