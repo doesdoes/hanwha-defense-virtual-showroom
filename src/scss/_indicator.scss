@@ -154,6 +154,12 @@
     left: $h-padding-gap;
     bottom: 7,4vmin;
 
+    [data-state="KSLV"] &, 
+    [data-scene="Nuri Project"] &,
+    [data-scene="누리호"] & {
+      justify-content: center;
+    }
+
     // > .btn,
     // > * {
     //   width: 50%;
