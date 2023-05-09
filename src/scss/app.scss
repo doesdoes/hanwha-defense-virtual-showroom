@@ -2,7 +2,11 @@
 
 @import './core/font';
 @import './core/reset';
+//web
 @import './core/typography';
+//mobile
+//@import './core/typography-mobile';
+
 
 @import './abstracts/helper';
 @import './abstracts/mixins';
