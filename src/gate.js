@@ -37,7 +37,7 @@ import {gsap, Quint, Expo} from 'gsap/all'
     })
 
     document.querySelector('.gate video.in').addEventListener('timeupdate', function() {
-      if(this.duration - this.currentTime < 0.05 && !isMobile) {
+      if(this.duration - this.currentTime < 0.05) {
         document.querySelectorAll('.gate .product').forEach(entry => {
           startInMotion(entry)
         })
@@ -56,11 +56,14 @@ import {gsap, Quint, Expo} from 'gsap/all'
     if($entry.classList.contains('in')) return
 
     $entry.classList.add('in')
-    const $tit = $entry.querySelector('.tit')
-    const $desc = $entry.querySelector('.desc')
+    if(!isMobile) {
+      const $tit = $entry.querySelector('.tit')
+      const $desc = $entry.querySelector('.desc')
+      gsap.to($tit, { y: 0, duration: 0.1, ease: Expo.easeInOut })
+      gsap.to($desc, { y: 0, duration: 0.1, ease: Expo.easeInOut })
+    }
+    
     const $func = $entry.querySelector('.func')
-    gsap.to($tit, { y: 0, duration: 0.1, ease: Expo.easeInOut })
-    gsap.to($desc, { y: 0, duration: 0.1, ease: Expo.easeInOut })
     gsap.to($func, { y: 0, duration: 0.1, ease: Expo.easeInOut })
   }
 
