@@ -35,7 +35,7 @@ export const MATERIALS = {
   "Launcher_Floor_Center_s": {
     "sRGBmode": true,
     "type": new THREE.MeshPhysicalMaterial(),
-    "color": new THREE.Color("rgb(51,76,77)"),
+    "color": new THREE.Color("rgb(48,65,65)"),
     "aoMap": "Launcher_Floor_Center_AO.jpg",
     "metalness": 0.35,
     "roughness": 0.47,

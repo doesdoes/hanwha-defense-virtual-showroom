@@ -449,7 +449,7 @@ export const ASSETS = {
       {
         name: 'launcher',
         loaded: false,
-        path : 'hdr/forest.hdr',
+        path : 'hdr/main_hdr.hdr',
         asset: null
       },
     ]
