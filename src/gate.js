@@ -37,7 +37,7 @@ import {gsap, Quint, Expo} from 'gsap/all'
     })
 
     document.querySelector('.gate video.in').addEventListener('timeupdate', function() {
-      if(this.duration - this.currentTime < 0.05) {
+      if(this.duration - this.currentTime < 0.05 && !isMobile) {
         document.querySelectorAll('.gate .product').forEach(entry => {
           startInMotion(entry)
         })
@@ -71,7 +71,7 @@ import {gsap, Quint, Expo} from 'gsap/all'
     const $entryKSLV = $entry.querySelector('.entry__item--left .btn-entry-point')
     const $entryK9a1 = $entry.querySelector('.entry__item--top .btn-entry-point')
     const $entryRedback = $entry.querySelector('.entry__item--bottom .btn-entry-point')
-    
+
     $entryKSLV.addEventListener('mouseenter', function() {
       $entry.classList.add('is-left')
     })
