@@ -29,6 +29,7 @@ import i18next from "i18next"
           "irCamera": "야간 기동성을 향상시키기 위하여 열상형 야간잠망경을 적용했으며 전/후방 카메라 장착을 통해, 감시경계 강화 및 아군의 생존성을 강화하였습니다.",
         },
         "REDBACK": {
+          "title": "레드백",
           "mainArmamentSystem": "NATO 규격의 30mm탄 사격이 가능한 무장을 탑재하였고, 사용자의 요구에 따라 유/무인 포탑 선택 적용이 가능합니다.",
           "antiTankArmamentSystem": "전차 대응 능력 강화를 위해 대전차유도 미사일이 탑재되어 있습니다.",
           "bestMobility": "최대 속도 65km/h, 항속거리 600km 이상의 기동력과 종방향 60%, 횡방향 30% 경사 주행 능력을 갖추고 있습니다.",
@@ -63,6 +64,7 @@ import i18next from "i18next"
           "irCamera": "To improve night mobility, a driver’s thermal night viewer was applied, and front and rear cameras were installed to strengthen the surveillance and vigilance and enhance the survivability of the allies.",
         },
         "REDBACK": {
+          "title": "REDBACK IFV",
           "mainArmamentSystem": "It is equipped with an armament capable of firing NATO standard 30mm bullets, and depending on the user's request, a manned/unmanned turret can be applied.",
           "antiTankArmamentSystem": "It is equipped with anti-tank guided missiles to enhance tank response capabilities.",
           "bestMobility": "It has a maximum speed of 65 km/h, the maneuverability of more than 600 km of range, and the ability to run on a slope of 60% longitudinally and 30% lateral.",

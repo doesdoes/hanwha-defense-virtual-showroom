@@ -61,9 +61,7 @@ import {gsap, Quint, Expo} from 'gsap/all'
     const $func = $entry.querySelector('.func')
     gsap.to($tit, { y: 0, duration: 0.1, ease: Expo.easeInOut })
     gsap.to($desc, { y: 0, duration: 0.1, ease: Expo.easeInOut })
-    gsap.to($func, { y: 0, duration: 0.1, ease: Expo.easeInOut, onComplete: () => {
-      
-    }})
+    gsap.to($func, { y: 0, duration: 0.1, ease: Expo.easeInOut })
   }
 
   const $entry = document.querySelector('.gate .entry')
