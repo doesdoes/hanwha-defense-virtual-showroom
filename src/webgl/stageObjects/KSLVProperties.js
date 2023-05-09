@@ -16,7 +16,7 @@ export const MATERIALS = {
     "roughnessMap": "KSLV_II_R.jpg",
     "roughness": 0.8,
     "metalnessMap": "KSLV_II_M.jpg",
-    "metalness": 0.8,
+    "metalness": 0.5,
     "normalMap": "KSLV_II_N.jpg",
     "envMapIntensity": 1.5,
     "flipY": false,
