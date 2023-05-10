@@ -50,6 +50,9 @@ import {gsap, Quint, Expo} from 'gsap/all'
   })
 
   document.querySelector('.gate video.in').play()
+  document.querySelectorAll('.gate .product').forEach(entry => {
+    startInMotion(entry)
+  })
 
   function startInMotion(entry) {
     const $entry =  entry.closest('[data-item]')
@@ -59,12 +62,12 @@ import {gsap, Quint, Expo} from 'gsap/all'
     if(!isMobile) {
       const $tit = $entry.querySelector('.tit')
       const $desc = $entry.querySelector('.desc')
-      gsap.to($tit, { y: 0, duration: 0.1, ease: Expo.easeInOut })
-      gsap.to($desc, { y: 0, duration: 0.1, ease: Expo.easeInOut })
+      gsap.to($tit, { y: 0, duration: 0.5, ease: Expo.easeInOut })
+      gsap.to($desc, { y: 0, duration: 0.5, ease: Expo.easeInOut })
     }
     
     const $func = $entry.querySelector('.func')
-    gsap.to($func, { y: 0, duration: 0.1, ease: Expo.easeInOut })
+    gsap.to($func, { y: 0, duration: 0.5, ease: Expo.easeInOut })
   }
 
   
