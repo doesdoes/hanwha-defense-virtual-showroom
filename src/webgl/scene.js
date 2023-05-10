@@ -415,7 +415,7 @@ function setUI(sceneName, points) {
 
   document.querySelectorAll(`.popup-container[data-item="${sceneName}"] .btn-close`).forEach(btnClose => {
     btnClose.addEventListener('click', function(e) {
-      focusOnRegion('reset')
+      if(!isMobile) focusOnRegion('reset')
       const $popup = this.closest('.poi-popup')
       gsap.to($popup, { autoAlpha: 0, duration: 0.5 })
       e.preventDefault()
@@ -531,6 +531,8 @@ function updateKSLVenvironment(_region) {
 }
 
 export function focusOnRegion( _region, _anim = true ) {
+  console.log(`region focus`, _region)
+  
   if(_region !== 'reset') STATE.IS_FOCUSED = true
   STATE.FOCUSED_SCENE = _region
   STATE.WEBGL.parallax = false
