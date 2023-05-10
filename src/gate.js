@@ -37,11 +37,11 @@ import {gsap, Quint, Expo} from 'gsap/all'
     })
 
     document.querySelector('.gate video.in').addEventListener('timeupdate', function() {
-      if(this.duration - this.currentTime < 0.05) {
-        document.querySelectorAll('.gate .product').forEach(entry => {
-          startInMotion(entry)
-        })
-      }
+      // if(this.duration - this.currentTime < 0.05) {
+      //   document.querySelectorAll('.gate .product').forEach(entry => {
+      //     startInMotion(entry)
+      //   })
+      // }
 
       if(this.duration - this.currentTime < 0.2) {
         gsap.to(this, {autoAlpha: 0})
