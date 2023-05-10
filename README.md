@@ -313,3 +313,6 @@ Released under MIT by, and copyright 2022, @DOES Interactive
 * 레진 마크업 가이드 https://github.com/lezhin/markup-guide
 * mdo 코드 가이드 https://codeguide.co/
 * github css 가이드 https://primer.style/css/
+
+### 2023 UPDATE
+When doing a build, make sure to load the correct typography file in app.scss in order to not break the new font style guide
