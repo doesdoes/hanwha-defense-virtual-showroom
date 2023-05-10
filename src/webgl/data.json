@@ -1,23 +1,26 @@
 {
   "k9a1-indicators": [
-    { "id": "longerFiringRange", "title": "Longer Firing Range"},
-    { "id": "highMobility", "title": "High Mobility"},
-    { "id": "ammunitionLoader", "title": "Ammunition Loader"},
-    { "id": "automaticControlSystem", "title": "Automatic Control System"},
-    { "id": "irCamera", "title": "IR Camera"}
+    { "id": "reset", "title": "Reset" },
+    { "id": "longerFiringRange", "title": "Longer Firing Range" },
+    { "id": "highMobility", "title": "High Mobility" },
+    { "id": "ammunitionLoader", "title": "Ammunition Loader" },
+    { "id": "automaticControlSystem", "title": "Automatic Control System" },
+    { "id": "irCamera", "title": "IR Camera" }
   ],
   "redback-indicators": [
-    { "id": "mainArmamentSystem", "title": "Main Armament System"},
-    { "id": "antiTankArmamentSystem", "title": "Anti-Tank Armament System"},
-    { "id": "bestMobility", "title": "Best Mobility"},
-    { "id": "superiorProtection", "title": "Superior Protection"},
-    { "id": "isuRubberTrack", "title": "ISU & Rubber Track"}
+    { "id": "reset", "title": "Reset" },
+    { "id": "mainArmamentSystem", "title": "Main Armament System" },
+    { "id": "antiTankArmamentSystem", "title": "Anti-Tank Armament System" },
+    { "id": "bestMobility", "title": "Best Mobility" },
+    { "id": "superiorProtection", "title": "Superior Protection" },
+    { "id": "isuRubberTrack", "title": "ISU & Rubber Track" }
   ],
   "kslv-indicators": [
-    { "id": "ton75classEngine", "title": "75-ton Engine"},
-    { "id": "engineClustering", "title": "Engine Clustering"},
-    { "id": "liquidEngineFuelSystem", "title": "Propellant Feed System"},
-    { "id": "ton7classEngine", "title": "7-ton Engine"},
-    { "id": "collisionPreventionSystem", "title": "Fairing Separation System"}
+    { "id": "reset", "title": "Reset" },
+    { "id": "ton75classEngine", "title": "75-ton Engine" },
+    { "id": "engineClustering", "title": "Engine Clustering" },
+    { "id": "liquidEngineFuelSystem", "title": "Propellant Feed System" },
+    { "id": "ton7classEngine", "title": "7-ton Engine" },
+    { "id": "collisionPreventionSystem", "title": "Fairing Separation System" }
   ]
 }
