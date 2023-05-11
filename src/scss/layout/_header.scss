@@ -151,8 +151,17 @@
   &[data-state="showroom"] {
 
     .header__showroom {
-      transform: translateY(0)
+      transform: translateY(0);
+      
+      .gnb {
+        height: 45px;
+
+        @media all and (max-width: $tablet) {
+          height: 35px;
+        }
+      }
     }
+    
     .home {
       display: none;
       visibility: hidden;
