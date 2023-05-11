@@ -49,6 +49,8 @@
     letter-spacing: -0.01em;
     font-weight: 400;
 
+    &.reset { display: none; }
+
     &::before {
       content: '';
       display: block;
