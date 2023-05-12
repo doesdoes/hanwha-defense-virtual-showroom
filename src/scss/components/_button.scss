@@ -271,7 +271,7 @@
         }
       }
 
-      @media (hover: hover) {
+      @media (hover: hover) and (min-width: $tablet) {
         &:hover{
           .txt{
             transform: translate(0, -150%);
