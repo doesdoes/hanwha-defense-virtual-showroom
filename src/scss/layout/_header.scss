@@ -116,6 +116,11 @@
 
   .sound {
     opacity: 0;
+
+    [data-state="gate"] &  {
+      display: none;
+      margin-left: 0;
+    }
   }
 
   .sound {
@@ -189,14 +194,10 @@
 
     .kind {
       opacity: 1;
-
-      [data-scene="누리호"] &, [data-state="KSLV"] &, [data-scene="Nuri Project"] & {
-        display: none;
-      }
     }
 
     .lang {
-      opacity: 1;
+      display: none;
     }
 
     .sound {
@@ -204,6 +205,12 @@
     }
   }
 
+  &[data-state="gate"] { 
+    .sound {
+      width: 0;
+      margin-left: 0;
+    }
+  }
   @media all and (max-width: $tablet) {
     .btn-back {
       min-width: initial;
@@ -217,10 +224,6 @@
   
     .kind {
       margin-left: 4.1vw;
-    }
-
-    .sound {
-      margin-left: 6.15vw;
     }
   }
 }
