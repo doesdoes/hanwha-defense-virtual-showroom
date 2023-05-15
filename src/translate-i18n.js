@@ -72,7 +72,7 @@ import i18next from "i18next"
           "isuRubberTrack": "ISU and rubber tracks are installed to ensure excellent ride quality and stable maneuverability.",
         },
         "KSLV": {
-          "title": "NURI PROJECT",
+          "title": "KSLV-ll (NURI)",
           "ton75classEngine": "Leveraging the 30-ton liquid engine technology we developed for the Naro rocket through preliminary research, we were able to surmount the technical obstacles related to combustion instability. Through static firing tests on the ground and test firing conducted to evaluate flight performance, we successfully developed a large liquid-propellant engine, becoming the 7th country in the world to achieve this feat. ​",
           "engineClustering": "Our development efforts involved utilizing a clustering method to combine four 75-ton liquid engines, generating a total thrust of 300 tons, and we were able to ensure structural stability of the engines while producing the same thrust as a single engine, thereby contributing to technological advancements. ​",
           "liquidEngineFuelSystem": "For the first time in Korea, the Korea Aerospace Research Institute and Hanwha Aerospace jointly developed a propulsion supply system for medium-sized liquid-propellant launch vehicles. This system consists of supply pipes, charging and discharge valves, and enables stable launch performance through uninterrupted fuel supply.",
