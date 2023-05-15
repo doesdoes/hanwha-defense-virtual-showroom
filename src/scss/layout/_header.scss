@@ -76,6 +76,10 @@
     margin-left: 0.73vw;
     // min-width: 5.94em;
     min-width: 7.94em; // REDBACK IFV 로 인해 늘어남
+
+  [data-scene="누리호"] &, [data-state="KSLV"] &, [data-scene="KSLV-II (Nuri)"] & {
+      display: none;
+    }
   }
 
   .bar {
@@ -96,6 +100,7 @@
 
   .lang {
     opacity: 0;
+    display: none;
   }
 
   .sound {
