@@ -19,6 +19,10 @@
     left: 0;
     transform: translateY(-100%);
     transition: all 0.5s 0.34s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    [data-state="gate"] & {
+      transform: translateY(0%);
+    }
   }
 
   a {
@@ -99,8 +103,15 @@
   }
 
   .lang {
-    opacity: 0;
-    display: none;
+    //opacity: 0;
+
+    [data-state="showroom"] &  {
+      display: none;
+    }
+
+    [data-state="gate"] &  {
+      opacity: 1;
+    }
   }
 
   .sound {
