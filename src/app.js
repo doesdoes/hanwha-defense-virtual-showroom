@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     let guideProductName
     if(item === 'K9A1') guideProductName = (document.documentElement.lang === 'ko' ? 'K9 자주포' : 'K9 SPH')
     else if(item === 'REDBACK') guideProductName = (document.documentElement.lang === 'ko' ? '레드백' : 'REDBACK')
-    else if(item === 'KSLV') guideProductName = (document.documentElement.lang === 'ko' ? '누리호' : 'KSVL-II (Nuri)')
+    else if(item === 'KSLV') guideProductName = (document.documentElement.lang === 'ko' ? '누리호' : 'KSLV-II (Nuri)')
 
     document.body.setAttribute('data-scene', guideProductName)
 
