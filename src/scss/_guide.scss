@@ -261,6 +261,10 @@ body[data-state="guide-step-2"] {
 
   visibility: hidden;
 
+  [data-scene="KSLV-II (Nuri)"] &, [data-scene="누리호"] & {
+    display: none;
+  }
+
   &__content {
     position: absolute;
     top: 50%;
