@@ -127,24 +127,26 @@ window.addEventListener('DOMContentLoaded', async (event) => {
       const step1Controller = new AbortController();
       const step2Controller = new AbortController();
       const guideSteps = []
-      guideSteps.push(() => {
-        return new Promise((resolve, reject) => {
-          document.body.setAttribute('data-state', 'guide-step-1')
-          gsap.to('.guide360__visual', { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.2 })
-          gsap.to('.guide360__desc', { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.3 })
-          const dCall = gsap.delayedCall(2, () => {
-            resolve()
-            guide.next()
-          })
-
-          step1Controller.signal.addEventListener('abort', () => {
-            console.log('abort 0 ')
-            dCall && dCall.kill()
-            resolve()
-            guide.next()
+      if(item != 'KSLV') {        
+        guideSteps.push(() => {
+          return new Promise((resolve, reject) => {
+            document.body.setAttribute('data-state', 'guide-step-1')
+            gsap.to('.guide360__visual', { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.2 })
+            gsap.to('.guide360__desc', { autoAlpha: 1, y: 0, duration: 0.6, delay: 0.3 })
+            const dCall = gsap.delayedCall(2, () => {
+              resolve()
+              guide.next()
+            })
+  
+            step1Controller.signal.addEventListener('abort', () => {
+              console.log('abort 0 ')
+              dCall && dCall.kill()
+              resolve()
+              guide.next()
+            })
           })
         })
-      })
+      }
 
       guideSteps.push(() => {
         return new Promise((resolve, reject) => {
