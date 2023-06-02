@@ -61,7 +61,7 @@ $h-inner: calc(40px + (#{$h-gap} * 2) + 1px);
 $bezier: cubic-bezier(0.23, 1, 0.32, 1);
 
 // breakpoints
-$mobile: 767px;
+$mobile: 575px;
 $tablet: 1024px;
 $laptop: 1366px;
 $desktop: 1920px;

@@ -231,7 +231,7 @@
     }
   }
 
-  @media (max-width: $mobile) and (max-width: $tablet) {
+  @media (min-width: $mobile) and (max-width: $tablet) {
       .btn-back {
         min-width: initial;
         padding-left: 0;
