@@ -254,7 +254,7 @@
     }
   }
 
-  @media (max-width: $tablet) {
+  @media (min-width: $mobile) and (max-width: $tablet) {
     background-color: #000;
 
     img.in-mobile {
