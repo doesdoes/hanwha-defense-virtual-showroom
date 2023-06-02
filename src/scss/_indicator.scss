@@ -94,11 +94,16 @@
       line-height: 1;
       letter-spacing: 0.02em;
     }
+
+    @media (min-width: $mobile) and (max-width: $tablet) {
+      &[data-feature="reset"] { display: none; }
+    }
   }
 
   opacity: 0;
 
   @media all and (max-width: $mobile) {
+    
     width: auto;
     .part {
       .txt {
