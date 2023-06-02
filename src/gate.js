@@ -103,8 +103,13 @@ import {gsap, Quint, Expo} from 'gsap/all'
     $entryRedback.addEventListener('mouseleave', function() {
       $entry.classList.remove('is-bottom')
     })
+
   }
 
+  if(isMobile) {
+    const gateImg = document.querySelector('.gate img.in-mobile').width
+    document.documentElement.style.setProperty('--cover-width', gateImg+'px');
+  }
 
   // HTMLVideoElement.prototype.playBackwards = function() {
   //   this.pause();
