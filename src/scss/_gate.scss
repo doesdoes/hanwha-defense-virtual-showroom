@@ -96,19 +96,6 @@
       position: relative;
       transform: translateY(102%);
 
-      // // [NOTE] 변형 UI
-      // .bttn {
-      //   position: absolute;
-      //   width: 50%;
-      //   top: 0;
-      //   left: 0;
-      //   opacity: 0;
-      // }
-
-      // .bttn + .bttn {
-      //   left: calc(50% - 1px);
-      // }
-
       [data-bp="mobile"] {
         display: none;
       }
@@ -196,7 +183,7 @@
     }
   }
 
-  @media all and (max-width: $tablet) {
+  @media all and (max-width: $mobile) {
     height: var(--cover-height);
 
     video.in-mobile, img.in-mobile {
@@ -213,17 +200,6 @@
 
       &__inner {
         padding-bottom: 0;
-
-        // .tit {
-        //   &.headline-4-kr {
-        //     font-size: max(48px, 5.625rem);
-        //     padding-bottom: to-em(24px, $base: 34px);
-        //   }
-
-        //   &.headline-3-en {
-        //     padding-bottom: to-em(24px, $base: 36px);
-        //   }
-        // }
       }
 
       &__item {
@@ -275,6 +251,90 @@
       //     display: none;
       //   }
       // }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    background-color: #000;
+
+    img.in-mobile {
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    video.in-mobile {
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    height: var(--cover-height);
+
+    video.in-mobile, img.in-mobile {
+      display: block;
+    }
+
+    video.in-web, img.in-web {
+      display: none;
+    }
+
+    .entry {
+      flex-direction: column;
+      height: var(--cover-height);
+      width: var(--cover-width);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+      &__inner {
+        padding-bottom: 0;
+      }
+
+      &__item {
+        flex: 1;
+      }
+
+
+      .tit,
+      .desc {
+        display: none;
+      }
+
+      
+
+      .func {
+        [data-bp="web"] {
+          display: none;
+        }
+
+        [data-bp="mobile"] {
+          display: inline-flex;
+        }
+
+        .headline-5, .headline-3-en {
+          color: $white;
+          
+          .txt { 
+            margin-top: to-em($px: 7px, $base: 34px);
+            margin-right: to-em($px: 7px, $base: 34px);
+          }
+
+          .icon{
+            width: to-em($px : 17px, $base : 34px);
+            height: to-em($px : 17px, $base : 34px);
+            
+            &::before,&::after{
+              width: to-em($px : 10px, $base : 34px);
+              height: to-em($px : 10px, $base : 34px);
+            }
+          }
+
+          padding-bottom: to-em(24px, $base: 34px);
+        }
+      }
     }
   }
 }

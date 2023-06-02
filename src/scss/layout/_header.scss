@@ -215,7 +215,7 @@
       display: none;
     }
   }
-  @media all and (max-width: $tablet) {
+  @media all and (max-width: $mobile) {
     .btn-back {
       min-width: initial;
       padding-left: 0;
@@ -229,5 +229,32 @@
     .kind {
       margin-left: 4.1vw;
     }
+  }
+
+  @media (max-width: $tablet) {
+      .btn-back {
+        min-width: initial;
+        padding-left: 0;
+        margin-right: 4.1vw;
+
+        &::before {
+          margin-right: 0.57em;
+        }
+      }
+      .kind {
+        margin-left: 4.1vw;
+      }
+    
+      &[data-state="gate"] {
+        width: var(--cover-width);
+        left: 0;
+        right: 0;    
+        margin: 0 auto;
+        
+        .lang {
+          min-width: 90px;
+        }
+      }
+
   }
 }
