@@ -43,31 +43,31 @@ export const STATE = {
     },
     desertSpeedLine: {
       mesh: null,
-      animate: function() { 
+      animate: function() {
         if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
     snowSpeedLine: {
       mesh: null,
-      animate: function() { 
+      animate: function() {
         if(this.mesh && this.mesh.material.alphaMap != undefined) this.mesh.material.alphaMap.offset.y -= STATE.moveSpeedLine
       }
     },
     snowFloor: {
       mesh: null,
-      animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.020 
+      animate: function() {
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.020
       }
     },
     desertFloor: {
       mesh: null,
-      animate: function() { 
-        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.03 
+      animate: function() {
+        if(this.mesh && this.mesh.material.map != undefined) this.mesh.material.map.offset.y += 0.03
       }
     },
     snowMountain: {
       mesh: null,
-      animate: function() { 
+      animate: function() {
         if(this.mesh && this.mesh.material.map != undefined) {
           this.mesh.material.map.offset.x += 0.000120
           this.mesh.material.alphaMap.offset.x += 0.000120
@@ -76,7 +76,7 @@ export const STATE = {
     },
     desertMountain: {
       mesh: null,
-      animate: function() { 
+      animate: function() {
         if(this.mesh && this.mesh.material.map != undefined) {
           this.mesh.material.map.offset.x += 0.000120
           this.mesh.material.alphaMap.offset.x += 0.000120
@@ -85,7 +85,7 @@ export const STATE = {
     },
     tireLine: {
       mesh: null,
-      animate: function() { 
+      animate: function() {
         if(this.mesh && this.mesh.material.alphaMap != undefined) {
           this.mesh.material.alphaMap.offset.y -= 0.150
         }
@@ -93,7 +93,7 @@ export const STATE = {
     },
     redbackTireLine: {
       mesh: null,
-      animate: function() { 
+      animate: function() {
         if(this.mesh && this.mesh.material.alphaMap != undefined) {
           this.mesh.material.alphaMap.offset.y -= 0.150
           this.mesh.material.map.offset.y -= 0.150
@@ -104,14 +104,14 @@ export const STATE = {
     clouds: {
       mesh: null,
       animate: function() {
-        if(this.mesh && this.mesh.material.alphaMap != undefined) 
+        if(this.mesh && this.mesh.material.alphaMap != undefined)
           this.mesh.material.alphaMap.offset.x -= 0.00004
       }
     },
     earthDay: {
       mesh: null,
       animate: function() {
-        if(this.mesh && this.mesh.material.map != undefined) 
+        if(this.mesh && this.mesh.material.map != undefined)
           this.mesh.material.map.offset.x -= 0.00005
       }
     },
@@ -126,14 +126,14 @@ export const STATE = {
   ANIMATED_OBJECTS: {
     desertMountain: {
       mesh: null,
-      animate: function() { 
-        if(this.mesh) this.mesh.rotation.z += 0.0001 
+      animate: function() {
+        if(this.mesh) this.mesh.rotation.z += 0.0001
       }
     },
     snowMountain: {
       mesh: null,
-      animate: function() { 
-        if(this.mesh) this.mesh.rotation.z += 0.0001 
+      animate: function() {
+        if(this.mesh) this.mesh.rotation.z += 0.0001
       }
     },
 

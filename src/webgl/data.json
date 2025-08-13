@@ -12,7 +12,6 @@
     { "id": "mainArmamentSystem", "title": "Main Armament System" },
     { "id": "antiTankArmamentSystem", "title": "Anti-Tank Armament System" },
     { "id": "bestMobility", "title": "Best Mobility" },
-    { "id": "superiorProtection", "title": "Superior Protection" },
     { "id": "isuRubberTrack", "title": "ISU & Rubber Track" }
   ],
   "kslv-indicators": [

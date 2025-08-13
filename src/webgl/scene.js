@@ -27,7 +27,7 @@ const isMobile = md.mobile()
 
 let popupLineTimeout
 
-export function loadStage( sceneName, callback ) {  
+export function loadStage( sceneName, callback ) {
   const uiLoadingManager = new UILoadingManager()
 
   // light initialization
@@ -69,8 +69,8 @@ export function loadStage( sceneName, callback ) {
 
           child.getWorldPosition(STATE.ZONE_FOCUS[child.name].target)
           STATE.ZONE_FOCUS[child.name].targetOffset && STATE.ZONE_FOCUS[child.name].target.add(STATE.ZONE_FOCUS[child.name].targetOffset)
-          
-          POI.element.addEventListener('click', function(e) {            
+
+          POI.element.addEventListener('click', function(e) {
             if(STATE.FOCUSED_SCENE != child.name) focusOnRegion(child.name)
             e.preventDefault()
           })
@@ -226,7 +226,7 @@ export function loadStage( sceneName, callback ) {
       // [NOTE] 맵 mesh/uv 애니메이션
       DESERT_OBJECT.clone.traverse((child) => {
         // UV
-        if(child.name === 'BG_Desert_Ground_UVAni') STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child  
+        if(child.name === 'BG_Desert_Ground_UVAni') STATE.UV_ANIMATED_OBJECTS.desertFloor.mesh = child
         if(child.name === 'BG_SpeedLine_UVAni') spriteDesertWind = child
         if(child.name === 'Tire_Line_UV') STATE.UV_ANIMATED_OBJECTS.tireLine.mesh = child
         if(child.name === 'BG_Cloud_UVAni') child.visible = false
@@ -256,7 +256,7 @@ export function loadStage( sceneName, callback ) {
 
         const tweenTrackSkid = createSpriteTween(spriteDesertTrackSkid, spriteDesertTrackSkid.material.alphaMap, 11, 1, 100)
         tweenTrackSkid.start()
-        
+
         callback && callback()
       })
 
@@ -290,7 +290,7 @@ export function loadStage( sceneName, callback ) {
       })
       STATE.WEBGL.scene.add(KSLV_LAUNCHER_OBJECT.clone)
       STATE.LAUNCHPAD_OBJECTS.push(KSLV_LAUNCHER_OBJECT.clone)
-      
+
       const KSLV_MESH = ASSETS.KSLV.MODEL_FILES.find( obj => { return obj.name === "kslv" } )
       const KSLV_OBJECT = new StageObject({
         originalObject: KSLV_MESH.asset.scene,
@@ -306,7 +306,7 @@ export function loadStage( sceneName, callback ) {
         })
         for (const action of STATE.ANIMATIONS._KSLV.mixer._actions) {
           action.setLoop(THREE.LoopOnce)
-          action.clampWhenFinished = true    
+          action.clampWhenFinished = true
         }
       }
 
@@ -325,7 +325,7 @@ export function loadStage( sceneName, callback ) {
 
       KSLV_OBJECT.clone.traverse(child => {
         if (child.userData.type == 'POI') {
-          // POI buttons          
+          // POI buttons
           const POI = new CSS2DObject( document.getElementById(child.name) )
           child.add( POI )
 
@@ -363,13 +363,13 @@ export function loadStage( sceneName, callback ) {
         objectName: 'kslv',
         definition: KSLV_BG_PROPERTIES,
       })
-      
+
       KSLV_DOME_OBJECT.clone.traverse((child) => {
         if(child.name === 'Earth_Day') STATE.UV_ANIMATED_OBJECTS.earthDay.mesh = child
         if(child.name === 'Earth_Night') STATE.UV_ANIMATED_OBJECTS.earthNight.mesh = child
         if(child.name === 'Earth_Cloud') STATE.UV_ANIMATED_OBJECTS.clouds.mesh = child
       })
-      
+
       STATE.WEBGL.scene.add(KSLV_DOME_OBJECT.clone)
 
       setUI(sceneName, kslvPoints)
@@ -388,7 +388,7 @@ function setSobelFocus(mesh) {
     case 'TANK_K9A1_Wheel_04_LT':
       STATE.ZONE_FOCUS['highMobility'].sobelObj = mesh
       break;
-    
+
     // REDBACK
     case 'TANK_REDBACK_Cannon1':
       STATE.ZONE_FOCUS['mainArmamentSystem'].sobelObj = mesh
@@ -405,7 +405,7 @@ function setSobelFocus(mesh) {
   }
 }
 
-function setUI(sceneName, points) {  
+function setUI(sceneName, points) {
   updatePointVisible(points)
   requestAnimationFrame(updatePoint)
   function updatePoint() {
@@ -445,7 +445,7 @@ function updatePointVisible(points) {
         offset = isMobile ? 8.7 : 3.7
       else if(state === 'KSLV')
         offset = isMobile ? 300 : 300
-      else 
+      else
         return
 
       if(d < offset) {
@@ -472,7 +472,7 @@ function updateSceneSettings(_scene) {
 
     STATE.WEBGL.camera.fov = (isMobile) ? 60 : 45
     STATE.WEBGL.camera.near = 1
-    STATE.WEBGL.camera.updateProjectionMatrix()    
+    STATE.WEBGL.camera.updateProjectionMatrix()
 
     STATE.ANIMATED_OBJECTS.rocket.reset = true
     if(STATE.resetRocket) STATE.resetRocket()
@@ -489,14 +489,14 @@ function updateSceneSettings(_scene) {
 
     STATE.WEBGL.camera.fov = 45
     STATE.WEBGL.camera.near = 0.1
-    STATE.WEBGL.camera.updateProjectionMatrix() 
+    STATE.WEBGL.camera.updateProjectionMatrix()
   }
 }
 
 function updateKSLVenvironment(_region) {
   if(_region == 'reset') return
 
-  let launchPadVisibility  
+  let launchPadVisibility
 
   if(_region == 'ton7classEngine' || _region == 'collisionPreventionSystem') {
     STATE.WEBGL.scene.environment = STATE.GALAXY_HDR
@@ -532,7 +532,7 @@ function updateKSLVenvironment(_region) {
 
 export function focusOnRegion( _region, _anim = true ) {
   console.log(`region focus`, _region)
-  
+
   if(_region !== 'reset') STATE.IS_FOCUSED = true
   STATE.FOCUSED_SCENE = _region
   STATE.WEBGL.parallax = false
@@ -564,20 +564,20 @@ export function focusOnRegion( _region, _anim = true ) {
   } else {
     document.body.setAttribute('data-focus', '')
   }
-  
+
   STATE.WEBGL.cameraControls.minAzimuthAngle = STATE.ZONE_FOCUS[_region].minAzimuth
   STATE.WEBGL.cameraControls.maxAzimuthAngle = STATE.ZONE_FOCUS[_region].maxAzimuth
 
   if(STATE.IS_FOCUSED) sendGLCustomEvent({msg: _region})
 
-  STATE.WEBGL.cameraControls.setLookAt( 
+  STATE.WEBGL.cameraControls.setLookAt(
     STATE.ZONE_FOCUS[_region].position.x,
     STATE.ZONE_FOCUS[_region].position.y,
     STATE.ZONE_FOCUS[_region].position.z,
     STATE.ZONE_FOCUS[_region].target.x,
     STATE.ZONE_FOCUS[_region].target.y,
     STATE.ZONE_FOCUS[_region].target.z,
-    _anim 
+    _anim
   ).then(() => {
     STATE.WEBGL.ACTIVE_FOCUS = _region
     if(STATE.CURRENT_SCENE.NAME == 'KSLV') STATE.WEBGL.parallax = true
@@ -587,7 +587,7 @@ export function focusOnRegion( _region, _anim = true ) {
 export function toggleStages( toggle, sceneName ) {
   updateSceneSettings(sceneName)
   updateLights(sceneName)
-  
+
   let stagesObjects = STATE.WEBGL.scene.children.filter(function (obj) {return obj.sceneName === sceneName})
 
   if (stagesObjects != undefined) {
